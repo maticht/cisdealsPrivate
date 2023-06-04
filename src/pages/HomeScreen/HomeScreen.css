@@ -1,0 +1,33 @@
+.bestSpecialists {
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    margin:5px 10px 0 10px;
+    max-width: 1160px;
+
+}
+.oneBestSpecialistsBlock {
+    max-width: 1160px;
+    width: 100%;
+    height: 100px;
+    background-color: #fff;
+    display: flex;
+    align-self: center;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 8px;
+    margin: 0 10px 10px 10px;
+}
+@media screen and (min-width: 1160px) {
+    .bestSpecialists {
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        margin:0 auto;
+        max-width: 1160px;
+        width: 100%
+    }
+    .oneBestSpecialistsBlock {
+        margin:0 auto 10px auto;
+    }
+}
