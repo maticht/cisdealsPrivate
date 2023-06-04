@@ -5,17 +5,17 @@
 .noneAccBtn {
     width: 24px;
     height: 24px;
-    margin: 0 1vw;
+    margin: 0 5px 0 10px;
     opacity: 0.55;
 }
 
 .userLogo {
     width: 24px;
     height: 24px;
-    margin: 0 1vw;
+    margin: 0 5px 0 10px;
     border-radius: 15px;
     object-fit: cover;
-    filter: blur(1px);
+    filter: blur(0.3px);
 }
 .navBarBlock {
     background-color: #FFFFFF;
