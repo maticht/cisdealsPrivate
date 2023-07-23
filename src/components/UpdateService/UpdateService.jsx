@@ -4,7 +4,6 @@ import {Link, useNavigate, useParams} from "react-router-dom";
 import styles from "./styles.module.css";
 import {createUseStyles} from "react-jss";
 import CategoriesJSON from '../../data/categories.json';
-import arrow from '../../img/arrowright.svg';
 import beauty from '../../img/CategoriesLogo/beauty.svg';
 import sport from '../../img/CategoriesLogo/sport.svg';
 import health from '../../img/CategoriesLogo/health.svg';
@@ -132,28 +131,9 @@ const UpdateService = () => {
     const [error, setError] = useState("");
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [modalServIsOpen, setModalServIsOpen] = useState(false);
-    const [modalCitiesIsOpen, setModalCitiesIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState("");
     const [selectedServ, setSelectedServ] = useState("");
-    const [selectedCities, setSelectedCities] = useState("");
-
-    const categories = CategoriesJSON.categories;
     const classes = useStyles();
     const navigate = useNavigate();
-    const handleChange = ({ currentTarget: input }) => {
-        setData({ ...data, [input.name]: input.value });
-    };
-    const handleOptionClick = (option) => {
-        setSelectedOption(option);
-        setSelectedServices([]);
-        setData({ ...data, areasActivity: option });
-        setModalIsOpen(false);
-    };
-    const handleOptionServClick = (option) => {
-        setSelectedServ(option);
-        setData({ ...data, services: option });
-        setModalServIsOpen(false);
-    };
 
 
     const handleSubmit = async (e) => {
@@ -191,17 +171,10 @@ const UpdateService = () => {
         setSelectedServ(selectedServices.join(" / "));
         setModalServIsOpen(false);
     };
-
-    const handleOpenModal = (e) => {
-        e.preventDefault();
-        setModalIsOpen(true);
-    };
-
     const handleOpenServModal = (e) => {
         e.preventDefault();
         setModalServIsOpen(true);
     };
-    // const buttonStyles = selectedOption.length === 0 ? { opacity: 0.5, pointerEvents: 'none' } : {};
 
 
 
@@ -215,6 +188,7 @@ const UpdateService = () => {
             <form className={styles.form_container} onSubmit={handleSubmit} noValidate>
                 <h1 style={{margin:"0 0 0 10px"}}>О себе</h1>
                 <div style={{justifyContent:"flex-start", backgroundColor:"#fff",borderRadius:8, margin:"10px 10px", padding:"20px 10px"}}>
+
                     <div>
                         <div style={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
                             <h5 style={{margin:"10px 0 5px 0"}}>Услуги</h5>

@@ -41,6 +41,7 @@ function HeaderNavBar() {
         <Link to={"/"}>
             <img src={logo} className={"App-logo"} alt={"logo"}/>
         </Link>
+
         <div>
             <ModalUserPage isOpen={modalOpen} onClose={handleCloseModal}/>
         </div>

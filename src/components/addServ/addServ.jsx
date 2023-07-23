@@ -10,6 +10,22 @@ import check from "../../img/VectorCheck.svg"
 import {createUseStyles} from "react-jss";
 import xMark from '../../img/x-mark=24.svg'
 import greenxMark from '../../img/greenx-mark.svg'
+import beauty from "../../img/CategoriesLogo/beauty.svg";
+import sport from "../../img/CategoriesLogo/sport.svg";
+import health from "../../img/CategoriesLogo/health.svg";
+import auto from "../../img/CategoriesLogo/auto.svg";
+import finance from "../../img/CategoriesLogo/finance.svg";
+import animals from "../../img/CategoriesLogo/animals.svg";
+import study from "../../img/CategoriesLogo/study.svg";
+import photo from "../../img/CategoriesLogo/photo.svg";
+import ads from "../../img/CategoriesLogo/ads.svg";
+import design from "../../img/CategoriesLogo/design.svg";
+import programming from "../../img/CategoriesLogo/programming.svg";
+import logistics from "../../img/CategoriesLogo/logistics.svg";
+import house from "../../img/CategoriesLogo/house.svg";
+import build from "../../img/CategoriesLogo/build.svg";
+import party from "../../img/CategoriesLogo/party.svg";
+import food from "../../img/CategoriesLogo/food.png";
 
 const useStyles = createUseStyles({
     overlay: {
@@ -116,6 +132,7 @@ const AddServ = () => {
     const [selectedCategory, setSelectedCategory] = useState('');
     const [serv, setServ] = useState([]);
     const [deleteObjId, setDeleteObjId] = useState(null);
+    const [modalServvIsOpen, setModalServvIsOpen] = useState(false);
     const [data, setData] = useState({
         title: "",
         parent: "",
@@ -244,6 +261,25 @@ const AddServ = () => {
             return !(service.title === title && service.parent === parent);
         }));
     };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log(data)
+        try {
+            const url = `http://backend.delkind.pl/update/${UserPage}`;
+            const { data: res } = await axios.put(url, data);
+            localStorage.setItem("token",  JSON.stringify(res));
+            navigate("/EditProfile");
+            console.log(data);
+        } catch (error) {
+            if (
+                error.response &&
+                error.response.status >= 400 &&
+                error.response.status <= 500
+            ) {
+                setError(error.response.data.message);
+            }
+        }
+    };
     const handleServicesConfirmation = async (e) => {
         e.preventDefault();
         console.log(selectedOption);
@@ -297,6 +333,7 @@ const AddServ = () => {
     }
 
 
+
     return (
         <div className={styles.signup_container} style={{zIndex:1, minHeight:'100vh'}}>
             <Link style={{textDecoration: "none", color: "#454545", fontSize: "14px"}} to="/EditProfile">
@@ -307,6 +344,124 @@ const AddServ = () => {
             <div style={{justifyContent:"space-between", flexDirection:'row', display:'flex',alignItems:'center',}}>
                 <h1 style={{margin:"0 0 10px 10px"}}>Услуги</h1>
             </div>
+            <form className={styles.form_container} onSubmit={handleSubmit} noValidate>
+                <h1 style={{margin:"0 0 0 10px"}}>О себе</h1>
+                <div style={{justifyContent:"flex-start", backgroundColor:"#fff",borderRadius:8, margin:"10px 10px", padding:"20px 10px"}}>
+
+                    <div>
+                        <div style={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
+                            <h5 style={{margin:"10px 0 5px 0"}}>Услуги</h5>
+                            <p style={{fontSize:'12px', margin:"10px 0 5px 0"}}>{`${selectedServices.length}/3`}</p>
+                        </div>
+                        <button className={styles.inputBtn} onClick={handleOpenServModal} >
+                            <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
+                                <p style={{margin:'0px'}}>{selectedServ || "Выбрать услугу"}</p>
+                                <img style={{width:'15px'}} src={arrowDown} alt={'>'}/>
+                            </div>
+                        </button>
+                        {modalServvIsOpen && (
+                            <div className={classes.overlay}>
+                                <div className={classes.modal}>
+                                    <p onClick={() => setModalServIsOpen(false)} style={{textDecoration: "none", color: "#454545", fontSize: "14px"}}>
+                                        {`< Назад`}
+                                    </p>
+                                    <div style={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
+                                        <h2>Выберите Услугу</h2>
+                                        <p style={{fontSize:'12px', margin:"0 10px 0 0"}}>{`${selectedServices.length}/3`}</p>
+                                    </div>
+                                    <div>
+                                        <div style={{display:'flex', justifyContent:'center', flexDirection:'column'}}>
+                                            {CategoriesJSON.categories.map((option) => (
+                                                <div className={classes.OneCategoryCheckItem} key={option.categoriestitle}>
+                                                    <div style={{display:'flex', justifyContent:'center',alignItems:'center'}}>
+                                                        <input
+                                                            type="checkbox"
+                                                            id={option.categoriestitle}
+                                                            name={option.categoriestitle}
+                                                            style={{
+                                                                display:'none'
+                                                            }}
+                                                            value={option.categoriestitle}
+                                                            onChange={(event) => handleServiceCheckboxChange(event, option.categoriestitle)}
+                                                            checked={selectedServices.includes(option.categoriestitle)}
+                                                            disabled={
+                                                                selectedServices.length >= 3 &&
+                                                                !selectedServices.includes(option.categoriestitle)
+                                                            }
+                                                        />
+                                                        <label style={{
+                                                            margin: '0 0 0 5px',
+                                                            width:'18px',
+                                                            border:selectedServices.length >= 3 && !selectedServices.includes(option.categoriestitle) ? '#A3A3A3 solid 3px' : '#000 solid 3px',
+                                                            height:'18px',
+                                                            backgroundColor: selectedServices.includes(option.categoriestitle) ? 'black' : 'white',
+                                                            color: selectedServices.includes(option.categoriestitle) ? 'white' : 'black',
+                                                            borderRadius: '6px',
+                                                        }} htmlFor={option.categoriestitle}>
+                                                            <img src={check} style={{margin:'3.5px'}}/>
+                                                        </label>
+                                                        <label style={{
+                                                            margin: '0 0 0 5px',
+                                                            padding: '2px 6px',
+                                                            borderRadius: '4px',
+                                                        }} htmlFor={option.categoriestitle}>
+                                                            {option.categoriestitle}
+                                                        </label>
+                                                    </div>
+                                                    <img className={classes.OneCategoryImg} src={
+                                                        (option.categoriestitle === "Красота и уход") ?
+                                                            beauty : (option.categoriestitle === "Спорт") ?
+                                                                sport : (option.categoriestitle === "Здоровье") ?
+                                                                    health : (option.categoriestitle === "Авто") ?
+                                                                        auto : (option.categoriestitle === "Финансы и законы") ?
+                                                                            finance : (option.categoriestitle === "Животные") ?
+                                                                                animals : (option.categoriestitle === "Образование") ?
+                                                                                    study : (option.categoriestitle === "Фото, видео, аудио") ?
+                                                                                        photo : (option.categoriestitle === "Продвижение и реклама") ?
+                                                                                            ads : (option.categoriestitle === "Дизайн и проектирование") ?
+                                                                                                design : (option.categoriestitle === "Разработка") ?
+                                                                                                    programming : (option.categoriestitle === "Транспорт и логистика") ?
+                                                                                                        logistics : (option.categoriestitle === "Помощь по дому") ?
+                                                                                                            house : (option.categoriestitle === "Строительство и ремонт") ?
+                                                                                                                build : (option.categoriestitle === "Развлечения и мероприятия") ?
+                                                                                                                    party : (option.categoriestitle === "Еда") ?
+                                                                                                                        food : option.imgId
+                                                    } alt="image not found"
+                                                         style={{
+                                                             filter: selectedServices.includes(option.categoriestitle) ? 'none' : 'grayscale(100%)',
+                                                         }}
+                                                    />
+                                                </div>
+                                            ))}
+                                            <button style={{
+                                                display:'flex',
+                                                border: 'none',
+                                                outline: 'none',
+                                                justifyContent:'center',
+                                                alignItems: 'center',
+                                                alignSelf: 'center',
+                                                padding: '12px 0',
+                                                backgroundColor: '#000000',
+                                                borderRadius: '8px',
+                                                color:'#fff',
+                                                width: '180px',
+                                                fontWeight: 'bold',
+                                                fontSize: '14px',
+                                                cursor: 'pointer',
+                                                margin:'15px 0'
+                                            }} onClick={handleServicesConfirmation}>Подтвердить</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+                {error && <div className={styles.error_msg}>{error}</div>}
+                <button type="submit" className={styles.green_btn}>
+                    Изменить
+                </button>
+            </form>
                 <div className={styles.form_container} noValidate>
                     <div style={{justifyContent:"flex-start", backgroundColor:"#fff",borderRadius:8, margin:"10px 11px", padding:"15px 10px 5px 10px"}}>
                         <div style={{display: serv.length === 0 ? 'none' : null, marginBottom:'-10px'}}>

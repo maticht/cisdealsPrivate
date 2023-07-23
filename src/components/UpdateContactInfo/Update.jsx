@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import styles from "./styles.module.css";
@@ -40,11 +40,33 @@ const UpdateContactInfo = () => {
         rating: "",
     });
     const [error, setError] = useState("");
+    const [user, setUser] = useState([]);
     const navigate = useNavigate();
 
     const handleChange = ({ currentTarget: input }) => {
         setData({ ...data, [input.name]: input.value });
     };
+
+    const fetchUserProfile = async (userId) => {
+        try {
+            const { data } = await axios.get(`http://backend.delkind.pl/user-profile/${UserPage}`);
+            setUser(data.profile);
+            setData({
+                ...data,
+                email: data.profile.email,
+                phone1: data.profile.phone1,
+                phone2: data.profile.phone2
+            });
+            console.log(data.profile);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    useEffect(() => {
+        fetchUserProfile(UserPage);
+
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

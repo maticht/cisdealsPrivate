@@ -62,13 +62,13 @@ router.post("/", async (req, res) => {
             const hashPassword = await bcrypt.hash(req.body.password, salt);
         user = await new User({ ...req.body, password: hashPassword }).save();
 
-        // const token = await new Token({
-        //     userId: user._id,
-        //     token: crypto.randomBytes(32).toString("hex"),
-        // }).save();
-        // const url = `${process.env.NOBASE_URL}SuccessfulLoginScreen/${user.id}/verify/${token.token}`;
-        // const emailHtml = generateEmailTemplate(url, user.nameOrCompany);
-        // await sendEmail(user.email, "Проверка электронной почты CISDEALS", emailHtml);
+        const token = await new Token({
+            userId: user._id,
+            token: crypto.randomBytes(32).toString("hex"),
+        }).save();
+        const url = `${process.env.NOBASE_URL}SuccessfulLoginScreen/${user.id}/verify/${token.token}`;
+        const emailHtml = generateEmailTemplate(url, user.nameOrCompany);
+        await sendEmail(user.email, "Проверка электронной почты CISDEALS", emailHtml);
 
         return res.status(201).send({ message: "Вам отправлено письмо! Пожалуйста, подтвердите ваш аккаунт (Может быть оно попало в спам)" });
     } catch (error) {

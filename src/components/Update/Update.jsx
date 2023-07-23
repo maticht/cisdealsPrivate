@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import styles from "./styles.module.css";
@@ -42,14 +42,34 @@ const Update = () => {
     });
     const [error, setError] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+    const [user, setUser] = useState([]);
     const handleToggleShowPassword = () => {
         setShowPassword(!showPassword);
     };
     const navigate = useNavigate();
     const handleChange = ({ currentTarget: input }) => {
         setData({ ...data, [input.name]: input.value });
+
+    };
+    const fetchUserProfile = async (userId) => {
+        try {
+            const { data } = await axios.get(`http://backend.delkind.pl/user-profile/${UserPage}`);
+            setUser(data.profile);
+            setData({
+                ...data,
+                nameOrCompany: data.profile.nameOrCompany,
+                password: data.profile.password
+            });
+            console.log(data.profile);
+        } catch (err) {
+            console.log(err);
+        }
     };
 
+    useEffect(() => {
+        fetchUserProfile(UserPage);
+
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
