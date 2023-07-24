@@ -9,8 +9,6 @@ import ModalUserPage from "../modalUserPage/modalUserPage";
 const UpdateContactInfo = () => {
     const {UserPage} = useParams();
     const [data, setData] = useState({
-        firstName: "",
-        lastName: "",
         password: "",
         nameOrCompany: "",
         areasActivity: "",
@@ -40,6 +38,7 @@ const UpdateContactInfo = () => {
         rating: "",
     });
     const [error, setError] = useState("");
+    const [profileData, setProfileData] = useState({});
     const [user, setUser] = useState([]);
     const navigate = useNavigate();
 
@@ -49,15 +48,38 @@ const UpdateContactInfo = () => {
 
     const fetchUserProfile = async (userId) => {
         try {
-            const { data } = await axios.get(`http://backend.delkind.pl/user-profile/${UserPage}`);
-            setUser(data.profile);
-            setData({
-                ...data,
-                email: data.profile.email,
-                phone1: data.profile.phone1,
-                phone2: data.profile.phone2
-            });
+            const { data } = await axios.get(`http://backend.delkind.pl/user-profile/${userId}`);
+            setProfileData(data.profile);
             console.log(data.profile);
+            setData({
+                password: "",
+                nameOrCompany: "",
+                areasActivity: "",
+                image: [],
+                Facebook: "",
+                TikTok: "",
+                YouTube: "",
+                Instagram: "",
+                WhatsApp: "",
+                Telegram: "",
+                Viber: "",
+                LinkedIn: "",
+                city: "",
+                region: "",
+                street: "",
+                house: "",
+                apartment: "",
+                zip: "",
+                workLocation: '',
+                description: "",
+                services: "",
+                price: "",
+                savedUsers: [],
+                likes: "",
+                rating: "",
+                phone1: data.profile.phone1 ,
+                phone2: data.profile.phone2,
+            });
         } catch (err) {
             console.log(err);
         }
@@ -70,20 +92,16 @@ const UpdateContactInfo = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(data)
-        try {
+        console.log(data);
 
+        try {
             const url = `http://backend.delkind.pl/update/${UserPage}`;
             const { data: res } = await axios.put(url, data);
-            localStorage.setItem("token",  JSON.stringify(res));
+            localStorage.setItem("token", JSON.stringify(res));
             navigate("/EditProfile");
             console.log(data);
         } catch (error) {
-            if (
-                error.response &&
-                error.response.status >= 400 &&
-                error.response.status <= 500
-            ) {
+            if (error.response && error.response.status >= 400 && error.response.status <= 500) {
                 setError(error.response.data.message);
             }
         }
@@ -129,7 +147,7 @@ const UpdateContactInfo = () => {
                             placeholder="Телефон"
                             name="phone1"
                             onChange={handleChange}
-                            value={data.phone1}
+                            value={data.phone1  === "phone1" ? "" : data.phone1}
                             required
                             className={styles.input}
                         />
@@ -138,7 +156,7 @@ const UpdateContactInfo = () => {
                             placeholder="Телефон 2"
                             name="phone2"
                             onChange={handleChange}
-                            value={data.phone2}
+                            value={data.phone2 === "phone2" ? "" : data.phone2}
                             required
                             className={styles.input}
                         />

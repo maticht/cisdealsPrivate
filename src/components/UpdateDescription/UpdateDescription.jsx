@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import styles from "./styles.module.css";
@@ -47,6 +47,50 @@ const UpdateDescription = () => {
             setData({ ...data, [name]: value.slice(0, 900) });
         }
     };
+
+    const fetchUserProfile = async (userId) => {
+        try {
+            const { data } = await axios.get(`http://backend.delkind.pl/user-profile/${userId}`);
+            console.log(data.profile);
+            setData({
+                password: "",
+                nameOrCompany: "",
+                areasActivity: "",
+                image: [],
+                Facebook: "",
+                TikTok: "",
+                YouTube: "",
+                Instagram: "",
+                WhatsApp: "",
+                Telegram: "",
+                Viber: "",
+                LinkedIn: "",
+                city: "",
+                region: "",
+                street: "",
+                house: "",
+                apartment: "",
+                zip: "",
+                workLocation: '',
+                description: data.profile.description,
+                services: "",
+                price: "",
+                savedUsers: [],
+                likes: "",
+                rating: "",
+                phone1: "",
+                phone2: "",
+            });
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    useEffect(() => {
+        fetchUserProfile(UserPage);
+
+    }, []);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(data)
@@ -85,7 +129,7 @@ const UpdateDescription = () => {
                             placeholder="Напишите описание"
                             name="description"
                             onChange={handleChange}
-                            value={data.description}
+                            value={data.description  === "description" ? "" : data.description}
                             required
                             className={`${styles.input} ${styles["input-top"]}`}
                         />

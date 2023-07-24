@@ -128,15 +128,15 @@ const UpdateService = () => {
         likes: "",
         rating: "",
     });
-    const [error, setError] = useState("");
+    const [errorServ, setErrorServ] = useState("");
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [modalServIsOpen, setModalServIsOpen] = useState(false);
-    const [selectedServ, setSelectedServ] = useState("");
+    const [modalServvIsOpen, setModalServvIsOpen] = useState(false);
+    const [selectedServv, setSelectedServv] = useState("");
     const classes = useStyles();
     const navigate = useNavigate();
 
 
-    const handleSubmit = async (e) => {
+    const handleSubmitServ = async (e) => {
         e.preventDefault();
         console.log(data)
         try {
@@ -151,29 +151,29 @@ const UpdateService = () => {
                 error.response.status >= 400 &&
                 error.response.status <= 500
             ) {
-                setError(error.response.data.message);
+                setErrorServ(error.response.data.message);
             }
         }
     };
-    const [selectedServices, setSelectedServices] = useState([]);
+    const [selectedServicess, setSelectedServicess] = useState([]);
 
-    const handleServiceCheckboxChange = (event, optionTitle) => {
+    const handleServiceCheckboxChangeServ = (event, optionTitle) => {
         if (event.target.checked) {
-            if (selectedServices.length < 3) {
-                setSelectedServices([...selectedServices, optionTitle]);
+            if (selectedServicess.length < 3) {
+                setSelectedServicess([...selectedServicess, optionTitle]);
             }
         } else {
-            setSelectedServices(selectedServices.filter((title) => title !== optionTitle));
+            setSelectedServicess(selectedServicess.filter((title) => title !== optionTitle));
         }
     };
-    const handleServicesConfirmation = () => {
-        setData({ ...data, areasActivity: selectedServices.join(" / ")});
-        setSelectedServ(selectedServices.join(" / "));
-        setModalServIsOpen(false);
+    const handleServicesConfirmationServ = () => {
+        setData({ ...data, areasActivity: selectedServicess.join(" / ")});
+        setSelectedServv(selectedServicess.join(" / "));
+        setModalServvIsOpen(false);
     };
-    const handleOpenServModal = (e) => {
+    const handleOpenServModalServ = (e) => {
         e.preventDefault();
-        setModalServIsOpen(true);
+        setModalServvIsOpen(true);
     };
 
 
@@ -185,30 +185,30 @@ const UpdateService = () => {
                     {`< Назад`}
                 </p>
             </Link>
-            <form className={styles.form_container} onSubmit={handleSubmit} noValidate>
+            <form className={styles.form_container} onSubmit={handleSubmitServ} noValidate>
                 <h1 style={{margin:"0 0 0 10px"}}>О себе</h1>
                 <div style={{justifyContent:"flex-start", backgroundColor:"#fff",borderRadius:8, margin:"10px 10px", padding:"20px 10px"}}>
 
                     <div>
                         <div style={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
                             <h5 style={{margin:"10px 0 5px 0"}}>Услуги</h5>
-                            <p style={{fontSize:'12px', margin:"10px 0 5px 0"}}>{`${selectedServices.length}/3`}</p>
+                            <p style={{fontSize:'12px', margin:"10px 0 5px 0"}}>{`${selectedServicess.length}/3`}</p>
                         </div>
-                        <button className={styles.inputBtn} onClick={handleOpenServModal} >
+                        <button className={styles.inputBtn} onClick={handleOpenServModalServ} >
                             <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
-                                <p style={{margin:'0px'}}>{selectedServ || "Выбрать услугу"}</p>
+                                <p style={{margin:'0px'}}>{selectedServv || "Выбрать услугу"}</p>
                                 <img style={{width:'15px'}} src={arrowDown} alt={'>'}/>
                             </div>
                         </button>
-                        {modalServIsOpen && (
+                        {modalServvIsOpen && (
                             <div className={classes.overlay}>
                                 <div className={classes.modal}>
-                                    <p onClick={() => setModalServIsOpen(false)} style={{textDecoration: "none", color: "#454545", fontSize: "14px"}}>
+                                    <p onClick={() => setModalServvIsOpen(false)} style={{textDecoration: "none", color: "#454545", fontSize: "14px"}}>
                                         {`< Назад`}
                                     </p>
                                     <div style={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
                                         <h2>Выберите Услугу</h2>
-                                        <p style={{fontSize:'12px', margin:"0 10px 0 0"}}>{`${selectedServices.length}/3`}</p>
+                                        <p style={{fontSize:'12px', margin:"0 10px 0 0"}}>{`${selectedServicess.length}/3`}</p>
                                     </div>
                                     <div>
                                         <div style={{display:'flex', justifyContent:'center', flexDirection:'column'}}>
@@ -223,20 +223,20 @@ const UpdateService = () => {
                                                                     display:'none'
                                                                 }}
                                                                 value={option.categoriestitle}
-                                                                onChange={(event) => handleServiceCheckboxChange(event, option.categoriestitle)}
-                                                                checked={selectedServices.includes(option.categoriestitle)}
+                                                                onChange={(event) => handleServiceCheckboxChangeServ(event, option.categoriestitle)}
+                                                                checked={selectedServicess.includes(option.categoriestitle)}
                                                                 disabled={
-                                                                    selectedServices.length >= 3 &&
-                                                                    !selectedServices.includes(option.categoriestitle)
+                                                                    selectedServicess.length >= 3 &&
+                                                                    !selectedServicess.includes(option.categoriestitle)
                                                                 }
                                                             />
                                                             <label style={{
                                                                 margin: '0 0 0 5px',
                                                                 width:'18px',
-                                                                border:selectedServices.length >= 3 && !selectedServices.includes(option.categoriestitle) ? '#A3A3A3 solid 3px' : '#000 solid 3px',
+                                                                border:selectedServicess.length >= 3 && !selectedServicess.includes(option.categoriestitle) ? '#A3A3A3 solid 3px' : '#000 solid 3px',
                                                                 height:'18px',
-                                                                backgroundColor: selectedServices.includes(option.categoriestitle) ? 'black' : 'white',
-                                                                color: selectedServices.includes(option.categoriestitle) ? 'white' : 'black',
+                                                                backgroundColor: selectedServicess.includes(option.categoriestitle) ? 'black' : 'white',
+                                                                color: selectedServicess.includes(option.categoriestitle) ? 'white' : 'black',
                                                                 borderRadius: '6px',
                                                             }} htmlFor={option.categoriestitle}>
                                                                 <img src={check} style={{margin:'3.5px'}}/>
@@ -269,7 +269,7 @@ const UpdateService = () => {
                                                                 food : option.imgId
                                                             } alt="image not found"
                                                              style={{
-                                                                 filter: selectedServices.includes(option.categoriestitle) ? 'none' : 'grayscale(100%)',
+                                                                 filter: selectedServicess.includes(option.categoriestitle) ? 'none' : 'grayscale(100%)',
                                                              }}
                                                         />
                                                     </div>
@@ -290,7 +290,7 @@ const UpdateService = () => {
                                                 fontSize: '14px',
                                                 cursor: 'pointer',
                                                 margin:'15px 0'
-                                            }} onClick={handleServicesConfirmation}>Подтвердить</button>
+                                            }} onClick={handleServicesConfirmationServ}>Подтвердить</button>
                                         </div>
                                     </div>
                                 </div>
@@ -298,7 +298,7 @@ const UpdateService = () => {
                         )}
                     </div>
                 </div>
-                {error && <div className={styles.error_msg}>{error}</div>}
+                {errorServ && <div className={styles.error_msg}>{errorServ}</div>}
                 <button type="submit" className={styles.green_btn}>
                     Изменить
                 </button>

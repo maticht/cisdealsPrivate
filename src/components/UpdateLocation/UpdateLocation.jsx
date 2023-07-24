@@ -1,29 +1,11 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
-import Modal from "react-modal";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import styles from "./styles.module.css";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import ModalUserPage from "../modalUserPage/modalUserPage";
 import {createUseStyles} from "react-jss";
 import CategoriesJSON from '../../data/categories.json';
 import CitiesJSON from '../../data/cities.json';
 import arrow from '../../img/arrowright.svg';
-import beauty from '../../img/CategoriesLogo/beauty.svg';
-import sport from '../../img/CategoriesLogo/sport.svg';
-import health from '../../img/CategoriesLogo/health.svg';
-import auto from '../../img/CategoriesLogo/auto.svg'
-import finance from '../../img/CategoriesLogo/finance.svg'
-import animals from '../../img/CategoriesLogo/animals.svg';
-import photo from '../../img/CategoriesLogo/photo.svg';
-import study from '../../img/CategoriesLogo/study.svg';
-import ads from '../../img/CategoriesLogo/ads.svg';
-import design from '../../img/CategoriesLogo/design.svg';
-import programming from '../../img/CategoriesLogo/programming.svg';
-import logistics from '../../img/CategoriesLogo/logistics.svg';
-import house from '../../img/CategoriesLogo/house.svg';
-import build from '../../img/CategoriesLogo/build.svg';
-import party from '../../img/CategoriesLogo/party.svg';
 import arrowDown from '../../img/arrow_down=24.png';
 
 const useStyles = createUseStyles({
@@ -142,19 +124,8 @@ const UpdateLocation = () => {
     const [selectedServ, setSelectedServ] = useState("");
     const [selectedCities, setSelectedCities] = useState("");
 
-    const [selectedCategoryArray, setSelectedCategoryArray] = useState([]);
-
-    // Получение доступа к объекту CategoriesJSON.categories
     const categories = CategoriesJSON.categories;
-    //
-    // // Поиск элемента с выбранным значением selectedOption по параметру categoriesTitle
-    // const selectedCategory = categories.find((category) => category.categoriestitle === selectedOption);
-    //
-    // // Создание нового массива, содержащего найденный элемент
-    // const newSelectedCategoryArray = [selectedCategory];
-    //
-    // // Обновление состояния с помощью setSelectedCategoryArray
-    // setSelectedCategoryArray(newSelectedCategoryArray);
+
     const classes = useStyles();
 
 
@@ -178,6 +149,51 @@ const UpdateLocation = () => {
         setData({ ...data, services: option });
         setModalServIsOpen(false);
     };
+
+    const fetchUserProfile = async (userId) => {
+        try {
+            const { data } = await axios.get(`http://backend.delkind.pl/user-profile/${userId}`);
+            console.log(data.profile);
+            setData({
+                password: "",
+                nameOrCompany: "",
+                areasActivity: "",
+                image: [],
+                Facebook: "",
+                TikTok: "",
+                YouTube: "",
+                Instagram: "",
+                WhatsApp: "",
+                Telegram: "",
+                Viber: "",
+                LinkedIn: "",
+                city: data.profile.city,
+                region: data.profile.region,
+                street: data.profile.street,
+                house: data.profile.house,
+                apartment: data.profile.apartment,
+                zip: data.profile.zip,
+                workLocation: '',
+                description: "",
+                services: "",
+                price: "",
+                savedUsers: [],
+                likes: "",
+                rating: "",
+                phone1: "",
+                phone2: "",
+            });
+            setSelectedCities(data.profile.city === 'city' ? '' :  data.profile.city );
+            setSelectedServ(data.profile.region === 'region' ? '' :  data.profile.region );
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    useEffect(() => {
+        fetchUserProfile(UserPage);
+
+    }, []);
 
 
     const handleSubmit = async (e) => {
@@ -323,7 +339,7 @@ const UpdateLocation = () => {
                             placeholder="Mokotowska"
                             name="street"
                             onChange={handleChange}
-                            value={data.street}
+                            value={data.street  === "street" ? "" : data.street}
                             required
                             className={styles.input}
                         />
@@ -335,7 +351,7 @@ const UpdateLocation = () => {
                                     placeholder="0000"
                                     name="house"
                                     onChange={handleChange}
-                                    value={data.house}
+                                    value={data.house  === "house" ? "" : data.house}
                                     required
                                     className={styles.rowInput}
                                 />
@@ -347,7 +363,7 @@ const UpdateLocation = () => {
                                     placeholder="0000"
                                     name="apartment"
                                     onChange={handleChange}
-                                    value={data.apartment}
+                                    value={data.apartment  === "apartment" ? "" : data.apartment}
                                     required
                                     className={styles.rowInput}
                                 />
@@ -359,7 +375,7 @@ const UpdateLocation = () => {
                             placeholder="00-000"
                             name="zip"
                             onChange={handleChange}
-                            value={data.zip}
+                            value={data.zip  === "zip" ? "" : data.zip}
                             required
                             className={styles.input}
                         />

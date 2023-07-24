@@ -56,9 +56,35 @@ const Update = () => {
             const { data } = await axios.get(`http://backend.delkind.pl/user-profile/${UserPage}`);
             setUser(data.profile);
             setData({
-                ...data,
+                firstName: "",
+                lastName: "",
+                password: "",
+                areasActivity: "",
+                phone1: "",
+                phone2: "",
+                image: [],
+                Facebook: "",
+                TikTok: "",
+                YouTube: "",
+                Instagram: "",
+                WhatsApp: "",
+                Telegram: "",
+                Viber: "",
+                LinkedIn: "",
+                city: "",
+                region: "",
+                street: "",
+                house: "",
+                apartment: "",
+                zip: "",
+                workLocation: '',
+                description: "",
+                services: "",
+                price: "",
+                savedUsers: [],
+                likes: "",
+                rating: "",
                 nameOrCompany: data.profile.nameOrCompany,
-                password: data.profile.password
             });
             console.log(data.profile);
         } catch (err) {

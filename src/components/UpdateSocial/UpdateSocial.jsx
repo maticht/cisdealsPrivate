@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import styles from "./styles.module.css";
@@ -54,6 +54,51 @@ const UpdateContactInfo = () => {
         setData({ ...data, [input.name]: input.value });
     };
 
+    const fetchUserProfile = async (userId) => {
+        try {
+            const { data } = await axios.get(`http://backend.delkind.pl/user-profile/${userId}`);
+            console.log(data.profile);
+            setData({
+                firstName: "",
+                lastName: "",
+                password: "",
+                nameOrCompany: "",
+                areasActivity: "",
+                phone1: "",
+                phone2: "",
+                image: [],
+                Facebook: data.profile.Facebook,
+                TikTok: data.profile.TikTok,
+                YouTube: data.profile.YouTube,
+                Instagram: data.profile.Instagram,
+                WhatsApp: data.profile.WhatsApp,
+                Telegram: data.profile.Telegram,
+                Viber: data.profile.Viber,
+                LinkedIn: data.profile.LinkedIn,
+                city: "",
+                region: "",
+                street: "",
+                house: "",
+                apartment: "",
+                zip: "",
+                workLocation: '',
+                description: "",
+                services: "",
+                price: "",
+                savedUsers: [],
+                likes: "",
+                rating: "",
+            });
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    useEffect(() => {
+        fetchUserProfile(UserPage);
+
+    }, []);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(data)
@@ -108,7 +153,7 @@ const UpdateContactInfo = () => {
                                     placeholder="Facebook"
                                     name="Facebook"
                                     onChange={handleChange}
-                                    value={data.Facebook}
+                                    value={data.Facebook === "Facebook" ? "" : data.Facebook}
                                     required
                                     className={styles.inputText}
                                 />
@@ -120,7 +165,7 @@ const UpdateContactInfo = () => {
                                     placeholder="LinkedIn"
                                     name="LinkedIn"
                                     onChange={handleChange}
-                                    value={data.LinkedIn}
+                                    value={data.LinkedIn === "LinkedIn" ? "" : data.LinkedIn}
                                     required
                                     className={styles.inputText}
                                 />
@@ -132,7 +177,7 @@ const UpdateContactInfo = () => {
                                     placeholder="Telegram"
                                     name="Telegram"
                                     onChange={handleChange}
-                                    value={data.Telegram}
+                                    value={data.Telegram === "Telegram" ? "" : data.Telegram}
                                     required
                                     className={styles.inputText}
                                 />
@@ -144,7 +189,7 @@ const UpdateContactInfo = () => {
                                     placeholder="Viber"
                                     name="Viber"
                                     onChange={handleChange}
-                                    value={data.Viber}
+                                    value={data.Viber === "Viber" ? "" : data.Viber}
                                     required
                                     className={styles.inputText}
                                 />
@@ -156,7 +201,7 @@ const UpdateContactInfo = () => {
                                     placeholder="TikTok"
                                     name="TikTok"
                                     onChange={handleChange}
-                                    value={data.TikTok}
+                                    value={data.TikTok === "TikTok" ? "" : data.TikTok}
                                     required
                                     className={styles.inputText}
                                 />
@@ -168,7 +213,7 @@ const UpdateContactInfo = () => {
                                     placeholder="Instagram"
                                     name="Instagram"
                                     onChange={handleChange}
-                                    value={data.Instagram}
+                                    value={data.Instagram === "Instagram" ? "" : data.Instagram}
                                     required
                                     className={styles.inputText}
                                 />
@@ -180,7 +225,7 @@ const UpdateContactInfo = () => {
                                     placeholder="WhatsApp"
                                     name="WhatsApp"
                                     onChange={handleChange}
-                                    value={data.WhatsApp}
+                                    value={data.WhatsApp === "WhatsApp" ? "" : data.WhatsApp}
                                     required
                                     className={styles.inputText}
                                 />
@@ -192,7 +237,7 @@ const UpdateContactInfo = () => {
                                     placeholder="YouTube"
                                     name="YouTube"
                                     onChange={handleChange}
-                                    value={data.YouTube}
+                                    value={data.YouTube === "YouTube" ? "" : data.YouTube}
                                     required
                                     className={styles.inputText}
                                 />
