@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import ModalUserPage from "../../components/modalUserPage/modalUserPage";
 import {Link} from "react-router-dom";
 import ScvNoneUserLogo from '../../img/ScvNoneUserLogo.svg';
-import phone from '../../img/phone.svg';
-import telegram from '../../img/Telegram.svg';
+import telegram from '../../img/telegram.svg';
 
 
 const ContactDeveloper = () => {

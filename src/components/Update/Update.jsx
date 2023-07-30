@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import styles from "./styles.module.css";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import ModalUserPage from "../modalUserPage/modalUserPage";
 import eye from "../../img/showPas.svg";
 

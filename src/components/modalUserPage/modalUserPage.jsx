@@ -61,10 +61,21 @@ const Modal = ({ isOpen, onClose }) => {
     const classes = useStyles();
     const [user, setUser] = useState(false);
     const user1 = localStorage.getItem("token");
-    let localUserObj = JSON.parse(user1);
-    let firstName = localUserObj?.data ? localUserObj?.data?.firstName : null;
-    let lastName = localUserObj?.data ? localUserObj?.data?.lastName : null;
-    let UserId = localUserObj?.data ? localUserObj?.data?._id : null;
+    let localUserObj = null;
+    let firstName = null;
+    let lastName = null;
+    let UserId = null;
+
+    if (user1) {
+        try {
+            localUserObj = JSON.parse(user1);
+            firstName = localUserObj?.data?.firstName || null;
+            lastName = localUserObj?.data?.lastName || null;
+            UserId = localUserObj?.data?._id || null;
+        } catch (error) {
+            console.error("Error parsing user data:", error);
+        }
+    }
 
     useEffect(() => {
         const fetchUserProfile = async (userId) => {

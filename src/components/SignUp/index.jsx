@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import selfie from '../../img/selfie.svg'
 import eye from "../../img/showPas.svg";
 
 
