@@ -66,8 +66,7 @@ const useStyles = createUseStyles({
         flexDirection: "row",
     },
     OneCategoryImg: {
-        width: "60px",
-        marginRight: "10px",
+        width: "35px",
     },
     OneCategoryItem: {
         display: "flex",
@@ -86,6 +85,17 @@ const useStyles = createUseStyles({
         textDecoration: "none",
         color: "#000000",
 
+    },
+    OneCategoryCheckItemServ: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: 'center',
+        padding: "15px 0",
+        borderBottom: "#DDDDDD solid 1px",
+        textDecoration: "none",
+        color: "#000000",
+        marginRight: '10px'
     },
     OneCategoryCheckItem: {
         display: "flex",
@@ -217,30 +227,48 @@ const AddServ = () => {
         setDeleteModal(true);
         setDeleteObjId(objId);
     };
+
+    const fetchUserServicess = async (userId, userData) => {
+        try {
+            const {data} = await axios.get(`http://backend.delkind.pl/viewbyid`, {
+                params: {
+                    postedBy: UserPage
+                }
+            });
+            console.log(data)
+            setServ(data)
+            const servicesString = await data.map(service => [service.title, service.parent]).reduce((acc, curr) => {
+                if (!acc.includes(curr.join())) {
+                    acc.push(curr.join());
+                }
+                return acc;
+            }, []).join(', ').toString();
+            setUserData({...userData, services: servicesString});
+            const url = `http://backend.delkind.pl/update/${UserPage}`;
+            const {data: res} = await axios.put(url, userData);
+        } catch (err) {
+            console.log(err)
+        }
+    };
+
+
+    const fetchUserProfile = async (userId) => {
+        try {
+            const {data} = await axios.get(`http://backend.delkind.pl/user-profile/${userId}`);
+            setSelectedServv(data.profile.areasActivity)
+            setSelectedServicess(data.profile.areasActivity.split(" / "));
+            console.log(selectedServices)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    let servData = []
+
     useEffect(() => {
-        const fetchUserProfile = async (userId, userData) => {
-            try {
-                const {data} = await axios.get(`http://backend.delkind.pl/viewbyid`, {
-                    params: {
-                        postedBy: UserPage
-                    }
-                });
-                setServ(data)
-                const servicesString = await data.map(service => [service.title, service.parent]).reduce((acc, curr) => {
-                    if (!acc.includes(curr.join())) {
-                        acc.push(curr.join());
-                    }
-                    return acc;
-                }, []).join(', ').toString();
-                setUserData({...userData, services: servicesString});
-                const url = `http://backend.delkind.pl/update/${UserPage}`;
-                const {data: res} = await axios.put(url, userData);
-            } catch (err) {
-                console.log(err)
-            }
-        };
-        fetchUserProfile(UserPage, userData);
-    }, [serv]);
+        fetchUserServicess(UserPage, userData);
+        fetchUserProfile(UserPage);
+    }, []);
 
     const handleCategoryClick = (categoryTitle) => {
         setSelectedCategory(selectedCategory === categoryTitle ? '' : categoryTitle);
@@ -471,7 +499,7 @@ const AddServ = () => {
                                             flexDirection: 'column'
                                         }}>
                                             {CategoriesJSON.categories.map((option) => (
-                                                <div className={classes.OneCategoryCheckItem}
+                                                <div className={classes.OneCategoryCheckItemServ}
                                                      key={option.categoriestitle}>
                                                     <div style={{
                                                         display: 'flex',
