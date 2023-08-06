@@ -33,6 +33,7 @@ function SortedServicesScreen() {
     const classes = useStyles();
     const {Categories2} = useParams();
     const {Categories3} = useParams();
+    const {Categories4} = useParams();
     const {SortedCategories} = useParams();
     const [modalOpen, setModalOpen] = useState(false);
     const [modalResult, setModalResult] = useState(null);
@@ -107,7 +108,7 @@ function SortedServicesScreen() {
                                     <h6 style={{margin:'0 0 20px 0'}}>{`Найденно ${users.length} специалистов`}</h6>
                                     {users.map((user) => (
                                         <div style={{width:"100%", height:"100px", backgroundColor:"#fff", marginBottom:10, display:"flex", alignSelf:"center", justifyContent:"flex-start", alignItems:'center', borderRadius:8}} key={user.id}>
-                                            <Link style={{textDecoration: "none", color:"#000", flexDirection:'row'}} to={`/AllCategories/${Categories2}/${Categories3}/${SortedCategories}/${user._id}`}>
+                                            <Link style={{textDecoration: "none", color:"#000", flexDirection:'row'}} to={`/AllCategories/${Categories2}/${Categories3}/${Categories4}/${SortedCategories}/${user._id}`}>
                                                 <div style={{display:'flex', flexDirection:'row'}}>
                                                     <div style={{ position: 'relative', display: 'flex', flexDirection: 'row' }}>
                                                         {(!user.image || user.image.length === 0 ?

@@ -63,7 +63,7 @@ function CategoriesScreen2() {
                     <Link className={classes.allCategoriesBtn} to="/">˂ Все категории</Link>
                     <h2>{Categories2}</h2>
                     <div>
-                        <Link  className={classes.OneCategory2Item} style={{display:'flex', justifyContent:'space-between'}} to={`/AllCategories/${Categories2}/Categories3/${Categories2}`}>
+                        <Link  className={classes.OneCategory2Item} style={{display:'flex', justifyContent:'space-between'}} to={`/AllCategories/Categories2/Categories3/Categories4/${Categories2}`}>
                             <div className={classes.OneCategoryInfo}>
                                 <p className={'OneCategoryTitle'}>Все в этой категории</p>
                             </div>

@@ -93,6 +93,7 @@ const UserPage = (props, {link}) => {
     const [serv, setServ] = useState([]);
     const {Categories2} = useParams();
     const {Categories3} = useParams();
+    const {Categories4} = useParams();
     const {SortedCategories} = useParams();
     const [showDescription, setShowDescription] = useState(false);
     const [showWorkTime, setShowWorkTime] = useState(false);
@@ -281,7 +282,7 @@ const UserPage = (props, {link}) => {
                                         setTimeout(() => {
                                             setModalRate(false);
                                         }, 250);
-                                    }} style={{textDecoration:'none'}} to={`/AllCategories/Categories2/Categories3/Все специалисты/${rating.commentatorId}`}>
+                                    }} style={{textDecoration:'none'}} to={`/AllCategories/Categories2/Categories3/Categories4/Все специалисты/${rating.commentatorId}`}>
                                         <p style={{ margin: '0px', fontWeight:'500', color:'#000' }}>{rating.firstName} {rating.lastName}</p>
                                     </Link>
                                     <div style={{display:'flex', flexDirection:'row'}}>
@@ -343,7 +344,7 @@ const UserPage = (props, {link}) => {
         <div style={{backgroundColor: '#f5f5f5', justifyContent:'center',height:'100%', paddingBottom:'65px'}}>
             <HeaderNavBar />
             <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between', margin:'5px 10px 5px 0'}}>
-                <Link style={{textDecoration: "none", color: "#454545", fontSize: "14px"}} to={SortedCategories === undefined ? '/' : `/AllCategories/${Categories2}/${Categories3}/${SortedCategories}`}>
+                <Link style={{textDecoration: "none", color: "#454545", fontSize: "14px"}} to={SortedCategories === undefined ? '/' : `/AllCategories/${Categories2}/${Categories3}/${Categories4}/${SortedCategories}`}>
                     <p style={{textDecoration: "none", color: "#454545", fontSize: "14px", marginLeft:'10px'}}>
                         {`< Список специалистов`}
                     </p>

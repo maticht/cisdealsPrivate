@@ -280,6 +280,13 @@ const AddServ = () => {
     };
 
 
+    const [selectedDownDownCategory, setSelectedDownDownCategory] = useState('');
+
+    const handleDownDownCategoryClick = (categoryTitle) => {
+        setSelectedDownDownCategory(selectedDownDownCategory === categoryTitle ? '' : categoryTitle);
+    };
+
+
     const [error, setError] = useState("");
     const navigate = useNavigate();
     const handleChange = ({currentTarget: input}) => {
@@ -856,7 +863,7 @@ const AddServ = () => {
                                         </div>
                                     </div>
                                 ) : null}
-                                <h2 style={{margin: '15px 0 7px 0'}}>Выберите Услугу</h2>
+                                <h2 style={{margin: '15px 0 7px 0'}}>Выберите услугу</h2>
                                 <div>
                                     <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'column'}}>
                                         {selectedOption !== "" &&
@@ -967,50 +974,142 @@ const AddServ = () => {
                                                                                                     className={classes.OneUnderCategoryCheckItem}
                                                                                                     style={{borderBottom: selectedDownCategory === opt.title || index === array.length - 1 ? 'none' : '1px solid #DDDDDD',}}
                                                                                                     key={opt.title}>
-                                                                                                    <div style={{
-                                                                                                        display: 'flex',
-                                                                                                        alignItems: 'center'
-                                                                                                    }}>
-                                                                                                        <input
-                                                                                                            type="checkbox"
-                                                                                                            id={opt.title}
-                                                                                                            name={opt.title}
-                                                                                                            style={{display: 'none'}}
-                                                                                                            value={opt.title}
-                                                                                                            onChange={(event) => handleServiceCheckboxChange(event, opt.title, opt.parent)}
-                                                                                                            checked={selectedServices.some(service => service.title === opt.title && service.parent === opt.parent)}
-                                                                                                        />
-                                                                                                        <label style={{
-                                                                                                            margin: '0 0 0 5px',
-                                                                                                            width: '18px',
-                                                                                                            border: '#000 solid 3px',
-                                                                                                            height: '18px',
-                                                                                                            backgroundColor: selectedServices.some(
-                                                                                                                (service) => service.title === opt.title && service.parent === opt.parent
-                                                                                                            )
-                                                                                                                ? 'black'
-                                                                                                                : 'white',
-                                                                                                            color: selectedServices.some(
-                                                                                                                (service) => service.title === opt.title && service.parent === opt.parent
-                                                                                                            )
-                                                                                                                ? 'white'
-                                                                                                                : 'black',
-                                                                                                            borderRadius: '6px',
-                                                                                                        }}
-                                                                                                               htmlFor={opt.title}>
-                                                                                                            <img
-                                                                                                                src={check}
-                                                                                                                style={{margin: '3.5px'}}/>
-                                                                                                        </label>
-                                                                                                        <label style={{
-                                                                                                            margin: '0 0 0 5px',
-                                                                                                            padding: '2px 6px',
-                                                                                                            borderRadius: '4px',
-                                                                                                        }}
-                                                                                                               htmlFor={opt.title}>
-                                                                                                            {opt.title}
-                                                                                                        </label>
-                                                                                                    </div>
+                                                                                                    {!opt.subsubsubcategories ? (
+                                                                                                        <div style={{
+                                                                                                            display: 'flex',
+                                                                                                            alignItems: 'center'
+                                                                                                        }}>
+                                                                                                            <input
+                                                                                                                type="checkbox"
+                                                                                                                id={opt.title}
+                                                                                                                name={opt.title}
+                                                                                                                style={{display: 'none'}}
+                                                                                                                value={opt.title}
+                                                                                                                onChange={(event) => handleServiceCheckboxChange(event, opt.title, opt.parent)}
+                                                                                                                checked={selectedServices.some(service => service.title === opt.title && service.parent === opt.parent)}
+                                                                                                            />
+                                                                                                            <label
+                                                                                                                style={{
+                                                                                                                    margin: '0 0 0 5px',
+                                                                                                                    width: '18px',
+                                                                                                                    border: '#000 solid 3px',
+                                                                                                                    height: '18px',
+                                                                                                                    backgroundColor: selectedServices.some(
+                                                                                                                        (service) => service.title === opt.title && service.parent === opt.parent
+                                                                                                                    )
+                                                                                                                        ? 'black'
+                                                                                                                        : 'white',
+                                                                                                                    color: selectedServices.some(
+                                                                                                                        (service) => service.title === opt.title && service.parent === opt.parent
+                                                                                                                    )
+                                                                                                                        ? 'white'
+                                                                                                                        : 'black',
+                                                                                                                    borderRadius: '6px',
+                                                                                                                }}
+                                                                                                                htmlFor={opt.title}>
+                                                                                                                <img
+                                                                                                                    src={check}
+                                                                                                                    style={{margin: '3.5px'}}/>
+                                                                                                            </label>
+                                                                                                            <label
+                                                                                                                style={{
+                                                                                                                    margin: '0 0 0 5px',
+                                                                                                                    padding: '2px 6px',
+                                                                                                                    borderRadius: '4px',
+                                                                                                                }}
+                                                                                                                htmlFor={opt.title}>
+                                                                                                                {opt.title}
+                                                                                                            </label>
+                                                                                                        </div>
+                                                                                                    ) : (
+                                                                                                        <div>{opt.subsubsubcategories.length !== 0 ? (
+                                                                                                                <div
+                                                                                                                    className={classes.OneUnderUnderCategoryCheckItem}
+                                                                                                                    style={{
+                                                                                                                        margin: '5px 0',
+                                                                                                                        borderBottom: 'none',
+                                                                                                                    }}
+                                                                                                                    key={opt.title}>
+                                                                                                                    <div
+                                                                                                                        style={{
+                                                                                                                            display: 'flex',
+                                                                                                                            alignItems: 'center',
+                                                                                                                            flexDirection: 'row',
+                                                                                                                            justifyContent: 'space-between'
+                                                                                                                        }}
+                                                                                                                        onClick={() => handleDownDownCategoryClick(opt.title)}
+                                                                                                                    >
+                                                                                                                        <p style={{margin: '5px 0'}}>
+                                                                                                                            {opt.title}
+                                                                                                                        </p>
+                                                                                                                        <img
+                                                                                                                            style={{marginTop: '5px'}}
+                                                                                                                            src={selectedDownDownCategory === opt.title ? arrowUp : arrowDown}/>
+                                                                                                                    </div>
+
+                                                                                                                    {selectedDownDownCategory === opt.title && (
+                                                                                                                        <div>
+                                                                                                                            {array.find((category) => category.title === opt.title)
+                                                                                                                                .subsubsubcategories.map((opt, index, array) => (
+                                                                                                                                    <div
+                                                                                                                                        className={classes.OneUnderCategoryCheckItem}
+                                                                                                                                        style={{
+                                                                                                                                            margin: '5px 0 0 5px',
+                                                                                                                                            display: 'flex',
+                                                                                                                                            flexDirection: 'row',
+                                                                                                                                            alignItems: 'center',
+                                                                                                                                            borderBottom: selectedDownCategory === opt.title || index === array.length - 1 ? 'none' : '1px solid #DDDDDD',
+                                                                                                                                        }}>
+                                                                                                                                        <input
+                                                                                                                                            type="checkbox"
+                                                                                                                                            id={opt.title}
+                                                                                                                                            name={opt.title}
+                                                                                                                                            style={{display: 'none'}}
+                                                                                                                                            value={opt.title}
+                                                                                                                                            onChange={(event) => handleServiceCheckboxChange(event, opt.title, opt.parent)}
+                                                                                                                                            checked={selectedServices.some(service => service.title === opt.title && service.parent === opt.parent)}
+                                                                                                                                        />
+                                                                                                                                        <label
+                                                                                                                                            style={{
+                                                                                                                                                margin: '0 0 0 5px',
+                                                                                                                                                width: '18px',
+                                                                                                                                                border: '#000 solid 3px',
+                                                                                                                                                height: '18px',
+                                                                                                                                                backgroundColor: selectedServices.some(
+                                                                                                                                                    (service) => service.title === opt.title && service.parent === opt.parent
+                                                                                                                                                )
+                                                                                                                                                    ? 'black'
+                                                                                                                                                    : 'white',
+                                                                                                                                                color: selectedServices.some(
+                                                                                                                                                    (service) => service.title === opt.title && service.parent === opt.parent
+                                                                                                                                                )
+                                                                                                                                                    ? 'white'
+                                                                                                                                                    : 'black',
+                                                                                                                                                borderRadius: '6px',
+                                                                                                                                            }}
+                                                                                                                                            htmlFor={opt.title}>
+                                                                                                                                            <img
+                                                                                                                                                src={check}
+                                                                                                                                                style={{margin: '3.5px'}}/>
+                                                                                                                                        </label>
+                                                                                                                                        <label
+                                                                                                                                            style={{
+                                                                                                                                                margin: '0 0 0 5px',
+                                                                                                                                                padding: '2px 6px',
+                                                                                                                                                borderRadius: '4px',
+                                                                                                                                            }}
+                                                                                                                                            htmlFor={opt.title}>
+                                                                                                                                            {opt.title}
+                                                                                                                                        </label>
+                                                                                                                                    </div>
+                                                                                                                                ))}
+                                                                                                                        </div>
+                                                                                                                    )}
+
+                                                                                                                </div>)
+                                                                                                            :
+                                                                                                            null}
+                                                                                                        </div>)}
                                                                                                 </div>))}
                                                                                     </div>
                                                                                 )}

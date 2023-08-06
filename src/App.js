@@ -31,6 +31,7 @@ import UserServScreen from './pages/UserServScreen/UserServScreen'
 import AddLoginServ from "./pages/AddLoginServ/AddLoginServ";
 import UserServLoginScreen from './pages/UserServLoginScreen/UserServLoginScreen'
 import SuccessfulLoginScreen from "./pages/SuccessfulLoginScreen/SuccessfulLoginScreen";
+import CategoriesScreen4 from "./pages/CategoriesScreen4/CategoriesScreen4";
 
 
 function App() {
@@ -68,8 +69,9 @@ function App() {
                     <Route path='/AllCategories' element={<AllCategoriesScreen />}/>
                     <Route path='/AllCategories/:Categories2' element={<CategoriesScreen2 />}/>
                     <Route path='/AllCategories/:Categories2/:Categories3' element={<CategoriesScreen3 />}/>
-                    <Route path='/AllCategories/:Categories2/:Categories3/:SortedCategories' element={<SortedServicesScreen />}/>
-                    <Route path='/AllCategories/:Categories2/:Categories3/:SortedCategories/:UserPage' element={<UserPageScreen />}/>
+                    <Route path='/AllCategories/:Categories2/:Categories3/:Categories4' element={<CategoriesScreen4 />}/>
+                    <Route path='/AllCategories/:Categories2/:Categories3/:Categories4/:SortedCategories' element={<SortedServicesScreen />}/>
+                    <Route path='/AllCategories/:Categories2/:Categories3/Categories4/:SortedCategories/:UserPage' element={<UserPageScreen />}/>
                     <Route path='/UserPageScreen/:UserPage' element={<UserPageScreen />}/>
                 </Routes>
             </BrowserRouter>
