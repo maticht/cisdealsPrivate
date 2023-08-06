@@ -97,21 +97,21 @@ const EditProfile = () => {
                 </div>
                 <img src={arrowRight}/>
             </Link>
-            <Link to={`/updateService/${UserId}`} style={{
-                textDecoration:"none",
-                display:'flex',
-                flexDirection:'row',
-                alignItems:'center',
-                justifyContent:'space-between',
-                borderBottom: '1px solid #ddd',
-                paddingBottom: '15px',
-                marginBottom:'15px'
-            }}>
-                <div style={{textDecoration:"none", display:'flex', flexDirection:'row', alignItems:'center'}}>
-                    <p style={{textDecoration:"none",color:"#000", marginBottom:'5px', marginTop:0}}>О себе</p>
-                </div>
-                <img src={arrowRight}/>
-            </Link>
+            {/*<Link to={`/updateService/${UserId}`} style={{*/}
+            {/*    textDecoration:"none",*/}
+            {/*    display:'flex',*/}
+            {/*    flexDirection:'row',*/}
+            {/*    alignItems:'center',*/}
+            {/*    justifyContent:'space-between',*/}
+            {/*    borderBottom: '1px solid #ddd',*/}
+            {/*    paddingBottom: '15px',*/}
+            {/*    marginBottom:'15px'*/}
+            {/*}}>*/}
+            {/*    <div style={{textDecoration:"none", display:'flex', flexDirection:'row', alignItems:'center'}}>*/}
+            {/*        <p style={{textDecoration:"none",color:"#000", marginBottom:'5px', marginTop:0}}>О себе</p>*/}
+            {/*    </div>*/}
+            {/*    <img src={arrowRight}/>*/}
+            {/*</Link>*/}
             <Link to={`/updateContactInfo/${UserId}`} style={{
                 textDecoration:"none",
                 display:'flex',

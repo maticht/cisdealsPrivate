@@ -228,7 +228,7 @@ const AddServ = () => {
         setDeleteObjId(objId);
     };
 
-    const fetchUserServicess = async (userId, userData) => {
+    const fetchUserServicess = async (userId) => {
         try {
             const {data} = await axios.get(`http://backend.delkind.pl/viewbyid`, {
                 params: {
@@ -244,6 +244,7 @@ const AddServ = () => {
                 return acc;
             }, []).join(', ').toString();
             setUserData({...userData, services: servicesString});
+            console.log(servicesString);
             const url = `http://backend.delkind.pl/update/${UserPage}`;
             const {data: res} = await axios.put(url, userData);
         } catch (err) {
@@ -266,7 +267,7 @@ const AddServ = () => {
     let servData = []
 
     useEffect(() => {
-        fetchUserServicess(UserPage, userData);
+        fetchUserServicess(UserPage);
         fetchUserProfile(UserPage);
     }, []);
 
@@ -379,14 +380,38 @@ const AddServ = () => {
         }
         if (success) {
             setModalServIsOpen(false);
-            const {data: updatedServ} = await axios.get(`http://backend.delkind.pl/viewbyid`, {
-                params: {
-                    postedBy: UserPage
-                }
-            });
-            setServ(updatedServ);
+            sendDataToServer();
         }
     };
+
+
+    const [servicesString, setServicesString ] = useState('');
+    useEffect(() => {
+        sendDataToServer();
+    }, [servicesString]);
+
+    const sendDataToServer = async () => {
+        const { data: updatedServ } = await axios.get(`http://backend.delkind.pl/viewbyid`, {
+            params: {
+                postedBy: UserPage
+            }
+        });
+        setServ(updatedServ);
+        const servicesStr = updatedServ.map(service => [service.title, service.parent]).reduce((acc, curr) => {
+            if (!acc.includes(curr.join())) {
+                acc.push(curr.join());
+            }
+            return acc;
+        }, []).join(', ').toString();
+        setServicesString(servicesStr);
+
+
+        console.log(userData);
+
+        const url = `http://backend.delkind.pl/update/${UserPage}`;
+        const { data: res } = await axios.put(url, { ...userData, services: servicesString });
+    };
+
     const servDelete = async (ServId) => {
         try {
             const {data} = await axios.delete(`http://backend.delkind.pl/post-delete/${ServId}`);
@@ -431,6 +456,7 @@ const AddServ = () => {
             const url = `http://backend.delkind.pl/update/${UserPage}`;
             const {data: res} = await axios.put(url, userDataForAreasActivity);
             localStorage.setItem("token", JSON.stringify(res));
+            fetchUserServicess(UserPage, userData);
             navigate("/EditProfile");
         } catch (error) {
             if (
@@ -456,7 +482,6 @@ const AddServ = () => {
                 <h1 style={{margin: "0 0 10px 10px"}}>Услуги</h1>
             </div>
             <form className={styles.form_container} onSubmit={handleSubmitServ} noValidate>
-                <h1 style={{margin: "0 0 0 10px"}}>О себе</h1>
                 <div style={{
                     justifyContent: "flex-start",
                     backgroundColor: "#fff",
