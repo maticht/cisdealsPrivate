@@ -26,6 +26,7 @@ import house from "../../img/CategoriesLogo/house.svg";
 import build from "../../img/CategoriesLogo/build.svg";
 import party from "../../img/CategoriesLogo/party.svg";
 import food from "../../img/CategoriesLogo/food.png";
+import Modal from '../addServ/modalCustomServ';
 
 const useStyles = createUseStyles({
     overlay: {
@@ -282,6 +283,10 @@ const AddServ = () => {
 
     const [selectedDownDownCategory, setSelectedDownDownCategory] = useState('');
 
+    useEffect(()=>{
+        console.log(selectedDownDownCategory,selectedDownCategory)
+    },[selectedDownDownCategory,selectedDownCategory])
+
     const handleDownDownCategoryClick = (categoryTitle) => {
         setSelectedDownDownCategory(selectedDownDownCategory === categoryTitle ? '' : categoryTitle);
     };
@@ -384,6 +389,7 @@ const AddServ = () => {
                     postedBy: UserPage
                 }
             });
+            console.log(data)
             setServ(updatedServ);
         }
     };
@@ -441,6 +447,22 @@ const AddServ = () => {
                 setErrorServ(error.response.data.message);
             }
         }
+    };
+
+
+    const [modalOpen, setModalOpen] = useState(false);
+    const handleCloseModal = () => {
+        setModalOpen(false);
+    };
+
+    const handleModalResult = (title, parent) => {
+       console.log(title, parent)
+        setSelectedServices([...selectedServices, {title: title, parent: parent}]);
+    };
+    const [parentCategory, setParentCategory] = useState('')
+    const handleModalOpen = (parent) => {
+        setParentCategory(parent)
+        setModalOpen(true);
     };
 
 
@@ -959,8 +981,38 @@ const AddServ = () => {
                                                                                     <p style={{margin: '5px 0'}}>
                                                                                         {opt.title}
                                                                                     </p>
-                                                                                    <img style={{marginTop: '5px'}}
-                                                                                         src={selectedDownCategory === opt.title ? arrowUp : arrowDown}/>
+                                                                                    <div style={{
+                                                                                        display: 'flex',
+                                                                                        alignItems: 'center',
+                                                                                        flexDirection: 'row',
+                                                                                    }}>
+                                                                                        {selectedDownCategory === opt.title ?
+                                                                                            <button style={{
+                                                                                                display: 'flex',
+                                                                                                border: 'none',
+                                                                                                outline: 'none',
+                                                                                                justifyContent: 'center',
+                                                                                                alignItems: 'center',
+                                                                                                alignSelf: 'center',
+                                                                                                padding: '12px 12px 12px 12px',
+                                                                                                backgroundColor: '#000000',
+                                                                                                borderRadius: '8px',
+                                                                                                color: '#fff',
+                                                                                                width: '100%',
+                                                                                                fontWeight: 'bold',
+                                                                                                fontSize: '10px',
+                                                                                                cursor: 'pointer',
+                                                                                                margin: '10px 15px 0 0'
+                                                                                            }} onClick={() => handleModalOpen(selectedDownCategory)}>
+                                                                                                Добавить категорию в {selectedDownCategory}
+                                                                                            </button>
+                                                                                            : null
+                                                                                        }
+                                                                                        <Modal isOpen={modalOpen} onClose={handleCloseModal} handleModalResult={handleModalResult} parentCategory={parentCategory}/>
+                                                                                        <img
+                                                                                            style={{marginTop: '5px'}}
+                                                                                            src={selectedDownDownCategory === opt.title ? arrowUp : arrowDown}/>
+                                                                                    </div>
                                                                                 </div>
 
                                                                                 {selectedDownCategory === opt.title && (
@@ -1036,15 +1088,44 @@ const AddServ = () => {
                                                                                                                             alignItems: 'center',
                                                                                                                             flexDirection: 'row',
                                                                                                                             justifyContent: 'space-between'
-                                                                                                                        }}
-                                                                                                                        onClick={() => handleDownDownCategoryClick(opt.title)}
+                                                                                                                        }} onClick={() => handleDownDownCategoryClick(opt.title)}
                                                                                                                     >
                                                                                                                         <p style={{margin: '5px 0'}}>
                                                                                                                             {opt.title}
                                                                                                                         </p>
+                                                                                                                        <div style={{
+                                                                                                                            display: 'flex',
+                                                                                                                            alignItems: 'center',
+                                                                                                                            flexDirection: 'row',
+                                                                                                                        }}>
+                                                                                                                            {selectedDownDownCategory === opt.title ?
+                                                                                                                                <button style={{
+                                                                                                                                    display: 'flex',
+                                                                                                                                    border: 'none',
+                                                                                                                                    outline: 'none',
+                                                                                                                                    justifyContent: 'center',
+                                                                                                                                    alignItems: 'center',
+                                                                                                                                    alignSelf: 'center',
+                                                                                                                                    padding: '12px 12px 12px 12px',
+                                                                                                                                    backgroundColor: '#000000',
+                                                                                                                                    borderRadius: '8px',
+                                                                                                                                    color: '#fff',
+                                                                                                                                    width: '100%',
+                                                                                                                                    fontWeight: 'bold',
+                                                                                                                                    fontSize: '10px',
+                                                                                                                                    cursor: 'pointer',
+                                                                                                                                    margin: '10px 15px 0 0'
+                                                                                                                                }} onClick = {()=> handleModalOpen(selectedDownDownCategory)}>
+                                                                                                                                    Добавить категорию в {selectedDownDownCategory}
+                                                                                                                                </button>
+                                                                                                                                : null
+                                                                                                                            }
+                                                                                                                            <Modal isOpen={modalOpen} onClose={handleCloseModal} handleModalResult={handleModalResult} parentCategory={parentCategory}/>
                                                                                                                         <img
                                                                                                                             style={{marginTop: '5px'}}
                                                                                                                             src={selectedDownDownCategory === opt.title ? arrowUp : arrowDown}/>
+                                                                                                                        </div>
+
                                                                                                                     </div>
 
                                                                                                                     {selectedDownDownCategory === opt.title && (
