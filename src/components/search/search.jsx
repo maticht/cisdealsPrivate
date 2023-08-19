@@ -137,12 +137,12 @@ const SearchExample = () => {
 
     return (
         <div style={{overflow:'hidden', pointerEvents: 'auto', margin: '0 10px'}} onClick={() => setModalOpen(true)}>
-            <Link className={'searchFilterBlock'}>
+            <div className={'searchFheight: 48px;ilterBlock'}>
                 <div className={'searchBlock'}>
                     <input className={'searchFld'} placeholder={'Введите запрос'}/>
                     <img className={'searchBtn'} src={searchBtn} alt="logo" />
                 </div>
-            </Link>
+            </div>
             {modalOpen && (
                 <div className={classes.container} onClick={() => {setModalOpen(false);}}>
                     <div className={classes.modalContent} onClick={e => e.stopPropagation()}>
@@ -201,7 +201,7 @@ const SearchExample = () => {
                                                         borderBottom: "#DDDDDD solid 1px",
                                                         textDecoration: "none",
                                                         color: "#000000",}}>
-                                                        <Link  className={classes.OneCategoryItem} to={`/AllCategories/:Categories2/:Categories3/${item.title}`}  onClick={() => setModalOpen(false)}>
+                                                        <Link  className={classes.OneCategoryItem} to={`/AllCategories/:Categories2/:Categories3/:Categories3/:Categories4/${item.title}`}  onClick={() => setModalOpen(false)}>
                                                             <h5 style={{color:'#000',fontSize:"14px", margin:"3px 0"}}>{item.title}</h5>
                                                             <p  style={{color:'#5B5B5B',fontSize:"10px", margin:"3px 0"}}>Из категории "{item.parent}"</p>
                                                         </Link>
@@ -225,7 +225,7 @@ const SearchExample = () => {
                                                             color: "#000000",
                                                         }}
                                                     >
-                                                        <Link  className={classes.OneCategoryItem} to={`/AllCategories/:Categories2/:Categories3/Все специалисты/${user._id}`}  onClick={() => setModalOpen(false)}>
+                                                        <Link  className={classes.OneCategoryItem} to={`/AllCategories/:Categories2/:Categories3/:Categories4/Все специалисты/${user._id}`}  onClick={() => setModalOpen(false)}>
                                                             <div style={{display:'flex', flexDirection:'row', alignItems:'flex-start', justifyContent:'flex-start'}}>
                                                                 <div>
                                                                     {(user.image.length === 0 || !user.image ?

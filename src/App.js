@@ -71,7 +71,7 @@ function App() {
                     <Route path='/AllCategories/:Categories2/:Categories3' element={<CategoriesScreen3 />}/>
                     <Route path='/AllCategories/:Categories2/:Categories3/:Categories4' element={<CategoriesScreen4 />}/>
                     <Route path='/AllCategories/:Categories2/:Categories3/:Categories4/:SortedCategories' element={<SortedServicesScreen />}/>
-                    <Route path='/AllCategories/:Categories2/:Categories3/Categories4/:SortedCategories/:UserPage' element={<UserPageScreen />}/>
+                    <Route path='/AllCategories/:Categories2/:Categories3/:Categories4/:SortedCategories/:UserPage' element={<UserPageScreen />}/>
                     <Route path='/UserPageScreen/:UserPage' element={<UserPageScreen />}/>
                 </Routes>
             </BrowserRouter>

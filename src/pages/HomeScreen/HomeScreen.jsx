@@ -44,14 +44,17 @@ function HomeScreen() {
         <>
             <div className={classes.container}>
                 <HeaderNavBar />
-                <SearchExample />
+                <div className={'SearchExampleHome'}>
+                    <SearchExample/>
+                </div>
                 <Categories />
-
+                <div style={{display:'flex', textAlign:'left', justifyContent:'flex-start'}} className={'bestSpecialists'}>
+                    <h2 style={{display:'flex', alignSelf:'flex-start', textAlign:'left'}}>{`Лучшие специалисты`}</h2>
+                </div>
                 <div className={'bestSpecialists'}>
-                    <h2 style={{margin:'10px 0 10px 0'}}>{`Лучшие специалисты`}</h2>
                     {users.map((user) => (
                         <div className={'oneBestSpecialistsBlock'} key={user.id}>
-                            <Link style={{textDecoration: "none", color:"#000", flexDirection:'row'}} to={`/AllCategories/Categories2/Categories3/Все специалисты/${user._id}`}>
+                            <Link style={{textDecoration: "none", color:"#000", flexDirection:'row'}} to={`/AllCategories/Categories2/Categories3/Categories4/Все специалисты/${user._id}`}>
                                 <div style={{display:'flex', flexDirection:'row'}}>
                                     <div style={{ position: 'relative', display: 'flex', flexDirection: 'row' }}>
                                         {(!user.image || user.image.length === 0 ?

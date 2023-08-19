@@ -27,16 +27,16 @@
 .searchBlock{
     display: flex;
     height: 48px;
+    border-radius: 8px;
     justify-content: space-between;
     align-items: center;
     padding: 0 0 0 10px;
-    background-color: #ffffff;
+    background-color: #F1F1F1;
 }
 
 .searchBtn{
     background-color: rgba(255, 255, 255, 0);
     border: none;
-
 }
 
 .selectFilterBlock{
@@ -56,6 +56,39 @@
 }
 .locationSelect:nth-child(1){
     margin-right: 5px;
+}
+
+@media screen and (max-width: 720px) {
+    .bestSpecialists {
+        display:flex;
+        flex-direction:row;
+        flex-wrap: wrap;
+        justify-content:flex-start;
+        margin:0 auto;
+        padding: 0 0 0 10px;
+        max-width: 100%;
+    }
+    .oneBestSpecialistsBlock {
+        flex: 0 0 calc(100% - 10px);
+        height: 100px;
+        background-color: #fff;
+        display: flex;
+        align-self: center;
+        justify-content: flex-start;
+        align-items: center;
+        border-radius: 8px;
+        margin: 0 10px 10px 0;
+    }
+    .oneBestSpecialistsBlock:nth-child(2n) {
+        margin-right: 10px;
+    }
+    .oneBestSpecialistsBlock:nth-child(3n) {
+        margin-right: 10px;
+    }
+    .searchBlock{
+        background-color: #fff;
+        margin-bottom: 10px;
+    }
 }
 
 

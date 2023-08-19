@@ -1,14 +1,13 @@
 .bestSpecialists {
     display:flex;
-    flex-direction:column;
-    justify-content:center;
-    margin:5px 10px 0 10px;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    margin:0 auto;
     max-width: 1160px;
-
 }
 .oneBestSpecialistsBlock {
-    max-width: 1160px;
-    width: 100%;
+    flex: 0 0 calc(33.333% - 7px);
     height: 100px;
     background-color: #fff;
     display: flex;
@@ -16,18 +15,85 @@
     justify-content: flex-start;
     align-items: center;
     border-radius: 8px;
-    margin: 0 10px 10px 10px;
+    margin: 0 10px 10px 0;
 }
-@media screen and (min-width: 1160px) {
+
+.oneBestSpecialistsBlock:nth-child(3n) {
+    margin-right: 0;
+}
+.SearchExampleHome{
+    display: none;
+}
+@media screen and (max-width: 1160px) {
     .bestSpecialists {
         display:flex;
-        flex-direction:column;
-        justify-content:center;
+        flex-direction:row;
+        flex-wrap: wrap;
+        justify-content:flex-start;
         margin:0 auto;
-        max-width: 1160px;
-        width: 100%
+        padding:0 10px;
+        max-width: 100%;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .bestSpecialists {
+        display:flex;
+        flex-direction:row;
+        flex-wrap: wrap;
+        justify-content:flex-start;
+        margin:0 auto;
+        padding: 0 0 0 10px;
+        max-width: 100%;
     }
     .oneBestSpecialistsBlock {
-        margin:0 auto 10px auto;
+        flex: 0 0 calc(50% - 10px);
+        height: 100px;
+        background-color: #fff;
+        display: flex;
+        align-self: center;
+        justify-content: flex-start;
+        align-items: center;
+        border-radius: 8px;
+        margin: 0 10px 10px 0;
+    }
+    .oneBestSpecialistsBlock:nth-child(2n) {
+        margin-right: 0;
+    }
+    .oneBestSpecialistsBlock:nth-child(3n) {
+        margin-right: 10px;
+    }
+}
+@media screen and (max-width: 720px) {
+    .SearchExampleHome{
+        margin: 10px 0 30px;
+        display: block;
+    }
+}
+@media screen and (max-width: 540px) {
+    .bestSpecialists {
+        display:flex;
+        flex-direction:row;
+        flex-wrap: wrap;
+        justify-content:flex-start;
+        margin:0 auto;
+        padding: 0 0 0 10px;
+        max-width: 100%;
+    }
+    .oneBestSpecialistsBlock {
+        flex: 0 0 calc(100% - 10px);
+        height: 100px;
+        background-color: #fff;
+        display: flex;
+        align-self: center;
+        justify-content: flex-start;
+        align-items: center;
+        border-radius: 8px;
+        margin: 0 10px 10px 0;
+    }
+    .oneBestSpecialistsBlock:nth-child(2n) {
+        margin-right: 10px;
+    }
+    .oneBestSpecialistsBlock:nth-child(3n) {
+        margin-right: 10px;
     }
 }

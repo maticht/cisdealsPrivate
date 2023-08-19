@@ -1,9 +1,11 @@
 import './headerNavBar.css';
 import logo from '../../img/mainPageLogo.svg';
 import {Link} from "react-router-dom";
+import SearchFilter from '../../components/searchFilter/searchFilter';
 import React, {useEffect, useState} from "react";
 import ModalUserPage from "../../components/modalUserPage/modalUserPage";
 import noneAccBtn from '../../img/Frame.svg';
+import SearchExample from "../search/search";
 
 function HeaderNavBar() {
     const [modalOpen, setModalOpen] = useState(false);
@@ -52,9 +54,8 @@ function HeaderNavBar() {
         <Link to={"/"}>
             <img src={logo} className={"App-logo"} alt={"logo"}/>
         </Link>
-
-        <div>
-            <ModalUserPage isOpen={modalOpen} onClose={handleCloseModal}/>
+        <div className={'SearchExampleNavBar'}>
+            <SearchExample/>
         </div>
         {!modalOpen && (
             <div>
@@ -68,6 +69,7 @@ function HeaderNavBar() {
                                 <img src={noneAccBtn} className={"noneAccBtn"} alt={"noneAccBtn"}/> :
                                 <img src={user.image[0]} className={"userLogo"} alt={"userLogo"}/>}
                         </a>
+
                     </div>
                 ) : (
                     <Link className={"logInBlock"} to={"/login"}>
@@ -77,6 +79,9 @@ function HeaderNavBar() {
                 )}
             </div>
         )}
+        <div style={{display: modalOpen ? 'block' : 'none'}}>
+            <ModalUserPage isOpen={modalOpen} onClose={handleCloseModal}/>
+        </div>
     </div>);
 }
 
