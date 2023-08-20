@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import HeaderNavBar from '../../components/headerNavBar/headerNavBar';
-import SearchFilter from '../../components/searchFilter/searchFilter';
 import Categories from '../../components/categories/categories';
 import { createUseStyles } from "react-jss";
 import {Link} from "react-router-dom";
@@ -41,17 +40,17 @@ function HomeScreen() {
     }, []);
 
     return (
-        <>
+        < >
             <div className={classes.container}>
                 <HeaderNavBar />
                 <div className={'SearchExampleHome'}>
                     <SearchExample/>
                 </div>
                 <Categories />
-                <div style={{display:'flex', textAlign:'left', justifyContent:'flex-start'}} className={'bestSpecialists'}>
-                    <h2 style={{display:'flex', alignSelf:'flex-start', textAlign:'left'}}>{`Лучшие специалисты`}</h2>
+                <div style={{display:'flex', textAlign:'left', justifyContent:'flex-start'}} className={'allBestSpecialists'}>
+                    <h2 style={{display:'flex', alignSelf:'flex-start', textAlign:'left', margin:'20px 0 15px'}}>{`Лучшие специалисты`}</h2>
                 </div>
-                <div className={'bestSpecialists'}>
+                <div className={'allBestSpecialists'}>
                     {users.map((user) => (
                         <div className={'oneBestSpecialistsBlock'} key={user.id}>
                             <Link style={{textDecoration: "none", color:"#000", flexDirection:'row'}} to={`/AllCategories/Categories2/Categories3/Categories4/Все специалисты/${user._id}`}>
@@ -78,7 +77,7 @@ function HomeScreen() {
                                                 {user.nameOrCompany}
                                             </p>
                                             <p style={{ color: '#666', fontSize: '13px', margin: '5px 0' }}>
-                                                {user.areasActivity === 'areasActivity' ?
+                                                {user.areasActivity === 'areasActivity' || user.areasActivity === '' ?
                                                     'Услуги не добавлены' :
                                                     user.areasActivity.length > 28 ?
                                                         `${user.areasActivity.slice(0, 28)}...` :

@@ -59,7 +59,7 @@ const useStyles = createUseStyles({
     },
 });
 
-const Modal = ({isOpen, onClose, handleModalResult, parentCategory}) => {
+const Modal = ({isOpen, onClose, handleModalResult, parentCategory, selectedUser}) => {
     const classes = useStyles();
     const [newCategory, setNewCategory] = useState('');
 

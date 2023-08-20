@@ -42,7 +42,7 @@ function CategoriesScreen2() {
     console.log(category.subcategories);
     const categoryList = category.subcategories.map((category) =>
     (category.subsubcategories.length === 0 || !category.subsubcategories) ?
-        <Link  className={classes.OneCategory2Item} style={{display:'flex', justifyContent:'space-between'}} to={`/AllCategories/${Categories2}/${Categories2}/${category.title}`}>
+        <Link  className={classes.OneCategory2Item} style={{display:'flex', justifyContent:'space-between'}} to={`/AllCategories/${Categories2}/${Categories2}/Categories4/${category.title}`}>
             <div className={classes.OneCategoryInfo}>
                 <p className={'OneCategoryTitle'}>{category.title}</p>
             </div>

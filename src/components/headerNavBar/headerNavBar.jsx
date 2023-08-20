@@ -1,7 +1,6 @@
 import './headerNavBar.css';
 import logo from '../../img/mainPageLogo.svg';
 import {Link} from "react-router-dom";
-import SearchFilter from '../../components/searchFilter/searchFilter';
 import React, {useEffect, useState} from "react";
 import ModalUserPage from "../../components/modalUserPage/modalUserPage";
 import noneAccBtn from '../../img/Frame.svg';
@@ -32,7 +31,6 @@ function HeaderNavBar() {
         if (!localUserObj?.data || !localUserObj?.data._id) {
             return;
         }
-
         const fetchUserProfile = async (userId) => {
             try {
                 const response = await fetch(`http://backend.delkind.pl/user-profile/${userid}`);
@@ -46,7 +44,6 @@ function HeaderNavBar() {
                 console.log(err);
             }
         };
-
         fetchUserProfile(userid);
     }, [localUserObj]);
 

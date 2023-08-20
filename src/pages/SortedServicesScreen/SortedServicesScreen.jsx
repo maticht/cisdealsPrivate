@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import HeaderNavBar from '../../components/headerNavBar/headerNavBar';
-import SearchFilter from '../../components/searchFilter/searchFilter';
 import Categories from '../../components/categories/categories';
 import { createUseStyles } from "react-jss";
 import {Link, Route, useParams} from "react-router-dom";

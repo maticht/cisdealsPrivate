@@ -32,6 +32,7 @@ import AddLoginServ from "./pages/AddLoginServ/AddLoginServ";
 import UserServLoginScreen from './pages/UserServLoginScreen/UserServLoginScreen'
 import SuccessfulLoginScreen from "./pages/SuccessfulLoginScreen/SuccessfulLoginScreen";
 import CategoriesScreen4 from "./pages/CategoriesScreen4/CategoriesScreen4";
+import SearchScreen from "./pages/SearchScreen/SearchScreen";
 
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
                     <Route path="/UpdateWorkingHours/:UserPage" exact element={<UpdateWorkingHours/>} />
                     <Route path="/FavoritesPage" exact element={<FavoritesPage />} />
                     <Route path="/EditProfile" exact element={<EditProfile />} />
+                    <Route path="/SearchScreen" exact element={<SearchScreen />} />
                     <Route path="/AddContactInfo/:UserPage" exact element={<AddContactInfo />} />
                     <Route path="/AddSocialInfo/:UserPage" exact element={<AddSocialInfo />} />
                     <Route path="/AddLocation/:UserPage" exact element={<AddLocation/>} />

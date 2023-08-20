@@ -12,7 +12,6 @@
 .inputContainer {
     overflow: hidden;
     pointer-events: auto;
-    text-decoration: none;
     margin: 0 10px;
 }
 .container {
@@ -41,7 +40,6 @@
     color: #454545;
     font-size: 14px;
     margin: 10px 0 25px 0;
-    cursor: pointer;
 }
 
 .OneCategoryItem {
@@ -185,31 +183,37 @@
     color: #000;
 }
 
-.searchFld {
+.searchFld{
     background-color: rgba(255, 255, 255, 0);
     border: none;
-    text-decoration: none;
-    color: #454545;
-    font-size: 15px;
 }
-.searchFld p{
+.searchFld:focus {
+    color: #212529;
     background-color: rgba(255, 255, 255, 0);
-    border: none;
-    text-decoration: none;
+    outline: 0;
+}
+.searchFld::placeholder {
     color: #454545;
-    font-size: 15px;
-    text-underline: black;
+    font-size: 14px;
 }
 
-.search-block{
+.searchBlock{
     display: flex;
     height: 44px;
     border-radius: 8px;
     justify-content: space-between;
-    text-decoration: none;
     align-items: center;
     padding: 0 0 0 10px;
     background-color: #F1F1F1;
+}
+.pageSearchBlock{
+    display: flex;
+    height: 48px;
+    border-radius: 8px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0 0 10px;
+    background-color: #fff;
 }
 
 .searchBtn{
@@ -217,20 +221,30 @@
     border: none;
 }
 
+.selectFilterBlock{
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.locationSelect{
+    background-color: #FFFFFF;
+    padding: 8px 10px;
+    border-radius: 8px;
+    color: #454545;
+    text-decoration: none;
+    font-size: 12px;
+    cursor:pointer;
+}
+.locationSelect:nth-child(1){
+    margin-right: 5px;
+}
 @media screen and (max-width: 1160px) {
     .container {
         width: calc(100% - 20px);
         padding: 0 10px;
     }
 
-}
-
-@media screen and (max-width: 720px) {
-    .search-block{
-        width: calc(100% - 30px);
-        margin: 0 10px;
-        background-color: #FFFFFF;
-    }
 }
 
 

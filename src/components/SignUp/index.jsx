@@ -12,7 +12,7 @@ const Signup = () => {
         lastName: "lastName",
         password: "",
         nameOrCompany: "",
-        areasActivity: "areasActivity",
+        areasActivity: "Красота и уход",
         phone1: "phone1",
         phone2: "phone2",
         image: [],

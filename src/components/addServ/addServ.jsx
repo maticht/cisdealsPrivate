@@ -147,6 +147,7 @@ const AddServ = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [modalServvIsOpen, setModalServvIsOpen] = useState(false);
     const [selectedServv, setSelectedServv] = useState("");
+    const [selectedUser, setSelectedUser] = useState("");
     const [data, setData] = useState({
         title: "",
         parent: "",
@@ -254,16 +255,36 @@ const AddServ = () => {
     };
 
 
+    // const fetchUserProfile = async (userId) => {
+    //     try {
+    //         const {data} = await axios.get(`http://backend.delkind.pl/user-profile/${userId}`);
+    //         setSelectedServv(data.profile.areasActivity)
+    //         setSelectedServicess(data.profile.areasActivity.split(" / "));
+    //         console.log(selectedServices)
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+    // }
     const fetchUserProfile = async (userId) => {
         try {
-            const {data} = await axios.get(`http://backend.delkind.pl/user-profile/${userId}`);
-            setSelectedServv(data.profile.areasActivity)
-            setSelectedServicess(data.profile.areasActivity.split(" / "));
-            console.log(selectedServices)
+            const { data } = await axios.get(`http://backend.delkind.pl/user-profile/${userId}`);
+            setSelectedServv(data.profile.areasActivity);
+            setSelectedUser(data.profile);
+            setSelectedServicess(data.profile.areasActivity.split(' / '));
+            console.log(selectedServices);
+
+            if (data.profile.areasActivity === 'areasActivity') {
+                console.log('del er act');
+                const url = `http://backend.delkind.pl/update/${userId}`;
+                await axios.put(url, { ...userData, areasActivity: 'Красота и уход' });
+            }
+            setSelectedServv(data.profile.areasActivity);
+            setSelectedServicess(data.profile.areasActivity.split(' / '));
+            console.log(selectedServices);
         } catch (err) {
-            console.log(err)
+            console.log(err);
         }
-    }
+    };
 
     let servData = []
 
@@ -1028,7 +1049,7 @@ const AddServ = () => {
                                                                                             </button>
                                                                                             : null
                                                                                         }
-                                                                                        <Modal isOpen={modalOpen} onClose={handleCloseModal} handleModalResult={handleModalResult} parentCategory={parentCategory}/>
+                                                                                        <Modal isOpen={modalOpen} onClose={handleCloseModal} handleModalResult={handleModalResult} parentCategory={parentCategory} selectedUser={selectedUser}/>
                                                                                         <img
                                                                                             style={{marginTop: '5px'}}
                                                                                             src={selectedDownDownCategory === opt.title ? arrowUp : arrowDown}/>

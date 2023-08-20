@@ -56,7 +56,7 @@ function CategoriesScreen3() {
     let category3 = category2.subcategories.find(category => category.title === Categories3);
 
     const categoryList = category3.subsubcategories.map((category) =>
-         <Link  className={classes.OneCategoryItem} to={`/AllCategories/${Categories2}/${Categories3}/${category.title}`}>
+         <Link  className={classes.OneCategoryItem} to={`/AllCategories/${Categories2}/${Categories3}/Categories4/${category.title}`}>
              <div className={classes.OneCategoryInfo}>
                  <p>{category.title}</p>
              </div>
@@ -67,7 +67,7 @@ function CategoriesScreen3() {
         <>
             <div className={classes.container}>
                 <div className={classes.Categories2Block}>
-                    <Link className={classes.allCategoriesBtn} to={`/AllCategories/${Categories2}`}>˂ {Categories2}</Link>
+                    <Link className={classes.allCategoriesBtn} to={`/AllCategories/Categories2/Categories3/Categories4/${Categories2}`}>˂ {Categories2}</Link>
                     <h2>{Categories3}</h2>
                     <div>
                         <Link  className={classes.OneCategoryItem} to={`/AllCategories/Categories2/Categories3/Categories4/${Categories3}`}>
