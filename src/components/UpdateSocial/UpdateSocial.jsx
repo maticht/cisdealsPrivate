@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import styles from "./styles.module.css";
-import ModalUserPage from "../modalUserPage/modalUserPage";
+import ModalUserPage from "../../pages/modalUserPage/modalUserPage";
 import Facebook from "../../img/Facebook.svg";
 import LinkedIn from "../../img/LinkedIn.png";
 import Telegram from "../../img/telegram.svg";

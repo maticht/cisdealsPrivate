@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
-import styles from "./styles.module.css";
-import ModalUserPage from "../modalUserPage/modalUserPage";
+import "./Update.css";
 import eye from "../../img/showPas.svg";
+import yesEye from "../../img/24=yes.svg";
 
 
 const Update = () => {
@@ -115,76 +115,65 @@ const Update = () => {
             }
         }
     };
-    const [modalOpen, setModalOpen] = useState(false);
-
-
-    const handleOpenModal = () => {
-        setModalOpen(true);
-    };
-
-    const handleCloseModal = () => {
-        setModalOpen(false);
-    };
 
     return (
-        <div className={styles.signup_container}>
-            <Link style={{textDecoration: "none", color: "#454545", fontSize: "14px"}} to="/EditProfile">
-                <p style={{textDecoration: "none", color: "#454545", fontSize: "14px", marginLeft:'10px'}}>
-                    {`< Назад`}
-                </p>
-            </Link>
-            <div>
-                <ModalUserPage isOpen={modalOpen} onClose={handleCloseModal} />
-            </div>
-            <form className={styles.form_container} onSubmit={handleSubmit} noValidate>
-                <h1 style={{margin:"0 0 0 10px"}}>Изменение личной информации</h1>
-                <div style={{justifyContent:"flex-start", backgroundColor:"#fff",borderRadius:8, margin:"10px 10px", padding:"20px 10px"}}>
+        <div className={'signup_container'}>
+            <div style={{width: '100%', margin: '0 auto', maxWidth:'800px'}}>
+                <Link style={{textDecoration: "none", color: "#454545", fontSize: "14px"}} to="/EditProfile">
+                    <p style={{textDecoration: "none", color: "#454545", fontSize: "14px", marginLeft:'10px'}}>
+                        {`< Назад`}
+                    </p>
+                </Link>
+                <form className={'form_container'} onSubmit={handleSubmit} noValidate>
+                    <h1 style={{margin:"0 0 0 10px"}}>Изменение личной информации</h1>
+                    <div style={{justifyContent:"flex-start", backgroundColor:"#fff",borderRadius:8, margin:"10px 10px", padding:"20px 10px"}}>
 
-                    <div>
-                        <h5 style={{margin:"0 0 5px 0"}}>Имя или Название компании</h5>
-                        <input
-                            type="text"
-                            placeholder="Apple"
-                            name="nameOrCompany"
-                            onChange={handleChange}
-                            value={data.nameOrCompany}
-                            required
-                            className={styles.input}
-                        />
-
-                        <h5 style={{margin:"10px 0 5px 0"}}>Пароль</h5>
-                        <div style={{position: 'relative', display:'flex', alignItems:'center'}}>
+                        <div>
+                            <h5 style={{margin:"0 0 5px 0"}}>Имя или Название компании</h5>
                             <input
-                                type={showPassword ? "text" : "password"}
-                                placeholder="Пароль"
-                                name="password"
+                                type="text"
+                                placeholder="Apple"
+                                name="nameOrCompany"
                                 onChange={handleChange}
-                                value={data.password}
+                                value={data.nameOrCompany}
                                 required
-                                className={styles.input}
+                                className={'input'}
                             />
-                            <button onClick={handleToggleShowPassword} type="button" style={{
-                                position: 'absolute',
-                                top: '50%',
-                                right: '10px',
-                                transform: 'translateY(-50%)',
-                                backgroundColor: 'transparent',
-                                border: 'none',
-                                fontSize: '14px',
-                                color: '#000',
-                                cursor: 'pointer',
-                                padding: 0,
-                            }}>
-                                <img src={eye} alt="eye" width="23px"  height="23px" style={{marginTop:'4px', opacity: showPassword ? "100%" : "50%"}}/>
-                            </button>
+
+                            <h5 style={{margin:"10px 0 5px 0"}}>Пароль</h5>
+                            <div style={{position: 'relative', display:'flex', alignItems:'center'}}>
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    placeholder="Пароль"
+                                    name="password"
+                                    onChange={handleChange}
+                                    value={data.password}
+                                    required
+                                    className={'input'}
+                                />
+                                <button onClick={handleToggleShowPassword} type="button" style={{
+                                    position: 'absolute',
+                                    top: '50%',
+                                    right: '10px',
+                                    transform: 'translateY(-50%)',
+                                    backgroundColor: 'transparent',
+                                    border: 'none',
+                                    fontSize: '14px',
+                                    color: '#000',
+                                    cursor: 'pointer',
+                                    padding: 0,
+                                }}>
+                                    <img src={showPassword ? eye : yesEye} alt="eye" width="23px"  height="23px" style={{marginTop:'4px'}}/>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                {error && <div className={styles.error_msg}>{error}</div>}
-                <button type="submit" className={styles.green_btn}>
-                    Изменить
-                </button>
-            </form>
+                    {error && <div className={'error_msg'}>{error}</div>}
+                    <button type="submit" className={'green_btn'}>
+                        Изменить
+                    </button>
+                </form>
+            </div>
         </div>
     );
 };

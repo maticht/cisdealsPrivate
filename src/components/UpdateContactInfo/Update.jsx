@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import styles from "./styles.module.css";
-import ModalUserPage from "../modalUserPage/modalUserPage";
+import ModalUserPage from "../../pages/modalUserPage/modalUserPage";
 
 
 const UpdateContactInfo = () => {

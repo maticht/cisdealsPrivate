@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ModalUserPage from "../../components/modalUserPage/modalUserPage";
+import ModalUserPage from "../modalUserPage/modalUserPage";
 import {Link} from "react-router-dom";
 import ScvNoneUserLogo from '../../img/ScvNoneUserLogo.svg';
 import telegram from '../../img/telegram.svg';

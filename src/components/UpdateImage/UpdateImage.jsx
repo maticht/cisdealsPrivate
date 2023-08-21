@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import styles from "./styles.module.css";
-import ModalUserPage from "../modalUserPage/modalUserPage";
+import ModalUserPage from "../../pages/modalUserPage/modalUserPage";
 import plus from "../../img/Plus.svg";
 import Resizer from "react-image-file-resizer";
 import arrowUp from '../../img/Property 1=24.svg'

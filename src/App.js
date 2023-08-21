@@ -33,7 +33,7 @@ import UserServLoginScreen from './pages/UserServLoginScreen/UserServLoginScreen
 import SuccessfulLoginScreen from "./pages/SuccessfulLoginScreen/SuccessfulLoginScreen";
 import CategoriesScreen4 from "./pages/CategoriesScreen4/CategoriesScreen4";
 import SearchScreen from "./pages/SearchScreen/SearchScreen";
-import ModalUserPage from "./components/modalUserPage/modalUserPage";
+import ModalUserPage from "./pages/modalUserPage/modalUserPage";
 
 
 function App() {

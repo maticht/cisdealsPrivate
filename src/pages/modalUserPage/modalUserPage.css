@@ -1,6 +1,6 @@
 .header-container {
     max-width: 800px;
-    width: 100%;
+    width: calc(100% - 20px);
     height: calc(100vh - 10px);
     display: flex;
     justify-content: space-between;

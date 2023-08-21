@@ -2,7 +2,7 @@ import './headerNavBar.css';
 import logo from '../../img/mainPageLogo.svg';
 import {Link} from "react-router-dom";
 import React, {useEffect, useState} from "react";
-import ModalUserPage from "../../components/modalUserPage/modalUserPage";
+import ModalUserPage from "../../pages/modalUserPage/modalUserPage";
 import noneAccBtn from '../../img/Frame.svg';
 import SearchExample from "../search/search";
 
