@@ -1,84 +1,8 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
-import styles from "./UpdateWorkingHours.css";
-import {createUseStyles} from "react-jss";
+import styles from "./styles.module.css";
 import line from '../../img/Line 26.svg'
-
-
-const useStyles = createUseStyles({
-    overlay: {
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        zIndex: 9999
-    },
-    modal: {
-        paddingLeft:'10px',
-        backgroundColor: '#f5f5f5',
-        width: "100%",
-        height: "100%",
-        overflow: "auto"
-    },
-    container: {
-        minHeight: "100vh",
-        backgroundColor: "#F1F1F1"
-    },
-    allCategoriesBtn: {
-        textDecoration: "none",
-        color: "#454545",
-        fontSize: "14px",
-    },
-    AllCategoryContainer: {
-        margin: "0 2vw",
-        padding: "15px 0 40px 0",
-    },
-    OneCategoryInfo: {
-        display: "flex",
-        textDecoration:'none',
-        flexDirection: "row",
-    },
-    OneCategoryImg: {
-        width: "60px",
-        marginRight: "10px",
-    },
-    OneCategoryItem: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        padding: "10px 0",
-        borderBottom: "#DDDDDD solid 1px",
-        textDecoration: "none",
-        color: "#000000",
-
-    },
-    OneCategoryCity: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        textDecoration: "none",
-        color: "#000000",
-
-    },
-    OneCategoryCheckItem: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "flex-start",
-        padding: "15px 0",
-        borderBottom: "#DDDDDD solid 1px",
-        textDecoration: "none",
-        color: "#000000",
-        marginRight:'10px'
-    }
-
-});
-
 
 const UpdateWorkingHours = () => {
     const {UserPage} = useParams();
@@ -156,13 +80,6 @@ const UpdateWorkingHours = () => {
         rating: "",
     });
     const [error, setError] = useState("");
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [modalServIsOpen, setModalServIsOpen] = useState(false);
-    const [modalCitiesIsOpen, setModalCitiesIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState("");
-    const [selectedServ, setSelectedServ] = useState("");
-    const [selectedCities, setSelectedCities] = useState("");
-
     const [workingMon, setWorkingMon] = useState(true);
     const [workingTue, setWorkingTue] = useState(true);
     const [workingWed, setWorkingWed] = useState(true);
@@ -365,512 +282,414 @@ const UpdateWorkingHours = () => {
 
     return (
         <div className={styles.signup_container}>
-            <Link style={{textDecoration: "none", color: "#454545", fontSize: "14px"}} to="/EditProfile">
-                <p style={{textDecoration: "none", color: "#454545", fontSize: "14px", marginLeft:'10px'}}>
-                    {`< Назад`}
-                </p>
-            </Link>
-            <form className={styles.form_container} onSubmit={handleSubmit} noValidate>
-                <h1 style={{margin:"0 0 0 10px"}}>Время работы</h1>
-                <div style={{justifyContent:"flex-start", backgroundColor:"#fff",borderRadius:8, margin:"10px 10px", padding:"15px 10px"}}>
-                    <div>
-                        <div style={{display:"flex",height:'38px', justifyContent:"space-between", alignItems:'center', margin:'0 0 10px 0',paddingBottom:'10px', borderBottom:'1.5px solid #DDDDDD'}}>
-                            <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                <label className={styles.toggleSwitch}>
-                                    <input type="checkbox" checked={workingMon} onChange={() => setWorkingMon(!workingMon)} />
-                                    <span className={styles.switch} />
-                                </label>
-                                <h5 style={{margin:'0'}}>Понедельник</h5>
-                            </div>
-                            {!workingMon ? null : (
-                                <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                    <div style={{
-                                        borderRadius: '8px',
-                                        backgroundColor: '#f1f1f1',
-                                        padding:'8px 5px 10px 5px',
-                                        verticalAlign: 'center',
-                                    }}>
-                                        <input
-                                            type="text"
-                                            name="workingHoursMon-startHours1"
-                                            value={data.workingHoursMon.startHours1  === "startHours" ? "" : data.workingHoursMon.startHours1}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                        :
-                                        <input
-                                            type="text"
-                                            name="workingHoursMon-startMinutes1"
-                                            value={data.workingHoursMon.startMinutes1  === "startMinutes" ? "" : data.workingHoursMon.startMinutes1}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                    </div>
-                                    <img style={{margin:'0 5px'}} src={line}/>
-                                    <div style={{
-                                        borderRadius: '8px',
-                                        backgroundColor: '#f1f1f1',
-                                        padding:'8px 5px 10px 5px',
-                                        verticalAlign: 'center',
-                                    }}>
-                                        <input
-                                            type="text"
-                                            name="workingHoursMon-endHours1"
-                                            value={data.workingHoursMon.endHours1  === "endHours" ? "" : data.workingHoursMon.endHours1}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                        :
-                                        <input
-                                            type="text"
-                                            name="workingHoursMon-endMinutes1"
-                                            value={data.workingHoursMon.endMinutes1  === "endMinutes" ? "" : data.workingHoursMon.endMinutes1}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                    </div>
+            <div className="main-container">
+                <Link to="/EditProfile" className="form-link">
+                    <p className="form-link-text">{'< Назад'}</p>
+                </Link>
+                <form className={styles.form_container} onSubmit={handleSubmit} noValidate>
+                    <p className="form-heading">Время работы</p>
+                    <div className={styles.container}>
+                        <div>
+                            <div className={styles.dayContainer}>
+                                <div className={styles.toggleSwitchBlock}>
+                                    <label className={styles.toggleSwitch}>
+                                        <input type="checkbox" checked={workingMon} onChange={() => setWorkingMon(!workingMon)} />
+                                        <span className={styles.switch} />
+                                    </label>
+                                    <h5>Понедельник</h5>
                                 </div>
-                            )}
-                        </div>
-                        <div style={{display:"flex",height:'38px', justifyContent:"space-between", alignItems:'center', margin:'0 0 10px 0',paddingBottom:'10px', borderBottom:'1.5px solid #DDDDDD'}}>
-                            <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                <label className={styles.toggleSwitch}>
-                                    <input type="checkbox" checked={workingTue} onChange={() => setWorkingTue(!workingTue)} />
-                                    <span className={styles.switch} />
-                                </label>
-                                <h5 style={{margin:'0'}}>Вторник</h5>
+                                {!workingMon ? null : (
+                                    <div className={styles.toggleSwitchBlock}>
+                                        <div className={styles.workingHours}>
+                                            <input
+                                                type="text"
+                                                name="workingHoursMon-startHours1"
+                                                value={data.workingHoursMon.startHours1  === "startHours" ? "" : data.workingHoursMon.startHours1}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                            :
+                                            <input
+                                                type="text"
+                                                name="workingHoursMon-startMinutes1"
+                                                value={data.workingHoursMon.startMinutes1  === "startMinutes" ? "" : data.workingHoursMon.startMinutes1}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                        </div>
+                                        <img className={styles.workingHoursLine} src={line}/>
+                                        <div className={styles.workingHours}>
+                                            <input
+                                                type="text"
+                                                name="workingHoursMon-endHours1"
+                                                value={data.workingHoursMon.endHours1  === "endHours" ? "" : data.workingHoursMon.endHours1}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                            :
+                                            <input
+                                                type="text"
+                                                name="workingHoursMon-endMinutes1"
+                                                value={data.workingHoursMon.endMinutes1  === "endMinutes" ? "" : data.workingHoursMon.endMinutes1}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                        </div>
+                                    </div>
+                                )}
                             </div>
-                            {!workingTue ? null : (
-                                <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                    <div style={{
-                                        borderRadius: '8px',
-                                        backgroundColor: '#f1f1f1',
-                                        padding:'8px 5px 10px 5px',
-                                        verticalAlign: 'center',
-                                    }}>
-                                        <input
-                                            type="text"
-                                            name="workingHoursTue-startHours2"
-                                            value={data.workingHoursTue.startHours2  === "startHours" ? "" : data.workingHoursTue.startHours2}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                        :
-                                        <input
-                                            type="text"
-                                            name="workingHoursTue-startMinutes2"
-                                            value={data.workingHoursTue.startMinutes2  === "startMinutes" ? "" : data.workingHoursTue.startMinutes2}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                    </div>
-                                    <img style={{margin:'0 5px'}} src={line}/>
-                                    <div style={{
-                                        borderRadius: '8px',
-                                        backgroundColor: '#f1f1f1',
-                                        padding:'8px 5px 10px 5px',
-                                        verticalAlign: 'center',
-                                    }}>
-                                        <input
-                                            type="text"
-                                            name="workingHoursTue-endHours2"
-                                            value={data.workingHoursTue.endHours2  === "endHours" ? "" : data.workingHoursTue.endHours2}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                        :
-                                        <input
-                                            type="text"
-                                            name="workingHoursTue-endMinutes2"
-                                            value={data.workingHoursTue.endMinutes2  === "endMinutes" ? "" : data.workingHoursTue.endMinutes2}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                    </div>
+                            <div className={styles.dayContainer}>
+                                <div className={styles.toggleSwitchBlock}>
+                                    <label className={styles.toggleSwitch}>
+                                        <input type="checkbox" checked={workingTue} onChange={() => setWorkingTue(!workingTue)} />
+                                        <span className={styles.switch} />
+                                    </label>
+                                    <h5>Вторник</h5>
                                 </div>
-                            )}
-                        </div>
-                        <div style={{display:"flex",height:'38px', justifyContent:"space-between", alignItems:'center', margin:'0 0 10px 0',paddingBottom:'10px', borderBottom:'1.5px solid #DDDDDD'}}>
-                            <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                <label className={styles.toggleSwitch}>
-                                    <input type="checkbox" checked={workingWed} onChange={() => setWorkingWed(!workingWed)} />
-                                    <span className={styles.switch} />
-                                </label>
-                                <h5 style={{margin:'0'}}>Среда</h5>
+                                {!workingTue ? null : (
+                                    <div className={styles.toggleSwitchBlock}>
+                                        <div className={styles.workingHours}>
+                                            <input
+                                                type="text"
+                                                name="workingHoursTue-startHours2"
+                                                value={data.workingHoursTue.startHours2  === "startHours" ? "" : data.workingHoursTue.startHours2}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                            :
+                                            <input
+                                                type="text"
+                                                name="workingHoursTue-startMinutes2"
+                                                value={data.workingHoursTue.startMinutes2  === "startMinutes" ? "" : data.workingHoursTue.startMinutes2}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                        </div>
+                                        <img className={styles.workingHoursLine} src={line}/>
+                                        <div className={styles.workingHours}>
+                                            <input
+                                                type="text"
+                                                name="workingHoursTue-endHours2"
+                                                value={data.workingHoursTue.endHours2  === "endHours" ? "" : data.workingHoursTue.endHours2}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                            :
+                                            <input
+                                                type="text"
+                                                name="workingHoursTue-endMinutes2"
+                                                value={data.workingHoursTue.endMinutes2  === "endMinutes" ? "" : data.workingHoursTue.endMinutes2}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                        </div>
+                                    </div>
+                                )}
                             </div>
-                            {!workingWed ? null : (
-                                <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                    <div style={{
-                                        borderRadius: '8px',
-                                        backgroundColor: '#f1f1f1',
-                                        padding:'8px 5px 10px 5px',
-                                        verticalAlign: 'center',
-                                    }}>
-                                        <input
-                                            type="text"
-                                            name="workingHoursWed-startHours3"
-                                            value={data.workingHoursWed.startHours3  === "startHours" ? "" : data.workingHoursWed.startHours3}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                        :
-                                        <input
-                                            type="text"
-                                            name="workingHoursWed-startMinutes3"
-                                            value={data.workingHoursWed.startMinutes3  === "startMinutes" ? "" : data.workingHoursWed.startMinutes3}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                    </div>
-                                    <img style={{margin:'0 5px'}} src={line}/>
-                                    <div style={{
-                                        borderRadius: '8px',
-                                        backgroundColor: '#f1f1f1',
-                                        padding:'8px 5px 10px 5px',
-                                        verticalAlign: 'center',
-                                    }}>
-                                        <input
-                                            type="text"
-                                            name="workingHoursWed-endHours3"
-                                            value={data.workingHoursWed.endHours3  === "endHours" ? "" : data.workingHoursWed.endHours3}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                        :
-                                        <input
-                                            type="text"
-                                            name="workingHoursWed-endMinutes3"
-                                            value={data.workingHoursWed.endMinutes3  === "endMinutes" ? "" : data.workingHoursWed.endMinutes3}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                    </div>
+                            <div className={styles.dayContainer}>
+                                <div className={styles.toggleSwitchBlock}>
+                                    <label className={styles.toggleSwitch}>
+                                        <input type="checkbox" checked={workingWed} onChange={() => setWorkingWed(!workingWed)} />
+                                        <span className={styles.switch} />
+                                    </label>
+                                    <h5>Среда</h5>
                                 </div>
-                            )}
-                        </div>
-                        <div style={{display:"flex",height:'38px', justifyContent:"space-between", alignItems:'center', margin:'0 0 10px 0',paddingBottom:'10px', borderBottom:'1.5px solid #DDDDDD'}}>
-                            <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                <label className={styles.toggleSwitch}>
-                                    <input type="checkbox" checked={workingThu} onChange={() => setWorkingThu(!workingThu)} />
-                                    <span className={styles.switch} />
-                                </label>
-                                <h5 style={{margin:'0'}}>Четверг</h5>
+                                {!workingWed ? null : (
+                                    <div className={styles.toggleSwitchBlock}>
+                                        <div className={styles.workingHours}>
+                                            <input
+                                                type="text"
+                                                name="workingHoursWed-startHours3"
+                                                value={data.workingHoursWed.startHours3  === "startHours" ? "" : data.workingHoursWed.startHours3}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                            :
+                                            <input
+                                                type="text"
+                                                name="workingHoursWed-startMinutes3"
+                                                value={data.workingHoursWed.startMinutes3  === "startMinutes" ? "" : data.workingHoursWed.startMinutes3}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                        </div>
+                                        <img className={styles.workingHoursLine} src={line}/>
+                                        <div className={styles.workingHours}>
+                                            <input
+                                                type="text"
+                                                name="workingHoursWed-endHours3"
+                                                value={data.workingHoursWed.endHours3  === "endHours" ? "" : data.workingHoursWed.endHours3}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                            :
+                                            <input
+                                                type="text"
+                                                name="workingHoursWed-endMinutes3"
+                                                value={data.workingHoursWed.endMinutes3  === "endMinutes" ? "" : data.workingHoursWed.endMinutes3}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                        </div>
+                                    </div>
+                                )}
                             </div>
-                            {!workingThu ? null : (
-                                <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                    <div style={{
-                                        borderRadius: '8px',
-                                        backgroundColor: '#f1f1f1',
-                                        padding:'8px 5px 10px 5px',
-                                        verticalAlign: 'center',
-                                    }}>
-                                        <input
-                                            type="text"
-                                            name="workingHoursThu-startHours4"
-                                            value={data.workingHoursThu.startHours4  === "startHours4" ? "" : data.workingHoursThu.startHours4}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                        :
-                                        <input
-                                            type="text"
-                                            name="workingHoursThu-startMinutes4"
-                                            value={data.workingHoursThu.startMinutes4  === "startMinutes4" ? "" : data.workingHoursThu.startMinutes4}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                    </div>
-                                    <img style={{margin:'0 5px'}} src={line}/>
-                                    <div style={{
-                                        borderRadius: '8px',
-                                        backgroundColor: '#f1f1f1',
-                                        padding:'8px 5px 10px 5px',
-                                        verticalAlign: 'center',
-                                    }}>
-                                        <input
-                                            type="text"
-                                            name="workingHoursThu-endHours4"
-                                            value={data.workingHoursThu.endHours4  === "endHours4" ? "" : data.workingHoursThu.endHours4}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                        :
-                                        <input
-                                            type="text"
-                                            name="workingHoursThu-endMinutes4"
-                                            value={data.workingHoursThu.endMinutes4  === "endMinutes4" ? "" : data.workingHoursThu.endMinutes4}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                    </div>
+                            <div className={styles.dayContainer}>
+                                <div className={styles.toggleSwitchBlock}>
+                                    <label className={styles.toggleSwitch}>
+                                        <input type="checkbox" checked={workingThu} onChange={() => setWorkingThu(!workingThu)} />
+                                        <span className={styles.switch} />
+                                    </label>
+                                    <h5>Четверг</h5>
                                 </div>
-                            )}
-                        </div>
-                        <div style={{display:"flex",height:'38px', justifyContent:"space-between", alignItems:'center', margin:'0 0 10px 0',paddingBottom:'10px', borderBottom:'1.5px solid #DDDDDD'}}>
-                            <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                <label className={styles.toggleSwitch}>
-                                    <input type="checkbox" checked={workingFri} onChange={() => setWorkingFri(!workingFri)} />
-                                    <span className={styles.switch} />
-                                </label>
-                                <h5 style={{margin:'0'}}>Пятница</h5>
+                                {!workingThu ? null : (
+                                    <div className={styles.toggleSwitchBlock}>
+                                        <div className={styles.workingHours}>
+                                            <input
+                                                type="text"
+                                                name="workingHoursThu-startHours4"
+                                                value={data.workingHoursThu.startHours4  === "startHours4" ? "" : data.workingHoursThu.startHours4}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                            :
+                                            <input
+                                                type="text"
+                                                name="workingHoursThu-startMinutes4"
+                                                value={data.workingHoursThu.startMinutes4  === "startMinutes4" ? "" : data.workingHoursThu.startMinutes4}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                        </div>
+                                        <img className={styles.workingHoursLine} src={line}/>
+                                        <div className={styles.workingHours}>
+                                            <input
+                                                type="text"
+                                                name="workingHoursThu-endHours4"
+                                                value={data.workingHoursThu.endHours4  === "endHours4" ? "" : data.workingHoursThu.endHours4}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                            :
+                                            <input
+                                                type="text"
+                                                name="workingHoursThu-endMinutes4"
+                                                value={data.workingHoursThu.endMinutes4  === "endMinutes4" ? "" : data.workingHoursThu.endMinutes4}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                        </div>
+                                    </div>
+                                )}
                             </div>
-                            {!workingFri ? null : (
-                                <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                    <div style={{
-                                        borderRadius: '8px',
-                                        backgroundColor: '#f1f1f1',
-                                        padding:'8px 5px 10px 5px',
-                                        verticalAlign: 'center',
-                                    }}>
-                                        <input
-                                            type="text"
-                                            name="workingHoursFri-startHours5"
-                                            value={data.workingHoursFri.startHours5  === "startHours5" ? "" : data.workingHoursFri.startHours5}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                        :
-                                        <input
-                                            type="text"
-                                            name="workingHoursFri-startMinutes5"
-                                            value={data.workingHoursFri.startMinutes5  === "startMinutes5" ? "" : data.workingHoursFri.startMinutes5}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                    </div>
-                                    <img style={{margin:'0 5px'}} src={line}/>
-                                    <div style={{
-                                        borderRadius: '8px',
-                                        backgroundColor: '#f1f1f1',
-                                        padding:'8px 5px 10px 5px',
-                                        verticalAlign: 'center',
-                                    }}>
-                                        <input
-                                            type="text"
-                                            name="workingHoursFri-endHours5"
-                                            value={data.workingHoursFri.endHours5  === "endHours5" ? "" : data.workingHoursFri.endHours5}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                        :
-                                        <input
-                                            type="text"
-                                            name="workingHoursFri-endMinutes5"
-                                            value={data.workingHoursFri.endMinutes5  === "endMinutes5" ? "" : data.workingHoursFri.endMinutes5}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                    </div>
+                            <div className={styles.dayContainer}>
+                                <div className={styles.toggleSwitchBlock}>
+                                    <label className={styles.toggleSwitch}>
+                                        <input type="checkbox" checked={workingFri} onChange={() => setWorkingFri(!workingFri)} />
+                                        <span className={styles.switch} />
+                                    </label>
+                                    <h5>Пятница</h5>
                                 </div>
-                            )}
-                        </div>
-                        <div style={{display:"flex",height:'38px', justifyContent:"space-between", alignItems:'center', margin:'0 0 10px 0',paddingBottom:'10px', borderBottom:'1.5px solid #DDDDDD'}}>
-                            <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                <label className={styles.toggleSwitch}>
-                                    <input type="checkbox" checked={workingSat} onChange={() => setWorkingSat(!workingSat)} />
-                                    <span className={styles.switch} />
-                                </label>
-                                <h5 style={{margin:'0'}}>Суббота</h5>
+                                {!workingFri ? null : (
+                                    <div className={styles.toggleSwitchBlock}>
+                                        <div className={styles.workingHours}>
+                                            <input
+                                                type="text"
+                                                name="workingHoursFri-startHours5"
+                                                value={data.workingHoursFri.startHours5  === "startHours5" ? "" : data.workingHoursFri.startHours5}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                            :
+                                            <input
+                                                type="text"
+                                                name="workingHoursFri-startMinutes5"
+                                                value={data.workingHoursFri.startMinutes5  === "startMinutes5" ? "" : data.workingHoursFri.startMinutes5}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                        </div>
+                                        <img className={styles.workingHoursLine} src={line}/>
+                                        <div className={styles.workingHours}>
+                                            <input
+                                                type="text"
+                                                name="workingHoursFri-endHours5"
+                                                value={data.workingHoursFri.endHours5  === "endHours5" ? "" : data.workingHoursFri.endHours5}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                            :
+                                            <input
+                                                type="text"
+                                                name="workingHoursFri-endMinutes5"
+                                                value={data.workingHoursFri.endMinutes5  === "endMinutes5" ? "" : data.workingHoursFri.endMinutes5}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                        </div>
+                                    </div>
+                                )}
                             </div>
-                            {!workingSat ? null : (
-                                <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                    <div style={{
-                                        borderRadius: '8px',
-                                        backgroundColor: '#f1f1f1',
-                                        padding:'8px 5px 10px 5px',
-                                        verticalAlign: 'center',
-                                    }}>
-                                        <input
-                                            type="text"
-                                            name="workingHoursSat-startHours6"
-                                            value={data.workingHoursSat.startHours6  === "startHours6" ? "" : data.workingHoursSat.startHours6}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                        :
-                                        <input
-                                            type="text"
-                                            name="workingHoursSat-startMinutes6"
-                                            value={data.workingHoursSat.startMinutes6  === "startMinutes6" ? "" : data.workingHoursSat.startMinutes6}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                    </div>
-                                    <img style={{margin:'0 5px'}} src={line}/>
-                                    <div style={{
-                                        borderRadius: '8px',
-                                        backgroundColor: '#f1f1f1',
-                                        padding:'8px 5px 10px 5px',
-                                        verticalAlign: 'center',
-                                    }}>
-                                        <input
-                                            type="text"
-                                            name="workingHoursSat-endHours6"
-                                            value={data.workingHoursSat.endHours6  === "endHours6" ? "" : data.workingHoursSat.endHours6}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                        :
-                                        <input
-                                            type="text"
-                                            name="workingHoursSat-endMinutes6"
-                                            value={data.workingHoursSat.endMinutes6  === "endMinutes6" ? "" : data.workingHoursSat.endMinutes6}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                    </div>
+                            <div className={styles.dayContainer}>
+                                <div className={styles.toggleSwitchBlock}>
+                                    <label className={styles.toggleSwitch}>
+                                        <input type="checkbox" checked={workingSat} onChange={() => setWorkingSat(!workingSat)} />
+                                        <span className={styles.switch} />
+                                    </label>
+                                    <h5>Суббота</h5>
                                 </div>
-                            )}
-                        </div>
-                        <div style={{display:"flex",height:'38px', justifyContent:"space-between", alignItems:'center'}}>
-                            <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                <label className={styles.toggleSwitch}>
-                                    <input type="checkbox" checked={workingSun} onChange={() => setWorkingSun(!workingSun)} />
-                                    <span className={styles.switch} />
-                                </label>
-                                <h5 style={{margin:'0'}}>Воскресенье</h5>
+                                {!workingSat ? null : (
+                                    <div className={styles.toggleSwitchBlock}>
+                                        <div className={styles.workingHours}>
+                                            <input
+                                                type="text"
+                                                name="workingHoursSat-startHours6"
+                                                value={data.workingHoursSat.startHours6  === "startHours6" ? "" : data.workingHoursSat.startHours6}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                            :
+                                            <input
+                                                type="text"
+                                                name="workingHoursSat-startMinutes6"
+                                                value={data.workingHoursSat.startMinutes6  === "startMinutes6" ? "" : data.workingHoursSat.startMinutes6}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                        </div>
+                                        <img className={styles.workingHoursLine} src={line}/>
+                                        <div className={styles.workingHours}>
+                                            <input
+                                                type="text"
+                                                name="workingHoursSat-endHours6"
+                                                value={data.workingHoursSat.endHours6  === "endHours6" ? "" : data.workingHoursSat.endHours6}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                            :
+                                            <input
+                                                type="text"
+                                                name="workingHoursSat-endMinutes6"
+                                                value={data.workingHoursSat.endMinutes6  === "endMinutes6" ? "" : data.workingHoursSat.endMinutes6}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                        </div>
+                                    </div>
+                                )}
                             </div>
-                            {!workingSun ? null : (
-                                <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                    <div style={{
-                                        borderRadius: '8px',
-                                        backgroundColor: '#f1f1f1',
-                                        padding:'8px 5px 10px 5px',
-                                        verticalAlign: 'center',
-                                    }}>
-                                        <input
-                                            type="text"
-                                            name="workingHoursSun-startHours7"
-                                            value={data.workingHoursSun.startHours7  === "startHours7" ? "" : data.workingHoursSun.startHours7}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                        :
-                                        <input
-                                            type="text"
-                                            name="workingHoursSun-startMinutes7"
-                                            value={data.workingHoursSun.startMinutes7  === "startMinutes7" ? "" : data.workingHoursSun.startMinutes7}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                    </div>
-                                    <img style={{margin:'0 5px'}} src={line}/>
-                                    <div style={{
-                                        borderRadius: '8px',
-                                        backgroundColor: '#f1f1f1',
-                                        padding:'8px 5px 10px 5px',
-                                        verticalAlign: 'center',
-                                    }}>
-                                        <input
-                                            type="text"
-                                            name="workingHoursSun-endHours7"
-                                            value={data.workingHoursSun.endHours7  === "endHours7" ? "" : data.workingHoursSun.endHours7}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                        :
-                                        <input
-                                            type="text"
-                                            name="workingHoursSun-endMinutes7"
-                                            value={data.workingHoursSun.endMinutes7  === "endMinutes7" ? "" : data.workingHoursSun.endMinutes7}
-                                            onChange={handleChange}
-                                            className={styles.timeInput}
-                                            placeholder={'00'}
-                                            style={{width:'17px'}}
-                                            autoComplete="off"
-                                        />
-                                    </div>
+                            <div className={styles.dayContainer}>
+                                <div className={styles.toggleSwitchBlock}>
+                                    <label className={styles.toggleSwitch}>
+                                        <input type="checkbox" checked={workingSun} onChange={() => setWorkingSun(!workingSun)} />
+                                        <span className={styles.switch} />
+                                    </label>
+                                    <h5>Воскресенье</h5>
                                 </div>
-                            )}
+                                {!workingSun ? null : (
+                                    <div className={styles.toggleSwitchBlock}>
+                                        <div className={styles.workingHours}>
+                                            <input
+                                                type="text"
+                                                name="workingHoursSun-startHours7"
+                                                value={data.workingHoursSun.startHours7  === "startHours7" ? "" : data.workingHoursSun.startHours7}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                            :
+                                            <input
+                                                type="text"
+                                                name="workingHoursSun-startMinutes7"
+                                                value={data.workingHoursSun.startMinutes7  === "startMinutes7" ? "" : data.workingHoursSun.startMinutes7}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                        </div>
+                                        <img className={styles.workingHoursLine} src={line}/>
+                                        <div className={styles.workingHours}>
+                                            <input
+                                                type="text"
+                                                name="workingHoursSun-endHours7"
+                                                value={data.workingHoursSun.endHours7  === "endHours7" ? "" : data.workingHoursSun.endHours7}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                            :
+                                            <input
+                                                type="text"
+                                                name="workingHoursSun-endMinutes7"
+                                                value={data.workingHoursSun.endMinutes7  === "endMinutes7" ? "" : data.workingHoursSun.endMinutes7}
+                                                onChange={handleChange}
+                                                className={styles.timeInput}
+                                                placeholder={'00'}
+                                                autoComplete="off"
+                                            />
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </div>
-                </div>
-                {error && <div className={styles.error_msg}>{error}</div>}
-                <button type="submit" className={styles.green_btn}>
-                    Изменить
-                </button>
-            </form>
+                    {error && <div className={styles.error_msg}>{error}</div>}
+                    <button type="submit" className={styles.green_btn}>
+                        Изменить
+                    </button>
+                </form>
+            </div>
         </div>
     );
 };

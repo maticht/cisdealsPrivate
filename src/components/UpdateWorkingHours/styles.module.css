@@ -27,6 +27,20 @@
     font-size: 20px;
     margin-top: 0;
 }
+.toggleSwitchBlock {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.toggleSwitchBlock h5{
+    margin: 0;
+}
+.workingHours {
+    border-radius: 8px;
+    background-color: #f1f1f1;
+    padding: 8px 5px 10px 5px;
+    vertical-align: center;
+}
 
 .toggleSwitch {
     position: relative;
@@ -82,6 +96,7 @@
     text-align: left;
 }
 .timeInput {
+    width: 17px;
     font-family: Arial, serif;
     outline: none;
     border: none;
@@ -147,4 +162,41 @@ textarea::placeholder{
     background-color: #000000;
     color: white;
     margin: 10px;
+}
+.container {
+    justify-content: flex-start;
+    background-color: #fff;
+    border-radius: 8px;
+    margin: 10px 10px;
+    padding: 15px 10px;
+}
+.dayContainer {
+    display: flex;
+    height: 38px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 10px 0;
+    padding-bottom: 10px;
+    border-bottom: 1.5px solid #DDDDDD;
+}
+.dayContainer:nth-child(7){
+    padding-bottom: 0;
+    margin: 0 0 0 0;
+    border-bottom: 0px solid #DDDDDD;
+}
+.workingHoursLine{
+    margin: 0 5px;
+}
+@media screen and (max-width: 320px) {
+    .dayContainer {
+        display: flex;
+        height: 75px;
+        justify-content: flex-start;
+        align-content: space-between;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .toggleSwitchBlock:nth-child(1) {
+        margin-bottom: 7px;
+    }
 }
