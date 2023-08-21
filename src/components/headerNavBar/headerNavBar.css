@@ -53,6 +53,9 @@
     background-image: url('../../img/Frame2.svg');
     background-repeat: no-repeat;
 }
+.accountBtnBlock{
+    cursor: pointer;
+}
 .logInBlock{
     display: flex;
     border: 0;

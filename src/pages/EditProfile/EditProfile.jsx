@@ -7,10 +7,6 @@ import edit from "../../img/Edit.svg";
 import arrowRight from "../../img/arrowright.svg";
 
 const useStyles = createUseStyles({
-    container: {
-        minHeight: "100vh",
-        backgroundColor: "#F1F1F1"
-    },
     allCategoriesBtn: {
         textDecoration: "none",
         color: "#454545",
@@ -73,14 +69,11 @@ const EditProfile = () => {
     return (
         <div style={{marginTop:'-15px', padding:'10px', minHeight: "100vh",
             backgroundColor: "#F1F1F1"}}>
-            <a style={{textDecoration: "none", color: "#454545", fontSize: "14px"}} onClick={handleOpenModal}>
+            <Link style={{textDecoration: "none", color: "#454545", fontSize: "14px"}} to="/">
                 <p style={{textDecoration: "none", color: "#454545", fontSize: "14px"}}>
                     {`< Назад`}
                 </p>
-            </a>
-            <div>
-                <ModalUserPage isOpen={modalOpen} onClose={handleCloseModal} />
-            </div>
+            </Link>
             <h1>Редактировать профиль</h1>
             <Link to={`/update/${UserId}`} style={{
                 textDecoration:"none",

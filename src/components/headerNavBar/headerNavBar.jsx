@@ -55,17 +55,17 @@ function HeaderNavBar() {
             <SearchExample/>
         </div>
         {!modalOpen && (
-            <div>
+            <div className={'accountBtnBlock'}>
                 {user ? (
                     <div>
-                        <a onClick={handleOpenModal} className={"logOutBlock"}>
+                        <Link to={`/ModalUserPage/${userid}`} className={"logOutBlock"}>
                             <p className={"accountText"}>
                                 {`${user.nameOrCompany}`}
                             </p>
                             {user.image.length === 0 || !user.image[0] ?
                                 <img src={noneAccBtn} className={"noneAccBtn"} alt={"noneAccBtn"}/> :
                                 <img src={user.image[0]} className={"userLogo"} alt={"userLogo"}/>}
-                        </a>
+                        </Link>
 
                     </div>
                 ) : (
@@ -76,9 +76,6 @@ function HeaderNavBar() {
                 )}
             </div>
         )}
-        <div style={{display: modalOpen ? 'block' : 'none'}}>
-            <ModalUserPage isOpen={modalOpen} onClose={handleCloseModal}/>
-        </div>
     </div>);
 }
 

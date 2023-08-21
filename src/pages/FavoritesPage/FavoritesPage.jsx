@@ -28,14 +28,11 @@ const FavoritesPage = () => {
     return (
         <div style={{marginTop:'-15px', padding:'10px', minHeight: "100vh",
             backgroundColor: "#F1F1F1"}}>
-            <a style={{textDecoration: "none", color: "#454545", fontSize: "14px"}} onClick={handleOpenModal}>
+            <Link style={{textDecoration: "none", color: "#454545", fontSize: "14px"}} to="/">
                 <p style={{textDecoration: "none", color: "#454545", fontSize: "14px"}}>
                     {`< Назад`}
                 </p>
-            </a>
-            <div>
-                <ModalUserPage isOpen={modalOpen} onClose={handleCloseModal} />
-            </div>
+            </Link>
             <h1 style={{margin:'15px 0 0 0'}}>Избранные</h1>
             <h6 style={{margin:'20px 0 15px 0'}}>{`В избранных ${users.length} специалистов`}</h6>
             <div style={{display:"flex",flexDirection:"column", justifyContent:"center"}}>
