@@ -145,3 +145,9 @@
     font-size: 14px;
     margin:-7px 0 10px 10px;
 }
+.city-link-text{
+    text-decoration: none;
+    color: #454545;
+    font-size: 14px;
+    margin: 15px 0 0 ;
+}

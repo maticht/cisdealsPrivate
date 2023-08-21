@@ -3,7 +3,6 @@ import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import styles from "./styles.module.css";
 import {createUseStyles} from "react-jss";
-import CategoriesJSON from '../../data/categories.json';
 import CitiesJSON from '../../data/cities.json';
 import arrow from '../../img/arrowright.svg';
 import arrowDown from '../../img/arrow_down=24.png';
@@ -47,7 +46,7 @@ const useStyles = createUseStyles({
         flexDirection: "row",
     },
     OneCategoryImg: {
-        width: "60px",
+        width: "22px",
         marginRight: "10px",
     },
     OneCategoryItem: {
@@ -116,19 +115,11 @@ const UpdateLocation = () => {
         rating: "",
     });
     const [error, setError] = useState("");
-    const [modalIsOpen, setModalIsOpen] = useState(false);
     const [modalServIsOpen, setModalServIsOpen] = useState(false);
     const [modalCitiesIsOpen, setModalCitiesIsOpen] = useState(false);
-    const [modalRegionIsOpen, setModalRegionIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState("");
     const [selectedServ, setSelectedServ] = useState("");
     const [selectedCities, setSelectedCities] = useState("");
-
-    const categories = CategoriesJSON.categories;
-
     const classes = useStyles();
-
-
     const navigate = useNavigate();
     const handleChange = ({ currentTarget: input }) => {
         let value = input.value;
@@ -136,18 +127,6 @@ const UpdateLocation = () => {
             value = `${value}-`;
         }
         setData({ ...data, [input.name]: value });
-    };
-
-    const handleOptionClick = (option) => {
-        setSelectedOption(option);
-        setSelectedServices([]);
-        setData({ ...data, areasActivity: option });
-        setModalIsOpen(false);
-    };
-    const handleOptionServClick = (option) => {
-        setSelectedServ(option);
-        setData({ ...data, services: option });
-        setModalServIsOpen(false);
     };
 
     const fetchUserProfile = async (userId) => {
@@ -195,7 +174,6 @@ const UpdateLocation = () => {
 
     }, []);
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(data)
@@ -215,22 +193,7 @@ const UpdateLocation = () => {
             }
         }
     };
-    const [modalOpen, setModalOpen] = useState(false);
-    const [selectedServices, setSelectedServices] = useState([]);
 
-    const handleServiceCheckboxChange = (event, optionTitle) => {
-        if (event.target.checked) {
-            setSelectedServices([...selectedServices, optionTitle]);
-        } else {
-            setSelectedServices(selectedServices.filter((title) => title !== optionTitle));
-        }
-    };
-
-    // const handleServicesConfirmation = () => {
-    //     setData({ ...data, services: selectedServices.join(", ") });
-    //     setSelectedServ(selectedServices.join(", "));
-    //     setModalServIsOpen(false);
-    // };
     const handleCitiesClick = (city) => {
         setSelectedCities(city);
         setData({ ...data, city: city });
@@ -240,12 +203,6 @@ const UpdateLocation = () => {
         setSelectedServ(region);
         setData({ ...data, region: region });
         setModalServIsOpen(false);
-    };
-
-
-    const handleOpenModal = (e) => {
-        e.preventDefault();
-        setModalIsOpen(true);
     };
 
     const handleOpenServModal = (e) => {
@@ -261,131 +218,129 @@ const UpdateLocation = () => {
 
 
     return (
-        <div className={styles.signup_container}>
-            <Link style={{textDecoration: "none", color: "#454545", fontSize: "14px"}} to="/EditProfile">
-                <p style={{textDecoration: "none", color: "#454545", fontSize: "14px", marginLeft:'10px'}}>
-                    {`< Назад`}
-                </p>
-            </Link>
-            <form className={styles.form_container} onSubmit={handleSubmit} noValidate>
-                <h1 style={{margin:"0 0 0 10px"}}>Изменение Локации</h1>
-                <div style={{justifyContent:"flex-start", backgroundColor:"#fff",borderRadius:8, margin:"10px 10px", padding:"20px 10px"}}>
-                    <div>
-                        <h5 style={{margin:"10px 0 5px 0"}}>Город</h5>
-                        <button className={styles.inputBtn} onClick={handleOpenCitiesModal} >
-                            <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
-                                <p style={{margin:'0px'}}>{selectedCities || "Выбрать город"}</p>
-                                <img style={{width:'15px'}} src={arrowDown} alt={'>'}/>
-                            </div>
-                        </button>
+        <div className={'signup_container'}>
+            <div className="main-container">
+                <Link to="/EditProfile" className="form-link">
+                    <p className="form-link-text">{'< Назад'}</p>
+                </Link>
+                <form className={'form_container'} onSubmit={handleSubmit} noValidate>
+                    <p className="form-prsnl-heading">Изменение Локации</p>
+                    <div className={styles.cityContainer}>
                         <div>
-                            {modalCitiesIsOpen && (
-                                <div className={classes.overlay}>
-                                    <div className={classes.modal}>
-                                        <p onClick={() => setModalCitiesIsOpen(false)} style={{textDecoration: "none", color: "#454545", fontSize: "14px"}}>
+                            <h5 className={styles.inputName}>Город</h5>
+                            <button className={styles.inputBtn} onClick={handleOpenCitiesModal} >
+                                <div className={styles.cityButtonContent}>
+                                    <p>{selectedCities || "Выбрать город"}</p>
+                                    <img src={arrowDown} alt={'>'}/>
+                                </div>
+                            </button>
+                            <div>
+                                {modalCitiesIsOpen && (
+                                    <div className={styles.overlay}>
+                                        <div className={styles.modal}>
+                                            <p onClick={() => setModalCitiesIsOpen(false)} className="city-link-text">
+                                                {`< Назад`}
+                                            </p>
+                                            <h2>Выберите Город</h2>
+                                            <div>
+                                                {CitiesJSON.cities.map((city) =>
+                                                    <Link className={styles.nonTextDecoration} onClick={() => {handleCitiesClick(city.title); setSelectedCities(city.title)}}>
+                                                        <div className={styles.OneCategoryItem}>
+                                                            <p key={city.title} className={styles.OneCategoryInfo}>{city.title}</p>
+                                                            <img className={styles.OneCategoryImg} src={arrow} alt={'logo'}/>
+                                                        </div>
+                                                    </Link>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                            <h5 className={styles.inputName}>Район</h5>
+                            <button className={styles.inputBtn} style={buttonStyles} onClick={handleOpenServModal} >
+                                <div className={styles.cityButtonContent}>
+                                    <p>{selectedServ || "Выбрать район"}</p>
+                                    <img src={arrowDown} alt={'>'}/>
+                                </div>
+                            </button>
+                            {modalServIsOpen && (
+                                <div className={styles.overlay}>
+                                    <div className={styles.modal}>
+                                        <p onClick={() => setModalServIsOpen(false)} className="city-link-text">
                                             {`< Назад`}
                                         </p>
-                                        <h2>Выберите Город</h2>
+                                        <h2>Выберите Район</h2>
                                         <div>
-
-                                            {CitiesJSON.cities.map((city) =>
-                                                <Link style={{textDecoration:'none'}} onClick={() => {handleCitiesClick(city.title); setSelectedCities(city.title)}}>
-                                                    <div style={{textDecoration:'none'}} className={classes.OneCategoryItem}>
-                                                        <p key={city.title} className={classes.OneCategoryInfo} style={{textDecoration:'none'}}>{city.title}</p>
-                                                        <img className={classes.OneCategoryImg} style={{width:'22px'}} src={arrow} alt={'logo'}/>
-                                                    </div>
-                                                </Link>
-                                            )}
+                                            <div style={{display:'flex', justifyContent:'center', flexDirection:'column'}}>
+                                                {selectedCities !== "" &&
+                                                    CitiesJSON.cities.find((category) => category.title === selectedCities).areas.map((option) => (
+                                                        <Link className={styles.nonTextDecoration} onClick={() => {handleRegionsClick(option.title); }}>
+                                                            <div className={styles.OneCategoryItem}>
+                                                                <p key={option.title} className={styles.OneCategoryInfo}>{option.title}</p>
+                                                                <img className={styles.OneCategoryImg} src={arrow} alt={'logo'}/>
+                                                            </div>
+                                                        </Link>
+                                                    ))}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             )}
-                        </div>
 
-                        <h5 style={{margin:"10px 0 5px 0"}}>Район</h5>
-                        <button className={styles.inputBtn} style={buttonStyles} onClick={handleOpenServModal} >
-                            <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
-                                <p style={{margin:'0px'}}>{selectedServ || "Выбрать район"}</p>
-                                <img style={{width:'15px'}} src={arrowDown} alt={'>'}/>
-                            </div>
-                        </button>
-                        {modalServIsOpen && (
-                            <div className={classes.overlay}>
-                                <div className={classes.modal}>
-                                    <p onClick={() => setModalServIsOpen(false)} style={{textDecoration: "none", color: "#454545", fontSize: "14px"}}>
-                                        {`< Назад`}
-                                    </p>
-                                    <h2>Выберите Район</h2>
-                                    <div>
-                                        <div style={{display:'flex', justifyContent:'center', flexDirection:'column'}}>
-                                            {selectedCities !== "" &&
-                                                CitiesJSON.cities.find((category) => category.title === selectedCities).areas.map((option) => (
-                                                <Link style={{textDecoration:'none'}} onClick={() => {handleRegionsClick(option.title); }}>
-                                                    <div style={{textDecoration:'none'}} className={classes.OneCategoryItem}>
-                                                        <p key={option.title} className={classes.OneCategoryInfo} style={{textDecoration:'none'}}>{option.title}</p>
-                                                        <img className={classes.OneCategoryImg} style={{width:'22px'}} src={arrow} alt={'logo'}/>
-                                                    </div>
-                                                </Link>
-                                                ))}
-                                        </div>
-                                    </div>
+                            <h5 className={styles.inputName}>Улица</h5>
+                            <input
+                                type="text"
+                                placeholder="Mokotowska"
+                                name="street"
+                                onChange={handleChange}
+                                value={data.street  === "street" ? "" : data.street}
+                                required
+                                className={styles.input}
+                            />
+                            <div className={styles.inputApartmentContainer}>
+                                <div className={styles.inputApartment}>
+                                    <h5 className={styles.inputName}>Дом</h5>
+                                    <input
+                                        type="text"
+                                        placeholder="0000"
+                                        name="house"
+                                        onChange={handleChange}
+                                        value={data.house  === "house" ? "" : data.house}
+                                        required
+                                        className={styles.rowInput}
+                                    />
+                                </div>
+                                <div className={styles.inputApartment}>
+                                    <h5 className={styles.inputName}>Квартира</h5>
+                                    <input
+                                        type="text"
+                                        placeholder="0000"
+                                        name="apartment"
+                                        onChange={handleChange}
+                                        value={data.apartment  === "apartment" ? "" : data.apartment}
+                                        required
+                                        className={styles.rowInput}
+                                    />
                                 </div>
                             </div>
-                        )}
-
-                        <h5 style={{margin:"10px 0 5px 0"}}>Улица</h5>
-                        <input
-                            type="text"
-                            placeholder="Mokotowska"
-                            name="street"
-                            onChange={handleChange}
-                            value={data.street  === "street" ? "" : data.street}
-                            required
-                            className={styles.input}
-                        />
-                        <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between', width:'100%'}}>
-                            <div style={{display:'flex', flexDirection:'column', alignItems:'flex-start'}}>
-                                <h5 style={{margin:"10px 0 5px 0"}}>Дом</h5>
-                                <input
-                                    type="text"
-                                    placeholder="0000"
-                                    name="house"
-                                    onChange={handleChange}
-                                    value={data.house  === "house" ? "" : data.house}
-                                    required
-                                    className={styles.rowInput}
-                                />
-                            </div>
-                            <div style={{display:'flex', flexDirection:'column', alignItems:'flex-start'}}>
-                                <h5 style={{margin:"10px 0 5px 0"}}>Квартира</h5>
-                                <input
-                                    type="text"
-                                    placeholder="0000"
-                                    name="apartment"
-                                    onChange={handleChange}
-                                    value={data.apartment  === "apartment" ? "" : data.apartment}
-                                    required
-                                    className={styles.rowInput}
-                                />
-                            </div>
+                            <h5 className={styles.inputName}>Почтовый индекс</h5>
+                            <input
+                                type="text"
+                                placeholder="00-000"
+                                name="zip"
+                                onChange={handleChange}
+                                value={data.zip  === "zip" ? "" : data.zip}
+                                required
+                                className={styles.input}
+                            />
                         </div>
-                        <h5 style={{margin:"10px 0 5px 0"}}>Почтовый индекс</h5>
-                        <input
-                            type="text"
-                            placeholder="00-000"
-                            name="zip"
-                            onChange={handleChange}
-                            value={data.zip  === "zip" ? "" : data.zip}
-                            required
-                            className={styles.input}
-                        />
                     </div>
-                </div>
-                {error && <div className={styles.error_msg}>{error}</div>}
-                <button type="submit" className={styles.green_btn}>
-                    Изменить
-                </button>
-            </form>
+                    {error && <div className={styles.error_msg}>{error}</div>}
+                    <button type="submit" className={styles.green_btn}>
+                        Изменить
+                    </button>
+                </form>
+            </div>
         </div>
     );
 };
