@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
-import styles from "./styles.module.css";
-import ModalUserPage from "../../pages/modalUserPage/modalUserPage";
+import "./UpdateSocial.css";
 import Facebook from "../../img/Facebook.svg";
 import LinkedIn from "../../img/LinkedIn.png";
 import Telegram from "../../img/telegram.svg";
@@ -118,137 +117,124 @@ const UpdateContactInfo = () => {
             }
         }
     };
-    const [modalOpen, setModalOpen] = useState(false);
-
-
-    const handleOpenModal = () => {
-        setModalOpen(true);
-    };
-
-    const handleCloseModal = () => {
-        setModalOpen(false);
-    };
 
     return (
-        <div className={styles.signup_container}>
-            <Link style={{textDecoration: "none", color: "#454545", fontSize: "14px"}} to="/EditProfile">
-                <p style={{textDecoration: "none", color: "#454545", fontSize: "14px", marginLeft:'10px'}}>
-                    {`< Назад`}
-                </p>
-            </Link>
-            <div>
-                <ModalUserPage isOpen={modalOpen} onClose={handleCloseModal} />
-            </div>
-            <form className={styles.form_container} onSubmit={handleSubmit} noValidate>
-                <h1 style={{margin:"0 0 0 10px"}}>Изменение контактной информации</h1>
-                <div style={{justifyContent:"flex-start", backgroundColor:"#fff",borderRadius:8, margin:"10px 10px", padding:"10px 10px"}}>
-                    <div>
-                        <h5 style={{margin:"10px 0 5px 0"}}>Социальные сети</h5>
+        <div className={'signup_container'}>
+            <div className="main-container">
+                <Link to="/EditProfile" className="form-link">
+                    <p className="form-link-text">{'< Назад'}</p>
+                </Link>
+                <form className="form_container" onSubmit={handleSubmit} noValidate>
+                    <p className="form-heading">Изменение контактной информации</p>
+                    <div className="form-content">
                         <div>
-                            <div className={styles.input} style={{width:'83vw', display:'flex', alignItems:'center', padding:'10px', marginBottom:'10px'}}>
-                                <img src={Facebook} alt="Facebook" width="23px"  height="23px" style={{marginRight:'10px',}}/>
-                                <input
-                                    type="text"
-                                    placeholder="Facebook"
-                                    name="Facebook"
-                                    onChange={handleChange}
-                                    value={data.Facebook === "Facebook" ? "" : data.Facebook}
-                                    required
-                                    className={styles.inputText}
-                                />
-                            </div>
-                            <div className={styles.input} style={{width:'83vw', display:'flex', alignItems:'center', padding:'10px', marginBottom:'10px'}}>
-                                <img src={LinkedIn} alt="LinkedIn" width="23px"  height="23px" style={{marginRight:'10px',}}/>
-                                <input
-                                    type="text"
-                                    placeholder="LinkedIn"
-                                    name="LinkedIn"
-                                    onChange={handleChange}
-                                    value={data.LinkedIn === "LinkedIn" ? "" : data.LinkedIn}
-                                    required
-                                    className={styles.inputText}
-                                />
-                            </div>
-                            <div className={styles.input} style={{width:'83vw', display:'flex', alignItems:'center', padding:'10px', marginBottom:'10px'}}>
-                                <img src={Telegram} alt="Telegram" width="23px"  height="23px" style={{marginRight:'10px',}}/>
-                                <input
-                                    type="text"
-                                    placeholder="Telegram"
-                                    name="Telegram"
-                                    onChange={handleChange}
-                                    value={data.Telegram === "Telegram" ? "" : data.Telegram}
-                                    required
-                                    className={styles.inputText}
-                                />
-                            </div>
-                            <div className={styles.input} style={{width:'83vw', display:'flex', alignItems:'center', padding:'10px', marginBottom:'10px'}}>
-                                <img src={Viber} alt="Viber" width="23px"  height="23px" style={{marginRight:'10px',}}/>
-                                <input
-                                    type="text"
-                                    placeholder="Viber"
-                                    name="Viber"
-                                    onChange={handleChange}
-                                    value={data.Viber === "Viber" ? "" : data.Viber}
-                                    required
-                                    className={styles.inputText}
-                                />
-                            </div>
-                            <div className={styles.input} style={{width:'83vw', display:'flex', alignItems:'center', padding:'10px', marginBottom:'10px'}}>
-                                <img src={TikTok} alt="TikTok" width="23px"  height="23px" style={{marginRight:'10px',}}/>
-                                <input
-                                    type="text"
-                                    placeholder="TikTok"
-                                    name="TikTok"
-                                    onChange={handleChange}
-                                    value={data.TikTok === "TikTok" ? "" : data.TikTok}
-                                    required
-                                    className={styles.inputText}
-                                />
-                            </div>
-                            <div className={styles.input} style={{width:'83vw', display:'flex', alignItems:'center', padding:'10px', marginBottom:'10px'}}>
-                                <img src={Instagram} alt="Instagram" width="23px"  height="23px" style={{marginRight:'10px',}}/>
-                                <input
-                                    type="text"
-                                    placeholder="Instagram"
-                                    name="Instagram"
-                                    onChange={handleChange}
-                                    value={data.Instagram === "Instagram" ? "" : data.Instagram}
-                                    required
-                                    className={styles.inputText}
-                                />
-                            </div>
-                            <div className={styles.input} style={{width:'83vw', display:'flex', alignItems:'center', padding:'10px', marginBottom:'10px'}}>
-                                <img src={WhatsApp} alt="WhatsApp" width="23px"  height="23px" style={{marginRight:'10px',}}/>
-                                <input
-                                    type="text"
-                                    placeholder="WhatsApp"
-                                    name="WhatsApp"
-                                    onChange={handleChange}
-                                    value={data.WhatsApp === "WhatsApp" ? "" : data.WhatsApp}
-                                    required
-                                    className={styles.inputText}
-                                />
-                            </div>
-                            <div className={styles.input} style={{width:'83vw', display:'flex', alignItems:'center', padding:'10px'}}>
-                                <img src={YouTube} alt="YouTube" width="23px"  height="23px" style={{marginRight:'10px',}}/>
-                                <input
-                                    type="text"
-                                    placeholder="YouTube"
-                                    name="YouTube"
-                                    onChange={handleChange}
-                                    value={data.YouTube === "YouTube" ? "" : data.YouTube}
-                                    required
-                                    className={styles.inputText}
-                                />
+                            <h5 className="form-sosial-label">Социальные сети</h5>
+                            <div>
+                                <div className={'input'}>
+                                    <img src={Facebook} alt="Facebook" className={'input-icon'}/>
+                                    <input
+                                        type="text"
+                                        placeholder="Facebook"
+                                        name="Facebook"
+                                        onChange={handleChange}
+                                        value={data.Facebook === "Facebook" ? "" : data.Facebook}
+                                        required
+                                        className={'inputText'}
+                                    />
+                                </div>
+                                <div className={'input'}>
+                                    <img src={LinkedIn} alt="LinkedIn" className={'input-icon'}/>
+                                    <input
+                                        type="text"
+                                        placeholder="LinkedIn"
+                                        name="LinkedIn"
+                                        onChange={handleChange}
+                                        value={data.LinkedIn === "LinkedIn" ? "" : data.LinkedIn}
+                                        required
+                                        className={'inputText'}
+                                    />
+                                </div>
+                                <div className={'input'}>
+                                    <img src={Telegram} alt="Telegram" className={'input-icon'}/>
+                                    <input
+                                        type="text"
+                                        placeholder="Telegram"
+                                        name="Telegram"
+                                        onChange={handleChange}
+                                        value={data.Telegram === "Telegram" ? "" : data.Telegram}
+                                        required
+                                        className={'inputText'}
+                                    />
+                                </div>
+                                <div className={'input'}>
+                                    <img src={Viber} alt="Viber" className={'input-icon'}/>
+                                    <input
+                                        type="text"
+                                        placeholder="Viber"
+                                        name="Viber"
+                                        onChange={handleChange}
+                                        value={data.Viber === "Viber" ? "" : data.Viber}
+                                        required
+                                        className={'inputText'}
+                                    />
+                                </div>
+                                <div className={'input'} >
+                                    <img src={TikTok} alt="TikTok" className={'input-icon'}/>
+                                    <input
+                                        type="text"
+                                        placeholder="TikTok"
+                                        name="TikTok"
+                                        onChange={handleChange}
+                                        value={data.TikTok === "TikTok" ? "" : data.TikTok}
+                                        required
+                                        className={'inputText'}
+                                    />
+                                </div>
+                                <div className={'input'}>
+                                    <img src={Instagram} alt="Instagram" className={'input-icon'}/>
+                                    <input
+                                        type="text"
+                                        placeholder="Instagram"
+                                        name="Instagram"
+                                        onChange={handleChange}
+                                        value={data.Instagram === "Instagram" ? "" : data.Instagram}
+                                        required
+                                        className={'inputText'}
+                                    />
+                                </div>
+                                <div className={'input'}>
+                                    <img src={WhatsApp} alt="WhatsApp" className={'input-icon'}/>
+                                    <input
+                                        type="text"
+                                        placeholder="WhatsApp"
+                                        name="WhatsApp"
+                                        onChange={handleChange}
+                                        value={data.WhatsApp === "WhatsApp" ? "" : data.WhatsApp}
+                                        required
+                                        className={'inputText'}
+                                    />
+                                </div>
+                                <div className={'input'}>
+                                    <img src={YouTube} alt="YouTube" className={'input-icon'}/>
+                                    <input
+                                        type="text"
+                                        placeholder="YouTube"
+                                        name="YouTube"
+                                        onChange={handleChange}
+                                        value={data.YouTube === "YouTube" ? "" : data.YouTube}
+                                        required
+                                        className={'inputText'}
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                {error && <div className={styles.error_msg}>{error}</div>}
-                <button type="submit" className={styles.green_btn}>
-                    Изменить
-                </button>
-            </form>
+                    {error && <div className={'error_msg'}>{error}</div>}
+                    <button type="submit" className={'green_btn'}>
+                        Изменить
+                    </button>
+                </form>
+            </div>
         </div>
     );
 };

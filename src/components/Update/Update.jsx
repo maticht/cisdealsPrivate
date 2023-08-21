@@ -113,13 +113,13 @@ const Update = () => {
     };
 
     return (
-        <div className={'signup_container'}>
+        <div className={'update_container'}>
             <div className="main-container">
                 <Link to="/EditProfile" className="form-link">
                     <p className="form-link-text">{'< Назад'}</p>
                 </Link>
                 <form className="form_container" onSubmit={handleSubmit} noValidate>
-                    <p className="form-heading">Изменение личной информации</p>
+                    <p className="form-prsnl-heading">Изменение личной информации</p>
                     <div className="form-content">
                         <div>
                             <h5 className="form-label">Имя или Название компании</h5>
@@ -130,7 +130,7 @@ const Update = () => {
                                 onChange={handleChange}
                                 value={data.nameOrCompany}
                                 required
-                                className="input"
+                                className="update_input"
                             />
                             <h5 className="form-label">Пароль</h5>
                             <div className="password-container">
@@ -141,7 +141,7 @@ const Update = () => {
                                     onChange={handleChange}
                                     value={data.password}
                                     required
-                                    className="input"
+                                    className="update_input"
                                 />
                                 <button onClick={handleToggleShowPassword} type="button" className="password-button">
                                     <img src={showPassword ? eye : yesEye} alt="eye" width="23px" height="23px" style={{ marginTop: '4px' }} />

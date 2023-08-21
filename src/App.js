@@ -14,7 +14,7 @@ import FavoritesPage from "./pages/FavoritesPage/FavoritesPage";
 import EditProfile from "./pages/EditProfile/EditProfile";
 import UpdateLocation from "./components/UpdateLocation/UpdateLocation";
 import UpdateImage from "./components/UpdateImage/UpdateImage";
-import UpdateContactInfo from "./components/UpdateContactInfo/Update";
+import UpdateContactInfo from "./components/UpdateContactInfo/UpdateContactInfo";
 import AddContactInfo from "./pages/AddContactInfo/AddContactInfo";
 import AddServicesScreen from "./pages/AddServicesScreen/AddServicesScreen";
 import AddImage from "./pages/AddPhoto/AddImage";

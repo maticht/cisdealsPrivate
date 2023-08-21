@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
-import styles from "./styles.module.css";
+import styles from "./UpdateWorkingHours.css";
 import {createUseStyles} from "react-jss";
-import CategoriesJSON from '../../data/categories.json';
 import line from '../../img/Line 26.svg'
 
 

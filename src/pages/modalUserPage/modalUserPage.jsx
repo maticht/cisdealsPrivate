@@ -78,7 +78,7 @@ const Modal = () => {
                             )}
                             <div className="user-details">
                                 <p className="user-greeting">Здравствуйте, </p>
-                                <p className="user-name">{`${user.nameOrCompany}`}</p>
+                                <p className="user-nameOrCompany">{`${user.nameOrCompany}`}</p>
                             </div>
                         </div>
                         <div className="copy-link-container" onClick={copyLinkToClipboard}>
