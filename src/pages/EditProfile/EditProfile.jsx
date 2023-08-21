@@ -11,7 +11,7 @@ const EditProfile = () => {
     return (
         <div className="profile-menu">
             <div className="profile-menu-block">
-                <Link to="/" className="menu-link">
+                <Link to={`/ModalUserPage/${UserId}`} className="menu-link">
                     <p className="menu-link-text">{'< Назад'}</p>
                 </Link>
                 <h1 className="menu-heading">Редактировать профиль</h1>

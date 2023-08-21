@@ -5,7 +5,6 @@ import "./Update.css";
 import eye from "../../img/showPas.svg";
 import yesEye from "../../img/24=yes.svg";
 
-
 const Update = () => {
     const {UserPage} = useParams();
     const [data, setData] = useState({
@@ -48,9 +47,8 @@ const Update = () => {
     const navigate = useNavigate();
     const handleChange = ({ currentTarget: input }) => {
         setData({ ...data, [input.name]: input.value });
-
     };
-    const fetchUserProfile = async (userId) => {
+    const fetchUserProfile = async (UserPage) => {
         try {
             const { data } = await axios.get(`http://backend.delkind.pl/user-profile/${UserPage}`);
             setUser(data.profile);
@@ -85,7 +83,6 @@ const Update = () => {
                 rating: "",
                 nameOrCompany: data.profile.nameOrCompany,
             });
-            console.log(data.profile);
         } catch (err) {
             console.log(err);
         }
@@ -93,7 +90,6 @@ const Update = () => {
 
     useEffect(() => {
         fetchUserProfile(UserPage);
-
     }, []);
 
     const handleSubmit = async (e) => {
@@ -118,18 +114,15 @@ const Update = () => {
 
     return (
         <div className={'signup_container'}>
-            <div style={{width: '100%', margin: '0 auto', maxWidth:'800px'}}>
-                <Link style={{textDecoration: "none", color: "#454545", fontSize: "14px"}} to="/EditProfile">
-                    <p style={{textDecoration: "none", color: "#454545", fontSize: "14px", marginLeft:'10px'}}>
-                        {`< Назад`}
-                    </p>
+            <div className="main-container">
+                <Link to="/EditProfile" className="form-link">
+                    <p className="form-link-text">{'< Назад'}</p>
                 </Link>
-                <form className={'form_container'} onSubmit={handleSubmit} noValidate>
-                    <h1 style={{margin:"0 0 0 10px"}}>Изменение личной информации</h1>
-                    <div style={{justifyContent:"flex-start", backgroundColor:"#fff",borderRadius:8, margin:"10px 10px", padding:"20px 10px"}}>
-
+                <form className="form_container" onSubmit={handleSubmit} noValidate>
+                    <p className="form-heading">Изменение личной информации</p>
+                    <div className="form-content">
                         <div>
-                            <h5 style={{margin:"0 0 5px 0"}}>Имя или Название компании</h5>
+                            <h5 className="form-label">Имя или Название компании</h5>
                             <input
                                 type="text"
                                 placeholder="Apple"
@@ -137,11 +130,10 @@ const Update = () => {
                                 onChange={handleChange}
                                 value={data.nameOrCompany}
                                 required
-                                className={'input'}
+                                className="input"
                             />
-
-                            <h5 style={{margin:"10px 0 5px 0"}}>Пароль</h5>
-                            <div style={{position: 'relative', display:'flex', alignItems:'center'}}>
+                            <h5 className="form-label">Пароль</h5>
+                            <div className="password-container">
                                 <input
                                     type={showPassword ? "text" : "password"}
                                     placeholder="Пароль"
@@ -149,21 +141,10 @@ const Update = () => {
                                     onChange={handleChange}
                                     value={data.password}
                                     required
-                                    className={'input'}
+                                    className="input"
                                 />
-                                <button onClick={handleToggleShowPassword} type="button" style={{
-                                    position: 'absolute',
-                                    top: '50%',
-                                    right: '10px',
-                                    transform: 'translateY(-50%)',
-                                    backgroundColor: 'transparent',
-                                    border: 'none',
-                                    fontSize: '14px',
-                                    color: '#000',
-                                    cursor: 'pointer',
-                                    padding: 0,
-                                }}>
-                                    <img src={showPassword ? eye : yesEye} alt="eye" width="23px"  height="23px" style={{marginTop:'4px'}}/>
+                                <button onClick={handleToggleShowPassword} type="button" className="password-button">
+                                    <img src={showPassword ? eye : yesEye} alt="eye" width="23px" height="23px" style={{ marginTop: '4px' }} />
                                 </button>
                             </div>
                         </div>

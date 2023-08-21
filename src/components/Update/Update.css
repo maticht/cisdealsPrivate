@@ -74,3 +74,74 @@
     color: white;
     margin: 10px;
 }
+
+.main-container {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 820px;
+}
+
+.form-link {
+    text-decoration: none;
+    color: #454545;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.form-heading {
+    margin: 5px 0 10px 10px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.form-content {
+    justify-content: flex-start;
+    background-color: #fff;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 10px 10px;
+}
+
+.form-label {
+    margin: 5px 0 5px 0;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.password-button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+    color: #000;
+    cursor: pointer;
+    padding: 0;
+}
+.form-link-text{
+    text-decoration: none;
+    color: #454545;
+    font-size: 14px;
+    margin:-7px 0 10px 10px;
+}
