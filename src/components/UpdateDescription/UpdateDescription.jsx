@@ -113,33 +113,33 @@ const UpdateDescription = () => {
 
     return (
         <div className={styles.signup_container}>
-            <Link style={{textDecoration: "none", color: "#454545", fontSize: "14px"}} to="/EditProfile">
-                <p style={{textDecoration: "none", color: "#454545", fontSize: "14px", marginLeft:'10px'}}>
-                    {`< Назад`}
-                </p>
-            </Link>
-            <form className={styles.form_container} onSubmit={handleSubmit} noValidate>
-                <div style={{justifyContent:"space-between", flexDirection:'row', display:'flex',alignItems:'center',}}>
-                    <h1 style={{margin:"0 0 10px 10px"}}>Описание</h1>
-                    <p style={{ margin: "0 10px 0 0", fontSize:'12px' }}>{data.description.length}/900</p>
-                </div>
-                <div style={{justifyContent:"flex-start", backgroundColor:"#fff",borderRadius:8, margin:"10px 10px", padding:"15px 10px 12px 10px"}}>
-                    <div>
+            <div className="main-container">
+                <Link to="/EditProfile" className="form-link">
+                    <p className="form-link-text">{'< Назад'}</p>
+                </Link>
+                <form className={styles.form_container} onSubmit={handleSubmit} noValidate>
+                    <div style={{justifyContent:"space-between", flexDirection:'row', display:'flex',alignItems:'center',}}>
+                        <p className="form-prsnl-heading">Описание</p>
+                        <p style={{ margin: "0 10px 0 0", fontSize:'12px' }}>{data.description.length}/900</p>
+                    </div>
+                    <div style={{justifyContent:"flex-start", backgroundColor:"#fff",borderRadius:8, margin:"10px 10px", padding:"10px 10px 5px 10px"}}>
+                        <div>
                         <textarea
                             placeholder="Напишите описание"
                             name="description"
                             onChange={handleChange}
                             value={data.description  === "description" ? "" : data.description}
-                            required
+                            required8
                             className={`${styles.input} ${styles["input-top"]}`}
                         />
+                        </div>
                     </div>
-                </div>
-                {error && <div className={styles.error_msg}>{error}</div>}
-                <button type="submit" className={styles.green_btn}>
-                    Изменить
-                </button>
-            </form>
+                    {error && <div className={styles.error_msg}>{error}</div>}
+                    <button type="submit" className={styles.green_btn}>
+                        Изменить
+                    </button>
+                </form>
+            </div>
         </div>
     );
 };

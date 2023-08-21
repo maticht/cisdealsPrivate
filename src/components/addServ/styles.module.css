@@ -29,7 +29,7 @@
 .input {
     outline: none;
     border: none;
-    width: 80vw;
+    width: 100%;
     padding: 15px;
     border-radius: 8px;
     background-color: #f1f1f1;
@@ -41,7 +41,7 @@
 .inputBtn {
     outline: none;
     border: none;
-    width: 88vw;
+    width: 100%;
     color: #5B5B5B;
     padding: 15px;
     border-radius: 8px;
