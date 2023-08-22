@@ -958,7 +958,7 @@ const AddServ = () => {
                                                             <h4 style={{margin: '5px 0'}}>
                                                                 {option.categoriestitle}
                                                             </h4>
-                                                            <img style={{marginTop: '5px', width:'20px'}}
+                                                            <img style={{marginTop: '5px', width:'20px', marginLeft:"10px"}}
                                                                  src={selectedCategory === option.categoriestitle ? arrowUp : arrowDown}/>
                                                         </div>
 
@@ -1062,7 +1062,7 @@ const AddServ = () => {
                                                                                                 flexDirection: 'row',
                                                                                             }}>
                                                                                                 <img
-                                                                                                    style={{marginTop: '0', width:'20px'}}
+                                                                                                    style={{marginTop: '0', width:'20px', marginLeft:"10px"}}
                                                                                                     src={selectedDownCategory === opt.title ? arrowUp : arrowDown}/>
                                                                                             </div>
                                                                                         </div>
@@ -1176,7 +1176,7 @@ const AddServ = () => {
                                                                                                                                     flexDirection: 'row',
                                                                                                                                 }}>
                                                                                                                                     <img
-                                                                                                                                        style={{marginTop: '0', width:'20px'}}
+                                                                                                                                        style={{marginTop: '0', width:'20px', marginLeft:"10px"}}
                                                                                                                                         src={selectedDownDownCategory === opt.title ? arrowUp : arrowDown}/>
                                                                                                                                 </div>
                                                                                                                             </div>
