@@ -151,3 +151,8 @@
     font-size: 14px;
     margin: 15px 0 0 ;
 }
+@media screen and (max-width: 540px) {
+    .green_btn {
+        width: calc(100% - 20px);
+    }
+}

@@ -115,3 +115,8 @@ textarea::placeholder{
     margin: 10px;
     padding: 10px 10px 5px 10px;
 }
+@media screen and (max-width: 540px) {
+    .green_btn {
+        width: calc(100% - 20px);
+    }
+}

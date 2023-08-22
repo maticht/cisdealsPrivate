@@ -184,8 +184,7 @@ textarea::placeholder{
 }
 
 .modal {
-    margin-top: -1px;
-    margin-left: 4px;
+    margin: -1px 10px 0;
     background-color: #f5f5f5;
     max-width: 800px;
     width: 100%;
@@ -249,4 +248,9 @@ textarea::placeholder{
     text-decoration: none;
     color: #000000;
     margin-right: 10px;
+}
+@media screen and (max-width: 540px) {
+    .green_btn {
+        width: calc(100% - 20px);
+    }
 }

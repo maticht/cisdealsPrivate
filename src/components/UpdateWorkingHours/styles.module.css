@@ -200,3 +200,8 @@ textarea::placeholder{
         margin-bottom: 7px;
     }
 }
+@media screen and (max-width: 540px) {
+    .green_btn {
+        width: calc(100% - 20px);
+    }
+}

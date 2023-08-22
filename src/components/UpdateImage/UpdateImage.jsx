@@ -115,7 +115,6 @@ const UpdateImage = () => {
             });
             setData({...data, image: res.data});
             localStorage.setItem("token", JSON.stringify(res));
-            // navigate("/EditProfile");
             console.log(data);
             window.location.reload();
         } catch (err) {
@@ -162,7 +161,6 @@ const UpdateImage = () => {
             const url = `http://backend.delkind.pl/update/${UserPage}`;
             const {data: res} = await axios.put(url, data);
             localStorage.setItem("token", JSON.stringify(res));
-            // navigate("/EditProfile");
             setButtonText("Добавить");
             console.log(data);
         } catch (error) {
@@ -204,56 +202,22 @@ const UpdateImage = () => {
                 <Link to="/EditProfile" className="form-link">
                     <p className="form-link-text">{'< Назад'}</p>
                 </Link>
-                <div style={{height: '100%', width: '100%'}}>
+                <div>
                     <form className={styles.form_container} onSubmit={handleSubmit} noValidate>
-                        <h1 style={{margin: "0 0 0 10px"}}>Изображения</h1>
-                        <div style={{
-                            display: "flex",
-                            flexDirection: 'column',
-                            justifyContent: "space-between",
-                            backgroundColor: "#fff",
-                            borderRadius: 8,
-                            margin: "10px",
-                            padding: "20px 15px"
-                        }}>
-                            <div style={{display: "flex", justifyContent: "space-between"}}>
+                        <p className="form-heading">Изображения</p>
+                        <div className={styles.imageContainer}>
+                            <div className={styles.firstImageCont}>
                                 <div>
                                     <label
-                                        htmlFor={user.image.length === 0 ? "image-upload" : undefined}
-                                        style={{
-                                            position: "relative",
-                                            width: "40vw",
-                                            height: "40vw",
-                                            borderRadius: "8px",
-                                            backgroundColor: "#f1f1f1",
-                                            display: "flex",
-                                            alignItems: "center",
-                                            justifyContent: "center",
-                                        }}
-                                    >
+                                        className={styles.firstImageBlock}
+                                        htmlFor={user.image.length === 0 ? "image-upload" : undefined}>
                                         {user.image.length === 0 ?
                                             selectedImage ? (
-                                                <img
-                                                    src={selectedImage}
-                                                    alt="Selected"
-                                                    style={{
-                                                        width: "100%",
-                                                        borderRadius: "8px",
-                                                        height: "100%",
-                                                        objectFit: 'cover'
-                                                    }}
-                                                />
+                                                <img src={selectedImage} alt="Selected" className={styles.userImage}/>
                                             ) : (
-                                                <>
-                                                    <img src={plus} alt="Plus"/>
-                                                </>
+                                                <img src={plus} alt="Plus"/>
                                             ) : (
-                                                <img style={{
-                                                    width: "100%",
-                                                    borderRadius: "8px",
-                                                    height: "100%",
-                                                    objectFit: 'cover'
-                                                }} src={user.image[0]} alt="Plus"/>
+                                                <img className={styles.userImage} src={user.image[0]} alt="Plus"/>
                                             )
                                         }
                                         {user.image.length === 0 && (
@@ -261,32 +225,21 @@ const UpdateImage = () => {
                                                 id="image-upload"
                                                 type="file"
                                                 onChange={handleImageChange}
-                                                style={{
-                                                    position: "absolute",
-                                                    width: "100%",
-                                                    height: "100%",
-                                                    top: 0,
-                                                    left: 0,
-                                                    opacity: 0,
-                                                    cursor: "pointer",
-                                                }}
+                                                className={styles.userImageInput}
                                             />
                                         )}
                                     </label>
                                 </div>
-                                <div style={{
-                                    width: "40vw",
-                                    height: "40vw",
-                                }}>
-                                    <h5 style={{margin: "0px 0 5px 0", fontSize: '12px'}}>Главное изображение</h5>
-                                    <p style={{fontSize: '10px', color: '#5B5B5B'}}>Желательно добавить ваше фото или
+                                <div className={styles.imageDescription}>
+                                    <h5 className={styles.imageDescriptionTitle}>Главное изображение</h5>
+                                    <p className={styles.imageDescriptionText}>Желательно добавить ваше фото или
                                         логотип. Рекомендуемое соотношение — 1:1</p>
-                                    <p style={{fontSize: '10px', color: '#5B5B5B'}}>Нажмите кнопку "Добавить", чтобы
+                                    <p className={styles.imageDescriptionText}>Нажмите кнопку "Добавить", чтобы
                                         загрузить фотографию</p>
                                 </div>
                             </div>
                             {user.image.length !== 0 && (
-                                <div style={{display: 'flex', flexDirection: 'column'}}>
+                                <div>
                                     <div style={{
                                         display: 'flex',
                                         flexDirection: 'row',
@@ -294,110 +247,43 @@ const UpdateImage = () => {
                                         justifyContent: 'space-between',
                                         margin: '20px 0 0 0'
                                     }}>
-                                        <h5 style={{margin: "0px 0 5px 0", fontSize: '12px'}}>Все изображения</h5>
-                                        <p style={{
-                                            fontSize: '12px',
-                                            color: '#000',
-                                            margin: '0'
-                                        }}>{`${user.image.length}/5`}</p>
+                                        <h5 className={styles.imageDescriptionTitle}>Все изображения</h5>
+                                        <p className={styles.allImageDescriptionNum}>{`${user.image.length}/5`}</p>
                                     </div>
-                                    <p style={{fontSize: '10px', color: '#5B5B5B', margin: '1px 0 8px 0'}}>Желательно
+                                    <p className={styles.allImageDescriptionText}>Желательно
                                         добавить фото
                                         работ, офиса или салона. Рекомендуемое соотношение — 1:1</p>
-                                    <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
+                                    <div className={styles.flexImgContainer}>
                                         {user.image.map((imageUrl, index) => (
                                             <div>
-                                                <div key={index} style={{
-                                                    width: '57px',
+                                                <div key={index} className={styles.imageСontainer} style={{
                                                     marginRight: index === user.image.length - 1 ? 0 : '6px',
-                                                    height: '57px',
-                                                    alignSelf: 'center',
-                                                    justifyContent: 'center',
-                                                    position: 'relative',
-                                                    borderRadius: '6px',
-                                                    overflow: 'hidden',
-                                                    zIndex: '1'
                                                 }}>
-                                                    <img src={imageUrl} alt={`image-${index}`} style={{
-                                                        width: '100%',
-                                                        height: '100%',
-                                                        objectFit: 'cover',
-                                                        filter: 'blur(0.4px)'
-                                                    }}/>
-                                                    <div onClick={() => removeImage(imageUrl)} style={{
-                                                        position: 'absolute',
-                                                        top: '0px',
-                                                        right: '0px',
-                                                        backgroundColor: '#F1F1F1',
-                                                        width: '20px',
-                                                        height: '20px',
-                                                        borderRadius: '0px 4px 0px 4px',
-                                                        display: 'flex',
-                                                        alignItems: 'center',
-                                                        justifyContent: 'center',
-                                                        cursor: 'pointer',
-                                                        boxShadow: '0px 1px 3px rgba(0, 0, 0, 0.1)',
-                                                        zIndex: '2',
-                                                    }}>
-                                                        <img style={{width: '12px', rotate: '45deg'}} src={plus}
+                                                    <img src={imageUrl} alt={`image-${index}`} className={styles.imageContainerImg}/>
+                                                    <div onClick={() => removeImage(imageUrl)} className={styles.removeImgButton}>
+                                                        <img src={plus}
                                                              alt="Plus"/>
                                                     </div>
                                                 </div>
-                                                <div onClick={() => moveImage(imageUrl)} style={{
-                                                    width: '57px',
-                                                    height: '20px',
-                                                    marginTop: '5px',
-                                                    display: 'flex',
-                                                    alignItems: 'center',
-                                                    justifyContent: 'center',
-                                                    borderRadius: '6px',
-                                                    backgroundColor: '#f1f1f1'
-                                                }}>
-                                                    <img style={{width: '14px'}} src={arrowUp} alt="Поднять"/>
+                                                <div onClick={() => moveImage(imageUrl)} className={styles.upImageСontainer}>
+                                                    <img src={arrowUp} alt="Поднять"/>
                                                 </div>
                                             </div>
                                         ))}
                                         {user.image.length < 5 && (
                                             <label
                                                 htmlFor="image-upload"
-                                                style={{
-                                                    position: "relative",
-                                                    width: '57px',
-                                                    height: '57px',
-                                                    marginLeft: user.image.length === 0 ? '0px' : '6px',
-                                                    borderRadius: "6px",
-                                                    backgroundColor: "#f1f1f1",
-                                                    display: "flex",
-                                                    alignItems: "center",
-                                                    justifyContent: "center",
-                                                }}
+                                                className={styles.imageAddСontainer}
                                             >
-
-                                                <div style={{
-                                                    width: '57px',
-                                                    height: '57px',
-                                                    marginLeft: '6px',
-                                                    backgroundColor: '#EFEFEF',
-                                                    display: 'flex',
-                                                    justifyContent: 'center',
-                                                    alignItems: 'center',
-                                                    borderRadius: 6
-                                                }}>
+                                                <div className={styles.adidionalImageСontainer}>
                                                     {selectedImage2 ? (
                                                         <img
                                                             src={selectedImage2}
                                                             alt="Selected"
-                                                            style={{
-                                                                width: '57px',
-                                                                height: '57px',
-                                                                marginRight: '3px',
-                                                                borderRadius: "6px",
-                                                                objectFit: 'cover',
-                                                                filter: 'blur(0.4px)'
-                                                            }}
+                                                            className={styles.imageContainerImg}
                                                         />
                                                     ) : (
-                                                        <img style={{marginRight: '6px'}} src={plus} alt="Plus"/>
+                                                        <img className={styles.imagePlus} src={plus} alt="Plus"/>
                                                     )}
 
                                                 </div>
@@ -405,15 +291,7 @@ const UpdateImage = () => {
                                                     id="image-upload"
                                                     type="file"
                                                     onChange={handleImageChange}
-                                                    style={{
-                                                        position: "absolute",
-                                                        width: "100%",
-                                                        height: "100%",
-                                                        top: 0,
-                                                        left: 0,
-                                                        opacity: 0,
-                                                        cursor: "pointer",
-                                                    }}
+                                                    className={styles.userImageInput}
                                                 />
                                             </label>
 
