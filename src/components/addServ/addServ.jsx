@@ -30,23 +30,28 @@ import Modal from '../addServ/modalCustomServ';
 
 const useStyles = createUseStyles({
     overlay: {
+        height: "100%",
+        width:'100%',
+        margin:'0 auto',
         position: "fixed",
         top: 0,
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        backgroundColor: '#f5f5f5',
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        zIndex: 9999
+        zIndex: 9999,
+        overflow: "auto"
     },
     modal: {
-        paddingLeft: '10px',
+        padding: '0 10px',
         backgroundColor: '#f5f5f5',
-        width: "100%",
+        width: "calc(100% - 10px)",
         height: "100%",
-        overflow: "auto"
+        maxWidth:'800px',
+
     },
     container: {
         minHeight: "100vh",
@@ -96,27 +101,29 @@ const useStyles = createUseStyles({
         borderBottom: "#DDDDDD solid 1px",
         textDecoration: "none",
         color: "#000000",
-        marginRight: '10px'
+        marginRight: '8px'
     },
     OneCategoryCheckItem: {
         display: "flex",
+        backgroundColor:'#fff',
         flexDirection: "column",
         justifyContent: "flex-start",
-        padding: "15px 0 20px 0",
-        borderBottom: "#DDDDDD solid 1px",
+        padding: "10px 10px 10px ",
         textDecoration: "none",
         color: "#000000",
-        marginRight: '10px'
+        borderRadius:'8px',
+        margin: '10px 0 5px 0'
     },
     OneUnderCategoryCheckItem: {
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start",
-        padding: "15px 0",
+        padding: "15px 0 10px 10px",
         borderBottom: "#DDDDDD solid 1px",
+        borderLeft: "#DDDDDD solid 1px",
         textDecoration: "none",
         color: "#000000",
-        marginLeft: '10px'
+        marginLeft: '0'
     },
     OneUnderUnderCategoryCheckItem: {
         display: "flex",
@@ -124,7 +131,7 @@ const useStyles = createUseStyles({
         justifyContent: "flex-start",
         textDecoration: "none",
         color: "#000000",
-        marginLeft: '15px'
+        marginLeft: '10px'
     },
 
 
@@ -526,12 +533,12 @@ const AddServ = () => {
                         backgroundColor: "#fff",
                         borderRadius: 8,
                         margin: "10px 10px",
-                        padding: "20px 10px"
+                        padding: "10px 10px"
                     }}>
 
                         <div>
                             <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                                <h5 style={{margin: "10px 0 5px 0"}}>Услуги</h5>
+                                <h5 style={{margin: "0px 0 5px 0"}}>Услуги</h5>
                                 <p style={{fontSize: '12px', margin: "10px 0 5px 0"}}>{`${selectedServicess.length}/3`}</p>
                             </div>
                             <button className={styles.inputBtn} onClick={handleOpenServModalServ}>
@@ -549,7 +556,7 @@ const AddServ = () => {
                                 <div className={classes.overlay}>
                                     <div className={classes.modal}>
                                         <p onClick={() => setModalServvIsOpen(false)}
-                                           style={{textDecoration: "none", color: "#454545", fontSize: "14px"}}>
+                                           style={{textDecoration: "none", color: "#454545", fontSize: "14px", cursor:'pointer'}}>
                                             {`< Назад`}
                                         </p>
                                         <div style={{
@@ -706,6 +713,7 @@ const AddServ = () => {
                                                         display: 'flex',
                                                         flexDirection: 'row',
                                                         justifyContent: 'flex-start',
+                                                        borderLeft: "#DDDDDD solid 0px",
                                                         alignItems: 'center',
                                                         marginLeft: '0',
                                                         padding: "0",
@@ -918,7 +926,7 @@ const AddServ = () => {
                                                     }} key={`${service.title}-${service.parent}`}>
                                                         <p style={{
                                                             color: '#5CA91A',
-                                                            margin: '2px 0 5px 1px',
+                                                            margin: '3px 0 4px 1px',
                                                             fontSize: '14px'
                                                         }}>{service.title}</p>
                                                         <img style={{margin: '1px 0 0 5px'}} src={greenxMark}
@@ -935,32 +943,44 @@ const AddServ = () => {
                                                 CategoriesJSON.categories.filter(category => selectedOption.includes(category.categoriestitle)).map((option, index, array) => (
                                                     <div
                                                         className={classes.OneCategoryCheckItem}
-                                                        style={{
-                                                            borderBottom: selectedCategory === option.categoriestitle || index === array.length - 1 ? 'none' : '1px solid #DDDDDD',
-                                                        }}
                                                         key={option.categoriestitle}>
                                                         <div
                                                             style={{
                                                                 display: 'flex',
                                                                 alignItems: 'center',
                                                                 flexDirection: 'row',
-                                                                justifyContent: 'space-between'
+                                                                justifyContent: 'space-between',
+                                                                cursor: 'pointer'
                                                             }}
                                                             onClick={() => handleCategoryClick(option.categoriestitle)}
                                                         >
                                                             <h4 style={{margin: '5px 0'}}>
                                                                 {option.categoriestitle}
                                                             </h4>
-                                                            <img style={{marginTop: '5px'}}
+                                                            <img style={{marginTop: '5px', width:'20px'}}
                                                                  src={selectedCategory === option.categoriestitle ? arrowUp : arrowDown}/>
                                                         </div>
 
                                                         {selectedCategory === option.categoriestitle && (
                                                             <div>
-                                                                {array.find((category) => category.categoriestitle === option.categoriestitle)
-                                                                    .subcategories.map((opt, index, array) => (
+                                                                {array
+                                                                    .find((category) => category.categoriestitle === option.categoriestitle)
+                                                                    .subcategories
+                                                                    .sort((a, b) => {
+                                                                        if (a.subsubcategories.length !== 0 && b.subsubcategories.length === 0) {
+                                                                            return -1;
+                                                                        } else if (a.subsubcategories.length === 0 && b.subsubcategories.length !== 0) {
+                                                                            return 1;
+                                                                        } else {
+                                                                            return 0;
+                                                                        }
+                                                                    })
+                                                                    .map((opt, index, array) => (
                                                                         <div
                                                                             className={classes.OneUnderCategoryCheckItem}
+                                                                            style={{
+                                                                                borderBottom: selectedCategory === opt.title || index === array.length - 1 ? 'none' : '1px solid #DDDDDD',
+                                                                            }}
                                                                             key={opt.title}>
                                                                             {opt.subsubcategories.length === 0 ? (
                                                                                 <div style={{
@@ -977,7 +997,7 @@ const AddServ = () => {
                                                                                         checked={selectedServices.some(service => service.title === opt.title && service.parent === opt.parent)}
                                                                                     />
                                                                                     <label style={{
-                                                                                        margin: '0 0 0 5px',
+                                                                                        margin: '1px 0 8px 5px',
                                                                                         width: '18px',
                                                                                         border: '#000 solid 3px',
                                                                                         height: '18px',
@@ -992,12 +1012,13 @@ const AddServ = () => {
                                                                                             ? 'white'
                                                                                             : 'black',
                                                                                         borderRadius: '6px',
+                                                                                        cursor: 'pointer'
                                                                                     }} htmlFor={opt.title}>
                                                                                         <img src={check}
                                                                                              style={{margin: '3.5px'}}/>
                                                                                     </label>
                                                                                     <label style={{
-                                                                                        margin: '0 0 0 5px',
+                                                                                        margin: '1px 0 8px 5px',
                                                                                         padding: '2px 6px',
                                                                                         borderRadius: '4px',
                                                                                     }} htmlFor={opt.title}>
@@ -1014,48 +1035,36 @@ const AddServ = () => {
                                                                                     key={opt.title}>
                                                                                     <div
                                                                                         style={{
+                                                                                            width:'100%',
                                                                                             display: 'flex',
                                                                                             alignItems: 'center',
-                                                                                            flexDirection: 'row',
-                                                                                            justifyContent: 'space-between'
+                                                                                            flexDirection: 'column',
+
                                                                                         }}
                                                                                         onClick={() => handleDownCategoryClick(opt.title)}
                                                                                     >
-                                                                                        <p style={{margin: '5px 0'}}>
-                                                                                            {opt.title}
-                                                                                        </p>
                                                                                         <div style={{
+                                                                                            width:'100%',
                                                                                             display: 'flex',
                                                                                             alignItems: 'center',
                                                                                             flexDirection: 'row',
+                                                                                            justifyContent: 'space-between',
+                                                                                            cursor: 'pointer'
                                                                                         }}>
-                                                                                            {selectedDownCategory === opt.title ?
-                                                                                                <button style={{
-                                                                                                    display: 'flex',
-                                                                                                    border: 'none',
-                                                                                                    outline: 'none',
-                                                                                                    justifyContent: 'center',
-                                                                                                    alignItems: 'center',
-                                                                                                    alignSelf: 'center',
-                                                                                                    padding: '12px 12px 12px 12px',
-                                                                                                    backgroundColor: '#000000',
-                                                                                                    borderRadius: '8px',
-                                                                                                    color: '#fff',
-                                                                                                    width: '100%',
-                                                                                                    fontWeight: 'bold',
-                                                                                                    fontSize: '10px',
-                                                                                                    cursor: 'pointer',
-                                                                                                    margin: '10px 15px 0 0'
-                                                                                                }} onClick={() => handleModalOpen(selectedDownCategory)}>
-                                                                                                    Добавить категорию в {selectedDownCategory}
-                                                                                                </button>
-                                                                                                : null
-                                                                                            }
-                                                                                            <Modal isOpen={modalOpen} onClose={handleCloseModal} handleModalResult={handleModalResult} parentCategory={parentCategory} selectedUser={selectedUser}/>
-                                                                                            <img
-                                                                                                style={{marginTop: '5px'}}
-                                                                                                src={selectedDownDownCategory === opt.title ? arrowUp : arrowDown}/>
+                                                                                            <p style={{margin: '0 0 5px 0', fontWeight:'500'}}>
+                                                                                                {opt.title}
+                                                                                            </p>
+                                                                                            <div style={{
+                                                                                                display: 'flex',
+                                                                                                alignItems: 'center',
+                                                                                                flexDirection: 'row',
+                                                                                            }}>
+                                                                                                <img
+                                                                                                    style={{marginTop: '0', width:'20px'}}
+                                                                                                    src={selectedDownCategory === opt.title ? arrowUp : arrowDown}/>
+                                                                                            </div>
                                                                                         </div>
+
                                                                                     </div>
 
                                                                                     {selectedDownCategory === opt.title && (
@@ -1064,7 +1073,20 @@ const AddServ = () => {
                                                                                             borderLeft: "#DDDDDD solid 0px",
                                                                                         }}>
                                                                                             {array.find((category) => category.title === opt.title)
-                                                                                                .subsubcategories.map((opt, index, array) => (
+                                                                                                .subsubcategories.sort((a, b) => {
+                                                                                                    const aHasSubsubsub = Array.isArray(a.subsubsubcategories);
+                                                                                                    const bHasSubsubsub = Array.isArray(b.subsubsubcategories);
+                                                                                                    if (aHasSubsubsub && !bHasSubsubsub) {
+                                                                                                        return -1;
+                                                                                                    } else if (!aHasSubsubsub && bHasSubsubsub) {
+                                                                                                        return 1;
+                                                                                                    } else if (aHasSubsubsub && bHasSubsubsub) {
+                                                                                                        if (a.subsubsubcategories.length !== b.subsubsubcategories.length) {
+                                                                                                            return a.subsubsubcategories.length - b.subsubsubcategories.length;
+                                                                                                        }
+                                                                                                    }
+                                                                                                    return 0;
+                                                                                                }).map((opt, index, array) => (
                                                                                                     <div
                                                                                                         className={classes.OneUnderCategoryCheckItem}
                                                                                                         style={{borderBottom: selectedDownCategory === opt.title || index === array.length - 1 ? 'none' : '1px solid #DDDDDD',}}
@@ -1085,7 +1107,7 @@ const AddServ = () => {
                                                                                                                 />
                                                                                                                 <label
                                                                                                                     style={{
-                                                                                                                        margin: '0 0 0 5px',
+                                                                                                                        margin: '0 0 7px 0',
                                                                                                                         width: '18px',
                                                                                                                         border: '#000 solid 3px',
                                                                                                                         height: '18px',
@@ -1100,6 +1122,7 @@ const AddServ = () => {
                                                                                                                             ? 'white'
                                                                                                                             : 'black',
                                                                                                                         borderRadius: '6px',
+                                                                                                                        cursor: 'pointer'
                                                                                                                     }}
                                                                                                                     htmlFor={opt.title}>
                                                                                                                     <img
@@ -1108,7 +1131,7 @@ const AddServ = () => {
                                                                                                                 </label>
                                                                                                                 <label
                                                                                                                     style={{
-                                                                                                                        margin: '0 0 0 5px',
+                                                                                                                        margin: '0 0 7px 5px',
                                                                                                                         padding: '2px 6px',
                                                                                                                         borderRadius: '4px',
                                                                                                                     }}
@@ -1121,7 +1144,7 @@ const AddServ = () => {
                                                                                                                     <div
                                                                                                                         className={classes.OneUnderUnderCategoryCheckItem}
                                                                                                                         style={{
-                                                                                                                            margin: '5px 0',
+                                                                                                                            margin: '2px 0',
                                                                                                                             borderBottom: 'none',
                                                                                                                         }}
                                                                                                                         key={opt.title}>
@@ -1129,46 +1152,31 @@ const AddServ = () => {
                                                                                                                             style={{
                                                                                                                                 display: 'flex',
                                                                                                                                 alignItems: 'center',
-                                                                                                                                flexDirection: 'row',
+                                                                                                                                flexDirection: 'column',
                                                                                                                                 justifyContent: 'space-between'
                                                                                                                             }} onClick={() => handleDownDownCategoryClick(opt.title)}
                                                                                                                         >
-                                                                                                                            <p style={{margin: '5px 0'}}>
-                                                                                                                                {opt.title}
-                                                                                                                            </p>
                                                                                                                             <div style={{
+                                                                                                                                width:'100%',
                                                                                                                                 display: 'flex',
                                                                                                                                 alignItems: 'center',
                                                                                                                                 flexDirection: 'row',
+                                                                                                                                justifyContent: 'space-between',
+                                                                                                                                cursor: 'pointer'
                                                                                                                             }}>
-                                                                                                                                {selectedDownDownCategory === opt.title ?
-                                                                                                                                    <button style={{
-                                                                                                                                        display: 'flex',
-                                                                                                                                        border: 'none',
-                                                                                                                                        outline: 'none',
-                                                                                                                                        justifyContent: 'center',
-                                                                                                                                        alignItems: 'center',
-                                                                                                                                        alignSelf: 'center',
-                                                                                                                                        padding: '12px 12px 12px 12px',
-                                                                                                                                        backgroundColor: '#000000',
-                                                                                                                                        borderRadius: '8px',
-                                                                                                                                        color: '#fff',
-                                                                                                                                        width: '100%',
-                                                                                                                                        fontWeight: 'bold',
-                                                                                                                                        fontSize: '10px',
-                                                                                                                                        cursor: 'pointer',
-                                                                                                                                        margin: '10px 15px 0 0'
-                                                                                                                                    }} onClick = {()=> handleModalOpen(selectedDownDownCategory)}>
-                                                                                                                                        Добавить категорию в {selectedDownDownCategory}
-                                                                                                                                    </button>
-                                                                                                                                    : null
-                                                                                                                                }
-                                                                                                                                <Modal isOpen={modalOpen} onClose={handleCloseModal} handleModalResult={handleModalResult} parentCategory={parentCategory}/>
-                                                                                                                                <img
-                                                                                                                                    style={{marginTop: '5px'}}
-                                                                                                                                    src={selectedDownDownCategory === opt.title ? arrowUp : arrowDown}/>
+                                                                                                                                <p style={{margin: '0 0 7px 0', fontWeight:'500'}}>
+                                                                                                                                    {opt.title}
+                                                                                                                                </p>
+                                                                                                                                <div style={{
+                                                                                                                                    display: 'flex',
+                                                                                                                                    alignItems: 'center',
+                                                                                                                                    flexDirection: 'row',
+                                                                                                                                }}>
+                                                                                                                                    <img
+                                                                                                                                        style={{marginTop: '0', width:'20px'}}
+                                                                                                                                        src={selectedDownDownCategory === opt.title ? arrowUp : arrowDown}/>
+                                                                                                                                </div>
                                                                                                                             </div>
-
                                                                                                                         </div>
 
                                                                                                                         {selectedDownDownCategory === opt.title && (
@@ -1178,7 +1186,7 @@ const AddServ = () => {
                                                                                                                                         <div
                                                                                                                                             className={classes.OneUnderCategoryCheckItem}
                                                                                                                                             style={{
-                                                                                                                                                margin: '5px 0 0 5px',
+                                                                                                                                                margin: '0 0 0 0',
                                                                                                                                                 display: 'flex',
                                                                                                                                                 flexDirection: 'row',
                                                                                                                                                 alignItems: 'center',
@@ -1195,7 +1203,7 @@ const AddServ = () => {
                                                                                                                                             />
                                                                                                                                             <label
                                                                                                                                                 style={{
-                                                                                                                                                    margin: '0 0 0 5px',
+                                                                                                                                                    margin: '0 0 7px 5px',
                                                                                                                                                     width: '18px',
                                                                                                                                                     border: '#000 solid 3px',
                                                                                                                                                     height: '18px',
@@ -1210,6 +1218,7 @@ const AddServ = () => {
                                                                                                                                                         ? 'white'
                                                                                                                                                         : 'black',
                                                                                                                                                     borderRadius: '6px',
+                                                                                                                                                    cursor: 'pointer'
                                                                                                                                                 }}
                                                                                                                                                 htmlFor={opt.title}>
                                                                                                                                                 <img
@@ -1218,7 +1227,7 @@ const AddServ = () => {
                                                                                                                                             </label>
                                                                                                                                             <label
                                                                                                                                                 style={{
-                                                                                                                                                    margin: '0 0 0 5px',
+                                                                                                                                                    margin: '0 0 7px 5px',
                                                                                                                                                     padding: '2px 6px',
                                                                                                                                                     borderRadius: '4px',
                                                                                                                                                 }}
@@ -1227,6 +1236,37 @@ const AddServ = () => {
                                                                                                                                             </label>
                                                                                                                                         </div>
                                                                                                                                     ))}
+                                                                                                                                <div style={{
+                                                                                                                                    width:'calc(100% + 10px)',
+                                                                                                                                    display: 'flex',
+                                                                                                                                    alignItems: 'center',
+                                                                                                                                    flexDirection: 'row',
+                                                                                                                                    alignSelf:'flex-start'
+                                                                                                                                }}>
+                                                                                                                                    {selectedDownDownCategory === opt.title ?
+                                                                                                                                        <button style={{
+                                                                                                                                            display: 'flex',
+                                                                                                                                            border: '2px solid #000',
+                                                                                                                                            outline: 'none',
+                                                                                                                                            justifyContent: 'center',
+                                                                                                                                            alignItems: 'center',
+                                                                                                                                            alignSelf: 'center',
+                                                                                                                                            padding: '13px 12px 13px 12px',
+                                                                                                                                            backgroundColor: '#fff',
+                                                                                                                                            borderRadius: '10px',
+                                                                                                                                            color: '#000',
+                                                                                                                                            width: '100%',
+                                                                                                                                            fontWeight: 'bold',
+                                                                                                                                            fontSize: '14px',
+                                                                                                                                            cursor: 'pointer',
+                                                                                                                                            margin: '10px 15px 0px 0'
+                                                                                                                                        }} onClick = {()=> handleModalOpen(selectedDownDownCategory)}>
+                                                                                                                                            Добавить свою категорию
+                                                                                                                                        </button>
+                                                                                                                                        : null
+                                                                                                                                    }
+                                                                                                                                    <Modal isOpen={modalOpen} onClose={handleCloseModal} handleModalResult={handleModalResult} parentCategory={parentCategory}/>
+                                                                                                                                </div>
                                                                                                                             </div>
                                                                                                                         )}
 
@@ -1237,6 +1277,37 @@ const AddServ = () => {
                                                                                                     </div>))}
                                                                                         </div>
                                                                                     )}
+                                                                                    <div style={{
+                                                                                        width:'calc(100% + 10px)',
+                                                                                        display: 'flex',
+                                                                                        alignItems: 'center',
+                                                                                        flexDirection: 'row',
+                                                                                        alignSelf:'flex-start'
+                                                                                    }}>
+                                                                                        {selectedDownCategory === opt.title ?
+                                                                                            <button style={{
+                                                                                                display: 'flex',
+                                                                                                border: '2px solid #000',
+                                                                                                outline: 'none',
+                                                                                                justifyContent: 'center',
+                                                                                                alignItems: 'center',
+                                                                                                alignSelf: 'center',
+                                                                                                padding: '13px 12px 13px 12px',
+                                                                                                backgroundColor: '#fff',
+                                                                                                borderRadius: '10px',
+                                                                                                color: '#000',
+                                                                                                width: '100%',
+                                                                                                fontWeight: 'bold',
+                                                                                                fontSize: '14px',
+                                                                                                cursor: 'pointer',
+                                                                                                margin: '10px 15px 0px 0'
+                                                                                            }} onClick={() => handleModalOpen(selectedDownCategory)}>
+                                                                                                Добавить свою категорию
+                                                                                            </button>
+                                                                                            : null
+                                                                                        }
+                                                                                        <Modal isOpen={modalOpen} onClose={handleCloseModal} handleModalResult={handleModalResult} parentCategory={parentCategory} selectedUser={selectedUser}/>
+                                                                                    </div>
                                                                                 </div>
                                                                             )
                                                                             }

@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import {createUseStyles} from 'react-jss';
+import plus from "../../img/Plus.svg";
+import styles from "../UpdateImage/styles.module.css";
 
 const useStyles = createUseStyles({
     modalWrapper: {
@@ -11,19 +13,20 @@ const useStyles = createUseStyles({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'rgba(200, 200, 200, 0.1)',
+        backgroundColor: 'rgba(79,79,79,0.1)',
         zIndex: 1000,
     },
     modalContent: {
         background: '#fff',
-        padding: '20px',
-        borderRadius: '8px',
+        padding: '15px',
+        borderRadius: '10px',
         maxWidth: '100%',
-        boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)',
     },
     modalTitle: {
+        width:'70%',
         fontSize: '18px',
         fontWeight: 'bold',
+        marginTop:'0',
         marginBottom: '10px',
     },
     input: {
@@ -32,7 +35,7 @@ const useStyles = createUseStyles({
         alignItems: 'center',
         alignSelf: 'center',
         border: "none",
-        width: "96.4%",
+        width: "calc(100% - 15px)",
         padding: "15px",
         paddingRight: "0px",
         borderRadius: "8px",
@@ -57,6 +60,12 @@ const useStyles = createUseStyles({
         cursor: 'pointer',
         margin: '10px 0 0'
     },
+    removeImgButton: {
+        width: '25px',
+        transform: 'rotate(45deg)',
+        cursor:'pointer'
+    }
+
 });
 
 const Modal = ({isOpen, onClose, handleModalResult, parentCategory, selectedUser}) => {
@@ -87,7 +96,10 @@ const Modal = ({isOpen, onClose, handleModalResult, parentCategory, selectedUser
     return (
         <div className={classes.modalWrapper} onClick={handleClose}>
             <div className={classes.modalContent} onClick={(e) => e.stopPropagation()}>
-                <p className={classes.modalTitle}>Добавьте свою подкатегорию в категорию "{parentCategory}"</p>
+                <div style={{display:'flex', flexDirection:'row', alignItems:"flex-start", justifyContent:'space-between'}}>
+                    <p className={classes.modalTitle}>Добавьте свою подкатегорию в категорию "{parentCategory}"</p>
+                    <img onClick={handleClose} className={classes.removeImgButton} src={plus} alt="Plus"/>
+                </div>
                 <input
                     type="text"
                     onChange={handleChange}
