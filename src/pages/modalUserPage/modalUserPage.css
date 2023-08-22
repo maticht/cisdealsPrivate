@@ -6,11 +6,11 @@
     justify-content: space-between;
     flex-direction: column;
     margin: 0 auto;
-    padding: 10px 10px 0;
+    padding: 0px 10px 0;
 }
 
 .header-link {
-    margin-top: 20px;
+    margin-top: 25px;
     text-decoration: none;
     color: #454545;
     font-size: 14px;

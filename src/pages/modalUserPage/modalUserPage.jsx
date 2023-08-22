@@ -68,7 +68,9 @@ const Modal = () => {
         <div className={classes.container}>
             <div className="header-container">
                 <div>
-                    <Link className="header-link" to="/">˂ Главная</Link>
+                    <Link to={`/`} className="menu-link">
+                        <p className="menu-link-text">{'< Главная'}</p>
+                    </Link>
                     <div className="user-info-wrapper">
                         <div className="user-info">
                             {!user.image || user.image.length === 0 ? (

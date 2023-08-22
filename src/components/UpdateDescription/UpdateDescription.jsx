@@ -118,18 +118,18 @@ const UpdateDescription = () => {
                     <p className="form-link-text">{'< Назад'}</p>
                 </Link>
                 <form className={styles.form_container} onSubmit={handleSubmit} noValidate>
-                    <div style={{justifyContent:"space-between", flexDirection:'row', display:'flex',alignItems:'center',}}>
+                    <div className={styles.formHeader}>
                         <p className="form-prsnl-heading">Описание</p>
-                        <p style={{ margin: "0 10px 0 0", fontSize:'12px' }}>{data.description.length}/900</p>
+                        <p className={styles.formCharacterCount}>{data.description.length}/900</p>
                     </div>
-                    <div style={{justifyContent:"flex-start", backgroundColor:"#fff",borderRadius:8, margin:"10px 10px", padding:"10px 10px 5px 10px"}}>
+                    <div className={styles.formContent}>
                         <div>
                         <textarea
                             placeholder="Напишите описание"
                             name="description"
                             onChange={handleChange}
                             value={data.description  === "description" ? "" : data.description}
-                            required8
+                            required
                             className={`${styles.input} ${styles["input-top"]}`}
                         />
                         </div>
