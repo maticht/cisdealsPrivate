@@ -72,7 +72,7 @@
 .green_btn {
     background-color: #000000;
     color: white;
-    margin: 10px;
+    margin: 5px 10px;
 }
 
 .main-container {
@@ -98,7 +98,7 @@
     justify-content: flex-start;
     background-color: #fff;
     border-radius: 8px;
-    margin: 20px 10px 10px;
+    margin: 20px 10px 5px;
     padding: 10px 10px;
 }
 

@@ -3,7 +3,6 @@
     min-height: 100%;
     flex-direction: column;
     background-color: #f5f5f5;
-    padding-left: 3px;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -15,7 +14,7 @@
 }
 
 .form_container {
-    width: calc(100% - 25px);
+    width: calc(100%);
     display: flex;
     height: 100%;
     flex-direction: column;
@@ -45,7 +44,7 @@
     border: none;
     width: 100%;
     color: #5B5B5B;
-    padding: 15px;
+    padding: 5px 0 15px;
     border-radius: 8px;
     background-color: #f1f1f1;
     margin: 5px 0;

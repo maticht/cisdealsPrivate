@@ -161,7 +161,7 @@ textarea::placeholder{
 .green_btn {
     background-color: #000000;
     color: white;
-    margin: 10px;
+    margin: 5px;
 }
 .container {
     justify-content: flex-start;

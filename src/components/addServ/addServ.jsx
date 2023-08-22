@@ -48,7 +48,7 @@ const useStyles = createUseStyles({
     modal: {
         padding: '0 10px',
         backgroundColor: '#f5f5f5',
-        width: "calc(100% - 10px)",
+        width: "calc(100% - 20px)",
         height: "100%",
         maxWidth:'800px',
 
@@ -112,7 +112,7 @@ const useStyles = createUseStyles({
         textDecoration: "none",
         color: "#000000",
         borderRadius:'8px',
-        margin: '10px 0 5px 0'
+        margin: '5px 0 5px 0'
     },
     OneUnderCategoryCheckItem: {
         display: "flex",
@@ -516,7 +516,7 @@ const AddServ = () => {
 
 
     return (
-        <div className={styles.signup_container} style={{zIndex: 1, minHeight: '100vh'}}>
+        <div className={styles.signup_container} style={{zIndex: 1, minHeight: '100vh',width:"100%"}}>
             <div className="main-container">
                 <Link style={{textDecoration: "none", color: "#454545", fontSize: "14px"}} to="/EditProfile">
                     <p style={{textDecoration: "none", color: "#454545", fontSize: "14px", marginLeft: '10px'}}>
@@ -678,7 +678,7 @@ const AddServ = () => {
                         justifyContent: "flex-start",
                         backgroundColor: "#fff",
                         borderRadius: 8,
-                        margin: "10px 11px",
+                        margin: "10px 11px 15px",
                         padding: "15px 10px 5px 10px"
                     }}>
                         <div style={{display: serv.length === 0 ? 'none' : null, marginBottom: '-10px'}}>
@@ -950,7 +950,8 @@ const AddServ = () => {
                                                                 alignItems: 'center',
                                                                 flexDirection: 'row',
                                                                 justifyContent: 'space-between',
-                                                                cursor: 'pointer'
+                                                                cursor: 'pointer',
+                                                                margin:'0 0 3px 0'
                                                             }}
                                                             onClick={() => handleCategoryClick(option.categoriestitle)}
                                                         >
@@ -1049,7 +1050,8 @@ const AddServ = () => {
                                                                                             alignItems: 'center',
                                                                                             flexDirection: 'row',
                                                                                             justifyContent: 'space-between',
-                                                                                            cursor: 'pointer'
+                                                                                            cursor: 'pointer',
+                                                                                            margin:'0 0 5px 0'
                                                                                         }}>
                                                                                             <p style={{margin: '0 0 5px 0', fontWeight:'500'}}>
                                                                                                 {opt.title}
@@ -1162,7 +1164,8 @@ const AddServ = () => {
                                                                                                                                 alignItems: 'center',
                                                                                                                                 flexDirection: 'row',
                                                                                                                                 justifyContent: 'space-between',
-                                                                                                                                cursor: 'pointer'
+                                                                                                                                cursor: 'pointer',
+                                                                                                                                margin:'0 0 3px 0'
                                                                                                                             }}>
                                                                                                                                 <p style={{margin: '0 0 7px 0', fontWeight:'500'}}>
                                                                                                                                     {opt.title}
@@ -1335,7 +1338,7 @@ const AddServ = () => {
                                                 fontWeight: 'bold',
                                                 fontSize: '14px',
                                                 cursor: 'pointer',
-                                                margin: '15px 0'
+                                                margin: '10px 0'
                                             }} onClick={handleServicesConfirmation}>Подтвердить
                                             </button>
                                         </div>

@@ -19,11 +19,12 @@ const useStyles = createUseStyles({
     modalContent: {
         background: '#fff',
         padding: '15px',
+        margin:'0 10px',
         borderRadius: '10px',
         maxWidth: '100%',
     },
     modalTitle: {
-        width:'70%',
+        width:'90%',
         fontSize: '18px',
         fontWeight: 'bold',
         marginTop:'0',
