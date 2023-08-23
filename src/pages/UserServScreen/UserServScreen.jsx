@@ -253,90 +253,91 @@ const UserServScreen = () => {
 
     return (
         <div className={styles.signup_container} style={{minHeight:'100vh'}}>
-            <Link style={{textDecoration: "none", color: "#454545", fontSize: "14px"}} to={`/addServ/${UserPage}`}>
-                <p style={{textDecoration: "none", color: "#454545", fontSize: "14px", marginLeft:'10px'}}>
-                    {`< Назад`}
-                </p>
-            </Link>
-            <form className={styles.form_container} onSubmit={handleSubmit} noValidate>
-                <h1 style={{margin:"0 0 10px 10px"}}>{`${serv.title}`}</h1>
-                <div style={{justifyContent:"flex-start", backgroundColor:"#fff",borderRadius:8, margin:"10px 10px", padding:"5px 10px 10px 10px"}}>
-                    <div>
-                        <h5 style={{margin:"10px 0 5px 0"}}>Цена</h5>
-                        <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                            <input
-                                type="text"
-                                placeholder="Введите цену"
-                                name="prise"
-                                onChange={handleChange}
-                                value={data.prise}
-                                required
-                                className={styles.input}
-                                style={{width:'100%'}}
-                            />
-                            <p style={{margin:'0 0 0 8px', fontSize:'15px'}}>zł</p>
-                        </div>
-                        {/*<h5 style={{margin:"10px 0 5px 0"}}>Тип цены</h5>*/}
-                        {/*<div className="rowTimeInput">*/}
-                        {/*    <div className={`${styles.servInput}`} onClick={toggleMenu}>*/}
-                        {/*        <p style={{color:'#666', fontWeight:'400', fontSize:'15px', margin:'0'}}>{"Выберите значение"}</p>*/}
-                        {/*    </div>*/}
-                        {/*    {isOpen && (*/}
-                        {/*        <div className={`${styles.servInput}`}>*/}
-                        {/*            <div>*/}
-                        {/*                <p style={{color:'#000', fontWeight:'400', fontSize:'15px', margin:'0 0 15px 0'}}>{"Фиксированная"}</p>*/}
-                        {/*            </div>*/}
-                        {/*            <div>*/}
-                        {/*                <p style={{color:'#000', fontWeight:'400', fontSize:'15px', margin:'0'}}>{"Договорная"}</p>*/}
+            <div className="main-container">
+                <Link style={{textDecoration: "none", color: "#454545", fontSize: "14px"}} to={`/addServ/${UserPage}`}>
+                    <p style={{textDecoration: "none", color: "#454545", fontSize: "14px", marginLeft:'10px'}}>
+                        {`< Назад`}
+                    </p>
+                </Link>
+                <form className={styles.form_container} onSubmit={handleSubmit} noValidate>
+                    <h1 style={{margin:"0 0 10px 10px"}}>{`${serv.title}`}</h1>
+                    <div style={{justifyContent:"flex-start", backgroundColor:"#fff",borderRadius:8, margin:"10px 10px", padding:"5px 10px 10px 10px"}}>
+                        <div>
+                            <h5 style={{margin:"10px 0 5px 0"}}>Цена</h5>
+                            <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
+                                <input
+                                    type="text"
+                                    placeholder="Введите цену"
+                                    name="prise"
+                                    onChange={handleChange}
+                                    value={data.prise}
+                                    required
+                                    className={styles.input}
+                                    style={{width:'100%'}}
+                                />
+                                <p style={{margin:'0 0 0 8px', fontSize:'15px'}}>zł</p>
+                            </div>
+                            {/*<h5 style={{margin:"10px 0 5px 0"}}>Тип цены</h5>*/}
+                            {/*<div className="rowTimeInput">*/}
+                            {/*    <div className={`${styles.servInput}`} onClick={toggleMenu}>*/}
+                            {/*        <p style={{color:'#666', fontWeight:'400', fontSize:'15px', margin:'0'}}>{"Выберите значение"}</p>*/}
+                            {/*    </div>*/}
+                            {/*    {isOpen && (*/}
+                            {/*        <div className={`${styles.servInput}`}>*/}
+                            {/*            <div>*/}
+                            {/*                <p style={{color:'#000', fontWeight:'400', fontSize:'15px', margin:'0 0 15px 0'}}>{"Фиксированная"}</p>*/}
+                            {/*            </div>*/}
+                            {/*            <div>*/}
+                            {/*                <p style={{color:'#000', fontWeight:'400', fontSize:'15px', margin:'0'}}>{"Договорная"}</p>*/}
 
-                        {/*            </div>*/}
-                        {/*        </div>*/}
-                        {/*    )}*/}
-                        {/*</div>*/}
-                        <h5 style={{margin:"10px 0 5px 0"}}>Время исполнения услуги</h5>
-                        <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between', width:'100%'}}>
-                            <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                <input
-                                    type="text"
-                                    placeholder="00"
-                                    name="minutes"
-                                    onChange={handleChange}
-                                    value={data.minutes}
-                                    required
-                                    className={styles.rowTimeInput}
-                                />
-                                <p style={{margin:'0 0 0 8px', fontSize:'13px'}}>Минут</p>
+                            {/*            </div>*/}
+                            {/*        </div>*/}
+                            {/*    )}*/}
+                            {/*</div>*/}
+                            <h5 style={{margin:"10px 0 5px 0"}}>Время исполнения услуги</h5>
+                            <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between', width:'100%'}}>
+                                <div className={styles.TimeBlock}>
+                                    <input
+                                        type="text"
+                                        placeholder="00"
+                                        name="minutes"
+                                        onChange={handleChange}
+                                        value={data.minutes}
+                                        required
+                                        className={styles.rowTimeInput}
+                                    />
+                                    <p className={styles.TimeBlockText} >Минут</p>
+                                </div>
+                                <div className={styles.TimeBlock}>
+                                    <input
+                                        type="text"
+                                        placeholder="00"
+                                        name="hours"
+                                        onChange={handleChange}
+                                        value={data.hours}
+                                        required
+                                        className={styles.rowTimeInput}
+                                    />
+                                    <p className={styles.TimeBlockText}>Часов</p>
+                                </div>
+                                <div className={styles.TimeBlock}>
+                                    <input
+                                        type="text"
+                                        placeholder="00"
+                                        name="days"
+                                        onChange={handleChange}
+                                        value={data.days}
+                                        required
+                                        className={styles.rowTimeInput}
+                                    />
+                                    <p className={styles.TimeBlockText}>Дней</p>
+                                </div>
                             </div>
-                            <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                <input
-                                    type="text"
-                                    placeholder="00"
-                                    name="hours"
-                                    onChange={handleChange}
-                                    value={data.hours}
-                                    required
-                                    className={styles.rowTimeInput}
-                                />
-                                <p style={{margin:'0 0 0 8px', fontSize:'13px'}}>Часов</p>
+                            <div style={{justifyContent:"space-between", flexDirection:'row', display:'flex',alignItems:'center',}}>
+                                <h5 style={{margin:"10px 0 5px 0"}}>Описание</h5>
+                                <p style={{ margin: "10px 0 5px 0", fontSize:'12px' }}>{data.description.length}/30</p>
                             </div>
-                            <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                                <input
-                                    type="text"
-                                    placeholder="00"
-                                    name="days"
-                                    onChange={handleChange}
-                                    value={data.days}
-                                    required
-                                    className={styles.rowTimeInput}
-                                />
-                                <p style={{margin:'0 0 0 8px', fontSize:'13px'}}>Дней</p>
-                            </div>
-                        </div>
-                        <div style={{justifyContent:"space-between", flexDirection:'row', display:'flex',alignItems:'center',}}>
-                            <h5 style={{margin:"10px 0 5px 0"}}>Описание</h5>
-                            <p style={{ margin: "10px 0 5px 0", fontSize:'12px' }}>{data.description.length}/30</p>
-                        </div>
-                        <div style={{justifyContent:"flex-start",width:'100%', backgroundColor:"#fff",borderRadius:8}}>
+                            <div style={{justifyContent:"flex-start",width:'100%', backgroundColor:"#fff",borderRadius:8}}>
                             <textarea
                                 placeholder="Напишите описание"
                                 name="description"
@@ -345,14 +346,15 @@ const UserServScreen = () => {
                                 required
                                 className={`${styles.servInput} ${styles["input-top"]}`}
                             />
+                            </div>
                         </div>
                     </div>
-                </div>
-                {error && <div className={styles.error_msg}>{error}</div>}
-                <button type="submit" className={styles.green_btn}>
-                    Изменить
-                </button>
-            </form>
+                    {error && <div className={styles.error_msg}>{error}</div>}
+                    <button type="submit" className={styles.green_btn}>
+                        Изменить
+                    </button>
+                </form>
+            </div>
         </div>
     );
 };
