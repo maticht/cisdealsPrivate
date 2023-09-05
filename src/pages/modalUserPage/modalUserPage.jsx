@@ -19,6 +19,7 @@ const useStyles = createUseStyles({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
+        backgroundColor: '#F1F1F1',
     },
 });
 

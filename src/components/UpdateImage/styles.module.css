@@ -422,4 +422,19 @@
     }
 
 }
+@media screen and (max-width: 323px) {
+    .adidionalImageСontainer{
+        margin-left: -6px;
+    }
+}
+@media screen and (max-width: 267px) {
+    .adidionalImageСontainer{
+        margin-left: 6px;
+    }
+}
+@media screen and (max-width: 212px) {
+    .adidionalImageСontainer{
+        margin-left: -6px;
+    }
+}
 

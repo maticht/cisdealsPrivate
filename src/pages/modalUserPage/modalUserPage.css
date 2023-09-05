@@ -1,7 +1,7 @@
 .header-container {
     max-width: 800px;
     width: calc(100% - 20px);
-    height: calc(100vh - 10px);
+    height: calc(100vh - 0px);
     display: flex;
     justify-content: space-between;
     flex-direction: column;
