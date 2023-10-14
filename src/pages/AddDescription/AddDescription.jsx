@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import Modal from "react-modal";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import styles from "./styles.module.css";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import {createUseStyles} from "react-jss";
 import CategoriesJSON from '../../data/categories.json';
 const useStyles = createUseStyles({

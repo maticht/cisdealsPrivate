@@ -2,8 +2,9 @@ import './headerNavBar.css';
 import logo from '../../img/mainPageLogo.svg';
 import {Link} from "react-router-dom";
 import React, {useEffect, useState} from "react";
-import ModalUserPage from "../../components/modalUserPage/modalUserPage";
+import ModalUserPage from "../../pages/modalUserPage/modalUserPage";
 import noneAccBtn from '../../img/Frame.svg';
+import SearchExample from "../search/search";
 
 function HeaderNavBar() {
     const [modalOpen, setModalOpen] = useState(false);
@@ -26,7 +27,7 @@ function HeaderNavBar() {
         setModalOpen(false);
     };
     useEffect(() => {
-        if (!localUserObj?.data || !localUserObj?.data._id) {
+        if (!localUserObj?.data) {
             return;
         }
 
@@ -43,7 +44,6 @@ function HeaderNavBar() {
                 console.log(err);
             }
         };
-
         fetchUserProfile(userid);
     }, [localUserObj]);
 
@@ -51,22 +51,22 @@ function HeaderNavBar() {
         <Link to={"/"}>
             <img src={logo} className={"App-logo"} alt={"logo"}/>
         </Link>
-
-        <div>
-            <ModalUserPage isOpen={modalOpen} onClose={handleCloseModal}/>
+        <div className={'SearchExampleNavBar'}>
+            <SearchExample/>
         </div>
         {!modalOpen && (
-            <div>
+            <div className={'accountBtnBlock'}>
                 {user ? (
                     <div>
-                        <a onClick={handleOpenModal} className={"logOutBlock"}>
+                        <Link to={`/ModalUserPage/${userid}`} className={"logOutBlock"}>
                             <p className={"accountText"}>
                                 {`${user.nameOrCompany}`}
                             </p>
                             {user.image.length === 0 || !user.image[0] ?
                                 <img src={noneAccBtn} className={"noneAccBtn"} alt={"noneAccBtn"}/> :
                                 <img src={user.image[0]} className={"userLogo"} alt={"userLogo"}/>}
-                        </a>
+                        </Link>
+
                     </div>
                 ) : (
                     <Link className={"logInBlock"} to={"/login"}>

@@ -92,7 +92,7 @@ function AllCategoriesScreen() {
                     <Link className={classes.allCategoriesBtn} to="/">˂ Главная</Link>
                     <h2>Категории</h2>
                     <div>
-                        <Link  className={classes.OneCategoryItem} to={`/AllCategories/:Categories2/:Categories3/Все специалисты`}>
+                        <Link  className={classes.OneCategoryItem} to={`/AllCategories/:Categories2/:Categories3/:Categories4/Все специалисты`}>
                             <div className={classes.OneCategoryInfo}>
                                 <p className={'OneCategoryTitle'}>Показать всех специалистов</p>
                             </div>

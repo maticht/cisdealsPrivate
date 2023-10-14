@@ -36,7 +36,6 @@ const Login = () => {
 
     return (
         <div className={styles.login_container}>
-
             <form className={styles.form_container} onSubmit={handleSubmit} noValidate>
                 <Link style={{textDecoration: "none",display:'flex', alignSelf:'flex-start', color: "#454545", fontSize: "14px",margin:"20px 0 10px 10px"}} to="/">˂ Главная</Link>
                 <h1 style={{margin:"0 0 0 10px",display:'flex', alignSelf:'flex-start',}}>Вход</h1>
@@ -46,7 +45,7 @@ const Login = () => {
                         <p style={{textDecoration:"none",color:"#5CA91A", fontWeight:"bold"}}>Зарегистрироваться</p>
                     </Link>
                 </div>
-                <div style={{justifyContent:"center", backgroundColor:"#fff",maxWidth:'600px',borderRadius:8, margin:"10px 10px", padding:"20px 10px"}}>
+                <div style={{justifyContent:"center", backgroundColor:"#fff",borderRadius:8, margin:"10px 10px", padding:"20px 10px"}}>
                     <h5 style={{margin:"0 0 5px 0"}}>Email</h5>
                     <div style={{position: 'relative', display:'flex', alignItems:'center'}}>
                         <input

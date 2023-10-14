@@ -1,10 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
-import styles from "./styles.module.css";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import ModalUserPage from "../modalUserPage/modalUserPage";
-
+import "./UpdateContactInfo.css";
 
 const UpdateContactInfo = () => {
     const {UserPage} = useParams();
@@ -39,7 +36,6 @@ const UpdateContactInfo = () => {
     });
     const [error, setError] = useState("");
     const [profileData, setProfileData] = useState({});
-    const [user, setUser] = useState([]);
     const navigate = useNavigate();
 
     const handleChange = ({ currentTarget: input }) => {
@@ -106,67 +102,54 @@ const UpdateContactInfo = () => {
             }
         }
     };
-    const [modalOpen, setModalOpen] = useState(false);
-
-
-    const handleOpenModal = () => {
-        setModalOpen(true);
-    };
-
-    const handleCloseModal = () => {
-        setModalOpen(false);
-    };
 
     return (
-        <div className={styles.signup_container}>
-            <Link style={{textDecoration: "none", color: "#454545", fontSize: "14px"}} to="/EditProfile">
-                <p style={{textDecoration: "none", color: "#454545", fontSize: "14px", marginLeft:'10px'}}>
-                    {`< Назад`}
-                </p>
-            </Link>
-            <div>
-                <ModalUserPage isOpen={modalOpen} onClose={handleCloseModal} />
-            </div>
-            <form className={styles.form_container} onSubmit={handleSubmit} noValidate>
-                <h1 style={{margin:"0 0 0 10px"}}>Изменение контактной информации</h1>
-                <div style={{justifyContent:"flex-start", backgroundColor:"#fff",borderRadius:8, margin:"10px 10px", padding:"10px 10px"}}>
-                    <div>
-                        <h5 style={{margin:"10px 0 5px 0"}}>Email</h5>
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            name="email"
-                            onChange={handleChange}
-                            value={data.email}
-                            required
-                            className={styles.input}
-                        />
-                        <h5 style={{margin:"10px 0 5px 0"}}>Номер телефона</h5>
-                        <input
-                            type="text"
-                            placeholder="Телефон"
-                            name="phone1"
-                            onChange={handleChange}
-                            value={data.phone1  === "phone1" ? "" : data.phone1}
-                            required
-                            className={styles.input}
-                        />
-                        <input
-                            type="text"
-                            placeholder="Телефон 2"
-                            name="phone2"
-                            onChange={handleChange}
-                            value={data.phone2 === "phone2" ? "" : data.phone2}
-                            required
-                            className={styles.input}
-                        />
+        <div className={'contact_container'}>
+            <div className="main-container">
+                <Link to="/EditProfile" className="form-link">
+                    <p className="form-link-text">{'< Назад'}</p>
+                </Link>
+                <form className="form_container" onSubmit={handleSubmit} noValidate>
+                    <p className="form-heading">Изменение контактной информации</p>
+                    <div className="form-content">
+                        <div>
+                            <h5 className="form-label">Email</h5>
+                            <input
+                                type="email"
+                                placeholder="Email"
+                                name="email"
+                                onChange={handleChange}
+                                value={data.email}
+                                required
+                                className={'contact_input'}
+                            />
+                            <h5 className="form-label">Номер телефона</h5>
+                            <input
+                                type="text"
+                                placeholder="Телефон"
+                                name="phone1"
+                                onChange={handleChange}
+                                value={data.phone1  === "phone1" ? "" : data.phone1}
+                                required
+                                className={'contact_input'}
+                            />
+                            <input
+                                type="text"
+                                placeholder="Телефон 2"
+                                name="phone2"
+                                onChange={handleChange}
+                                value={data.phone2 === "phone2" ? "" : data.phone2}
+                                required
+                                className={'contact_input'}
+                            />
+                        </div>
                     </div>
-                </div>
-                {error && <div className={styles.error_msg}>{error}</div>}
-                <button type="submit" className={styles.green_btn}>
-                    Изменить
-                </button>
-            </form>
+                    {error && <div className={'error_msg'}>{error}</div>}
+                    <button type="submit" className={'green_btn'}>
+                        Изменить
+                    </button>
+                </form>
+            </div>
         </div>
     );
 };

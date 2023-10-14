@@ -14,7 +14,7 @@ import FavoritesPage from "./pages/FavoritesPage/FavoritesPage";
 import EditProfile from "./pages/EditProfile/EditProfile";
 import UpdateLocation from "./components/UpdateLocation/UpdateLocation";
 import UpdateImage from "./components/UpdateImage/UpdateImage";
-import UpdateContactInfo from "./components/UpdateContactInfo/Update";
+import UpdateContactInfo from "./components/UpdateContactInfo/UpdateContactInfo";
 import AddContactInfo from "./pages/AddContactInfo/AddContactInfo";
 import AddServicesScreen from "./pages/AddServicesScreen/AddServicesScreen";
 import AddImage from "./pages/AddPhoto/AddImage";
@@ -31,6 +31,9 @@ import UserServScreen from './pages/UserServScreen/UserServScreen'
 import AddLoginServ from "./pages/AddLoginServ/AddLoginServ";
 import UserServLoginScreen from './pages/UserServLoginScreen/UserServLoginScreen'
 import SuccessfulLoginScreen from "./pages/SuccessfulLoginScreen/SuccessfulLoginScreen";
+import CategoriesScreen4 from "./pages/CategoriesScreen4/CategoriesScreen4";
+import SearchScreen from "./pages/SearchScreen/SearchScreen";
+import ModalUserPage from "./pages/modalUserPage/modalUserPage";
 
 
 function App() {
@@ -52,8 +55,10 @@ function App() {
                     <Route path="/AddLoginServ/:UserPage" exact element={<AddLoginServ/>} />
                     <Route path="/AddLoginServ/:UserPage/UserServLoginScreen/:ServPage" exact element={<UserServLoginScreen/>} />
                     <Route path="/UpdateWorkingHours/:UserPage" exact element={<UpdateWorkingHours/>} />
+                    <Route path="/ModalUserPage/:UserPage" exact element={<ModalUserPage />} />
                     <Route path="/FavoritesPage" exact element={<FavoritesPage />} />
                     <Route path="/EditProfile" exact element={<EditProfile />} />
+                    <Route path="/SearchScreen" exact element={<SearchScreen />} />
                     <Route path="/AddContactInfo/:UserPage" exact element={<AddContactInfo />} />
                     <Route path="/AddSocialInfo/:UserPage" exact element={<AddSocialInfo />} />
                     <Route path="/AddLocation/:UserPage" exact element={<AddLocation/>} />
@@ -68,8 +73,9 @@ function App() {
                     <Route path='/AllCategories' element={<AllCategoriesScreen />}/>
                     <Route path='/AllCategories/:Categories2' element={<CategoriesScreen2 />}/>
                     <Route path='/AllCategories/:Categories2/:Categories3' element={<CategoriesScreen3 />}/>
-                    <Route path='/AllCategories/:Categories2/:Categories3/:SortedCategories' element={<SortedServicesScreen />}/>
-                    <Route path='/AllCategories/:Categories2/:Categories3/:SortedCategories/:UserPage' element={<UserPageScreen />}/>
+                    <Route path='/AllCategories/:Categories2/:Categories3/:Categories4' element={<CategoriesScreen4 />}/>
+                    <Route path='/AllCategories/:Categories2/:Categories3/:Categories4/:SortedCategories' element={<SortedServicesScreen />}/>
+                    <Route path='/AllCategories/:Categories2/:Categories3/:Categories4/:SortedCategories/:UserPage' element={<UserPageScreen />}/>
                     <Route path='/UserPageScreen/:UserPage' element={<UserPageScreen />}/>
                 </Routes>
             </BrowserRouter>

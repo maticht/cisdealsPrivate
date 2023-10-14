@@ -1,28 +1,11 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import Modal from "react-modal";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import styles from "./styles.module.css";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import {createUseStyles} from "react-jss";
 import CategoriesJSON from '../../data/categories.json';
 import CitiesJSON from '../../data/cities.json';
 import arrow from '../../img/arrowright.svg';
-import beauty from '../../img/CategoriesLogo/beauty.svg';
-import sport from '../../img/CategoriesLogo/sport.svg';
-import health from '../../img/CategoriesLogo/health.svg';
-import auto from '../../img/CategoriesLogo/auto.svg'
-import finance from '../../img/CategoriesLogo/finance.svg'
-import animals from '../../img/CategoriesLogo/animals.svg';
-import photo from '../../img/CategoriesLogo/photo.svg';
-import study from '../../img/CategoriesLogo/study.svg';
-import ads from '../../img/CategoriesLogo/ads.svg';
-import design from '../../img/CategoriesLogo/design.svg';
-import programming from '../../img/CategoriesLogo/programming.svg';
-import logistics from '../../img/CategoriesLogo/logistics.svg';
-import house from '../../img/CategoriesLogo/house.svg';
-import build from '../../img/CategoriesLogo/build.svg';
-import party from '../../img/CategoriesLogo/party.svg';
 import arrowDown from '../../img/arrow_down=24.png';
 
 const useStyles = createUseStyles({

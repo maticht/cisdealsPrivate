@@ -50,7 +50,7 @@ function Categories() {
             <div style={{margin:'10px 10px'}}>
                 <nav className={'categoriesNav'}>
                     <h2 style={{margin:'0'}}>Категории</h2>
-                    <Link className={'allCategoriesBtn'} to="/AllCategories">Все категории</Link>
+                    <Link className={'allCategoriesLink'} to="/AllCategories">Все категории</Link>
                 </nav>
             </div>
 

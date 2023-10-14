@@ -16,7 +16,6 @@
 
 .form_container {
     display: flex;
-    height: 100%;
     flex-direction: column;
     background-color: #f5f5f5;
 }
@@ -30,7 +29,7 @@
 .input {
     outline: none;
     border: none;
-    width: 80vw;
+    width: 100%;
     padding: 15px;
     border-radius: 8px;
     background-color: #f1f1f1;
@@ -59,13 +58,383 @@
     outline: none;
     align-items: center;
     align-self: center;
-    padding: 12px 0 12px 57px;
+    padding: 12px 0;
     background-color: #000000;
     border-radius: 8px;
     width: 180px;
     font-weight: bold;
     font-size: 14px;
     cursor: pointer;
-    text-align: start;color: white;
+}
+
+.green_btn {
+    background-color: #000000;
+    color: white;
     margin: 10px;
 }
+.firstImageCont{
+    display: flex;
+    justify-content: flex-start;
+}
+.firstImageBlock {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    border-radius: 8px;
+    background-color: #f1f1f1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.userImage{
+    width: 100%;
+    border-radius: 8px;
+    height: 100%;
+    object-fit: cover;
+}
+.userImageInput{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+.imageContainer  {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 20px 15px;
+}
+.imageDescription {
+    width: 250px;
+    height: 200px;
+    margin: 0 0 0 25px;
+}
+
+.imageDescriptionTitle {
+    margin: 0 0 5px 0;
+    font-size: 15px;
+}
+
+.imageDescriptionText {
+    font-size: 12px;
+    color: #5B5B5B;
+}
+.allImageDescriptionNum {
+    margin: 0;
+    font-size: 14px;
+    color: #5B5B5B;
+}
+.allImageDescriptionText {
+    margin: 0 0 15px 0;
+    font-size: 12px;
+    color: #5B5B5B;
+}
+.imageСontainer {
+    width: 88px;
+    height: 88px;
+    display: flex;
+    alignSelf: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    z-index: 1;
+}
+.imageAddСontainer{
+    width: 94px;
+    height: 88px;
+    display: flex;
+    alignSelf: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    z-index: 1;
+}
+.flexImgContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.upImageСontainer{
+    width: 88px;
+    height: 25px;
+    display: flex;
+    background-color: #ececec;
+    alignSelf: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+.upImageСontainer img{
+    width: 16px;
+}
+.adidionalImageСontainer{
+    width: 88px;
+    height: 88px;
+    margin-left: 6px;
+    background-color: #EFEFEF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+}
+.imagePlus{
+    margin-right: 4px;
+}
+
+.imageContainerImg {
+    width: 100%;
+    border-radius: 6px;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(0.4px);
+}
+.removeImgButton {
+    position: absolute;
+    top: 0.3px;
+    right: -0.8px;
+    background-color: #F1F1F1;
+    width: 26px;
+    height: 25px;
+    border-radius: 0px 4px 0px 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+.removeImgButton img {
+    width: 16px;
+    transform: rotate(45deg);
+}
+
+@media screen and (max-width: 640px) {
+    .firstImageBlock {
+        position: relative;
+        width: 45vw;
+        height: 45vw;
+        border-radius: 8px;
+        background-color: #f1f1f1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+@media screen and (max-width: 520px) {
+    .imageСontainer {
+        width: 66px;
+        height: 66px;
+        display: flex;
+        alignSelf: center;
+        justify-content: center;
+        position: relative;
+        border-radius: 6px;
+        overflow: hidden;
+        z-index: 1;
+    }
+    .imageAddСontainer{
+        width: 72px;
+        height: 66px;
+        display: flex;
+        alignSelf: center;
+        justify-content: center;
+        position: relative;
+        border-radius: 6px;
+        overflow: hidden;
+        z-index: 1;
+    }
+    .flexImgContainer {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .upImageСontainer{
+        width: 66px;
+        height: 25px;
+        display: flex;
+        background-color: #ececec;
+        alignSelf: center;
+        justify-content: center;
+        position: relative;
+        border-radius: 6px;
+        overflow: hidden;
+        margin-top: 5px;
+    }
+    .upImageСontainer img{
+        width: 14px;
+    }
+    .adidionalImageСontainer{
+        width: 66px;
+        height: 66px;
+        margin-left: 6px;
+        background-color: #EFEFEF;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 6px;
+    }
+    .removeImgButton {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #F1F1F1;
+        width: 20px;
+        height: 20px;
+        border-radius: 0px 4px 0px 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+        z-index: 2;
+    }
+    .removeImgButton img {
+        width: 14px;
+        transform: rotate(45deg);
+    }
+    .green_btn {
+        width: calc(100% - 20px);
+    }
+}
+@media screen and (max-width: 410px) {
+    .imageDescription {
+        width: 200px;
+        height: 200px;
+        margin: 0 0 0 25px;
+    }
+
+    .imageDescriptionTitle {
+        margin: 0 0 5px 0;
+        font-size: 13px;
+    }
+
+    .imageDescriptionText {
+        font-size: 10px;
+        color: #5B5B5B;
+    }
+    .allImageDescriptionNum {
+        margin: 0;
+        font-size: 12px;
+        color: #5B5B5B;
+    }
+    .allImageDescriptionText {
+        margin: 0 0 15px 0;
+        font-size: 10px;
+        color: #5B5B5B;
+    }
+    .firstImageCont{
+        flex-direction: column;
+    }
+    .imageDescription {
+        width: 100%;
+        height: 100%;
+        margin: 10px 0 0 0;
+    }
+    .firstImageBlock {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        background-color: #f1f1f1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 1;
+    }
+    .imageСontainer {
+        margin-top: 5px;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        alignSelf: center;
+        justify-content: center;
+        position: relative;
+        border-radius: 6px;
+        overflow: hidden;
+        z-index: 1;
+    }
+    .imageAddСontainer{
+        margin-top: 5px;
+        width: 56px;
+        height: 50px;
+        display: flex;
+        alignSelf: center;
+        justify-content: center;
+        position: relative;
+        border-radius: 6px;
+        overflow: hidden;
+        z-index: 1;
+    }
+    .flexImgContainer {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .upImageСontainer{
+        width: 50px;
+        height: 22px;
+        display: flex;
+        background-color: #ececec;
+        alignSelf: center;
+        justify-content: center;
+        position: relative;
+        border-radius: 6px;
+        overflow: hidden;
+        margin-top: 5px;
+    }
+    .upImageСontainer img{
+        width: 14px;
+    }
+    .adidionalImageСontainer{
+        width: 50px;
+        height: 50px;
+        margin-left: 6px;
+        background-color: #EFEFEF;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 6px;
+    }
+    .removeImgButton {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #F1F1F1;
+        width: 18px;
+        height: 18px;
+        border-radius: 0px 4px 0px 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+        z-index: 2;
+    }
+
+}
+@media screen and (max-width: 323px) {
+    .adidionalImageСontainer{
+        margin-left: -6px;
+    }
+}
+@media screen and (max-width: 267px) {
+    .adidionalImageСontainer{
+        margin-left: 6px;
+    }
+}
+@media screen and (max-width: 212px) {
+    .adidionalImageСontainer{
+        margin-left: -6px;
+    }
+}
+

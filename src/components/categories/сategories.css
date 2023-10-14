@@ -1,10 +1,19 @@
-.categories{
+
+
+.categories {
     width: 100%;
     overflow: scroll;
-
+}
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
 }
 
-.categoriesNav{
+::-webkit-scrollbar-thumb {
+    background-color: #939393;
+}
+
+.categoriesNav {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -14,13 +23,14 @@
 
 }
 
-.allCategoriesBtn {
+.allCategoriesLink {
     text-decoration: none;
     color: #454545;
     font-size: 14px;
+
 }
 
-.categoriesBlock{
+.categoriesBlock {
     width: 1140px;
     background-color: rgba(255, 255, 255, 0);
     display: flex;
@@ -34,7 +44,7 @@
     overflow: scroll;
 }
 
-.categoryItem{
+.categoryItem {
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -44,22 +54,25 @@
     text-decoration: none;
     color: black;
 }
+
 .categoriesBlock::-webkit-scrollbar {
     width: 0;
 }
+
 .categories::-webkit-scrollbar {
     width: 0;
 }
 
-.categoryImg{
+.categoryImg {
     width: 60px;
 }
 
-.categoryTitle{
+.categoryTitle {
     font-size: 14px;
     font-weight: 500;
     text-align: center;
 }
+
 @media screen and (min-width: 1160px) {
     .categoriesBlock {
         max-width: 1140px;
@@ -74,7 +87,8 @@
         background-color: #FFFFFF;
         overflow: scroll;
     }
-    .categoriesNav{
+
+    .categoriesNav {
         margin: 10px auto;
     }
 }

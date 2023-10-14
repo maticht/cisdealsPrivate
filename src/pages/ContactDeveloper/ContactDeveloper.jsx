@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import ModalUserPage from "../../components/modalUserPage/modalUserPage";
+import ModalUserPage from "../modalUserPage/modalUserPage";
 import {Link} from "react-router-dom";
 import ScvNoneUserLogo from '../../img/ScvNoneUserLogo.svg';
-import phone from '../../img/phone.svg';
-import telegram from '../../img/Telegram.svg';
+import telegram from '../../img/telegram.svg';
 
 
 const ContactDeveloper = () => {
@@ -30,14 +29,11 @@ const ContactDeveloper = () => {
 
     return (
         <div style={{marginTop:'-15px', padding:'10px', minHeight: "100vh", backgroundColor: "#F1F1F1"}}>
-            <a style={{textDecoration: "none", color: "#454545", fontSize: "14px"}} onClick={handleOpenModal}>
+            <Link style={{textDecoration: "none", color: "#454545", fontSize: "14px"}} to={`/`} >
                 <p style={{textDecoration: "none", color: "#454545", fontSize: "14px"}}>
                     {`< Назад`}
                 </p>
-            </a>
-            <div>
-                <ModalUserPage isOpen={modalOpen} onClose={handleCloseModal} />
-            </div>
+            </Link>
             <h1>Связаться с разработчиками</h1>
 
             <div style={{

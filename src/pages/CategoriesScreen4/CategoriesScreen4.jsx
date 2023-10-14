@@ -48,31 +48,33 @@ const useStyles = createUseStyles({
     }
 });
 
-function CategoriesScreen3() {
+function CategoriesScreen4() {
     const classes = useStyles();
     const {Categories2} = useParams();
     const {Categories3} = useParams();
+    const {Categories4} = useParams();
     let category2 = CategoriesJSON.categories.find(category => category.categoriestitle === Categories2);
     let category3 = category2.subcategories.find(category => category.title === Categories3);
+    let category4 = category3.subsubcategories.find(category => category.title === Categories4);
 
-    const categoryList = category3.subsubcategories.map((category) =>
-         <Link  className={classes.OneCategoryItem} to={`/AllCategories/${Categories2}/${Categories3}/Categories4/${category.title}`}>
-             <div className={classes.OneCategoryInfo}>
-                 <p>{category.title}</p>
-             </div>
-             <img src={arrow} alt={'logo'}/>
+    const categoryList = category4.subsubsubcategories.map((category) =>
+        <Link  className={classes.OneCategoryItem} to={`/AllCategories/${Categories2}/${Categories3}/${Categories4}/${category.title}`}>
+            <div className={classes.OneCategoryInfo}>
+                <p>{category.title}</p>
+            </div>
+            <img src={arrow} alt={'logo'}/>
         </Link>
     );
     return (
         <>
             <div className={classes.container}>
                 <div className={classes.Categories2Block}>
-                    <Link className={classes.allCategoriesBtn} to={`/AllCategories/Categories2/Categories3/Categories4/${Categories2}`}>˂ {Categories2}</Link>
-                    <h2>{Categories3}</h2>
+                    <Link className={classes.allCategoriesBtn} to={`/AllCategories/Categories2/${Categories3}`}>˂ {Categories3}</Link>
+                    <h2>{Categories4}</h2>
                     <div>
-                        <Link  className={classes.OneCategoryItem} to={`/AllCategories/Categories2/Categories3/Categories4/${Categories3}`}>
+                        <Link  className={classes.OneCategoryItem} to={`/AllCategories/Categories2/Categories3/Categories4/${Categories4}`}>
                             <div className={classes.OneCategoryInfo}>
-                                <p>Все в этой категории</p>
+                                <p>Все в этой подкатегории</p>
                             </div>
                             <img src={arrow} alt={'logo'}/>
                         </Link>
@@ -84,4 +86,4 @@ function CategoriesScreen3() {
     );
 }
 
-export default CategoriesScreen3;
+export default CategoriesScreen4;
