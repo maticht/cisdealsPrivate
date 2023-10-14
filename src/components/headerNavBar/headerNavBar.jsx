@@ -7,10 +7,18 @@ import noneAccBtn from '../../img/Frame.svg';
 
 function HeaderNavBar() {
     const [modalOpen, setModalOpen] = useState(false);
-    const [user, setUser] = useState(false);
+    const [user, setUser] = useState(null);
     const user1 = localStorage.getItem("token");
-    let localUserObj = JSON.parse(user1);
-    let userid = localUserObj?.data?._id;
+    let localUserObj = null;
+    let userid = null;
+    if (user1) {
+        try {
+            localUserObj = JSON.parse(user1);
+            userid = localUserObj?.data?._id;
+        } catch (error) {
+            console.error(error);
+        }
+    }
     const handleOpenModal = () => {
         setModalOpen(true);
     };
@@ -18,9 +26,10 @@ function HeaderNavBar() {
         setModalOpen(false);
     };
     useEffect(() => {
-        if (!localUserObj?.data) {
+        if (!localUserObj?.data || !localUserObj?.data._id) {
             return;
         }
+
         const fetchUserProfile = async (userId) => {
             try {
                 const response = await fetch(`http://backend.delkind.pl/user-profile/${userid}`);
@@ -34,8 +43,9 @@ function HeaderNavBar() {
                 console.log(err);
             }
         };
-        fetchUserProfile(localUserObj.data._id);
-    }, []);
+
+        fetchUserProfile(userid);
+    }, [localUserObj]);
 
     return (<div className={'navBarBlock'}>
         <Link to={"/"}>

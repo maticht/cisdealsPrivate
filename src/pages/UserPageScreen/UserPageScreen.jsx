@@ -104,10 +104,21 @@ const UserPage = (props, {link}) => {
     const [averageRating, setAverageRating] = useState(0);
 
     const userLS = localStorage.getItem("token");
-    let localUserObj = JSON.parse(userLS);
-    let firstNameObj = localUserObj?.data ? localUserObj?.data.firstName : null;
-    let lastNameObj = localUserObj?.data ? localUserObj?.data.lastName : null;
-    let UserId = localUserObj?.data ? localUserObj?.data._id : null;
+    let localUserObj = null;
+    let firstNameObj = null;
+    let lastNameObj = null;
+    let UserId = null;
+
+    if (userLS) {
+        try {
+            localUserObj = JSON.parse(userLS);
+            firstNameObj = localUserObj?.data?.firstName || null;
+            lastNameObj = localUserObj?.data?.lastName || null;
+            UserId = localUserObj?.data?._id || null;
+        } catch (error) {
+            console.error("Error parsing user data:", error);
+        }
+    }
     const copyLinkToClipboard = () => {
         const currentUrl = window.location.href;
         navigator.clipboard.writeText(currentUrl);
