@@ -39,9 +39,9 @@ app.use("/addingRating", addingRating);
 
 
 const PORT = process.env.PORT || 80;
-const serverAddress = "http://backend.delkind.pl";
+// const serverAddress = "http://backend.delkind.pl";
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}...`);
-    console.log(`Server address: ${serverAddress}`);
+    // console.log(`Server address: ${serverAddress}`);
 });

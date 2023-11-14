@@ -6,22 +6,30 @@
     width: 100%;
 }
 .profile-menu-block{
-    max-width: 800px;
+    max-width: 650px;
     width: calc(100% - 20px);
     margin: 0 auto;
 }
-
 .menu-link {
     text-decoration: none;
     color: #454545;
     font-size: 14px;
+    margin: 20px 0 10px -2px;
+    display: flex;
+    align-items: center;
 }
-
+.menu-link img {
+    width: 15px;
+    height: 15px;
+}
+.menu-link p {
+    margin: 0 0 2px 5px;
+    font-weight: 400;
+}
 .menu-heading {
     font-size: 24px;
-    margin-bottom: 20px;
+    margin: 10px 0 20px;
 }
-
 .menu-item {
     text-decoration: none;
     display: flex;
@@ -29,10 +37,14 @@
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #ddd;
-    padding-bottom: 15px;
+    padding: 0 10px 15px;
     margin-bottom: 15px;
 }
-
+.menu-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 0 solid #ddd;
+}
 .menu-item-text {
     color: #000;
     margin-bottom: 5px;

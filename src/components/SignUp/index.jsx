@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import {signUp} from "../../httpRequests/cisdealsApi";
 import styles from "./styles.module.css";
 import eye from "../../img/showPas.svg";
-
-
+import openEye from '../../img/openEye.svg'
+import back from '../../img/Arrow_left.svg'
 
 const Signup = () => {
     const [data, setData] = useState({
@@ -80,32 +81,22 @@ const Signup = () => {
         likes: "likes",
         rating: [],
     });
-
     const [error, setError] = useState("");
     const [msg,setMsg] = useState('');
     const [userId, setUserId] = useState("");
-    const [showModal, setShowModal] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+
     const handleToggleShowPassword = () => {
         setShowPassword(!showPassword);
     };
-    const navigate = useNavigate();
-
     const handleChange = ({ currentTarget: input }) => {
         setData({ ...data, [input.name]: input.value });
     };
-
-    const handleCloseModal = () => {
-        setShowModal(false);
-        navigate("/");
-    };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(data)
         try {
-            const url = `http://backend.delkind.pl/users`;
-            const { data: res } = await axios.post(url, data);
+            const res = await signUp(data);
             localStorage.setItem("token",  JSON.stringify(res));
             const user = localStorage.getItem("token");
             let localUserObj = JSON.parse(user);
@@ -124,103 +115,61 @@ const Signup = () => {
             }
         }
     };
-    // const Modal = ({ handleClose, show }) => {
-    //     const showHideClassName = show ? "modal display-block" : "modal display-none";
-    //
-    //     return (
-    //         <div className={showHideClassName} style={{display: show ? "block" : "none",
-    //             width: '100%',
-    //             height: '100vh',
-    //             paddingTop:'30px',
-    //             flexDirection: 'column',
-    //             backgroundColor: '#f5f5f5',
-    //             zIndex:9999,
-    //             position: 'fixed',
-    //             top: 0,
-    //             left: 0,}}>
-    //             <section className="modal-main">
-    //                 <div style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
-    //                     <img src={selfie} style={{width:'200px'}} alt={"Hello"}/>
-    //                     <p style={{alignSelf:'center', fontSize:'24px', fontWeight:'700', flexWrap:'wrap', textAlign: 'center'}}>Спасибо!<br/>Ваш аккаунт<br/>зарегистрирован!</p>
-    //                     <Link  to={`/AddServicesScreen/${userId}`} style={{textDecoration:'none',backgroundColor:'#000',display:'flex', width:'90%', alignItems:'center', borderRadius:'8px', justifyContent:'center', marginBottom:'15px'}}>
-    //                         <p style={{color:'#fff', fontSize:'14px', fontWeight:'500', alignSelf:'center', justifyContent:'center'}}>Добавить свои услуги</p>
-    //                     </Link>
-    //                     <div style={{backgroundColor:'rgba(0,0,0,0)',display:'flex', width:'90%', alignItems:'center', borderRadius:'8px', justifyContent:'center', marginBottom:'15px', border: '2px solid #000'}} onClick={handleClose}>
-    //                         <p style={{color:'#000', fontSize:'14px', fontWeight:'500', alignSelf:'center', justifyContent:'center'}}>Перейти к поиску специалистов</p>
-    //                     </div>
-    //                 </div>
-    //             </section>
-    //         </div>
-    //     );
-    // };
-
 
     return (
         <div className={styles.signup_container}>
-            <Link style={{textDecoration: "none", color: "#454545", fontSize: "14px",margin:"20px 0 10px 10px"}} to="/">˂ Главная</Link>
             <form className={styles.form_container} onSubmit={handleSubmit} noValidate>
-                <h1 style={{margin:"0 0 0 10px"}}>Регистрация</h1>
-                <div style={{display:'flex', flexDirection:'row',alignItems:'center', marginLeft:10, justifyContent:"flex-start"}}>
-                    <p style={{fontSize:14}}>Ещё нет аккаунта?</p>
-                    <Link to="/login" style={{textDecoration:"none"}}>
-                        <p style={{textDecoration:"none",color:"#5CA91A", fontWeight:"bold"}}>Войти</p>
+                <Link className={styles.form_link} to="/">
+                    <img src={back} alt="back" />
+                    <p>Главная</p>
+                </Link>
+                <h1 className={styles.form_header}>Регистрация</h1>
+                <div className={styles.form_options}>
+                    <p>Уже есть аккаунт?</p>
+                    <Link to="/login" className={styles.form_options}>
+                        <a>Войти</a>
                     </Link>
                 </div>
-                <div style={{justifyContent:"flex-start", backgroundColor:"#fff",borderRadius:8, margin:"10px 10px", padding:"20px 10px"}}>
-                    <h5 style={{margin:"0 0 5px 0"}}>Имя или название компании</h5>
+                <div className={styles.main_container}>
+                    <h5>Имя или название компании</h5>
                     <input
-                        type="text"
-                        placeholder="Имя"
-                        name="nameOrCompany"
+                        type="text" placeholder="Apple" name="nameOrCompany"
                         onChange={handleChange}
                         value={data.nameOrCompany}
+                        className={styles.mainInput}
                         required
-                        className={styles.input}
                     />
-                    <h5 style={{margin:"10px 0 5px 0"}}>Email</h5>
+                    <h5>Email</h5>
                     <input
-                        type="email"
-                        placeholder="Email"
-                        name="email"
+                        type="email" placeholder="example@site.com" name="email"
                         onChange={handleChange}
                         value={data.email}
+                        className={styles.mainInput}
                         required
-                        className={styles.input}
                     />
-                    <h5 style={{margin:"10px 0 5px 0"}}>Пароль</h5>
-                    <div style={{position: 'relative', display:'flex', alignItems:'center'}}>
+                    <h5>Пароль</h5>
+                    <div className={styles.input_container}>
                         <input
-                            type={showPassword ? "text" : "password"}
-                            placeholder="Пароль"
-                            name="password"
+                            type={showPassword ? "text" : "password"} placeholder="Введите пароль" name="password"
                             onChange={handleChange}
                             value={data.password}
-                            required
                             className={styles.input}
+                            required
                         />
-                        <button onClick={handleToggleShowPassword} type="button" style={{
-                            position: 'absolute',
-                            top: '50%',
-                            right: '10px',
-                            transform: 'translateY(-50%)',
-                            backgroundColor: 'transparent',
-                            border: 'none',
-                            fontSize: '14px',
-                            color: '#000',
-                            cursor: 'pointer',
-                            padding: 0,
-                        }}>
-                            <img src={eye} alt="eye" width="23px"  height="23px" style={{marginTop:'4px', opacity: showPassword ? "100%" : "50%"}}/>
+                        <button
+                            type="button"
+                            onClick={handleToggleShowPassword}
+                            className={styles.input_container}>
+                            <img src={showPassword ? openEye : eye} alt="eye"/>
                         </button>
                     </div>
                 </div>
-                {error && <div className={styles.error_msg}>{error}</div>}
+                {error && !msg && <div className={styles.error_msg}>{error}</div>}
                 {msg && <div className={styles.success_msg}>{msg}</div>}
-                <button type="submit" className={styles.green_btn}>
-                    Sing Up
+                <button type="submit" className={styles.create_btn}>
+                    Создать аккаунт
                 </button>
             </form>
-
         </div>
     );
 

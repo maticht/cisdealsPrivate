@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
-import './modalUserPage.css';
-import {createUseStyles} from "react-jss";
+import './PersonalUserPage.css';
 import exit from "../../img/exit.svg";
 import share from "../../img/share.svg";
 import arrowRight from "../../img/arrowright.svg";
@@ -10,22 +9,11 @@ import save from "../../img/save.svg";
 import {Link, useParams} from "react-router-dom";
 import noneUserLogo from "../../img/noneUserLogoSq.svg";
 import userPage from "../../img/userPage.svg"
-import axios from "axios";
+import {userProfile} from "../../httpRequests/cisdealsApi";
+import back from "../../img/Arrow_left.svg";
 
-const useStyles = createUseStyles({
-    container: {
-        width: "100%",
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        backgroundColor: '#F1F1F1',
-    },
-});
-
-const Modal = () => {
+const PersonalUserPage = () => {
     const {UserPage} = useParams();
-    const classes = useStyles();
     const [user, setUser] = useState(false);
     const [isCopied, setIsCopied] = useState(false);
     const user1 = localStorage.getItem("token");
@@ -43,8 +31,8 @@ const Modal = () => {
 
     const fetchUserProfile = async (userId) => {
         try {
-            const {data} = await axios.get(`http://backend.delkind.pl/user-profile/${userId}`);
-            setUser(data.profile);
+            const response = await userProfile(userId);
+            setUser(response.profile);
         } catch (err) {
             console.log(err);
         }
@@ -66,11 +54,12 @@ const Modal = () => {
     };
 
     return (
-        <div className={classes.container}>
+        <div className='main-personal-container'>
             <div className="header-container">
                 <div>
-                    <Link to={`/`} className="menu-link">
-                        <p className="menu-link-text">{'< Главная'}</p>
+                    <Link className="menu-link" to="/">
+                        <img src={back} alt="back" />
+                        <p>Главная</p>
                     </Link>
                     <div className="user-info-wrapper">
                         <div className="user-info">
@@ -89,7 +78,7 @@ const Modal = () => {
                             <img className="copy-icon" src={share} alt="share" />
                         </div>
                     </div>
-                    <div>
+                    <div className="profile-links-block">
                         <Link to={`/EditProfile`} className="profile-link">
                             <div className="link-content">
                                 <img className="link-image" src={edit} alt="Редактировать профиль" />
@@ -118,17 +107,18 @@ const Modal = () => {
                             </div>
                             <img src={arrowRight} alt="Стрелка вправо" />
                         </Link>
+                        <Link to={'/'} onClick={handleLogout} className="profile-link">
+                            <img className="logout-icon" src={exit} alt="logo" />
+                            <p className="logout-text">Выйти</p>
+                        </Link>
                     </div>
                 </div>
-                <Link to={'/'} onClick={handleLogout} className="logout-link">
-                    <img className="logout-icon" src={exit} alt="logo" />
-                    <p className="logout-text">Выйти</p>
-                </Link>
+
             </div>
         </div>
     );
 };
 
-export default Modal;
+export default PersonalUserPage;
 
 

@@ -13,7 +13,7 @@ import TikTok from "../../img/TikTok.svg";
 import YouTube from "../../img/YouTube.svg";
 import Instagram from "../../img/Instagram.svg";
 import WhatsApp from "../../img/WhatsApp.svg";
-import Telegram from "../../img/telegram.svg";
+import Telegram from "../../img/Telegram.svg";
 import Viber from "../../img/Viber.svg";
 import LinkedIn from "../../img/LinkedIn.png";
 import saveW from "../../img/saveW.svg";

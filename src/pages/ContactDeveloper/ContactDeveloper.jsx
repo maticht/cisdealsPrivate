@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import ModalUserPage from "../modalUserPage/modalUserPage";
+import PersonalUserPage from "../PersonalUserPage/PersonalUserPage";
 import {Link} from "react-router-dom";
 import ScvNoneUserLogo from '../../img/ScvNoneUserLogo.svg';
-import telegram from '../../img/telegram.svg';
+import telegram from '../../img/Telegram.svg';
 
 
 const ContactDeveloper = () => {

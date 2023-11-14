@@ -4,7 +4,7 @@ import {Link, useNavigate, useParams} from "react-router-dom";
 import "./UpdateSocial.css";
 import Facebook from "../../img/Facebook.svg";
 import LinkedIn from "../../img/LinkedIn.png";
-import Telegram from "../../img/telegram.svg";
+import Telegram from "../../img/Telegram.svg";
 import Viber from "../../img/Viber.svg";
 import TikTok from "../../img/TikTok.svg";
 import Instagram from "../../img/Instagram.svg";

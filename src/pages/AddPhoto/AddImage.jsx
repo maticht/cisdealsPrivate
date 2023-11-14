@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import styles from "./styles.module.css";
-import ModalUserPage from "../modalUserPage/modalUserPage";
+import PersonalUserPage from "../PersonalUserPage/PersonalUserPage";
 import plus from "../../img/Plus.svg";
 import Resizer from "react-image-file-resizer";
 import arrowUp from '../../img/Property 1=24.svg'
@@ -217,9 +217,9 @@ const AddImage = () => {
                     {`< Назад`}
                 </p>
             </Link>
-            <div>
-                <ModalUserPage isOpen={modalOpen} onClose={handleCloseModal}/>
-            </div>
+            {/*<div>*/}
+            {/*    <ModalUserPage isOpen={modalOpen} onClose={handleCloseModal}/>*/}
+            {/*</div>*/}
             <div style={{height: '100%', width: '100%'}}>
                 <form className={styles.form_container} onSubmit={handleSubmit} noValidate>
                     <h1 style={{margin: "0 0 0 10px"}}>Изображения</h1>

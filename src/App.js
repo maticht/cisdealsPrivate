@@ -33,7 +33,7 @@ import UserServLoginScreen from './pages/UserServLoginScreen/UserServLoginScreen
 import SuccessfulLoginScreen from "./pages/SuccessfulLoginScreen/SuccessfulLoginScreen";
 import CategoriesScreen4 from "./pages/CategoriesScreen4/CategoriesScreen4";
 import SearchScreen from "./pages/SearchScreen/SearchScreen";
-import ModalUserPage from "./pages/modalUserPage/modalUserPage";
+import PersonalUserPage from "./pages/PersonalUserPage/PersonalUserPage";
 
 
 function App() {
@@ -55,7 +55,7 @@ function App() {
                     <Route path="/AddLoginServ/:UserPage" exact element={<AddLoginServ/>} />
                     <Route path="/AddLoginServ/:UserPage/UserServLoginScreen/:ServPage" exact element={<UserServLoginScreen/>} />
                     <Route path="/UpdateWorkingHours/:UserPage" exact element={<UpdateWorkingHours/>} />
-                    <Route path="/ModalUserPage/:UserPage" exact element={<ModalUserPage />} />
+                    <Route path="/PersonalUserPage/:UserPage" exact element={<PersonalUserPage />} />
                     <Route path="/FavoritesPage" exact element={<FavoritesPage />} />
                     <Route path="/EditProfile" exact element={<EditProfile />} />
                     <Route path="/SearchScreen" exact element={<SearchScreen />} />

@@ -3,7 +3,7 @@ import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import "./Update.css";
 import eye from "../../img/showPas.svg";
-import yesEye from "../../img/24=yes.svg";
+import yesEye from "../../img/showPas.svg";
 
 const Update = () => {
     const {UserPage} = useParams();

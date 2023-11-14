@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import ModalUserPage from "../modalUserPage/modalUserPage";
+import PersonalUserPage from "../PersonalUserPage/PersonalUserPage";
 import axios from "axios";
 import {Link, useParams} from "react-router-dom";
 import noneUserLogo from "../../img/noneUserLogoSq.svg";
