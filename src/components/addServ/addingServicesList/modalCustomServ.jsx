@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {createUseStyles} from 'react-jss';
-import plus from "../../img/Plus.svg";
-import styles from "../UpdateImage/styles.module.css";
+import plus from "../../../img/Plus.svg";
+import styles from "../../UpdateImage/styles.module.css";
 
 const useStyles = createUseStyles({
     modalWrapper: {

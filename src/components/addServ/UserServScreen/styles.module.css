@@ -1,10 +1,11 @@
-.signup_container {
+.user_serv_container {
     width: 100%;
     flex-direction: column;
     background-color: #f5f5f5;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
+    min-height: 100vh;
 }
 
 .signup_form_container {
@@ -29,7 +30,7 @@
 .input {
     outline: none;
     border: none;
-    width: 80vw;
+    width: 100%;
     padding: 15px;
     border-radius: 8px;
     background-color: #f1f1f1;
@@ -38,6 +39,40 @@
     font-size: 14px;
     text-align: left;
 }
+
+.formUserServTitle {
+    margin: 10px 0 5px 0;
+}
+
+.formUserServPrise {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.formUserServPrise p {
+    margin: 0 0 0 10px;
+    font-size: 15px;
+}
+.formUserServDescription{
+    justify-content: space-between;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+}
+.formUserServDescription p{
+    margin: 10px 0 5px 0;
+    font-size: 12px;
+    font-weight: 500;
+}
+.formUserServTime {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
 .servInput {
     outline: none;
     border: none;
@@ -50,6 +85,7 @@
     font-size: 14px;
     text-align: left;
 }
+
 .rowInput {
     outline: none;
     border: none;
@@ -62,6 +98,7 @@
     font-size: 14px;
     text-align: left;
 }
+
 .rowTimeInput {
     outline: none;
     border: none;
@@ -75,6 +112,7 @@
     font-size: 14px;
     text-align: center;
 }
+
 .inputBtn {
     outline: none;
     border: none;
@@ -88,15 +126,18 @@
     font-size: 14px;
     text-align: left;
 }
+
 .input-top {
     text-align: left;
     resize: none;
     height: 18px;
 }
+
 textarea,
-textarea::placeholder{
+textarea::placeholder {
     font-family: Arial, sans-serif;
 }
+
 .error_msg {
     display: flex;
     justify-content: center;
@@ -132,28 +173,33 @@ textarea::placeholder{
     color: white;
     margin: 10px;
 }
-.TimeBlock{
+
+.TimeBlock {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
-.TimeBlockText{
-    margin:0 0 0 8px;
-    font-size:13px;
+
+.TimeBlockText {
+    margin: 0 0 0 8px;
+    font-size: 13px;
 }
+
 @media screen and (max-width: 540px) {
     .green_btn {
         width: calc(100% - 20px);
     }
 }
+
 @media screen and (max-width: 340px) {
-    .TimeBlock{
+    .TimeBlock {
         display: flex;
         flex-direction: column-reverse;
         align-items: center;
     }
-    .TimeBlockText{
-        margin:0 5px 0 0;
-        font-size:13px;
+
+    .TimeBlockText {
+        margin: 0 5px 0 0;
+        font-size: 13px;
     }
 }

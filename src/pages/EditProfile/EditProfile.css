@@ -40,6 +40,10 @@
     padding: 0 10px 15px;
     margin-bottom: 15px;
 }
+.menu-item img{
+    width: 22px;
+    opacity: 0.8;
+}
 .menu-item:last-child {
     margin-bottom: 0;
     padding-bottom: 0;
@@ -49,4 +53,18 @@
     color: #000;
     margin-bottom: 5px;
     margin-top: 0;
+}
+@media screen and (max-width: 540px) {
+    .menu-link {
+        text-decoration: none;
+        color: #454545;
+        font-size: 14px;
+        margin: 10px 0 5px -2px;
+        display: flex;
+        align-items: center;
+    }
+    .menu-heading {
+        font-size: 24px;
+        margin: 5px 0 20px;
+    }
 }

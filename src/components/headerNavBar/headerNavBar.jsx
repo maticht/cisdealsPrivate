@@ -16,19 +16,21 @@ function HeaderNavBar() {
     if (user1) {
         try {
             localUserObj = JSON.parse(user1);
-            userid = localUserObj?._id;
+            console.log(localUserObj);
+            userid = localUserObj?.data?._id;
         } catch (error) {
             console.error(error);
         }
     }
 
     useEffect(() => {
-        if (!localUserObj?._id) {
+        if (!localUserObj?.data?._id) {
             return;
         }
         const fetchUserProfile = async (userId) => {
             try {
                 const response = await userProfile(userId);
+                console.log(response)
                 setUser(response.profile);
             } catch (err) {
                 console.log(err);

@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
-import "./UpdateSocial.css";
+import {updateProfile, userProfile} from "../../httpRequests/cisdealsApi";
 import Facebook from "../../img/Facebook.svg";
 import LinkedIn from "../../img/LinkedIn.png";
 import Telegram from "../../img/Telegram.svg";
@@ -10,6 +9,8 @@ import TikTok from "../../img/TikTok.svg";
 import Instagram from "../../img/Instagram.svg";
 import WhatsApp from "../../img/WhatsApp.svg";
 import YouTube from "../../img/YouTube.svg";
+import "./UpdateSocial.css";
+import back from "../../img/Arrow_left.svg";
 
 
 const UpdateContactInfo = () => {
@@ -54,7 +55,7 @@ const UpdateContactInfo = () => {
 
     const fetchUserProfile = async (userId) => {
         try {
-            const { data } = await axios.get(`http://backend.delkind.pl/user-profile/${userId}`);
+            const data = await userProfile(UserPage);
             console.log(data.profile);
             setData({
                 firstName: "",
@@ -101,10 +102,9 @@ const UpdateContactInfo = () => {
         e.preventDefault();
         console.log(data)
         try {
-
-            const url = `http://backend.delkind.pl/update/${UserPage}`;
-            const { data: res } = await axios.put(url, data);
+            const res = await updateProfile(UserPage, data);
             localStorage.setItem("token",  JSON.stringify(res));
+            console.log(localStorage.getItem("token"))
             navigate("/EditProfile");
             console.log(data);
         } catch (error) {
@@ -119,10 +119,11 @@ const UpdateContactInfo = () => {
     };
 
     return (
-        <div className={'signup_container'}>
+        <div className={'social_container'}>
             <div className="main-container">
-                <Link to="/EditProfile" className="form-link">
-                    <p className="form-link-text">{'< Назад'}</p>
+                <Link className="form-update-link" to="/EditProfile">
+                    <img src={back} alt="back" />
+                    <p>Назад</p>
                 </Link>
                 <form className="form_container" onSubmit={handleSubmit} noValidate>
                     <p className="form-heading">Изменение контактной информации</p>
@@ -230,7 +231,7 @@ const UpdateContactInfo = () => {
                         </div>
                     </div>
                     {error && <div className={'error_msg'}>{error}</div>}
-                    <button type="submit" className={'green_btn'}>
+                    <button type="submit" className={'create_btn'}>
                         Изменить
                     </button>
                 </form>

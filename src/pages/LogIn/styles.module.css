@@ -146,4 +146,8 @@
     color: white;
     margin: 10px 0;
 }
-
+@media screen and (max-width: 540px) {
+    .form_link {
+        margin: 10px 0 5px 10px;
+    }
+}

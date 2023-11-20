@@ -38,7 +38,7 @@
 .user-avatar {
     width: 80px;
     height: 80px;
-    border-radius: 50%;
+    border-radius: 10px;
 }
 .user-avatar img {
     width: 80px;
@@ -96,6 +96,10 @@
     padding: 0 10px 15px;
     margin-bottom: 15px;
 }
+.profile-link img{
+    width: 22px;
+    opacity: 0.8;
+}
 .profile-link:last-child {
     margin-bottom: 0;
     padding-bottom: 0;
@@ -116,10 +120,12 @@
     margin-top: 0;
 }
 .link-image{
+    width: 22px;
+    height: 22px;
     opacity: 0.8;
 }
 .logout-icon{
-    width: 24px;
+    width: 22px;
     height: 20px;
     opacity: 0.8;
 }

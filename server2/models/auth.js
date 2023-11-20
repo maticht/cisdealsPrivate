@@ -75,7 +75,7 @@ router.post("/", async (req, res) => {
         }
 
         const token = user.generateAuthToken();
-        res.status(200).send({ data: user, message: "Залогинился успешно" });
+        res.status(200).send({ data: { data: user }, message: "Залогинился успешно" });
     } catch (error) {
         console.log(error);
         res.status(500).send({ message: "Внутренняя ошибка сервера" });

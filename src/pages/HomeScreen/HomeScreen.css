@@ -4,11 +4,12 @@
     flex-direction: column;
 }
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
     background-color: #939393;
+    border-radius: 1px;
 }
 
 .container::-webkit-scrollbar-thumb:hover {

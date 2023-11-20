@@ -22,7 +22,7 @@ import Star from "../../img/Star1.svg";
 import Star2 from "../../img/Star22.svg";
 import xMark from "../../img/x-mark=24.svg";
 import EditProfile from "../../img/EditProfile.svg";
-import styles from "../../components/UpdateDescription/styles.module.css";
+import styles from "../UpdateDescription/styles.module.css";
 
 const useStyles = createUseStyles({
     button: {

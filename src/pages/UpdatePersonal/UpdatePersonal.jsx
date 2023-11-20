@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
-import "./Update.css";
+import {userProfile, updateProfile} from "../../httpRequests/cisdealsApi";
 import eye from "../../img/showPas.svg";
-import yesEye from "../../img/showPas.svg";
+import openEye from "../../img/openEye.svg";
+import back from "../../img/Arrow_left.svg";
+import "./UpdatePersonal.css";
 
-const Update = () => {
+const UpdatePersonal = () => {
     const {UserPage} = useParams();
     const [data, setData] = useState({
         firstName: "",
@@ -50,8 +51,9 @@ const Update = () => {
     };
     const fetchUserProfile = async (UserPage) => {
         try {
-            const { data } = await axios.get(`http://backend.delkind.pl/user-profile/${UserPage}`);
+            const data = await userProfile(UserPage);
             setUser(data.profile);
+            console.log(data.profile)
             setData({
                 firstName: "",
                 lastName: "",
@@ -96,9 +98,9 @@ const Update = () => {
         e.preventDefault();
         console.log(data)
         try {
-            const url = `http://backend.delkind.pl/update/${UserPage}`;
-            const { data: res } = await axios.put(url, data);
+            const res = await updateProfile(UserPage, data);
             localStorage.setItem("token",  JSON.stringify(res));
+            console.log(localStorage.getItem("token"))
             navigate("/EditProfile");
             console.log(data);
         } catch (error) {
@@ -113,14 +115,15 @@ const Update = () => {
     };
 
     return (
-        <div className={'update_container'}>
-            <div className="main-container">
-                <Link to="/EditProfile" className="form-link">
-                    <p className="form-link-text">{'< Назад'}</p>
+        <div className={'update_main_container'}>
+            <div className="update-container">
+                <Link className="form-update-link" to="/EditProfile">
+                    <img src={back} alt="back" />
+                    <p>Назад</p>
                 </Link>
                 <form className="form_container" onSubmit={handleSubmit} noValidate>
                     <p className="form-prsnl-heading">Изменение личной информации</p>
-                    <div className="form-content">
+                    <div className="form-update-content">
                         <div>
                             <h5 className="form-label">Имя или Название компании</h5>
                             <input
@@ -143,14 +146,17 @@ const Update = () => {
                                     required
                                     className="update_input"
                                 />
-                                <button onClick={handleToggleShowPassword} type="button" className="password-button">
-                                    <img src={showPassword ? eye : yesEye} alt="eye" width="23px" height="23px" style={{ marginTop: '4px' }} />
+                                <button
+                                    type="button"
+                                    onClick={handleToggleShowPassword}
+                                    className="password-button">
+                                    <img src={showPassword ? openEye : eye} alt="eye"/>
                                 </button>
                             </div>
                         </div>
                     </div>
                     {error && <div className={'error_msg'}>{error}</div>}
-                    <button type="submit" className={'green_btn'}>
+                    <button type="submit" className={'create_btn'}>
                         Изменить
                     </button>
                 </form>
@@ -159,4 +165,4 @@ const Update = () => {
     );
 };
 
-export default Update;
+export default UpdatePersonal;

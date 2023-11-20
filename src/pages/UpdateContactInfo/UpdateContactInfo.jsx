@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
+import {updateProfile, userProfile} from "../../httpRequests/cisdealsApi";
 import "./UpdateContactInfo.css";
+import back from "../../img/Arrow_left.svg";
 
 const UpdateContactInfo = () => {
     const {UserPage} = useParams();
@@ -11,6 +12,7 @@ const UpdateContactInfo = () => {
         areasActivity: "",
         phone1: "",
         phone2: "",
+        email: "",
         image: [],
         Facebook: "",
         TikTok: "",
@@ -44,7 +46,7 @@ const UpdateContactInfo = () => {
 
     const fetchUserProfile = async (userId) => {
         try {
-            const { data } = await axios.get(`http://backend.delkind.pl/user-profile/${userId}`);
+            const data = await userProfile(UserPage);
             setProfileData(data.profile);
             console.log(data.profile);
             setData({
@@ -73,6 +75,7 @@ const UpdateContactInfo = () => {
                 savedUsers: [],
                 likes: "",
                 rating: "",
+                email: data.profile.email ,
                 phone1: data.profile.phone1 ,
                 phone2: data.profile.phone2,
             });
@@ -83,17 +86,15 @@ const UpdateContactInfo = () => {
 
     useEffect(() => {
         fetchUserProfile(UserPage);
-
     }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(data);
-
         try {
-            const url = `http://backend.delkind.pl/update/${UserPage}`;
-            const { data: res } = await axios.put(url, data);
-            localStorage.setItem("token", JSON.stringify(res));
+            const res = await updateProfile(UserPage, data);
+            localStorage.setItem("token",  JSON.stringify(res));
+            console.log(localStorage.getItem("token"))
             navigate("/EditProfile");
             console.log(data);
         } catch (error) {
@@ -106,12 +107,13 @@ const UpdateContactInfo = () => {
     return (
         <div className={'contact_container'}>
             <div className="main-container">
-                <Link to="/EditProfile" className="form-link">
-                    <p className="form-link-text">{'< Назад'}</p>
+                <Link className="form-update-link" to="/EditProfile">
+                    <img src={back} alt="back" />
+                    <p>Назад</p>
                 </Link>
                 <form className="form_container" onSubmit={handleSubmit} noValidate>
                     <p className="form-heading">Изменение контактной информации</p>
-                    <div className="form-content">
+                    <div className="form-contact-content">
                         <div>
                             <h5 className="form-label">Email</h5>
                             <input
@@ -145,7 +147,7 @@ const UpdateContactInfo = () => {
                         </div>
                     </div>
                     {error && <div className={'error_msg'}>{error}</div>}
-                    <button type="submit" className={'green_btn'}>
+                    <button type="submit" className={'create_btn'}>
                         Изменить
                     </button>
                 </form>

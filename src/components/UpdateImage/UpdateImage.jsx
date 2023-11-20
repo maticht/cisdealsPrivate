@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import styles from "./styles.module.css";
 import plus from "../../img/Plus.svg";
 import Resizer from "react-image-file-resizer";
 import arrowUp from '../../img/Property 1=24.svg'
+import {moveToFront, updateProfile, uploadPhoto, userProfile, removeImage} from "../../httpRequests/cisdealsApi";
+import back from "../../img/Arrow_left.svg";
 
 const UpdateImage = () => {
     const {UserPage} = useParams();
@@ -55,13 +56,9 @@ const UpdateImage = () => {
     useEffect(() => {
         const fetchUserProfile = async (userId) => {
             try {
-                const response = await fetch(`http://backend.delkind.pl/user-profile/${UserPage}`);
-                if (response.ok) {
-                    const data = await response.json();
-                    setUser(data.profile);
-                } else {
-                    throw new Error('Failed to fetch user profile');
-                }
+                const data = await userProfile(userId);
+                setUser(data.profile);
+                console.log(data.profile);
             } catch (err) {
                 console.log(err);
             }
@@ -105,16 +102,11 @@ const UpdateImage = () => {
     };
     const handleUpload = async () => {
         try {
-            const url = `http://backend.delkind.pl/uploadPhoto/${UserPage}`;
             const formData = new FormData();
             formData.append("image", data.image);
-            const res = await axios.put(url, formData, {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                },
-            });
+            const res = await uploadPhoto(UserPage, data);
             setData({...data, image: res.data});
-            localStorage.setItem("token", JSON.stringify(res));
+            console.log(res.data)
             console.log(data);
             window.location.reload();
         } catch (err) {
@@ -158,9 +150,9 @@ const UpdateImage = () => {
         e.preventDefault();
         console.log(data)
         try {
-            const url = `http://backend.delkind.pl/update/${UserPage}`;
-            const {data: res} = await axios.put(url, data);
-            localStorage.setItem("token", JSON.stringify(res));
+            const res = await updateProfile(UserPage, data);
+            localStorage.setItem("token",  JSON.stringify(res));
+            console.log(localStorage.getItem("token"))
             setButtonText("Добавить");
             console.log(data);
         } catch (error) {
@@ -175,16 +167,16 @@ const UpdateImage = () => {
     };
     const moveImage = async (imageUrl) => {
         try {
-            await axios.put(`http://backend.delkind.pl/moveToFront/${UserPage}`, {imageUrl});
-            const updatedUser = await axios.get(`http://backend.delkind.pl/user-profile/${UserPage}`);
-            setUser(updatedUser.data.profile);
+            await moveToFront(UserPage, imageUrl);
+            const updatedUser = await userProfile(UserPage);
+            setUser(updatedUser.profile);
         } catch (err) {
             console.log("Ошибка перемещения изображения", err);
         }
     }
-    const removeImage = async (imageUrl) => {
+    const removeUserImage = async (imageUrl) => {
         try {
-            await axios.put(`http://backend.delkind.pl/removeImage/${UserPage}`, {imageUrl});
+            await removeImage(UserPage, imageUrl);
             const updatedUser = {...user};
             const imageIndex = updatedUser.image.findIndex((image) => image === imageUrl);
             if (imageIndex !== -1) {
@@ -199,8 +191,9 @@ const UpdateImage = () => {
     return (
         <div className={styles.signup_container}>
             <div className="main-container">
-                <Link to="/EditProfile" className="form-link">
-                    <p className="form-link-text">{'< Назад'}</p>
+                <Link className="form-update-link" to="/EditProfile">
+                    <img src={back} alt="back" />
+                    <p>Назад</p>
                 </Link>
                 <div>
                     <form className={styles.form_container} onSubmit={handleSubmit} noValidate>
@@ -240,13 +233,7 @@ const UpdateImage = () => {
                             </div>
                             {user.image.length !== 0 && (
                                 <div>
-                                    <div style={{
-                                        display: 'flex',
-                                        flexDirection: 'row',
-                                        alignItems: 'center',
-                                        justifyContent: 'space-between',
-                                        margin: '20px 0 0 0'
-                                    }}>
+                                    <div className={styles.allImageDescBlock}>
                                         <h5 className={styles.imageDescriptionTitle}>Все изображения</h5>
                                         <p className={styles.allImageDescriptionNum}>{`${user.image.length}/5`}</p>
                                     </div>
@@ -260,7 +247,7 @@ const UpdateImage = () => {
                                                     marginRight: index === user.image.length - 1 ? 0 : '6px',
                                                 }}>
                                                     <img src={imageUrl} alt={`image-${index}`} className={styles.imageContainerImg}/>
-                                                    <div onClick={() => removeImage(imageUrl)} className={styles.removeImgButton}>
+                                                    <div onClick={() => removeUserImage(imageUrl)} className={styles.removeImgButton}>
                                                         <img src={plus}
                                                              alt="Plus"/>
                                                     </div>
@@ -303,7 +290,7 @@ const UpdateImage = () => {
                         {errorMessage && <div className={styles.error_msg}>{errorMessage}</div>}
                         <button disabled={data.image.length === 0 || !data.image || data.image.length > 5242880}
                                 type="submit" onClick={handleUpload}
-                                className={styles.green_btn}>
+                                className={'create_btn'}>
                             {buttonText}
                         </button>
                     </form>

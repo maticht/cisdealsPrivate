@@ -3,6 +3,8 @@ import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import styles from "./styles.module.css";
 import line from '../../img/Line 26.svg'
+import {updateProfile, userProfile} from "../../httpRequests/cisdealsApi";
+import back from "../../img/Arrow_left.svg";
 
 const UpdateWorkingHours = () => {
     const {UserPage} = useParams();
@@ -85,8 +87,8 @@ const UpdateWorkingHours = () => {
     const [workingWed, setWorkingWed] = useState(true);
     const [workingThu, setWorkingThu] = useState(true);
     const [workingFri, setWorkingFri] = useState(true);
-    const [workingSat, setWorkingSat] = useState(false);
-    const [workingSun, setWorkingSun] = useState(false);
+    const [workingSat, setWorkingSat] = useState(true);
+    const [workingSun, setWorkingSun] = useState(true);
 
     const navigate = useNavigate();
     const handleChange = ({ target }) => {
@@ -175,7 +177,7 @@ const UpdateWorkingHours = () => {
 
     const fetchUserProfile = async (userId) => {
         try {
-            const { data } = await axios.get(`http://backend.delkind.pl/user-profile/${userId}`);
+            const data = await userProfile(UserPage);
             console.log(data.profile);
             setData({
                 firstName: "",
@@ -264,10 +266,10 @@ const UpdateWorkingHours = () => {
         e.preventDefault();
         console.log(data)
         try {
-            const url = `http://backend.delkind.pl/update/${UserPage}`;
-            const { data: res } = await axios.put(url, data);
+            const res = await updateProfile(UserPage, data);
             localStorage.setItem("token",  JSON.stringify(res));
-            navigate(`/EditProfile`);
+            console.log(localStorage.getItem("token"))
+            navigate("/EditProfile");
             console.log(data);
         } catch (error) {
             if (
@@ -283,8 +285,9 @@ const UpdateWorkingHours = () => {
     return (
         <div className={styles.signup_container}>
             <div className="main-container">
-                <Link to="/EditProfile" className="form-link">
-                    <p className="form-link-text">{'< Назад'}</p>
+                <Link className="form-update-link" to="/EditProfile">
+                    <img src={back} alt="back" />
+                    <p>Назад</p>
                 </Link>
                 <form className={styles.form_container} onSubmit={handleSubmit} noValidate>
                     <p className="form-heading">Время работы</p>
@@ -684,8 +687,8 @@ const UpdateWorkingHours = () => {
                             </div>
                         </div>
                     </div>
-                    {error && <div className={styles.error_msg}>{error}</div>}
-                    <button type="submit" className={styles.green_btn}>
+                    {error && <div className={'error_msg'}>{error}</div>}
+                    <button type="submit" className={'create_btn'}>
                         Изменить
                     </button>
                 </form>

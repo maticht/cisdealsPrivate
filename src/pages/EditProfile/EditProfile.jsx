@@ -7,21 +7,19 @@ import back from "../../img/Arrow_left.svg";
 const EditProfile = () => {
     const user = localStorage.getItem("token");
     let localUserObj = JSON.parse(user);
+    console.log(localUserObj)
     let UserId = localUserObj.data ? localUserObj.data._id : null;
-    const goBack = () => {
-        window.history.back();
-    };
 
     return (
         <div className="profile-menu">
             <div className="profile-menu-block">
-                <Link className="menu-link" onClick={goBack}>
+                <Link className="menu-link" to={`/PersonalUserPage/${UserId}`}>
                     <img src={back} alt="back" />
                     <p>Назад</p>
                 </Link>
                 <h1 className="menu-heading">Редактировать профиль</h1>
                 <div className="profile-links-block">
-                    <Link to={`/update/${UserId}`} className="menu-item">
+                    <Link to={`/updatePersonal/${UserId}`} className="menu-item">
                         <div>
                             <p className="menu-item-text">Личная информация</p>
                         </div>

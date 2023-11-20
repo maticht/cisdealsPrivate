@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import styles from "./styles.module.css";
+import {updateProfile, userProfile} from "../../httpRequests/cisdealsApi";
+import back from "../../img/Arrow_left.svg";
 
 const UpdateDescription = () => {
     const {UserPage} = useParams();
@@ -50,7 +51,7 @@ const UpdateDescription = () => {
 
     const fetchUserProfile = async (userId) => {
         try {
-            const { data } = await axios.get(`http://backend.delkind.pl/user-profile/${userId}`);
+            const data = await userProfile(UserPage);
             console.log(data.profile);
             setData({
                 password: "",
@@ -95,9 +96,9 @@ const UpdateDescription = () => {
         e.preventDefault();
         console.log(data)
         try {
-            const url = `http://backend.delkind.pl/update/${UserPage}`;
-            const { data: res } = await axios.put(url, data);
+            const res = await updateProfile(UserPage, data);
             localStorage.setItem("token",  JSON.stringify(res));
+            console.log(localStorage.getItem("token"))
             navigate("/EditProfile");
             console.log(data);
         } catch (error) {
@@ -114,13 +115,14 @@ const UpdateDescription = () => {
     return (
         <div className={styles.signup_container}>
             <div className="main-container">
-                <Link to="/EditProfile" className="form-link">
-                    <p className="form-link-text">{'< Назад'}</p>
+                <Link className="form-update-link" to="/EditProfile">
+                    <img src={back} alt="back" />
+                    <p>Назад</p>
                 </Link>
                 <form className={styles.form_container} onSubmit={handleSubmit} noValidate>
                     <div className={styles.formHeader}>
                         <p className="form-prsnl-heading">Описание</p>
-                        <p className={styles.formCharacterCount}>{data.description.length}/900</p>
+                        <p className={styles.formCharacterCount}>{data.description === "description" ? 0 : data.description.length}/900</p>
                     </div>
                     <div className={styles.formContent}>
                         <div>
@@ -135,7 +137,7 @@ const UpdateDescription = () => {
                         </div>
                     </div>
                     {error && <div className={styles.error_msg}>{error}</div>}
-                    <button type="submit" className={styles.green_btn}>
+                    <button type="submit" className={'create_btn'}>
                         Изменить
                     </button>
                 </form>
