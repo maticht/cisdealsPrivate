@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from "react";
-import axios from "axios";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import React, {useEffect, useRef, useState} from "react";
+import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
 import styles from "./styles.module.css";
 import line from '../../img/Line 26.svg'
 import {updateProfile, userProfile} from "../../httpRequests/cisdealsApi";
@@ -8,6 +7,18 @@ import back from "../../img/Arrow_left.svg";
 
 const UpdateWorkingHours = () => {
     const {UserPage} = useParams();
+    const [error, setError] = useState("");
+    const location = useLocation();
+    const navigate = useNavigate();
+    const progressBarRef = useRef(null);
+    const targetWidth = 43;
+    const [workingMon, setWorkingMon] = useState(true);
+    const [workingTue, setWorkingTue] = useState(true);
+    const [workingWed, setWorkingWed] = useState(true);
+    const [workingThu, setWorkingThu] = useState(true);
+    const [workingFri, setWorkingFri] = useState(true);
+    const [workingSat, setWorkingSat] = useState(true);
+    const [workingSun, setWorkingSun] = useState(true);
     const [data, setData] = useState({
         firstName: "",
         lastName: "",
@@ -81,16 +92,7 @@ const UpdateWorkingHours = () => {
         likes: "",
         rating: "",
     });
-    const [error, setError] = useState("");
-    const [workingMon, setWorkingMon] = useState(true);
-    const [workingTue, setWorkingTue] = useState(true);
-    const [workingWed, setWorkingWed] = useState(true);
-    const [workingThu, setWorkingThu] = useState(true);
-    const [workingFri, setWorkingFri] = useState(true);
-    const [workingSat, setWorkingSat] = useState(true);
-    const [workingSun, setWorkingSun] = useState(true);
 
-    const navigate = useNavigate();
     const handleChange = ({ target }) => {
         const [working, time] = target.name.split("-");
         let value = target.value;
@@ -269,7 +271,11 @@ const UpdateWorkingHours = () => {
             const res = await updateProfile(UserPage, data);
             localStorage.setItem("token",  JSON.stringify(res));
             console.log(localStorage.getItem("token"))
-            navigate("/EditProfile");
+            if (location.pathname === `/AddWorkingHours/${UserPage}`) {
+                navigate(`/AddLocation/${UserPage}`);
+            } else {
+                navigate("/EditProfile");
+            }
             console.log(data);
         } catch (error) {
             if (
@@ -281,16 +287,47 @@ const UpdateWorkingHours = () => {
             }
         }
     };
+    useEffect(() => {
+        const progressBar = progressBarRef.current;
+        let width = 29;
+        const animationDuration = 200;
+        const start = performance.now();
+
+        const animateProgressBar = (timestamp) => {
+            const elapsed = timestamp - start;
+            width = (elapsed / animationDuration) * targetWidth;
+
+            progressBar.style.width = `${Math.min(width, targetWidth)}%`;
+
+            if (width < targetWidth) {
+                requestAnimationFrame(animateProgressBar);
+            }
+        };
+
+        requestAnimationFrame(animateProgressBar);
+    }, []);
 
     return (
         <div className={styles.signup_container}>
             <div className="main-container">
-                <Link className="form-update-link" to="/EditProfile">
+                {location.pathname === `/AddWorkingHours/${UserPage}` && (
+                    <div className="ProgressBarBlock">
+                        <div className="ProgressBarLine" ref={progressBarRef} style={{ width: `29%` }}>
+                        </div>
+                    </div>
+                )}
+                <Link className="form-update-link"
+                      to={(location.pathname === `/AddWorkingHours/${UserPage}`)
+                          ? `/AddSocialInfo/${UserPage}`
+                          : "/EditProfile"}>
                     <img src={back} alt="back" />
                     <p>Назад</p>
                 </Link>
                 <form className={styles.form_container} onSubmit={handleSubmit} noValidate>
-                    <p className="form-heading">Время работы</p>
+                    <p className="form-heading">
+                        {(location.pathname === `/AddWorkingHours/${UserPage}`)
+                            ? "Добавление времени работы"
+                            : "Изменение времени работы"}</p>
                     <div className={styles.container}>
                         <div>
                             <div className={styles.dayContainer}>
@@ -689,7 +726,10 @@ const UpdateWorkingHours = () => {
                     </div>
                     {error && <div className={'error_msg'}>{error}</div>}
                     <button type="submit" className={'create_btn'}>
-                        Изменить
+                        {(location.pathname === `/AddWorkingHours/${UserPage}`)
+                            ? "Далее"
+                            : "Изменить"
+                        }
                     </button>
                 </form>
             </div>

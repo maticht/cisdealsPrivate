@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import React, {useEffect, useRef, useState} from "react";
+import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
 import CitiesJSON from '../../data/cities.json';
 import arrow from '../../img/arrowright.svg';
 import arrowDown from '../../img/arrow_down=24.png';
@@ -10,6 +10,15 @@ import back from "../../img/Arrow_left.svg";
 
 const UpdateLocation = () => {
     const {UserPage} = useParams();
+    const location = useLocation();
+    const progressBarRef = useRef(null);
+    const targetWidth = 57;
+    const [error, setError] = useState("");
+    const [modalServIsOpen, setModalServIsOpen] = useState(false);
+    const [modalCitiesIsOpen, setModalCitiesIsOpen] = useState(false);
+    const [selectedServ, setSelectedServ] = useState("");
+    const [selectedCities, setSelectedCities] = useState("");
+    const navigate = useNavigate();
     const [data, setData] = useState({
         firstName: "",
         lastName: "",
@@ -41,12 +50,6 @@ const UpdateLocation = () => {
         likes: "",
         rating: "",
     });
-    const [error, setError] = useState("");
-    const [modalServIsOpen, setModalServIsOpen] = useState(false);
-    const [modalCitiesIsOpen, setModalCitiesIsOpen] = useState(false);
-    const [selectedServ, setSelectedServ] = useState("");
-    const [selectedCities, setSelectedCities] = useState("");
-    const navigate = useNavigate();
     const handleChange = ({ currentTarget: input }) => {
         let value = input.value;
         if (input.name === "zip" && value.length === 2 && !value.includes("-")) {
@@ -106,7 +109,11 @@ const UpdateLocation = () => {
             const res = await updateProfile(UserPage, data);
             localStorage.setItem("token",  JSON.stringify(res));
             console.log(localStorage.getItem("token"))
-            navigate("/EditProfile");
+            if (location.pathname === `/AddLocation/${UserPage}`) {
+                navigate(`/AddDescription/${UserPage}`);
+            } else {
+                navigate("/EditProfile");
+            }
             console.log(data);
         } catch (error) {
             if (
@@ -138,16 +145,47 @@ const UpdateLocation = () => {
         e.preventDefault();
         setModalCitiesIsOpen(true);
     };
+    useEffect(() => {
+        const progressBar = progressBarRef.current;
+        let width = 0;
+        const animationDuration = 200;
+        const start = performance.now();
+
+        const animateProgressBar = (timestamp) => {
+            const elapsed = timestamp - start;
+            width = (elapsed / animationDuration) * targetWidth;
+
+            progressBar.style.width = `${Math.min(width, targetWidth)}%`;
+
+            if (width < targetWidth) {
+                requestAnimationFrame(animateProgressBar);
+            }
+        };
+
+        requestAnimationFrame(animateProgressBar);
+    }, []);
 
     return (
         <div className={styles.mainLocationContainer}>
             <div className={styles.mainContainer}>
-                <Link className="form-update-link" to="/EditProfile">
+                {location.pathname === `/AddLocation/${UserPage}` && (
+                    <div className="ProgressBarBlock">
+                        <div className="ProgressBarLine" ref={progressBarRef} style={{ width: `43%` }}>
+                        </div>
+                    </div>
+                )}
+                <Link className="form-update-link"
+                      to={(location.pathname === `/AddLocation/${UserPage}`)
+                          ? `/AddWorkingHours/${UserPage}`
+                          : "/EditProfile"}>
                     <img src={back} alt="back" />
                     <p>Назад</p>
                 </Link>
                 <form className={'form_container'} onSubmit={handleSubmit} noValidate>
-                    <p className="form-prsnl-heading">Изменение Локации</p>
+                    <p className="form-prsnl-heading">
+                        {(location.pathname === `/AddLocation/${UserPage}`)
+                        ? "Добавление Локации"
+                        : "Изменение Локации"}</p>
                     <div className={styles.cityContainer}>
                         <div>
                             <h5 className={styles.inputName}>Город</h5>
@@ -257,7 +295,10 @@ const UpdateLocation = () => {
                     </div>
                     {error && <div className={styles.error_msg}>{error}</div>}
                     <button type="submit" className={'create_btn'}>
-                        Изменить
+                        {(location.pathname === `/AddLocation/${UserPage}`)
+                            ? "Далее"
+                            : "Изменить"
+                        }
                     </button>
                 </form>
             </div>

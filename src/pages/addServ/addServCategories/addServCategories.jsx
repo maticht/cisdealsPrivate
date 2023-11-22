@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
 import {updateProfile, userProfile, viewServices} from "../../../httpRequests/cisdealsApi";
 import styles from "../styles.module.css";
 import check from "../../../img/VectorCheck.svg"
@@ -33,6 +33,7 @@ const AddServCategories = () => {
     const [selectedServv, setSelectedServv] = useState("");
     const [selectedUser, setSelectedUser] = useState("");
     const [servicesString, setServicesString] = useState('');
+    const location = useLocation();
     const [selectedServicess, setSelectedServicess] = useState([]);
     const [userData, setUserData] = useState({
         firstName: "",
@@ -165,13 +166,20 @@ const AddServCategories = () => {
         const res = await updateProfile(UserPage, {...userDataForAreasActivity, areasActivity: selectedServicess.join(" / ")});
         localStorage.setItem("token", JSON.stringify(res));
         fetchUserServicess(UserPage, userData);
-        navigate(`/addServ/${UserPage}`);
+        if (location.pathname === `/AddLoginServ/addServCategories/${UserPage}`) {
+            navigate(`/AddLoginServ/${UserPage}`);
+        } else {
+            navigate(`/addServ/${UserPage}`);
+        }
     };
 
     return (
         <div className={'servCategoriesBlock'}>
             <div className={'servCategoriesForm'}>
-                <Link className="form-update-link" to={`/addServ/${UserPage}`}>
+                <Link className="form-update-link"
+                      to={(location.pathname === `/AddLoginServ/addServCategories/${UserPage}`)
+                          ? `/AddLoginServ/${UserPage}`
+                          : `/addServ/${UserPage}`}>
                     <img src={back} alt="back" />
                     <p>Назад</p>
                 </Link>

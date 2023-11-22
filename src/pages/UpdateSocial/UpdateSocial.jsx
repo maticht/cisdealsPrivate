@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import React, {useEffect, useRef, useState} from "react";
+import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
 import {updateProfile, userProfile} from "../../httpRequests/cisdealsApi";
 import Facebook from "../../img/Facebook.svg";
 import LinkedIn from "../../img/LinkedIn.png";
@@ -15,6 +15,11 @@ import back from "../../img/Arrow_left.svg";
 
 const UpdateContactInfo = () => {
     const {UserPage} = useParams();
+    const location = useLocation();
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
+    const progressBarRef = useRef(null);
+    const targetWidth = 29;
     const [data, setData] = useState({
         firstName: "",
         lastName: "",
@@ -46,8 +51,6 @@ const UpdateContactInfo = () => {
         likes: "",
         rating: "",
     });
-    const [error, setError] = useState("");
-    const navigate = useNavigate();
 
     const handleChange = ({ currentTarget: input }) => {
         setData({ ...data, [input.name]: input.value });
@@ -105,7 +108,11 @@ const UpdateContactInfo = () => {
             const res = await updateProfile(UserPage, data);
             localStorage.setItem("token",  JSON.stringify(res));
             console.log(localStorage.getItem("token"))
-            navigate("/EditProfile");
+            if (location.pathname === `/AddSocialInfo/${UserPage}`) {
+                navigate(`/AddWorkingHours/${UserPage}`);
+            } else {
+                navigate("/EditProfile");
+            }
             console.log(data);
         } catch (error) {
             if (
@@ -118,15 +125,46 @@ const UpdateContactInfo = () => {
         }
     };
 
+    useEffect(() => {
+        const progressBar = progressBarRef.current;
+        let width = 14;
+        const animationDuration = 200;
+        const start = performance.now();
+
+        const animateProgressBar = (timestamp) => {
+            const elapsed = timestamp - start;
+            width = (elapsed / animationDuration) * targetWidth;
+
+            progressBar.style.width = `${Math.min(width, targetWidth)}%`;
+
+            if (width < targetWidth) {
+                requestAnimationFrame(animateProgressBar);
+            }
+        };
+
+        requestAnimationFrame(animateProgressBar);
+    }, []);
+
     return (
         <div className={'social_container'}>
             <div className="main-container">
-                <Link className="form-update-link" to="/EditProfile">
+                {location.pathname === `/AddSocialInfo/${UserPage}` && (
+                    <div className="ProgressBarBlock">
+                        <div className="ProgressBarLine" ref={progressBarRef} style={{ width: `14%` }}>
+                        </div>
+                    </div>
+                )}
+                <Link className="form-update-link"
+                      to={(location.pathname === `/AddSocialInfo/${UserPage}`)
+                          ? `/AddContactInfo/${UserPage}`
+                          : "/EditProfile"}>
                     <img src={back} alt="back" />
                     <p>Назад</p>
                 </Link>
                 <form className="form_container" onSubmit={handleSubmit} noValidate>
-                    <p className="form-heading">Изменение контактной информации</p>
+                    <p className="form-heading">{(location.pathname === `/AddSocialInfo/${UserPage}`)
+                        ? "Добавление контактной информации"
+                        : "Изменение контактной информации"}</p>
                     <div className="form-content">
                         <div>
                             <h5 className="form-sosial-label">Социальные сети</h5>
@@ -232,7 +270,10 @@ const UpdateContactInfo = () => {
                     </div>
                     {error && <div className={'error_msg'}>{error}</div>}
                     <button type="submit" className={'create_btn'}>
-                        Изменить
+                        {(location.pathname === `/AddSocialInfo/${UserPage}`)
+                            ? "Далее"
+                            : "Изменить"
+                        }
                     </button>
                 </form>
             </div>

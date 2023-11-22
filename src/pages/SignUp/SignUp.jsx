@@ -81,6 +81,7 @@ const Signup = () => {
         rating: [],
     });
     const [error, setError] = useState("");
+    const navigate = useNavigate();
     const [msg,setMsg] = useState('');
     const [userId, setUserId] = useState("");
     const [showPassword, setShowPassword] = useState(false);
@@ -96,13 +97,14 @@ const Signup = () => {
         console.log(data)
         try {
             const res = await signUp(data);
-            localStorage.setItem("token",  JSON.stringify(res));
+            console.log(res.data);
+            localStorage.setItem("token",  JSON.stringify(res.data));
             const user = localStorage.getItem("token");
             let localUserObj = JSON.parse(user);
             let User = localUserObj.data ? localUserObj.data?._id : null;
             setUserId(User);
             setMsg(res.message)
-            // navigate("/SuccessfulLoginScreen");
+            navigate(`/SuccessfulLoginScreen/${res.data.data?._id}`);
             console.log(data);
         } catch (error) {
             if (

@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {servProfile, updateServ} from "../../../httpRequests/cisdealsApi";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
 import styles from "./styles.module.css";
 import back from "../../../img/Arrow_left.svg";
 
 const UserServScreen = () => {
+    const location = useLocation();
     const {UserPage, ServPage} = useParams();
     const navigate = useNavigate();
     const [error, setError] = useState("");
@@ -71,7 +72,11 @@ const UserServScreen = () => {
         console.log(data)
         try {
             const res = await updateServ(ServPage, data);
-            navigate(`/AddServ/${UserPage}`);
+            if (location.pathname === `/AddLoginServ/${UserPage}/UserServScreen/${ServPage}`) {
+                navigate(`/AddLoginServ/${UserPage}`);
+            } else {
+                navigate(`/addServ/${UserPage}`);
+            }
             console.log(data);
         } catch (error) {
             if (
@@ -87,7 +92,10 @@ const UserServScreen = () => {
     return (
         <div className={styles.user_serv_container}>
             <div className="main-container">
-                <Link className="form-update-link" to={`/addServ/${UserPage}`}>
+                <Link className="form-update-link"
+                      to={(location.pathname === `/AddLoginServ/${UserPage}/UserServScreen/${ServPage}`)
+                          ? `/AddLoginServ/${UserPage}`
+                          : `/addServ/${UserPage}`}>
                     <img src={back} alt="back" />
                     <p>Назад</p>
                 </Link>

@@ -21,27 +21,15 @@ import PersonalUserPage from "./pages/PersonalUserPage/PersonalUserPage";
 
 import UpdatePersonal from "./pages/UpdatePersonal/UpdatePersonal";
 import UpdateLocation from "./pages/UpdateLocation/UpdateLocation";
-import UpdateImage from "./components/UpdateImage/UpdateImage";
+import UpdateImage from "./pages/UpdateImage/UpdateImage";
 import UpdateContactInfo from "./pages/UpdateContactInfo/UpdateContactInfo";
 import UpdateSocial from "./pages/UpdateSocial/UpdateSocial";
-import UpdateService from "./components/UpdateService/UpdateService";
-import UserServScreen from './components/addServ/UserServScreen/UserServScreen';
-import UserServLoginScreen from './pages/UserServLoginScreen/UserServLoginScreen';
+import UserServScreen from './pages/addServ/UserServScreen/UserServScreen';
 import UpdateWorkingHours from "./pages/UpdateWorkingHours/UpdateWorkingHours";
 import UpdateDescription from "./pages/UpdateDescription/UpdateDescription";
-import AddServ from './components/addServ/addServ'
-import AddServCategories from './components/addServ/addServCategories/addServCategories'
-import AddingServicesList from './components/addServ/addingServicesList/addingServicesList'
-
-import AddContactInfo from "./pages/AddContactInfo/AddContactInfo";
-import AddServicesScreen from "./pages/AddServicesScreen/AddServicesScreen";
-import AddImage from "./pages/AddPhoto/AddImage";
-import AddSocialInfo from "./pages/AddSocialInfo/AddSocialInfo";
-import AddLocation from "./pages/AddLocation/AddLocation";
-import AddDescription from "./pages/AddDescription/AddDescription";
-import AddWorkingHours from "./pages/AddWorkingHours/AddWorkingHours";
-
-import AddLoginServ from "./pages/AddLoginServ/AddLoginServ";
+import AddServ from './pages/addServ/addServ'
+import AddServCategories from './pages/addServ/addServCategories/addServCategories'
+import AddingServicesList from './pages/addServ/addingServicesList/addingServicesList'
 
 function App() {
     return (
@@ -51,7 +39,7 @@ function App() {
                     <Route path="/signup" exact element={<Signup />} />
                     <Route path="/login" exact element={<Login />} />
                     {/*<Route path="/SuccessfulLoginScreen/:id/verify/:token" exact element={<SuccessfulLoginScreen />} />*/}
-                    <Route path="/SuccessfulLoginScreen" exact element={<SuccessfulLoginScreen />} />
+                    <Route path="/SuccessfulLoginScreen/:UserPage" exact element={<SuccessfulLoginScreen />} />
                     <Route path='/' element={<HomeScreen />}/>
 
                     <Route path="/PersonalUserPage/:UserPage" exact element={<PersonalUserPage />} />
@@ -70,25 +58,25 @@ function App() {
                     <Route path="/updatePersonal/:UserPage" exact element={<UpdatePersonal />} />
                     <Route path="/updateContactInfo/:UserPage" exact element={<UpdateContactInfo />} />
                     <Route path="/UpdateSocial/:UserPage" exact element={<UpdateSocial />} />
-                    <Route path="/updateService/:UserPage" exact element={<UpdateService />} />
-                    <Route path="/updateImage/:UserPage" exact element={<UpdateImage />} />
+                    <Route path="/UpdateWorkingHours/:UserPage" exact element={<UpdateWorkingHours/>} />
                     <Route path="/UpdateLocation/:UserPage" exact element={<UpdateLocation/>} />
                     <Route path="/UpdateDescription/:UserPage" exact element={<UpdateDescription/>} />
-                    <Route path="/UpdateWorkingHours/:UserPage" exact element={<UpdateWorkingHours/>} />
+                    <Route path="/updateImage/:UserPage" exact element={<UpdateImage />} />
                     <Route path="/addServ/:UserPage" exact element={<AddServ/>} />
                     <Route path="/addServ/addServCategories/:UserPage" exact element={<AddServCategories/>} />
                     <Route path="/addServ/addingServicesList/:UserPage" exact element={<AddingServicesList/>} />
                     <Route path="/addServ/:UserPage/UserServScreen/:ServPage" exact element={<UserServScreen/>} />
 
-                    <Route path="/AddLoginServ/:UserPage" exact element={<AddLoginServ/>} />
-                    <Route path="/AddLoginServ/:UserPage/UserServLoginScreen/:ServPage" exact element={<UserServLoginScreen/>} />
-                    <Route path="/AddContactInfo/:UserPage" exact element={<AddContactInfo />} />
-                    <Route path="/AddSocialInfo/:UserPage" exact element={<AddSocialInfo />} />
-                    <Route path="/AddLocation/:UserPage" exact element={<AddLocation/>} />
-                    <Route path="/AddServicesScreen/:UserPage" exact element={<AddServicesScreen />} />
-                    <Route path="/AddDescription/:UserPage" exact element={<AddDescription />} />
-                    <Route path="/AddWorkingHours/:UserPage" exact element={<AddWorkingHours />} />
-                    <Route path="/AddImage/:UserPage" exact element={<AddImage />} />
+                    <Route path="/AddContactInfo/:UserPage" exact element={<UpdateContactInfo/>} />
+                    <Route path="/AddSocialInfo/:UserPage" exact element={<UpdateSocial />} />
+                    <Route path="/AddWorkingHours/:UserPage" exact element={<UpdateWorkingHours />} />
+                    <Route path="/AddLocation/:UserPage" exact element={<UpdateLocation/>} />
+                    <Route path="/AddDescription/:UserPage" exact element={<UpdateDescription />} />
+                    <Route path="/AddImage/:UserPage" exact element={<UpdateImage />} />
+                    <Route path="/AddLoginServ/:UserPage" exact element={<AddServ/>} />
+                    <Route path="/AddLoginServ/addServCategories/:UserPage" exact element={<AddServCategories/>} />
+                    <Route path="/AddLoginServ/addingServicesList/:UserPage" exact element={<AddingServicesList/>} />
+                    <Route path="/AddLoginServ/:UserPage/UserServScreen/:ServPage" exact element={<UserServScreen/>} />
                 </Routes>
             </BrowserRouter>
         </>

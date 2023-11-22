@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import React, {useEffect, useRef, useState} from "react";
+import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
 import styles from "./styles.module.css";
 import plus from "../../img/Plus.svg";
 import Resizer from "react-image-file-resizer";
@@ -42,7 +42,9 @@ const UpdateImage = () => {
     });
     const [error, setError] = useState("");
     const navigate = useNavigate();
-
+    const location = useLocation();
+    const progressBarRef = useRef(null);
+    const targetWidth = 86;
     const [errorMessage, setErrorMessage] = useState("");
     const [buttonText, setButtonText] = useState("Добавить");
     const userLS = localStorage.getItem("token");
@@ -96,7 +98,6 @@ const UpdateImage = () => {
                 } else {
                     setSelectedImage2(reader.result);
                 }
-
             };
         }
     };
@@ -113,6 +114,13 @@ const UpdateImage = () => {
             console.error(err);
         }
     };
+    const handleMoveOn = () => {
+        if (location.pathname === `/AddImage/${UserPage}`) {
+            navigate(`/AddLoginServ/${UserPage}`);
+        } else {
+            navigate("/EditProfile");
+        }
+    }
     useEffect(() => {
         let intervalId;
         let counter = 0;
@@ -187,17 +195,48 @@ const UpdateImage = () => {
             console.error(err);
         }
     };
+    useEffect(() => {
+        const progressBar = progressBarRef.current;
+        let width = 0;
+        const animationDuration = 200;
+        const start = performance.now();
+
+        const animateProgressBar = (timestamp) => {
+            const elapsed = timestamp - start;
+            width = (elapsed / animationDuration) * targetWidth;
+
+            progressBar.style.width = `${Math.min(width, targetWidth)}%`;
+
+            if (width < targetWidth) {
+                requestAnimationFrame(animateProgressBar);
+            }
+        };
+
+        requestAnimationFrame(animateProgressBar);
+    }, []);
 
     return (
         <div className={styles.signup_container}>
             <div className="main-container">
-                <Link className="form-update-link" to="/EditProfile">
+                {location.pathname === `/AddImage/${UserPage}` && (
+                    <div className="ProgressBarBlock">
+                        <div className="ProgressBarLine" ref={progressBarRef} style={{ width: `71%` }}>
+                        </div>
+                    </div>
+                )}
+                <Link className="form-update-link"
+                      to={(location.pathname === `/AddImage/${UserPage}`)
+                          ? `/AddDescription/${UserPage}`
+                          : "/EditProfile"}>
                     <img src={back} alt="back" />
                     <p>Назад</p>
                 </Link>
                 <div>
                     <form className={styles.form_container} onSubmit={handleSubmit} noValidate>
-                        <p className="form-heading">Изображения</p>
+                        <p className="form-heading">
+                            {(location.pathname === `/AddImage/${UserPage}`)
+                                ? "Добавление изображений"
+                                : "Изменение изображений"}</p>
                         <div className={styles.imageContainer}>
                             <div className={styles.firstImageCont}>
                                 <div>
@@ -290,9 +329,15 @@ const UpdateImage = () => {
                         {errorMessage && <div className={styles.error_msg}>{errorMessage}</div>}
                         <button disabled={data.image.length === 0 || !data.image || data.image.length > 5242880}
                                 type="submit" onClick={handleUpload}
-                                className={'create_btn'}>
+                                className={styles.create_btn}>
                             {buttonText}
                         </button>
+                        {location.pathname === `/AddImage/${UserPage}` && (
+                            <button type="button" onClick={handleMoveOn}
+                                    className={styles.move_create_btn}>
+                                Далее
+                            </button>
+                        )}
                     </form>
                 </div>
             </div>

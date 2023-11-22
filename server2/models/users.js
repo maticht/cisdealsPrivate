@@ -70,7 +70,7 @@ router.post("/", async (req, res) => {
         const emailHtml = generateEmailTemplate(url, user.nameOrCompany);
         await sendEmail(user.email, "Проверка электронной почты CISDEALS", emailHtml);
 
-        return res.status(201).send({ message: "Вам отправлено письмо! Пожалуйста, подтвердите ваш аккаунт (Может быть оно попало в спам)" });
+        return res.status(201).send({ data: { data: user }, message: "Вам отправлено письмо! Пожалуйста, подтвердите ваш аккаунт (Может быть оно попало в спам)" });
     } catch (error) {
         console.log(error);
         res.status(500).send({ message: "Внутренняя ошибка сервера" });

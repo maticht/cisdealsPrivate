@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import React, {useEffect, useRef, useState} from "react";
+import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
 import {deleteService, updateProfile, userProfile, viewServices} from "../../httpRequests/cisdealsApi";
 import styles from "./styles.module.css";
 import arrowDown from "../../img/arrow_down=24.svg";
@@ -9,12 +9,15 @@ import back from "../../img/Arrow_left.svg";
 
 const AddServ = () => {
     const {UserPage} = useParams();
+    const location = useLocation();
+    const progressBarRef = useRef(null);
+    const targetWidth = 100;
     const navigate = useNavigate();
     const [deleteModal, setDeleteModal] = useState(false);
     const [serv, setServ] = useState([]);
     const [deleteObjId, setDeleteObjId] = useState(null);
     const [selectedServv, setSelectedServv] = useState("");
-    const [selectedUser, setSelectedUser] = useState("");
+    const [selectedUser, setSelectedUser] = useState({});
     const [servicesString, setServicesString] = useState('');
     const [selectedServicess, setSelectedServicess] = useState([]);
     const [userData, setUserData] = useState({
@@ -73,9 +76,10 @@ const AddServ = () => {
     const fetchUserProfile = async (userId) => {
         try {
             const data = await userProfile(userId);
+            setSelectedUser(data.profile);
+            console.log(data.profile);
             if (data.profile.areasActivity !== 'areasActivity') {
                 setSelectedServv(data.profile.areasActivity);
-                setSelectedUser(data.profile);
                 setSelectedServicess(data.profile.areasActivity.split(' / '));
             }
         } catch (err) {
@@ -112,15 +116,46 @@ const AddServ = () => {
             console.log(err)
         }
     };
+    useEffect(() => {
+        const progressBar = progressBarRef.current;
+        let width = 0;
+        const animationDuration = 200;
+        const start = performance.now();
+
+        const animateProgressBar = (timestamp) => {
+            const elapsed = timestamp - start;
+            width = (elapsed / animationDuration) * targetWidth;
+
+            progressBar.style.width = `${Math.min(width, targetWidth)}%`;
+
+            if (width < targetWidth) {
+                requestAnimationFrame(animateProgressBar);
+            }
+        };
+
+        requestAnimationFrame(animateProgressBar);
+    }, []);
 
     return (
         <div className={styles.signup_container}>
             <div className="main-container">
-                <Link className="form-update-link" to="/EditProfile">
+                {location.pathname === `/AddLoginServ/${UserPage}` && (
+                    <div className="ProgressBarBlock">
+                        <div className="ProgressBarLine" ref={progressBarRef} style={{ width: `86%` }}>
+                        </div>
+                    </div>
+                )}
+                <Link className="form-update-link"
+                      to={(location.pathname === `/AddLoginServ/${UserPage}`)
+                          ? `/AddImage/${UserPage}`
+                          : "/EditProfile"}>
                     <img src={back} alt="back" />
                     <p>Назад</p>
                 </Link>
-                <p className="form-heading">Услуги</p>
+                <p className="form-heading">
+                    {(location.pathname === `/AddLoginServ/${UserPage}`)
+                        ? "Добавление услуг"
+                        : "Изменение услуг"}</p>
                 <div className={styles.form_container}>
                     <div className={styles.categories_link_container}>
                         <div className={styles.categories_link_content}>
@@ -130,7 +165,9 @@ const AddServ = () => {
                                     {`${selectedServicess.length}/3`}
                                 </p>
                             </div>
-                            <Link to={`/addServ/addServCategories/${UserPage}`}>
+                            <Link to={(location.pathname === `/AddLoginServ/${UserPage}`)
+                                ? `/AddLoginServ/addServCategories/${UserPage}`
+                                : `/addServ/addServCategories/${UserPage}`}>
                                 <button className={`${styles.inputBtn} ${styles.categories_link}`}>
                                     <div className={styles.categories_link_buttonContent}>
                                         <p className={styles.categories_link_buttonText}>
@@ -143,17 +180,18 @@ const AddServ = () => {
                         </div>
                     </div>
                 </div>
-                <div className={styles.form_container}>
-                    <div className={styles.form_serv_block}>
-                        <div style={{display: serv.length === 0 ? 'none' : null, marginBottom: '-10px'}}>
-                            <div className={styles.serv_area_block}>
+                {selectedUser.areasActivity !== 'areasActivity' && (
+                    <div className={styles.form_container}>
+                        <div className={styles.form_serv_block}>
+                            <div style={{display: serv.length === 0 ? 'none' : null, marginBottom: '-10px'}}>
+                                <div className={styles.serv_area_block}>
                                     {Object.entries( serv.reduce((acc, obj) => {
-                                        if (obj.parent in acc) {
-                                            acc[obj.parent].push(obj);
-                                        } else {
-                                            acc[obj.parent] = [obj];
-                                        }
-                                        return acc
+                                            if (obj.parent in acc) {
+                                                acc[obj.parent].push(obj);
+                                            } else {
+                                                acc[obj.parent] = [obj];
+                                            }
+                                            return acc
                                         }, {})
                                     ).map(([parent, data]) => (
                                         <div key={parent} className={styles.serv_area_parent}>
@@ -168,7 +206,9 @@ const AddServ = () => {
                                                         </div>
                                                         <Link
                                                             className={styles.serv_screen_link}
-                                                            to={`/addServ/${UserPage}/UserServScreen/${obj._id}`}>
+                                                            to={(location.pathname === `/AddLoginServ/${UserPage}`)
+                                                            ? `/AddLoginServ/${UserPage}/UserServScreen/${obj._id}`
+                                                            : `/addServ/${UserPage}/UserServScreen/${obj._id}`}>
                                                             <div className={styles.serv_screen_link_block}>
                                                                 <p className={styles.serv_screen_link_text}>{obj.title}</p>
                                                                 {obj.description !== 'description' && (
@@ -207,7 +247,7 @@ const AddServ = () => {
                                                                         <p>Не удалять</p>
                                                                     </div>
                                                                     <div className={styles.delete_modal_delete_btn}
-                                                                        onClick={() => servDelete(deleteObjId)}>
+                                                                         onClick={() => servDelete(deleteObjId)}>
                                                                         <p>Удалить</p>
                                                                     </div>
                                                                 </div>
@@ -218,18 +258,31 @@ const AddServ = () => {
                                             ))}
                                         </div>
                                     ))}
-                            </div>
-                        </div>
-                        <Link to={`/addServ/addingServicesList/${UserPage}`}>
-                            <button className={styles.addServBtn}>
-                                <div className={styles.addServBtnBlock}>
-                                    <img src={plus} alt={'+'}/>
-                                    <p>{"Добавить услугу"}</p>
                                 </div>
-                            </button>
-                        </Link>
+                            </div>
+                            <Link to={(location.pathname === `/AddLoginServ/${UserPage}`)
+                                ? `/AddLoginServ/addingServicesList/${UserPage}`
+                                : `/addServ/addingServicesList/${UserPage}`}>
+                                <button className={styles.addServBtn}
+                                        style={{margin: serv.length === 0 ? '3px 10px 10px' : '-5px 10px 10px'}}>
+                                    <div className={styles.addServBtnBlock}>
+                                        <img src={plus} alt={'+'}/>
+                                        <p>{"Добавить услугу"}</p>
+                                    </div>
+                                </button>
+                            </Link>
+                        </div>
                     </div>
-                </div>
+                )}
+                {location.pathname === `/AddLoginServ/${UserPage}` ? (
+                    <Link to={`/`}>
+                        <button className={styles.endLoginServ}>
+                            <p>{"Завершить настройку"}</p>
+                        </button>
+                    </Link>
+                ) : (
+                    <div><br/></div>
+                )}
             </div>
         </div>
     );

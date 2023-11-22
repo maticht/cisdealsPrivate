@@ -13,20 +13,20 @@ const useStyles = createUseStyles({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'rgba(79,79,79,0.1)',
+        backgroundColor: 'rgba(0,0,0,0.1)',
         zIndex: 1000,
     },
     modalContent: {
         background: '#fff',
-        padding: '15px',
+        padding: '12px 10px 15px',
         margin:'0 10px',
         borderRadius: '10px',
         maxWidth: '100%',
     },
     modalTitle: {
         width:'90%',
-        fontSize: '18px',
-        fontWeight: 'bold',
+        fontSize: '16px',
+        fontWeight: '400',
         marginTop:'0',
         marginBottom: '10px',
     },
@@ -37,7 +37,7 @@ const useStyles = createUseStyles({
         alignSelf: 'center',
         border: "none",
         width: "calc(100% - 15px)",
-        padding: "15px",
+        padding: "15px 10px",
         paddingRight: "0px",
         borderRadius: "8px",
         backgroundColor: "#f1f1f1",
@@ -98,7 +98,7 @@ const Modal = ({isOpen, onClose, handleModalResult, parentCategory, selectedUser
         <div className={classes.modalWrapper} onClick={handleClose}>
             <div className={classes.modalContent} onClick={(e) => e.stopPropagation()}>
                 <div style={{display:'flex', flexDirection:'row', alignItems:"flex-start", justifyContent:'space-between'}}>
-                    <p className={classes.modalTitle}>Добавьте свою подкатегорию в категорию "{parentCategory}"</p>
+                    <p className={classes.modalTitle}>Добавьте свою подкатегорию в категорию <b>"{parentCategory}"</b></p>
                     <img onClick={handleClose} className={classes.removeImgButton} src={plus} alt="Plus"/>
                 </div>
                 <input

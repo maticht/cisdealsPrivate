@@ -228,7 +228,7 @@ textarea::placeholder{
 }
 
 .OneCategoryImg {
-    width: 22px;
+    width: 20px;
     opacity: 0.8;
 }
 
@@ -236,7 +236,7 @@ textarea::placeholder{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 17px 10px;
+    padding: 17px 7px 17px 10px;
     border-bottom: 1px solid #dddddd;
     text-decoration: none;
     color: #000000;

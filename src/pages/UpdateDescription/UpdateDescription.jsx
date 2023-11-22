@@ -1,11 +1,16 @@
-import React, {useEffect, useState} from "react";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import React, {useEffect, useRef, useState} from "react";
+import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
 import styles from "./styles.module.css";
 import {updateProfile, userProfile} from "../../httpRequests/cisdealsApi";
 import back from "../../img/Arrow_left.svg";
 
 const UpdateDescription = () => {
     const {UserPage} = useParams();
+    const location = useLocation();
+    const progressBarRef = useRef(null);
+    const targetWidth = 71;
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
     const [data, setData] = useState({
         firstName: "",
         lastName: "",
@@ -37,8 +42,6 @@ const UpdateDescription = () => {
         likes: "",
         rating: "",
     });
-    const [error, setError] = useState("");
-    const navigate = useNavigate();
     const handleChange = ({ currentTarget: input }) => {
         const { name, value } = input;
 
@@ -99,7 +102,11 @@ const UpdateDescription = () => {
             const res = await updateProfile(UserPage, data);
             localStorage.setItem("token",  JSON.stringify(res));
             console.log(localStorage.getItem("token"))
-            navigate("/EditProfile");
+            if (location.pathname === `/AddDescription/${UserPage}`) {
+                navigate(`/AddImage/${UserPage}`);
+            } else {
+                navigate("/EditProfile");
+            }
             console.log(data);
         } catch (error) {
             if (
@@ -111,17 +118,48 @@ const UpdateDescription = () => {
             }
         }
     };
+    useEffect(() => {
+        const progressBar = progressBarRef.current;
+        let width = 0;
+        const animationDuration = 200;
+        const start = performance.now();
+
+        const animateProgressBar = (timestamp) => {
+            const elapsed = timestamp - start;
+            width = (elapsed / animationDuration) * targetWidth;
+
+            progressBar.style.width = `${Math.min(width, targetWidth)}%`;
+
+            if (width < targetWidth) {
+                requestAnimationFrame(animateProgressBar);
+            }
+        };
+
+        requestAnimationFrame(animateProgressBar);
+    }, []);
 
     return (
         <div className={styles.signup_container}>
             <div className="main-container">
-                <Link className="form-update-link" to="/EditProfile">
+                {location.pathname === `/AddDescription/${UserPage}` && (
+                    <div className="ProgressBarBlock">
+                        <div className="ProgressBarLine" ref={progressBarRef} style={{ width: `57%` }}>
+                        </div>
+                    </div>
+                )}
+                <Link className="form-update-link"
+                      to={(location.pathname === `/AddDescription/${UserPage}`)
+                          ? `/AddLocation/${UserPage}`
+                          : "/EditProfile"}>
                     <img src={back} alt="back" />
                     <p>Назад</p>
                 </Link>
                 <form className={styles.form_container} onSubmit={handleSubmit} noValidate>
                     <div className={styles.formHeader}>
-                        <p className="form-prsnl-heading">Описание</p>
+                        <p className="form-prsnl-heading">
+                            {(location.pathname === `/AddDescription/${UserPage}`)
+                            ? "Добавление описания"
+                            : "Изменение описания"}</p>
                         <p className={styles.formCharacterCount}>{data.description === "description" ? 0 : data.description.length}/900</p>
                     </div>
                     <div className={styles.formContent}>
@@ -138,7 +176,10 @@ const UpdateDescription = () => {
                     </div>
                     {error && <div className={styles.error_msg}>{error}</div>}
                     <button type="submit" className={'create_btn'}>
-                        Изменить
+                        {(location.pathname === `/AddDescription/${UserPage}`)
+                            ? "Далее"
+                            : "Изменить"
+                        }
                     </button>
                 </form>
             </div>

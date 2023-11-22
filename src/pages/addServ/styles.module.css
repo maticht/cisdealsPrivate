@@ -23,7 +23,7 @@
 .form_serv_block{
     background-color: #fff;
     border-radius: 10px;
-    margin: 10px 11px 25px;
+    margin: 10px 11px 0px;
     padding: 12px 0 5px 0;
 }
 .serv_area_block{
@@ -59,7 +59,7 @@
     color: #000000;
 }
 .serv_item_delete_btn{
-    margin: 2px 10px 0 0;
+    margin: 4px 10px 0 0;
     width: 15px;
     cursor: pointer;
 }
@@ -79,7 +79,7 @@
 .serv_screen_link_text{
     text-decoration: none;
     color: #000;
-    margin: 3px 3px 5px 0;
+    margin: 3px 3px 7px 0;
 }
 .serv_screen_link_description{
     margin: 0 0 5px 0;
@@ -152,6 +152,7 @@
     justify-content: center;
     align-items: center;
     padding-bottom: 2px;
+    cursor: pointer;
 }
 .delete_modal_nodelete_btn p{
     color: #fff;
@@ -167,6 +168,7 @@
     align-items: center;
     padding-bottom: 2px;
     border: #000 solid 2px;
+    cursor: pointer;
 }
 .delete_modal_delete_btn p{
     color: #000;
@@ -255,7 +257,7 @@
     padding: 15px;
     border-radius: 8px;
     background-color: #f1f1f1;
-    margin: -5px 10px 10px;
+    margin: 3px 10px 10px;
     vertical-align: center;
     font-size: 14px;
     text-align: left;
@@ -291,35 +293,34 @@ textarea::placeholder{
     justify-content: center;
     align-items: center;
     align-self: center;
-    width: 80vw;
     padding: 5px;
     margin: 0;
     font-size: 14px;
+    font-weight: 500;
     background-color: rgba(255, 255, 255, 0);
     color: #f34646;
     border-radius: 5px;
     text-align: center;
 }
-
-.white_btn,
-.green_btn {
+.endLoginServ{
     border: none;
     outline: none;
+    display: flex;
+    justify-content: center;
     align-items: center;
     align-self: center;
     padding: 12px 0;
     background-color: #000000;
-    border-radius: 8px;
-    width: 180px;
+    border-radius: 10px;
+    width: calc(100% - 20px);
     font-weight: bold;
     font-size: 14px;
     cursor: pointer;
+    color: #FFFFFF;
+    margin: 10px auto 25px;
 }
-
-.green_btn {
-    background-color: #000000;
-    color: white;
-    margin: 10px;
+.endLoginServ p{
+    margin: 0;
 }
 @media screen and (max-width: 300px) {
     .delete_modal_btn_block{
