@@ -31,6 +31,7 @@
     margin:0 auto;
     max-width: 1160px;
 }
+
 .oneBestSpecialistsBlock {
     flex: 0 0 calc(33.333% - 7px);
     height: 100px;
@@ -48,6 +49,11 @@
 }
 .SearchExampleHome{
     display: none;
+}
+.selectFilterContainer{
+    min-height: 100vh;
+    background-color: #F1F1F1;
+    width: 100%;
 }
 .allBestSpecialists {
     display: flex;

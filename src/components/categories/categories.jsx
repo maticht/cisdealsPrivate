@@ -53,7 +53,6 @@ function Categories() {
                     <Link className={'allCategoriesLink'} to="/AllCategories">Все категории</Link>
                 </nav>
             </div>
-
             <div className={'categories'}>
                 <div className={'categoriesBlock'}>
                     {categoryList}

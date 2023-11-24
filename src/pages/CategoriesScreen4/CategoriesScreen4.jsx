@@ -1,10 +1,10 @@
 import React from "react";
-import HeaderNavBar from '../../components/headerNavBar/headerNavBar';
-import {Routes, Route, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 import { createUseStyles } from "react-jss";
 import {useParams} from "react-router-dom";
 import CategoriesJSON from '../../data/categories.json';
 import arrow from "../../img/arrowright.svg";
+import back from "../../img/Arrow_left.svg";
 
 const useStyles = createUseStyles({
     container: {
@@ -58,31 +58,34 @@ function CategoriesScreen4() {
     let category4 = category3.subsubcategories.find(category => category.title === Categories4);
 
     const categoryList = category4.subsubsubcategories.map((category) =>
-        <Link  className={classes.OneCategoryItem} to={`/AllCategories/${Categories2}/${Categories3}/${Categories4}/${category.title}`}>
-            <div className={classes.OneCategoryInfo}>
-                <p>{category.title}</p>
+        <Link className={'OneCategoryScreenItem'}
+              to={`/AllCategories/${Categories2}/${Categories3}/${Categories4}/${category.title}`}>
+            <div className={'OneCategoryInfo'}>
+                <p className={'OneCategoryTitle'}>{category.title}</p>
             </div>
-            <img src={arrow} alt={'logo'}/>
+            <img className={'OneCategoryScreenItemImg'} src={arrow} alt={'logo'}/>
         </Link>
     );
     return (
-        <>
-            <div className={classes.container}>
-                <div className={classes.Categories2Block}>
-                    <Link className={classes.allCategoriesBtn} to={`/AllCategories/Categories2/${Categories3}`}>˂ {Categories3}</Link>
-                    <h2>{Categories4}</h2>
-                    <div>
-                        <Link  className={classes.OneCategoryItem} to={`/AllCategories/Categories2/Categories3/Categories4/${Categories4}`}>
-                            <div className={classes.OneCategoryInfo}>
-                                <p>Все в этой подкатегории</p>
-                            </div>
-                            <img src={arrow} alt={'logo'}/>
-                        </Link>
-                        {categoryList}
-                    </div>
+        <div className={'AllContainer'}>
+            <div className={'AllCategoryScreenContainer'}>
+                <Link className="form-update-link"
+                      to={`/AllCategories/${Categories2}/${Categories3}`}>
+                    <img src={back} alt="back" />
+                    <p>{Categories3}</p>
+                </Link>
+                <p className="form-prsnl-heading">{Categories4}</p>
+                <div className={'AllCategoryScreenBlock'}>
+                    <Link className={'OneCategoryScreenItem'} to={`/AllCategories/Categories2/Categories3/Categories4/${Categories4}`}>
+                        <div className={'OneCategoryInfo'}>
+                            <p className={'OneCategoryTitle'}>Все в этой подкатегории</p>
+                        </div>
+                        <img className={'OneCategoryScreenItemImg'} src={arrow} alt={'logo'}/>
+                    </Link>
+                    {categoryList}
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 

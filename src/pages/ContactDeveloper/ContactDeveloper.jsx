@@ -1,82 +1,39 @@
-import React, { useState } from "react";
-import PersonalUserPage from "../PersonalUserPage/PersonalUserPage";
+import React from "react";
 import {Link} from "react-router-dom";
 import ScvNoneUserLogo from '../../img/ScvNoneUserLogo.svg';
 import telegram from '../../img/Telegram.svg';
+import back from "../../img/Arrow_left.svg";
 
 
 const ContactDeveloper = () => {
     const daniilTelegramLink = 'https://t.me/daniil_elkind';
     const matveiTelegramLink = 'https://t.me/Maticht';
-
+    const userId = JSON.parse(localStorage.getItem("token"));
+    console.log(userId.data._id);
     const handleTelegramClick = (telegramLink) => {
         window.open(telegramLink, '_blank');
     }
-
-    const handlePhoneClick = (phoneNum) => {
-        window.location.href = `tel:${phoneNum}`;
-    }
-    const [modalOpen, setModalOpen] = useState(false);
-
-
-    const handleOpenModal = () => {
-        setModalOpen(true);
-    };
-
-    const handleCloseModal = () => {
-        setModalOpen(false);
-    };
-
     return (
-        <div style={{marginTop:'-15px', padding:'10px', minHeight: "100vh", backgroundColor: "#F1F1F1"}}>
-            <Link style={{textDecoration: "none", color: "#454545", fontSize: "14px"}} to={`/`} >
-                <p style={{textDecoration: "none", color: "#454545", fontSize: "14px"}}>
-                    {`< Назад`}
-                </p>
-            </Link>
-            <h1>Связаться с разработчиками</h1>
-
-            <div style={{
-                width:"92vw",
-                height:"50px",
-                backgroundColor:"#fff",
-                marginBottom:10,
-                display:"flex",
-                alignSelf:"center",
-                justifyContent:"space-between",
-                alignItems:'center',
-                borderRadius:8,
-                paddingRight:'10px'
-            }}>
-                <img src={ScvNoneUserLogo} alt={'noneUserLogo'} style={{ height: '100%',borderTopLeftRadius:8, borderBottomLeftRadius:8, marginLeft: 0 }} />
-                <h4>Daniil Elkind</h4>
-                <div style={{display:'flex', flexDirection:'row', marginRight:'0px', alignItems:'center'}}>
-                    <div style={{marginLeft:'10px'}} onClick={() => handleTelegramClick(daniilTelegramLink)}>
+        <div className={'AllContainer'}>
+            <div className={'AllCategoryScreenContainer'}>
+                <Link className="form-update-link" to={`/PersonalUserPage/${userId.data._id}`}>
+                    <img src={back} alt="back" />
+                    <p>Назад</p>
+                </Link>
+                <p className="form-prsnl-heading">Связаться с разработчиками</p>
+                <div className={'AllCategoryScreenBlock'}>
+                    <div onClick={() => handleTelegramClick(daniilTelegramLink)}
+                         className={'contactDeveloperItem'}>
+                        <p>Daniil Elkind</p>
+                        <img src={telegram} alt={'telegram'}/>
+                    </div>
+                    <div onClick={() => handleTelegramClick(matveiTelegramLink)}
+                         className={'contactDeveloperItem'}>
+                        <p>Matvey Treyvas</p>
                         <img src={telegram} alt={'telegram'}/>
                     </div>
                 </div>
             </div>
-            <div style={{
-                width:"92vw",
-                height:"50px",
-                backgroundColor:"#fff",
-                marginBottom:10,
-                display:"flex",
-                alignSelf:"center",
-                justifyContent:"space-between",
-                alignItems:'center',
-                borderRadius:8,
-                paddingRight:'10px'
-            }}>
-                <img src={ScvNoneUserLogo} alt={'noneUserLogo'} style={{ height: '100%',borderTopLeftRadius:8, borderBottomLeftRadius:8, marginLeft: 0 }} />
-                <h4>Matvey Treyvas</h4>
-                <div style={{display:'flex', flexDirection:'row', marginRight:'0px', alignItems:'center'}}>
-                    <div style={{marginLeft:'10px'}} onClick={() => handleTelegramClick(matveiTelegramLink)}>
-                        <img src={telegram} alt={'telegram'}/>
-                    </div>
-                </div>
-            </div>
-
         </div>
     );
 }

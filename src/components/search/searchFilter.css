@@ -63,21 +63,21 @@
     width: 0;
 }
 
-.resultItem {
+.resultSearchItem {
     margin: 0;
-    padding: 10px 0;
+    padding: 8px 0 8px 10px;
     border-bottom: #DDDDDD solid 1px;
     text-decoration: none;
     color: #000000;
 }
 
-.resultItem h5 {
+.resultSearchItem h5 {
     color: #000;
     font-size: 14px;
     margin: 3px 0;
 }
 
-.resultItem p {
+.resultSearchItem p {
     color: #5B5B5B;
     font-size: 10px;
     margin: 3px 0;

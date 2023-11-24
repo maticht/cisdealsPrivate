@@ -1,7 +1,5 @@
 import React from "react";
-import HeaderNavBar from '../../components/headerNavBar/headerNavBar';
-import {Routes, Route, Link} from "react-router-dom";
-import { createUseStyles } from "react-jss";
+import {Link} from "react-router-dom";
 import CategoriesJSON from '../../data/categories.json';
 import arrow from '../../img/arrowright.svg';
 import beauty from '../../img/CategoriesLogo/beauty.svg';
@@ -20,48 +18,17 @@ import house from '../../img/CategoriesLogo/house.svg';
 import build from '../../img/CategoriesLogo/build.svg';
 import party from '../../img/CategoriesLogo/party.svg';
 import food from '../../img/CategoriesLogo/food.png';
-
-
-const useStyles = createUseStyles({
-    container: {
-        minHeight: "100vh",
-        backgroundColor: "#F1F1F1"
-    },
-    allCategoriesBtn: {
-        textDecoration: "none",
-        color: "#454545",
-        fontSize: "14px",
-    },
-    AllCategoryContainer: {
-        margin: "0 2vw",
-        padding: "15px 0 40px 0",
-    },
-    OneCategoryInfo: {
-        display: "flex",
-        flexDirection: "row",
-    },
-    OneCategoryImg: {
-        width: "54px",
-        marginRight: "10px",
-    },
-    OneCategoryItem: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        padding: "10px 0",
-        borderBottom: "#DDDDDD solid 1px",
-        textDecoration: "none",
-        color: "#000000",
-    }
-});
+import './AllCategoriesScreen.css'
+import back from "../../img/Arrow_left.svg";
 
 function AllCategoriesScreen() {
-    const classes = useStyles();
-
-    const categoryList = CategoriesJSON.categories.map((category) =>
-        <Link  className={classes.OneCategoryItem} to={`/AllCategories/${category.categoriestitle}`}>
-            <div className={classes.OneCategoryInfo}>
-                <img className={classes.OneCategoryImg} src={
+    const categoryList = CategoriesJSON.categories.map((category, index) =>
+        <Link className={'OneCategoryScreenItem'}
+              to={`/AllCategories/${category.categoriestitle}`}
+              style={{borderBottom: CategoriesJSON.categories.length - 1 === index ? '#DDDDDD solid 0px' : '#DDDDDD solid 1px'}}
+        >
+            <div className={'OneCategoryScreenInfo'}>
+                <img className={'OneCategoryScreenImg'} src={
                     (category.categoriestitle === "Красота и уход") ?
                     beauty : (category.categoriestitle === "Спорт") ?
                     sport : (category.categoriestitle === "Здоровье") ?
@@ -80,26 +47,30 @@ function AllCategoriesScreen() {
                     party : (category.categoriestitle === "Еда") ?
                     food : category.imgId
                 } alt="image not found"/>
-                <p className={'OneCategoryTitle'} style={{fontSize:'14px', fontWeight:'500'}}>{category.categoriestitle}</p>
+                <p className={'OneCategoryInfoTitle'}>{category.categoriestitle}</p>
             </div>
-            <img src={arrow} alt={'logo'}/>
+            <img className={'OneCategoryScreenItemImg'} src={arrow} alt={'logo'}/>
         </Link>
     );
     return (
         <>
-            <div className={classes.container}>
-                <div className={classes.AllCategoryContainer}>
-                    <Link className={classes.allCategoriesBtn} to="/">˂ Главная</Link>
-                    <h2>Категории</h2>
-                    <div>
-                        <Link  className={classes.OneCategoryItem} to={`/AllCategories/:Categories2/:Categories3/:Categories4/Все специалисты`}>
-                            <div className={classes.OneCategoryInfo}>
+            <div className={'AllContainer'}>
+                <div className={'AllCategoryScreenContainer'}>
+                    <Link className="form-update-link" to="/">
+                        <img src={back} alt="back" />
+                        <p>Главная</p>
+                    </Link>
+                    <p className="form-prsnl-heading">Категории</p>
+                    <div className={'AllCategoryScreenBlock'}>
+                        <Link className={'OneCategoryScreenItem'} to={`/AllCategories/:Categories2/:Categories3/:Categories4/Все специалисты`}>
+                            <div className={'OneCategoryInfo'}>
                                 <p className={'OneCategoryTitle'}>Показать всех специалистов</p>
                             </div>
-                            <img src={arrow} alt={'logo'}/>
+                            <img className={'OneCategoryScreenItemImg'} src={arrow} alt={'logo'}/>
                         </Link>
                         {categoryList}
                     </div>
+
                 </div>
             </div>
         </>

@@ -3,10 +3,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 10px 0 0 0;
+    padding: 10px 10px 0;
     height: 48px;
-    max-width: 800px;
-    width: 100%;
+    max-width: 650px;
+    width: calc(100% - 20px);
     margin: 0 auto;
 }
 .inputContainer {
@@ -14,25 +14,19 @@
     pointer-events: auto;
     margin: 0 10px;
 }
-.container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+.searchContainer {
     background-color: #F1F1F1;
     display: flex;
-    overflow: auto;
-    z-index: 55;
     width: 100%;
+    min-height: 100vh;
 }
 
 .modalContent {
-    margin: 5px auto 5px;
+    margin:  0 auto;
     width: 100%;
-    max-width: 800px;
+    max-width: 670px;
     background-color: #F1F1F1;
-    padding-top: 8px;
+    padding-top: 0;
 }
 
 .allCategoriesBtn {
@@ -46,18 +40,23 @@
     text-decoration: none;
 }
 .tabContainer {
+    width: calc(100% - 20px);
     display: flex;
+    padding: 0 10px;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     margin: 0 0 0 0;
 }
-.resultContainer {
+.resultSearchContainer {
+    width: calc(100% - 20px);
     overflow: auto;
-    margin-top: 10px;
-    max-height: 80vh;
+    margin: 0 auto 25px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    max-height: 70vh;
 }
-.resultContainer::-webkit-scrollbar {
+.resultSearchContainer::-webkit-scrollbar {
     width: 0;
 }
 
@@ -70,6 +69,7 @@
 }
 
 .resultItem h5 {
+    font-weight: 500;
     color: #000;
     font-size: 14px;
     margin: 3px 0;
@@ -89,11 +89,13 @@
     cursor: pointer;
     margin-right: 10px;
 }
-.userContainer {
+.userSearchContainer {
     overflow: auto;
-    max-height: 77vh;
-    margin-top: 5px;
+    max-height: 70vh;
+    width: calc(100% - 20px);
     scrollbar-width: none;
+    margin: 0 auto;
+    border-radius: 10px;
 }
 
 .userResultsContainer {
@@ -102,13 +104,12 @@
     border-radius: 8px;
     scrollbar-width: none;
 }
-.userContainer::-webkit-scrollbar {
+.userSearchContainer::-webkit-scrollbar {
     width: 0;
 }
 
-.userItem {
-    margin: 0 10px;
-    padding: 9px 0;
+.userSearchItem {
+    padding: 9px 10px;
     border-bottom: 1px solid #DDDDDD;
     text-decoration: none;
     color: #000000;
@@ -126,8 +127,8 @@
 }
 
 .userImageContainer {
-    width: 40px;
-    height: 40px;
+    width: 52px;
+    height: 52px;
     border-radius: 5px;
     overflow: hidden;
     display: flex;
@@ -141,11 +142,12 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: blur(0.5px);
+    filter: blur(0.4px);
 }
 
 
 .userInfoContainer {
+    margin-top: -3px;
     margin-left: 8px;
     display: flex;
     justify-content: space-between;
@@ -161,13 +163,13 @@
 .userLocation {
     color: #000;
     font-size: 10px;
-    margin: 0 0 10px 0;
+    margin: 9px 0 0 0;
 }
 
 .userActivity {
     color: #5B5B5B;
-    font-size: 10px;
-    margin: 4px 0 0 0;
+    font-size: 11px;
+    margin:0 0 0 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -183,16 +185,17 @@
     color: #000;
 }
 
-.searchFld{
+.searchFilterFld{
+    width: 60%;
     background-color: rgba(255, 255, 255, 0);
     border: none;
 }
-.searchFld:focus {
+.searchFilterFld:focus {
     color: #212529;
     background-color: rgba(255, 255, 255, 0);
     outline: 0;
 }
-.searchFld::placeholder {
+.searchFilterFld::placeholder {
     color: #454545;
     font-size: 14px;
 }
@@ -219,32 +222,77 @@
 .searchBtn{
     background-color: rgba(255, 255, 255, 0);
     border: none;
+    margin-top: 0;
 }
 
 .selectFilterBlock{
-    margin-left: 10px;
+    max-width: 1160px;
+    width: calc(100% - 20px);
+    padding: 0 10px;
+    margin: -10px auto 0;
+    align-self: center;
     display: flex;
     flex-direction: row;
 }
-
+.selectFilterUsers{
+    padding: 0 5px 0 10px;
+    max-width: 1170px;
+    margin: 0 auto;
+    align-self: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+}
+.allBestSpecialistsTitle{
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    margin:0 auto;
+    padding: 0 10px;
+    max-width: 1160px;
+}
+.allBestSortedSpecialists{
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    margin:0 auto;
+    max-width: 1160px;
+}
 .locationSelect{
     background-color: #FFFFFF;
     padding: 8px 10px;
     border-radius: 8px;
     color: #454545;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 14px;
     cursor:pointer;
 }
 .locationSelect:nth-child(1){
-    margin-right: 5px;
+    margin-right: 10px;
+}
+@media screen and (max-width: 1000px) {
+    .selectFilterUsers{
+        padding: 0 0 0 10px;
+    }
 }
 @media screen and (max-width: 800px) {
     .container {
         width: calc(100% - 20px);
         padding: 0 10px;
     }
+}
+@media screen and (max-width: 720px) {
+    .selectFilterBlock{
+        max-width: 1160px;
+        width: calc(100% - 20px);
+        padding: 0 10px;
+        margin: 8px auto 0;
+        align-self: center;
+        display: flex;
+        flex-direction: row;
+    }
 
 }
-
 

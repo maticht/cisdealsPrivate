@@ -5,6 +5,8 @@ import CategoriesJSON from '../../data/searchcategories.json';
 import {Link} from "react-router-dom";
 import axios from "axios";
 import noneUserLogo from "../../img/noneUserLogoSq.svg";
+import {getAllUsers} from "../../httpRequests/cisdealsApi";
+import back from "../../img/Arrow_left.svg";
 const data = CategoriesJSON.categories
 
 const SearchScreen = () => {
@@ -18,9 +20,9 @@ const SearchScreen = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get(`http://backend.delkind.pl/getAllUsers`);
-                let sortedUsers = response.data;
-
+                const response = await getAllUsers();
+                console.log(response);
+                let sortedUsers = response;
 
                 setUsers(sortedUsers);
                 localStorage.getItem("token");
@@ -106,17 +108,20 @@ const SearchScreen = () => {
 
 
     return (
-        <div className={'container'} onClick={() => {
+        <div className={'searchContainer'} onClick={() => {
             setModalOpen(false);
         }}>
             <div className={'modalContent'} onClick={e => e.stopPropagation()}>
-                <a className={'allCategoriesBtn'} onClick={handleCloseModal}>˂ Главная</a>
-                <>
+                <Link className="form-update-link" onClick={handleCloseModal}>
+                    <img src={back} alt="back" />
+                    <p>Назад</p>
+                </Link>
+                <div>
                     <div className={'searchFilterBlock'}>
                         <div className={'searchBlock pageSearchBlock'}>
                             <input type="text" value={searchTerm}
                                    onChange={activeTab === 'category' ? handleSearchTermChange : handleSearchTermUserChange}
-                                   className={'searchFld'} placeholder={'Введите запрос'}/>
+                                   className={'searchFilterFld'} placeholder={'Введите запрос'}/>
                             <button className={'searchBtn'}>
                                 <img src={searchBtn} className="App-logo" alt="logo"/>
                             </button>
@@ -133,11 +138,13 @@ const SearchScreen = () => {
                         </p>
                     </div>
                     {activeTab === 'category' ? (
-                        <div className="resultContainer">
+                        <div className="resultSearchContainer">
                             {searchTerm && (
                                 <div>
-                                    {results.map((item) => (
-                                        <div key={item.id} className="resultItem">
+                                    {results.map((item, index) => (
+                                        <div key={item.id} className="resultSearchItem"
+                                             style={{borderBottom: results.length - 1 === index ? '0px solid #dddddd' : '1px solid #dddddd'}}
+                                        >
                                             <Link
                                                 className="OneCategoryItem"
                                                 to={`/AllCategories/:Categories2/:Categories3/:Categories4/${item.title}`}
@@ -152,11 +159,11 @@ const SearchScreen = () => {
                             )}
                         </div>
                     ) : (
-                        <div className="userContainer">
+                        <div className="userSearchContainer">
                             {searchTerm && (
                                 <div className="userResultsContainer">
                                     {results.map((user, index) => (
-                                        <div key={user._id} className="userItem">
+                                        <div key={user._id} className="userSearchItem">
                                             <Link
                                                 className="OneCategoryItem"
                                                 to={`/AllCategories/:Categories2/:Categories3/:Categories4/Все специалисты/${user._id}`}
@@ -172,6 +179,13 @@ const SearchScreen = () => {
                                                     </div>
                                                     <div className="userInfoContainer">
                                                         <h5 className="userName">{user.nameOrCompany}</h5>
+                                                        <p className="userActivity">
+                                                            {user.areasActivity === 'areasActivity'
+                                                                ? 'Услуги не добавлены'
+                                                                : user.areasActivity.length > 62
+                                                                    ? `${user.areasActivity.slice(0, 62)}...`
+                                                                    : user.areasActivity}
+                                                        </p>
                                                         <p className="userLocation">
                                                             {user.city === 'city'
                                                                 ? 'Польша'
@@ -181,13 +195,6 @@ const SearchScreen = () => {
                                                         </p>
                                                     </div>
                                                 </div>
-                                                <p className="userActivity">
-                                                    {user.areasActivity === 'areasActivity'
-                                                        ? 'Услуги не добавлены'
-                                                        : user.areasActivity.length > 62
-                                                            ? `${user.areasActivity.slice(0, 62)}...`
-                                                            : user.areasActivity}
-                                                </p>
                                             </Link>
                                         </div>
                                     ))}
@@ -195,7 +202,7 @@ const SearchScreen = () => {
                             )}
                         </div>
                     )}
-                </>
+                </div>
             </div>
         </div>
     );

@@ -1,39 +1,21 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useRef} from "react";
 import HeaderNavBar from '../../components/headerNavBar/headerNavBar';
-import Categories from '../../components/categories/categories';
 import { createUseStyles } from "react-jss";
-import {Link, Route, useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import Modal from "../../components/madalCities/modalCities";
 import SearchExample from "../../components/search/search";
-import axios from "axios";
 import noneUserLogo from '../../img/noneUserLogoSq.svg'
 import city from '../../img/Map maker.svg'
 import meditating from '../../img/meditating 1.svg'
 import goldStar from '../../img/goldStar.svg'
-
-
-
-const useStyles = createUseStyles({
-    container: {
-        minHeight: "100vh",
-        backgroundColor: "#F1F1F1"
-    },
-    infoBlock: {
-        margin: "0 2vw"
-    },
-    navMainPageBtn: {
-        textDecoration: "none",
-        color: "#454545",
-        fontSize: "14px",
-    }
-});
+import {getAllUsers} from "../../httpRequests/cisdealsApi";
 
 function SortedServicesScreen() {
-    const classes = useStyles();
     const {Categories2} = useParams();
     const {Categories3} = useParams();
     const {Categories4} = useParams();
     const {SortedCategories} = useParams();
+    const containerRef = useRef(null);
     const [modalOpen, setModalOpen] = useState(false);
     const [modalResult, setModalResult] = useState(null);
     const [users, setUsers] = useState([]);
@@ -43,8 +25,8 @@ function SortedServicesScreen() {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get(`http://backend.delkind.pl/getAllUsers`);
-                let sortedUsers = response.data;
+                const response = await getAllUsers();
+                let sortedUsers = response;
 
                 if (modalResult && modalResult !== "Польше") {
                     sortedUsers = sortedUsers.filter((user) => user.city === modalResult);
@@ -55,7 +37,6 @@ function SortedServicesScreen() {
                         (user) => user.services.includes(SortedCategories)
                     );
                 }
-
                 setUsers(sortedUsers);
                 localStorage.getItem("token");
                 setIsLoading(false);
@@ -76,15 +57,29 @@ function SortedServicesScreen() {
         setModalOpen(false);
     };
 
+    useEffect(() => {
+        if (containerRef.current) {
+            if (modalOpen) {
+                containerRef.current.style.overflow = 'hidden';
+                containerRef.current.style.position = 'fixed';
+            } else {
+                containerRef.current.style.overflow = 'auto';
+                containerRef.current.style.position = 'static';
+            }
+        }
+    }, [modalOpen]);
+
     const handleModalResult = (result) => {
         setModalResult(result);
     };
 
     return (
         <>
-            <div className={classes.container}>
-                <HeaderNavBar />
-                <SearchExample />
+            <div className={'selectFilterContainer'} ref={containerRef}>
+                <HeaderNavBar/>
+                <div className={'SearchExampleHome'}>
+                    <SearchExample/>
+                </div>
                 <div className={'selectFilterBlock'}>
                     <Link className={'locationSelect'} onClick={handleOpenModal}>
                         <div>Изменить локацию</div>
@@ -96,60 +91,56 @@ function SortedServicesScreen() {
                 <div>
                     <Modal isOpen={modalOpen} onClose={handleCloseModal} handleModalResult={handleModalResult} />
                 </div>
-                <div className={classes.infoBlock}>
+                <div className={'allBestSpecialistsTitle'}>
                     <h2>{`${(!SortedCategories) ? 'Все специалисты' : SortedCategories} в ${(!modalResult) ? 'Польше' : modalResult}`}</h2>
-
                 </div>
                 {isLoading ? null : (
-                        <>
+                        <div className={'selectFilterUsers'}>
                             {users.length !== 0 ? (
-                                <div style={{display:"flex",flexDirection:"column", justifyContent:"center", margin:'0 10px'}}>
+                                <div style={{display:"flex",flexDirection:"column", justifyContent:"center"}}>
                                     <h6 style={{margin:'0 0 20px 0'}}>{`Найденно ${users.length} специалистов`}</h6>
-                                    {users.map((user) => (
-                                        <div style={{width:"100%", height:"100px", backgroundColor:"#fff", marginBottom:10, display:"flex", alignSelf:"center", justifyContent:"flex-start", alignItems:'center', borderRadius:8}} key={user.id}>
-                                            <Link style={{textDecoration: "none", color:"#000", flexDirection:'row'}} to={`/AllCategories/${Categories2}/${Categories3}/${Categories4}/${SortedCategories}/${user._id}`}>
-                                                <div style={{display:'flex', flexDirection:'row'}}>
-                                                    <div style={{ position: 'relative', display: 'flex', flexDirection: 'row' }}>
-                                                        {(!user.image || user.image.length === 0 ?
-                                                            <img style={{ width: '100px', height: '100px', borderRadius: 8 }} src={noneUserLogo} alt={'userImage'} /> :
-                                                            <div style={{ width: '100px', height: '100px', alignSelf: 'center', justifyContent: 'center', position: 'relative', borderRadius: 8, overflow: 'hidden' }}>
-                                                                {user.image && <img style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'blur(0.4px)', position: 'absolute', top: 0, left: 0 }} src={user.image[0]} alt='User Image' />}
-                                                            </div>)
-                                                        }
+                                    <div className={'allBestSortedSpecialists'}>
+                                        {users.map((user) => (<div className={'oneBestSpecialistsBlock'} key={user.id}>
+                                            <Link className="link-wrapper"
+                                                  to={`/AllCategories/Categories2/Categories3/Categories4/Все специалисты/${user._id}`}>
+                                                <div className="user-container">
+                                                    <div className="user-image-container">
+                                                        {(!user.image || user.image.length === 0 ? (
+                                                            <img className="user-image" src={noneUserLogo} alt="userImage"/>) : (
+                                                            <div className="user-image">
+                                                                {user.image && <img src={user.image[0]} alt="User Image"/>}
+                                                            </div>))}
                                                         {user.rating && user.rating.length > 0 && user.rating[0] !== '' && (
-                                                            <div style={{ position: 'absolute', top: 5, right: 5, width: '30px', backgroundColor: '#ffffff', padding: '0px 4px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderRadius: '4px' }}>
-                                                                <img style={{ width: '12px' }} src={goldStar} alt="star" />
-                                                                <p style={{ margin: '0 0 2px 0', fontSize: '13px' }}>
+                                                            <div className="rating-container">
+                                                                <img className="rating-star" src={goldStar} alt="star"/>
+                                                                <p className="rating-value">
                                                                     {(user.rating.reduce((acc, rating) => acc + rating.value, 0) / user.rating.length).toFixed(1)}
                                                                 </p>
-                                                            </div>
-                                                        )}
+                                                            </div>)}
                                                     </div>
-                                                    <div style={{marginLeft:'10px',display:'flex', flexDirection:'column', justifyContent:'space-between' }}>
+                                                    <div className="user-info-container">
                                                         <div>
-                                                            <p style={{fontWeight:'500', margin:'5px 0 0 0'}}>
-                                                                {user.nameOrCompany}
-                                                            </p>
-                                                            <p style={{ color: '#666', fontSize: '13px', margin: '5px 0' }}>
-                                                                {user.areasActivity === 'areasActivity' ?
-                                                                    'Услуги не добавлены' :
-                                                                    user.areasActivity.length > 28 ?
-                                                                        `${user.areasActivity.slice(0, 28)}...` :
-                                                                        user.areasActivity
+                                                            <p className="user-name">{user.nameOrCompany}</p>
+                                                            <p className="user-activity">
+                                                                {user.areasActivity === 'areasActivity' || user.areasActivity === '' ?
+                                                                    'Услуги не добавлены'
+                                                                    : user.areasActivity.length > 28 ? `${user.areasActivity.slice(0, 28)}...` : user.areasActivity
                                                                 }
                                                             </p>
                                                         </div>
-                                                        <div style={{display:'flex', alignItems:'center', marginBottom:'8px'}}>
-                                                            <img src={city}/>
-                                                            <p style={{fontWeight:'400', margin:'0px 5px', fontSize:'13px'}}>
-                                                                {user.city === "city" ? 'Польша' : user.region === "region" ? `${user.city}` : `${user.city}, ${user?.region}`}
+                                                        <div className="location-container">
+                                                            <img className="location-image" src={city} alt="city"/>
+                                                            <p className="location-text">
+                                                                {user.city === "city" ?
+                                                                    'Польша'
+                                                                    : user.region === "region" ? `${user.city}` : `${user.city}, ${user?.region}`}
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </Link>
-                                        </div>
-                                    ))}
+                                        </div>))}
+                                    </div>
                                 </div>
                             ) : (
                                 <div style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
@@ -157,7 +148,7 @@ function SortedServicesScreen() {
                                     <h3 style={{}}>Здесь ещё нет специалистов</h3>
                                 </div>
                             )}
-                        </>
+                        </div>
                     )}
             </div>
         </>
