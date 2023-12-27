@@ -1,0 +1,126 @@
+.userPageContainer {
+    width: 100%;
+    min-height: 110vh;
+    background-color: #f5f5f5;
+}
+.mainUserPageContainer {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1160px;
+}
+.mainUserBackLink {
+    text-decoration: none;
+    color: #454545;
+    font-size: 14px;
+    margin: 20px 0 10px 0;
+    display: flex;
+    align-items: center;
+}
+.mainUserNavBtns{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+.navCopiedText{
+    display: flex;
+    align-self: center;
+    margin: 0 5px 3px 0;
+    font-size: 12px;
+    color: #666666;
+    opacity: 1;
+}
+.mainUserNavBtn{
+    outline: none;
+    background: none;
+    border: none;
+    cursor:pointer;
+    margin-right: 10px;
+}
+.mainUserNavBtn:last-child{
+    margin-right: 0;
+}
+.mainUserNavBtn img{
+    opacity: 0.8;
+}
+.mainUserNavLink{
+    opacity: 0.8;
+}
+.mainUserInfoBlocks{
+    width: calc(100% + 20px);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.mainUserInfoBlock{
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    justify-content: center;
+    align-items: flex-start;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+.mainUserPhotoContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.mainUserInfoContainer{
+    width: calc(100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.mainUserMainInfo{
+    max-width: 800px;
+    width:  calc(100%);
+    padding: 5px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.mainUserMainServ{
+    max-width: 800px;
+    width:  calc(100%);
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.mainUserNavRating{
+    position: relative;
+}
+.mainUserNavRatingText{
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%, -52%);
+    margin: 0;
+    color: #212529;
+    font-size: 10px;
+    font-weight: 600;
+}
+.mainUserBackLink img {
+    width: 15px;
+    height: 15px;
+}
+.mainUserBackLink p {
+    margin: 0 0 2px 5px;
+    font-weight: 400;
+}
+.mainUserNav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}

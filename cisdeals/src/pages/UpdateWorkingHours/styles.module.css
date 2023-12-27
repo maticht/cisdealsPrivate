@@ -1,0 +1,207 @@
+.signup_container {
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.signup_form_container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.form_container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    background-color: #f5f5f5;
+}
+
+.form_container h1 {
+    justify-content: flex-start;
+    font-size: 20px;
+    margin-top: 0;
+}
+.toggleSwitchBlock {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.toggleSwitchBlock h5{
+    margin: 0;
+}
+.workingHours {
+    border-radius: 8px;
+    background-color: #f1f1f1;
+    padding: 8px 5px 10px 5px;
+    vertical-align: center;
+}
+
+.toggleSwitch {
+    position: relative;
+    display: inline-block;
+    width: 42px;
+    height: 28px;
+    margin-right: 10px;
+}
+.toggleSwitch input[type="checkbox"] {
+    display: none;
+}
+.toggleSwitch .switch {
+    position: absolute;
+    cursor: pointer;
+    background-color: #e8e8e8;
+    border-radius: 25px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: background-color 0.2s ease;
+}
+.toggleSwitch .switch::before {
+    position: absolute;
+    content: "";
+    left: 3px;
+    top: 3.7px;
+    width: 21px;
+    height: 21px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+.toggleSwitch input[type="checkbox"]:checked + .switch::before {
+    transform: translateX(15px);
+    background-color: #ffffff;
+}
+.toggleSwitch input[type="checkbox"]:checked + .switch {
+    background-color: #5CA91A;
+}
+
+.input {
+    font-family: Arial, serif;
+    outline: none;
+    border: none;
+    width: 80vw;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f1f1f1;
+    margin: 5px 0;
+    vertical-align: center;
+    font-size: 14px;
+    text-align: left;
+}
+.timeInput {
+    width: 17px;
+    font-family: Arial, serif;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    background-color: #f1f1f1;
+    vertical-align: center;
+    font-size: 14px;
+    text-align: left;
+}
+.inputBtn {
+    outline: none;
+    border: none;
+    width: 88vw;
+    color: #5B5B5B;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f1f1f1;
+    margin: 5px 0;
+    vertical-align: center;
+    font-size: 14px;
+    text-align: left;
+}
+.input-top {
+    text-align: left;
+    resize: none;
+    height: 80px;
+}
+textarea,
+textarea::placeholder{
+    font-family: Arial, sans-serif;
+}
+.error_msg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    width: 80vw;
+    padding: 5px;
+    margin: 0;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0);
+    color: #f34646;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.white_btn,
+.green_btn {
+    border: none;
+    outline: none;
+    align-items: center;
+    align-self: center;
+    padding: 12px 0;
+    background-color: #000000;
+    border-radius: 8px;
+    width: 180px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.green_btn {
+    background-color: #000000;
+    color: white;
+    margin: 5px;
+}
+.container {
+    justify-content: flex-start;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 10px 10px 0;
+    padding: 12px 0px;
+}
+.dayContainer {
+    display: flex;
+    height: 38px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 10px 0;
+    padding: 0 10px 10px 10px;
+    border-bottom: 1.5px solid #DDDDDD;
+}
+.dayContainer:nth-child(7){
+    padding-bottom: 0;
+    margin: 0 0 0 0;
+    border-bottom: 0px solid #DDDDDD;
+}
+.workingHoursLine{
+    margin: 0 5px;
+}
+@media screen and (max-width: 320px) {
+    .dayContainer {
+        display: flex;
+        height: 75px;
+        justify-content: flex-start;
+        align-content: space-between;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .toggleSwitchBlock:nth-child(1) {
+        margin-bottom: 7px;
+    }
+}
+@media screen and (max-width: 540px) {
+    .green_btn {
+        width: calc(100% - 20px);
+    }
+}
