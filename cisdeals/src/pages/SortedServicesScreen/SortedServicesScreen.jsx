@@ -102,49 +102,50 @@ function SortedServicesScreen() {
                                     <div className={users.length <= 2 ? 'allMiniBestSortedSpecialists' : 'allBestSortedSpecialists'}>
                                         {users.map((user) => (
                                             <div className={users.length === 1 ? 'onlyOneBestSpecialistsBlock' : 'oneBestSpecialistsBlock'} key={user.id}>
-                                            <Link className="link-wrapper"
-                                                  to={`/AllCategories/Categories2/Categories3/Categories4/Все специалисты/${user._id}`}>
-                                                <div className="user-container">
-                                                    <div className="user-image-container">
-                                                        {(!user.image || user.image.length === 0 ? (
-                                                            <img className="user-image" src={noneUserLogo} alt="userImage"/>) : (
-                                                            <div className="user-image">
-                                                                {user.image && <img src={user.image[0]} alt="User Image"/>}
-                                                            </div>))}
-                                                        {user.rating && user.rating.length > 0 && user.rating[0] !== '' && (
-                                                            <div className="rating-container">
-                                                                <img className="rating-star" src={goldStar} alt="star"/>
-                                                                <p className="rating-value">
-                                                                    {(user.rating.reduce((acc, rating) => acc + rating.value, 0) / user.rating.length).toFixed(1)}
+                                                <Link className="link-wrapper"
+                                                      to={`/AllCategories/Categories2/Categories3/Categories4/Все специалисты/${user._id}`}>
+                                                    <div className="user-container">
+                                                        <div className="user-image-container">
+                                                            {(!user.image || user.image.length === 0 ? (
+                                                                <img className="user-image" src={noneUserLogo} alt="userImage"/>) : (
+                                                                <div className="user-image">
+                                                                    {user.image && <img src={user.image[0]} alt="User Image"/>}
+                                                                </div>))}
+                                                            {user.rating && user.rating.length > 0 && user.rating[0] !== '' && (
+                                                                <div className="rating-container">
+                                                                    <img className="rating-star" src={goldStar} alt="star"/>
+                                                                    <p className="rating-value">
+                                                                        {(user.rating.reduce((acc, rating) => acc + rating.value, 0) / user.rating.length).toFixed(1)}
+                                                                    </p>
+                                                                </div>)}
+                                                        </div>
+                                                        <div className="user-info-container">
+                                                            <div>
+                                                                <p className="user-name">{user.nameOrCompany}</p>
+                                                                <p className="user-activity">
+                                                                    {user.areasActivity === 'areasActivity' || user.areasActivity === '' ?
+                                                                        'Услуги не добавлены'
+                                                                        : user.areasActivity.length > 28 ? `${user.areasActivity.slice(0, 28)}...` : user.areasActivity
+                                                                    }
                                                                 </p>
-                                                            </div>)}
-                                                    </div>
-                                                    <div className="user-info-container">
-                                                        <div>
-                                                            <p className="user-name">{user.nameOrCompany}</p>
-                                                            <p className="user-activity">
-                                                                {user.areasActivity === 'areasActivity' || user.areasActivity === '' ?
-                                                                    'Услуги не добавлены'
-                                                                    : user.areasActivity.length > 28 ? `${user.areasActivity.slice(0, 28)}...` : user.areasActivity
-                                                                }
-                                                            </p>
-                                                        </div>
-                                                        <div className="location-container">
-                                                            <img className="location-image" src={city} alt="city"/>
-                                                            <p className="location-text">
-                                                                {user.city === "city" ?
-                                                                    'Польша'
-                                                                    : user.region === "region" ? `${user.city}` : `${user.city}, ${user?.region}`}
-                                                            </p>
+                                                            </div>
+                                                            <div className="location-container">
+                                                                <img className="location-image" src={city} alt="city"/>
+                                                                <p className="location-text">
+                                                                    {user.city === "city" ?
+                                                                        'Польша'
+                                                                        : user.region === "region" ? `${user.city}` : `${user.city}, ${user?.region}`}
+                                                                </p>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </Link>
-                                        </div>))}
+                                                </Link>
+                                            </div>
+                                        ))}
                                     </div>
                                 </div>
                             ) : (
-                                <div style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
+                                <div style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column', alignSelf:'center', margin:'100px auto 0'}}>
                                     <img src={meditating} alt={'Здесь ещё нет специалистов'}/>
                                     <h3 style={{}}>Здесь ещё нет специалистов</h3>
                                 </div>

@@ -266,7 +266,39 @@
     justify-content:flex-start;
     margin:0 auto;
 }
+.allMiniFavoritesSpecialists{
+    width: 1160px;
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    margin:0 auto;
+}
+.favoritesHeaderContainer{
+    width: calc(100%);
+    min-height: 100vh;
+    background-color: #fafafa;
+    margin: -15px;
+}
+.favoritesHeaderBlock{
+    width: 100%;
+    max-width: 1160px;
+    display:flex;
+    flex-direction:column;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    margin:0 auto;
+}
 .allBestSortedSpecialists{
+    width: 100%;
+    max-width: 1160px;
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    margin:0 auto;
+}
+.allFavoritesSpecialists{
     width: 100%;
     max-width: 1160px;
     display:flex;
@@ -296,6 +328,26 @@
         justify-content:flex-start;
         margin:0 auto;
     }
+    .favoritesHeaderBlock{
+        width: calc(100% - 20px);
+        max-width: 100%;
+        padding: 0 10px;
+    }
+    .allMiniFavoritesSpecialists{
+        width: calc(100% - 20px);
+        max-width: 100%;
+        padding: 0 10px;
+        display:flex;
+        flex-direction:row;
+        flex-wrap: wrap;
+        justify-content:flex-start;
+        margin:0 auto;
+    }
+    .allFavoritesSpecialists{
+        width: calc(100% - 20px);
+        max-width: 100%;
+        padding: 0 10px;
+    }
 }
 @media screen and (max-width: 1000px) {
     .selectFilterUsers{
@@ -315,6 +367,11 @@
         flex-wrap: wrap;
         justify-content:flex-start;
         margin:0 auto;
+    }
+    .allFavoritesSpecialists{
+        width: calc(100% - 10px);
+        max-width: 100%;
+        padding: 0 0 0 10px;
     }
 }
 @media screen and (max-width: 800px) {

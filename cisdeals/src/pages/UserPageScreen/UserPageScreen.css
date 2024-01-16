@@ -18,6 +18,7 @@
 }
 .mainUserNavBtns{
     display: flex;
+    padding-top: 12px;
     align-items: center;
     flex-direction: row;
 }
@@ -46,7 +47,8 @@
     opacity: 0.8;
 }
 .mainUserInfoBlocks{
-    width: calc(100% + 20px);
+    width: calc(100%);
+    max-width: 1160px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -123,4 +125,161 @@
     justify-content: space-between;
     margin-top: -10px;
     margin-bottom: 10px;
+}
+.userContactBtn{
+    width: 100vw;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+.deskContactBlock{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+.mainUserMainPhotoBlock{
+    width: 310px;
+    height: 310px;
+    align-self: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+}
+.smallUserPhotosBlock{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.photosSliderBlock{
+    display: flex;
+    align-self: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 15px;
+}
+.contactsModalPage{
+    max-width: 650px;
+    width: 100%;
+    margin: 0 10px;
+}
+@media screen and (max-width: 1160px) {
+    .mainUserInfoBlocks{
+        width: calc(100% - 20px);
+        max-width: 100%;
+        margin: 0 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+    .mainUserNav{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin: -10px 10px 10px 10px;
+    }
+}
+@media screen and (max-width: 720px) {
+    .mainUserNav{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin: 10px 10px 10px 10px;
+    }
+}
+@media screen and (max-width: 640px) {
+    .userContactBtn{
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+    }
+    .deskContactBlock{
+        display: none;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+    }
+    .mainUserInfoBlocks{
+        width: calc(100% - 20px);
+        max-width: 100%;
+        margin: 0 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+    .mainUserPhotoContainer{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .mainUserInfoBlock{
+        display: flex;
+        flex-direction: column;
+        background-color: #ffffff;
+        justify-content: center;
+        align-items: flex-start;
+        border-radius: 8px;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    .mainUserInfoContainer{
+        width: calc(100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+    .mainUserMainPhotoBlock{
+        width: 310px;
+        height: 310px;
+        align-self: center;
+        justify-content: center;
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+    }
+    .photosSliderBlock{
+        display: flex;
+        align-self: center;
+        flex-direction: column;
+        justify-content: center;
+        margin: 15px 15px;
+    }
+}
+@media screen and (max-width: 340px) {
+    .mainUserMainPhotoBlock{
+        width: 250px;
+        height: 250px;
+        align-self: center;
+        justify-content: center;
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+    }
+}
+@media screen and (max-width: 305px) {
+    .mainUserMainPhotoBlock{
+        width: 200px;
+        height: 200px;
+        align-self: center;
+        justify-content: center;
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+    }
 }

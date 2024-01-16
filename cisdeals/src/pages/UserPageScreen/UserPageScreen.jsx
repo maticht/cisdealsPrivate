@@ -22,7 +22,13 @@ import Star from "../../img/Star1.svg";
 import Star2 from "../../img/Star22.svg";
 import EditProfile from "../../img/EditProfile.svg";
 import styles from "../UpdateDescription/styles.module.css";
-import {userProfile, viewServices} from "../../httpRequests/cisdealsApi";
+import {
+    userProfile,
+    viewServices,
+    saveUserProfile,
+    unSaveUserProfile,
+    updateServ
+} from "../../httpRequests/cisdealsApi";
 import './UserPageScreen.css'
 import back from "../../img/Arrow_left.svg";
 
@@ -50,10 +56,22 @@ const useStyles = createUseStyles({
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        backgroundColor: "rgb(250,250,250)",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        zIndex: 9999
+    },
+    contactOverlay: {
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: "rgb(250,250,250)",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "flex-start",
         zIndex: 9999
     },
     modal: {
@@ -163,7 +181,7 @@ const UserPage = (props, {link}) => {
 
     useEffect(() => {
         fetchUserProfile(UserPage);
-    }, []);
+    }, [saved]);
 
     const toggleRate = async (userid, rating, description, firstName, lastName, commentatorId) => {
         try {
@@ -178,10 +196,24 @@ const UserPage = (props, {link}) => {
 
     const toggleSave = async () => {
         try {
-            const url = `http://backend.delkind.pl/${saved ? 'unSaveUser' : 'saveUser'}/${UserId}`;
-            const { data: res } = await axios.put(url, { userId: UserPage });
-            localStorage.setItem("token",  JSON.stringify(res));
+            console.log(UserId);
+            console.log(UserPage);
+
+            const res = await saveUserProfile(UserId, UserPage);
+            localStorage.setItem("token", JSON.stringify(res));
             setSaved(!saved);
+            console.log(saved);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    const toggleUnSave = async () => {
+        try {
+            console.log(UserPage)
+            let res = await unSaveUserProfile(UserId, UserPage);
+            localStorage.setItem("token", JSON.stringify(res));
+            setSaved(!saved);
+            console.log(saved);
         } catch (error) {
             console.log(error);
         }
@@ -197,7 +229,7 @@ const UserPage = (props, {link}) => {
             }
         };
         fetchUserProfile(UserPage);
-    }, []);
+    }, [saved]);
 
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -398,17 +430,17 @@ const UserPage = (props, {link}) => {
                         <button className="mainUserNavBtn" onClick={copyLinkToClipboard}>
                             <img src={share} alt={'share'}/>
                         </button>
-                        <button className="mainUserNavBtn" onClick={() => setModalRate(!modalRate)}>
-                            <div className="mainUserNavRating">
-                                <img src={Star} alt={'Star'}/>
-                                {isNaN(averageRating) ? null : (
-                                    <p  className="mainUserNavRatingText">{averageRating}</p>
-                                )}
-                            </div>
-                        </button>
+                        {/*<button className="mainUserNavBtn" onClick={() => setModalRate(!modalRate)}>*/}
+                        {/*    <div className="mainUserNavRating">*/}
+                        {/*        <img src={Star} alt={'Star'}/>*/}
+                        {/*        {isNaN(averageRating) ? null : (*/}
+                        {/*            <p  className="mainUserNavRatingText">{averageRating}</p>*/}
+                        {/*        )}*/}
+                        {/*    </div>*/}
+                        {/*</button>*/}
                         {UserPage && UserPage !== UserId ? (
                             <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-                                <button className="mainUserNavBtn" onClick={toggleSave}>
+                                <button className="mainUserNavBtn" onClick={!saved ? toggleSave : toggleUnSave}>
                                     <img src={saved ? saveB : saveW} alt={'save'}/>
                                 </button>
 
@@ -430,24 +462,8 @@ const UserPage = (props, {link}) => {
                     <div className="mainUserPhotoContainer">
                         <div className="mainUserInfoBlock">
                             {!user.image || user.image.length === 0 ? null :
-                                <div style={{
-                                    display: 'flex',
-                                    alignSelf: 'center',
-                                    justifyContent: 'center',
-                                    flexDirection: 'column',
-                                    margin: '15px 5px'
-                                }}>
-                                    <div
-                                        style={{
-                                            width: '310px',
-                                            height: '310px',
-                                            alignSelf: 'center',
-                                            justifyContent: 'center',
-                                            position: 'relative',
-                                            borderRadius: 8,
-                                            overflow: 'hidden',
-                                        }}
-                                    >
+                                <div className={'photosSliderBlock'}>
+                                    <div className="mainUserMainPhotoBlock">
                                         {user.image && (
                                             <img
                                                 style={{
@@ -491,8 +507,8 @@ const UserPage = (props, {link}) => {
                                         >
                                             <div style={{
                                                 marginLeft: '0px',
-                                                width: '35px',
-                                                height: '35px',
+                                                width: '30px',
+                                                height: '30px',
                                                 display: 'flex',
                                                 justifyContent: 'center',
                                                 cursor:'pointer',
@@ -500,7 +516,7 @@ const UserPage = (props, {link}) => {
                                             }} onClick={handlePrevImage}>
                                                 <img src={arrowDown} style={{rotate: '90deg'}} alt={'<'}/>
                                             </div>
-                                            <div style={{
+                                            <div className={'smallUserPhotosBlock'} style={{
                                                 display: 'flex',
                                                 justifyContent: 'center',
                                                 alignItems: 'center'
@@ -508,8 +524,8 @@ const UserPage = (props, {link}) => {
                                                 {user.image.map((image, index) => {
                                                     return (
                                                         <div style={{
-                                                            width: '44px',
-                                                            height: '44px',
+                                                            width: '40px',
+                                                            height: '40px',
                                                             border: currentImageIndex === index ? '2px solid #000' : 'none',
                                                             margin: '0 4px',
                                                             padding: '0.5px',
@@ -522,8 +538,8 @@ const UserPage = (props, {link}) => {
                                                             <img
                                                                 key={index}
                                                                 style={{
-                                                                    width: '42px',
-                                                                    height: '42px',
+                                                                    width: '40px',
+                                                                    height: '40px',
                                                                     objectFit: 'cover',
                                                                     borderRadius: '6px',
                                                                     filter: 'blur(0.3px)'
@@ -538,8 +554,8 @@ const UserPage = (props, {link}) => {
                                             </div>
                                             <div style={{
                                                 marginRight: '0px',
-                                                width: '35px',
-                                                height: '35px',
+                                                width: '30px',
+                                                height: '30px',
                                                 display: 'flex',
                                                 cursor:'pointer',
                                                 justifyContent: 'center',
@@ -552,8 +568,7 @@ const UserPage = (props, {link}) => {
                                 </div>
                             }
                         </div>
-                        <div className={classes.modal}>
-
+                        <div className={'deskContactBlock'}>
                             <h2 style={{margin:'15px 0'}}>Контакты</h2>
                             <div style={{
                                 padding: '15px 10px',
@@ -978,7 +993,7 @@ const UserPage = (props, {link}) => {
                 </div>
 
 
-                <div style={{width: '100vw', display: 'none', justifyContent: 'center'}}>
+                <div className={'userContactBtn'}>
                     <button className={classes.button} onClick={handleOpenModal}>
                         Посмотреть способы связи
                     </button>
@@ -990,16 +1005,15 @@ const UserPage = (props, {link}) => {
 
 
                 {modalOpen && (
-                    <div className={classes.overlay}>
-                        <div className={classes.modal}>
-                            <p style={{textDecoration: "none", color: "#454545", fontSize: "14px"}}
-                               onClick={handleCloseModal}>
-                                {`< ${user.firstName} ${user.lastName}`}
-                            </p>
-                            <h2>Контакты</h2>
+                    <div className={classes.contactOverlay}>
+                        <div className={'contactsModalPage'}>
+                            <Link className="mainUserBackLink" onClick={handleCloseModal}>
+                                <img src={back} alt="back" />
+                                <p>Назад</p>
+                            </Link>
+                            <h2 style={{margin:'10px 0 20px'}}>Контакты</h2>
                             <div style={{
                                 padding: '15px 10px',
-                                marginRight: '10px',
                                 flexDirection: 'column',
                                 backgroundColor: "#fff",
                                 display: "flex",

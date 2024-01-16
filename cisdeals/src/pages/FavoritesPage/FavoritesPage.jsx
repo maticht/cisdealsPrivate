@@ -4,6 +4,9 @@ import axios from "axios";
 import {Link, useParams} from "react-router-dom";
 import noneUserLogo from "../../img/noneUserLogoSq.svg";
 import city from "../../img/Map maker.svg";
+import {getFavoritesUsers} from "../../httpRequests/cisdealsApi";
+import goldStar from "../../img/goldStar.svg";
+import back from "../../img/Arrow_left.svg";
 
 const FavoritesPage = () => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -13,8 +16,9 @@ const FavoritesPage = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             const queryParams = { ids: favoriteUsers.data.savedUsers.join(',') };
-            const response = await axios.get('http://backend.delkind.pl/getFavoritesUsers', { params: queryParams });
-            setUsers(response.data);
+            const response = await getFavoritesUsers(queryParams);
+            console.log(response)
+            setUsers(response);
             console.log(favoriteUsers.data.savedUsers.join(','))
         };
         fetchUsers();
@@ -26,42 +30,54 @@ const FavoritesPage = () => {
         setModalOpen(false);
     };
     return (
-        <div style={{marginTop:'-15px', padding:'10px', minHeight: "100vh",
-            backgroundColor: "#F1F1F1"}}>
-            <Link style={{textDecoration: "none", color: "#454545", fontSize: "14px"}} to="/">
-                <p style={{textDecoration: "none", color: "#454545", fontSize: "14px"}}>
-                    {`< Назад`}
-                </p>
-            </Link>
-            <h1 style={{margin:'15px 0 0 0'}}>Избранные</h1>
-            <h6 style={{margin:'20px 0 15px 0'}}>{`В избранных ${users.length} специалистов`}</h6>
-            <div style={{display:"flex",flexDirection:"column", justifyContent:"center"}}>
+        <div style={{minHeight: "100vh",
+            backgroundColor: "#F1F1F1"
+        }}>
+            <div className={'favoritesHeaderBlock'}>
+                <Link className="form-update-link" style={{margin:'20px 0 10px 0'}} to="/">
+                    <img src={back} alt="back" />
+                    <p>Назад</p>
+                </Link>
+                <h1 style={{margin: '0 0 0'}}>Избранные</h1>
+                <h6 style={{margin: '5px 0 20px 0'}}>{`В избранных ${users?.length} специалистов`}</h6>
+            </div>
+            <div className={users.length <= 2 ? 'allMiniFavoritesSpecialists' : 'allFavoritesSpecialists'}>
                 {users.map((user) => (
-                    <div style={{width:"100%", height:"100px", backgroundColor:"#fff", marginBottom:10, display:"flex", alignSelf:"center", justifyContent:"flex-start", alignItems:'center', borderRadius:8}} key={user.id}>
-                        <Link style={{textDecoration: "none", color:"#000", flexDirection:'row'}} to={`/AllCategories/Categories2/Categories3/Все специалисты/${user._id}`}>
-                            <div style={{display:'flex', flexDirection:'row'}}>
-                                {(!user.image || user.image.length === 0 ?
-                                    <img style={{width:'100px', height:'100px',borderRadius:8}} src={noneUserLogo} alt={'userImage'}/> :
-                                    <div style={{width:'100px', height:'100px', alignSelf:'center', justifyContent:'center', position:'relative', borderRadius:8, overflow: 'hidden'}}>
-                                        {user.image && <img style={{width:'100%', height:'100%', objectFit:'cover', filter:'blur(0.4px)', position:'absolute', top:0, left:0}} src={user.image[0]} alt='User Image' />}
-                                    </div>)
-                                }
-                                <div style={{marginLeft:'10px',display:'flex', flexDirection:'column', justifyContent:'space-between' }}>
+                    <div className={users.length === 1 ? 'onlyOneBestSpecialistsBlock' : 'oneBestSpecialistsBlock'}
+                         key={user.id}>
+                        <Link className="link-wrapper"
+                              to={`/AllCategories/Categories2/Categories3/Categories4/Все специалисты/${user._id}`}>
+                            <div className="user-container">
+                                <div className="user-image-container">
+                                    {(!user.image || user.image.length === 0 ? (
+                                        <img className="user-image" src={noneUserLogo} alt="userImage"/>) : (
+                                        <div className="user-image">
+                                            {user.image && <img src={user.image[0]} alt="User Image"/>}
+                                        </div>))}
+                                    {user.rating && user.rating.length > 0 && user.rating[0] !== '' && (
+                                        <div className="rating-container">
+                                            <img className="rating-star" src={goldStar} alt="star"/>
+                                            <p className="rating-value">
+                                                {(user.rating.reduce((acc, rating) => acc + rating.value, 0) / user.rating.length).toFixed(1)}
+                                            </p>
+                                        </div>)}
+                                </div>
+                                <div className="user-info-container">
                                     <div>
-                                        <p style={{fontWeight:'500', margin:'5px 0 0 0'}}>
-                                            {user.firstName} {user.lastName}
-                                        </p>
-                                        <p style={{ color: '#666', fontSize: '13px', margin: '5px 0' }}>
-                                            {user.areasActivity === 'areasActivity' ?
-                                                'Услуги не добавлены' :
-                                                user.areasActivity.length > 28 ? `${user.areasActivity.slice(0, 28)}...` : user.areasActivity
+                                        <p className="user-name">{user.nameOrCompany}</p>
+                                        <p className="user-activity">
+                                            {user.areasActivity === 'areasActivity' || user.areasActivity === '' ?
+                                                'Услуги не добавлены'
+                                                : user.areasActivity.length > 28 ? `${user.areasActivity.slice(0, 28)}...` : user.areasActivity
                                             }
                                         </p>
                                     </div>
-                                    <div style={{display:'flex', alignItems:'center', marginBottom:'8px'}}>
-                                        <img src={city}/>
-                                        <p style={{fontWeight:'400', margin:'0px 5px', fontSize:'13px'}}>
-                                            {user.city === "city" ? 'Польша' : user.region === "region" ? `${user.city}` : `${user.city}, ${user?.region}`}
+                                    <div className="location-container">
+                                        <img className="location-image" src={city} alt="city"/>
+                                        <p className="location-text">
+                                            {user.city === "city" ?
+                                                'Польша'
+                                                : user.region === "region" ? `${user.city}` : `${user.city}, ${user?.region}`}
                                         </p>
                                     </div>
                                 </div>

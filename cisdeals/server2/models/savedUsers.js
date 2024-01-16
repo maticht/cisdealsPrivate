@@ -9,10 +9,10 @@ router.put("/:id", async (req, res) => {
         if (!user.savedUsers) {
             user.savedUsers = [];
         }
-        if (user.savedUsers.includes(req.body.userId)) {
+        if (user.savedUsers.includes(req.body.updateData)) {
             return res.status(409).send({ message: "User is already saved" });
         }
-        user.savedUsers.push(req.body.userId);
+        user.savedUsers.push(req.body.updateData);
         const updatedUser = await user.save();
         return res.status(200).json({ data: updatedUser });
     } catch (error) {
