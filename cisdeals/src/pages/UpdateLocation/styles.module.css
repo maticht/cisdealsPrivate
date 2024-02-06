@@ -149,6 +149,71 @@ textarea::placeholder{
     margin:10px 10px 0;
     padding:10px 10px 10px;
 }
+.workPlaceContainer{
+    justify-content:flex-start;
+    margin:10px 10px 0;
+    background-color:#fff;
+    border-radius: 10px;
+}
+.workPlace{
+    position: relative;
+    padding: 15px 10px;
+    display: flex;
+    align-items: center;
+}
+.radioImgOverlay {
+    position: absolute;
+    top: 14px;
+    left: 15px;
+    width: 6px;
+}
+.radioImgOverlay img{
+    height: 11px;
+    width: 9px;
+}
+.workPlace:first-child{
+    border-bottom: 1px solid #dadada;
+}
+.workPlace input{
+    margin-right: 15px;
+}
+.workPlace input[type="radio"] {
+    appearance: none;
+    background-color: #fff;
+    margin: 3px 10px 0 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.12em solid currentColor;
+    border-radius: 50%;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+}
+
+.workPlace input[type="radio"]::before {
+    content: "";
+    width: 1.15em;
+    height: 1.15em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1.5em 1.5em #000000;
+}
+
+.workPlace input[type="radio"]:checked::before {
+    transform: scale(1);
+}
+.workPlace label{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.workPlace label p{
+    margin: 0;
+    font-weight: 500;
+}
 .inputName{
     margin:8px 0 5px 0;
 }

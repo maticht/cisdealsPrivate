@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const $host = axios.create({
-    baseURL: 'http://bekend.server533906.nazwa.pl'
+    baseURL: 'http://localhost:8081'
 })
 
 //'http://localhost:8081'

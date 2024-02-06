@@ -149,11 +149,11 @@
 }
 
 .user-activity {
-    color: #666;
-    font-size: 13px;
+    color: #737373;
+    font-size: 11px;
     display: flex;
     flex-wrap: nowrap;
-    margin: 5px 0;
+    margin: 2px 5px 2px 0;
 }
 
 .location-container {

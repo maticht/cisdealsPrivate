@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import {Link, useParams} from "react-router-dom";
 import HeaderNavBar from "../../components/headerNavBar/headerNavBar";
@@ -20,6 +20,13 @@ import saveW from "../../img/saveW.svg";
 import saveB from "../../img/SaveB.svg";
 import Star from "../../img/Star1.svg";
 import Star2 from "../../img/Star22.svg";
+import shearlogo from "../../img/shearlogo.svg";
+import oklogo from '../../img/oklogo.png';
+import fblogo from '../../img/fblogo.png';
+import vklogo from '../../img/vklogo.png';
+import tglogo from '../../img/tglogo.png';
+import viberlogo from '../../img/viberlogo.png';
+import wtplogo from '../../img/wtplogo.png';
 import EditProfile from "../../img/EditProfile.svg";
 import styles from "../UpdateDescription/styles.module.css";
 import {
@@ -121,6 +128,12 @@ const UserPage = (props, {link}) => {
     const [saved, setSaved] = useState(false);
     const [modalRate, setModalRate] = useState(false);
     const [averageRating, setAverageRating] = useState(0);
+    const [showCopiedMessage, setShowCopiedMessage] = useState(false);
+    const [currentUrl, setCurrentUrl] = useState(window.location.href);
+    const [inputCurrentUrl, setInputCurrentUrl] = useState(window.location.href);
+    const deskMobileContactBlockRef = useRef(null);
+    const [isContactBlockVisible, setContactBlockVisible] = useState(false);
+    const wrapperRef = useRef(null);
 
     const userLS = localStorage.getItem("token");
     let localUserObj = null;
@@ -138,12 +151,91 @@ const UserPage = (props, {link}) => {
             console.error("Error parsing user data:", error);
         }
     }
-    const copyLinkToClipboard = () => {
-        const currentUrl = window.location.href;
-        navigator.clipboard.writeText(currentUrl);
+    const copyLinkAndShowMessage = () => {
+        let currentUrl = window.location.href;
+        setCurrentUrl(currentUrl);
+        setInputCurrentUrl(currentUrl);
+        navigator.clipboard.writeText(currentUrl).then(() => {
+            (showCopiedMessage !== true) ? setShowCopiedMessage(true) : setShowCopiedMessage(false)
+        }).catch(err => console.error('Could not copy text: ', err));
+
         setIsCopied(true);
-        setTimeout(() => setIsCopied(false), 800);
     };
+
+    const copyLinkToClipboard = () => {
+        navigator.clipboard.writeText(currentUrl).then(() => {
+            setInputCurrentUrl('Скопировано!')
+        }).catch(err => console.error('Could not copy text: ', err));
+    };
+
+    const sharingText = `Специалист ${user.nameOrCompany}`;
+    let socialMediaLogos = [];
+    socialMediaLogos = [
+        {
+            name: 'Telegram',
+            logo: tglogo,
+            url: `https://telegram.me/share/url?url=${encodeURIComponent(`${sharingText}\n${currentUrl}`)}`
+        },
+        {
+            name: 'VK',
+            logo: vklogo,
+            url: `https://vk.com/share.php?url=${encodeURIComponent(`${currentUrl}`)}`
+        },
+        {
+            name: 'Facebook',
+            logo: fblogo,
+            url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${sharingText}\n${currentUrl}`)}`
+        },
+        {
+            name: 'OK',
+            logo: oklogo,
+            url: `https://connect.ok.ru/offer?url=${encodeURIComponent(`${sharingText}\n${currentUrl}`)}`
+        },
+        {
+            name: 'WhatsApp',
+            logo: wtplogo,
+            url: `https://wa.me/?text=${encodeURIComponent(`${currentUrl}\n${sharingText}`)}`
+        },
+        {
+            name: 'Viber',
+            logo: viberlogo,
+            url: `viber://forward?text=${encodeURIComponent(`${currentUrl}\n${sharingText}`)}`
+        }
+    ];
+
+useEffect(() => {
+    function handleClickOutside(event) {
+        if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+            setShowCopiedMessage(false);
+        }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+    };
+}, [wrapperRef]);
+
+
+    const handleScrollToContacts = () => {
+        if (deskMobileContactBlockRef.current) {
+            deskMobileContactBlockRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+    useEffect(() => {
+        const handleScroll = () => {
+            if (deskMobileContactBlockRef.current) {
+                const rect = deskMobileContactBlockRef.current.getBoundingClientRect();
+                setContactBlockVisible(rect.top >= 0 && rect.bottom <= window.innerHeight);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
     const handleOpenModal = () => {
         setModalOpen(true);
     };
@@ -416,20 +508,12 @@ const UserPage = (props, {link}) => {
             <HeaderNavBar />
             <div className="mainUserPageContainer">
                 <div className="mainUserNav">
-                    <Link className="mainUserBackLink"
-                          to={SortedCategories === undefined ? '/' : `/AllCategories/${Categories2}/${Categories3}/${Categories4}/${SortedCategories}`}
-                    >
-                        <img src={back} alt="back" />
+                    <div className="mainUserBackLink" onClick={() => {window.history.back()}}>
+                        <img src={back} alt="back"/>
                         <p>Назад</p>
-                    </Link>
+                    </div>
                     <div className="mainUserNavBtns">
-                        <p className="navCopiedText"
-                           style={{opacity: isCopied ? "1" : "0", transition: "opacity 0.3s ease-in-out"}}>
-                            {isCopied ? "Скопировано!" : null}
-                        </p>
-                        <button className="mainUserNavBtn" onClick={copyLinkToClipboard}>
-                            <img src={share} alt={'share'}/>
-                        </button>
+
                         {/*<button className="mainUserNavBtn" onClick={() => setModalRate(!modalRate)}>*/}
                         {/*    <div className="mainUserNavRating">*/}
                         {/*        <img src={Star} alt={'Star'}/>*/}
@@ -443,19 +527,60 @@ const UserPage = (props, {link}) => {
                                 <button className="mainUserNavBtn" onClick={!saved ? toggleSave : toggleUnSave}>
                                     <img src={saved ? saveB : saveW} alt={'save'}/>
                                 </button>
-
-                                <a href={`mailto:${user.email}`}>
-                                    <button className="mainUserNavBtn">
-                                        <img src={message} alt={'message'}/>
-                                    </button>
-
-                                </a>
+                                {/*<a href={`mailto:${user.email}`}>*/}
+                                {/*    <button className="mainUserNavBtn">*/}
+                                {/*        <img src={message} alt={'message'}/>*/}
+                                {/*    </button>*/}
+                                {/*</a>*/}
                             </div>
                         ) : (
                             <Link to={`/EditProfile`}>
                                 <img className="mainUserNavLink" src={EditProfile} alt={'EditProfile'}/>
                             </Link>
                         )}
+                        <div className="shearContainer" ref={wrapperRef}>
+                            <button className="mainUserNavBtnLast" onClick={copyLinkAndShowMessage}>
+                                <img src={share} alt={'share'}/>
+                            </button>
+                            <div>
+                                {showCopiedMessage && (
+                                    <div className="copiedMessage">
+                                        <div>
+                                            <div style={{
+                                                display: 'flex',
+                                                flexDirection: "row",
+                                                justifyContent: 'space-between',
+                                                alignItems: 'center'
+                                            }}>
+                                                <input type="text" value={inputCurrentUrl}/>
+                                                <img style={{
+                                                    width: '20px',
+                                                    marginLeft: '8px',
+                                                    cursor: "pointer"
+                                                }} src={shearlogo} onClick={copyLinkToClipboard}/>
+                                            </div>
+                                            <div style={{
+                                                display: 'flex',
+                                                flexDirection: 'row',
+                                                justifyContent: 'space-between',
+                                                marginTop: "10px",
+                                                marginBottom: "5px"
+                                            }}>
+                                                {socialMediaLogos.map((platform, index) => (
+                                                    <img
+                                                        key={index}
+                                                        style={{width: '24px', cursor: 'pointer'}}
+                                                        src={platform.logo}
+                                                        alt={platform.name}
+                                                        onClick={() => window.open(platform.url, '_blank')}
+                                                    />
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="mainUserInfoBlocks">
@@ -585,60 +710,65 @@ const UserPage = (props, {link}) => {
                                     <p style={{margin: '5px 0', fontSize: '12px', color: '#666'}}>
                                         Почта
                                     </p>
-                                    <p style={{margin: '5px 0', fontWeight: '400'}}>{user.email}</p>
+                                    <p style={{margin: '5px 0', fontWeight: '400'}}>
+                                        <a href={`mailto:${user.email}`}
+                                           style={{textDecoration: 'none', color: 'inherit'}}>
+                                            {user.email}
+                                        </a>
+                                    </p>
                                 </div>
                                 <div style={{
                                     margin: '15px 0 0 0',
-                                    display: user.Facebook === 'link' && user.LinkedIn === 'link' && user.Instagram === 'link' && user.Viber === 'link' && user.Telegram === 'link' && user.TikTok === 'link' && user.WhatsApp === 'link' && user.YouTube === 'link' ? 'none' : null
+                                    display: user.Facebook === 'Facebook' && user.LinkedIn === 'LinkedIn' && user.Instagram === 'Instagram' && user.Viber === 'Viber' && user.Telegram === 'Telegram' && user.TikTok === 'TikTok' && user.WhatsApp === 'WhatsApp' && user.YouTube === 'YouTube' ? 'none' : "block"
                                 }}>
                                     <p style={{margin: '5px 0', fontSize: '12px', color: '#666'}}>
                                         Социальные сети
                                     </p>
                                     <div>
                                         {user.Facebook !== 'Facebook' && (
-                                            <a href={user.Facebook}>
+                                            <a href={user.Facebook} target="_blank">
                                                 <img src={Facebook} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='Facebook'/>
                                             </a>
                                         )}
                                         {user.LinkedIn !== 'LinkedIn' && (
-                                            <a href={user.LinkedIn}>
+                                            <a href={user.LinkedIn} target="_blank">
                                                 <img src={LinkedIn} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='LinkedIn'/>
                                             </a>
                                         )}
                                         {user.Instagram !== 'Instagram' && (
-                                            <a href={user.Instagram}>
+                                            <a href={user.Instagram} target="_blank">
                                                 <img src={Instagram} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='Instagram'/>
                                             </a>
                                         )}
                                         {user.Viber !== 'Viber' && (
-                                            <a href={user.Viber}>
+                                            <a href={user.Viber} target="_blank">
                                                 <img src={Viber} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='Viber'/>
                                             </a>
                                         )}
                                         {user.Telegram !== 'Telegram' && (
-                                            <a href={user.Telegram}>
+                                            <a href={user.Telegram} target="_blank">
                                                 <img src={Telegram} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='Telegram'/>
                                             </a>
                                         )}
                                         {user.TikTok !== 'TikTok' && (
-                                            <a href={user.TikTok}>
+                                            <a href={user.TikTok} target="_blank">
                                                 <img src={TikTok} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='TikTok'/>
                                             </a>
                                         )}
                                         {user.WhatsApp !== 'WhatsApp' && (
-                                            <a href={user.WhatsApp}>
+                                            <a href={user.WhatsApp} target="_blank">
                                                 <img src={WhatsApp} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='WhatsApp'/>
                                             </a>
                                         )}
                                         {user.YouTube !== 'YouTube' && (
-                                            <a href={user.YouTube}>
+                                            <a href={user.YouTube} target="_blank">
                                                 <img src={YouTube} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='YouTube'/>
                                             </a>
@@ -649,14 +779,22 @@ const UserPage = (props, {link}) => {
                                     margin: '15px 0 0 0',
                                     display: user.phone1 === 'phone1' && user.phone2 === 'phone2' ? 'none' : null
                                 }}>
-                                    <p style={{margin: '5px 0', fontSize: '12px', color: '#666'}}>
+                                    <p style={{ margin: '5px 0', fontSize: '12px', color: '#666' }}>
                                         Номер телефона
                                     </p>
                                     {user.phone1 !== 'phone1' && (
-                                        <p style={{margin: '5px 0', fontWeight: '400'}}>{user.phone1}</p>
+                                        <p style={{ margin: '5px 0', fontWeight: '400' }}>
+                                            <a href={`tel:${user.phone1}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                                {user.phone1}
+                                            </a>
+                                        </p>
                                     )}
                                     {user.phone2 !== 'phone2' && (
-                                        <p style={{margin: '5px 0', fontWeight: '400'}}>{user.phone2}</p>
+                                        <p style={{ margin: '5px 0', fontWeight: '400' }}>
+                                            <a href={`tel:${user.phone2}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                                {user.phone2}
+                                            </a>
+                                        </p>
                                     )}
                                 </div>
                             </div>
@@ -751,6 +889,12 @@ const UserPage = (props, {link}) => {
                                     <p style={{margin: '5px 0', fontSize: '12px', color: '#666'}}>
                                         Адрес
                                     </p>
+                                    <p style={{margin: '5px 0', fontSize: '14px', color: '#000000', fontWeight:'600'}}>
+                                        {user?.workLocation === 'remote' ?
+                                            'Я работаю только удалённо или выезжаю на локацию клиента'
+                                            : 'У меня есть салон, офис или постоянная локация работы'
+                                        }
+                                    </p>
                                     <p style={{margin: '5px 0', fontWeight: '400'}}>
                                         {user?.street === 'street' ? null : `${user.street} `}
                                         {user?.house === 'house' ? null : `${user.house}`}
@@ -841,7 +985,7 @@ const UserPage = (props, {link}) => {
                                                             alignItems: 'center',
                                                             flexDirection: 'row'
                                                         }}>
-                                                        <p>Свернуть </p>
+                                                            <p>Свернуть </p>
                                                             <img style={{
                                                                 width: '10px',
                                                                 height: '10px',
@@ -876,7 +1020,10 @@ const UserPage = (props, {link}) => {
                         </div>
                         <div style={{width: '100%', display: serv.length === 0 ? 'none' : null}}>
                             <h2 style={{margin: '15px 0 15px 0'}}>Услуги</h2>
-                            <div style={{width: '100%', display: serv.length === 0 ? 'none' : null, marginBottom: '40px'}}>
+                            <div style={{
+                                width: '100%',
+                                display: serv.length === 0 ? 'none' : null,
+                            }}>
                                 <div className="mainUserMainServ">
                                     <div style={{width: '100%'}}>
                                         {Object.entries(
@@ -989,15 +1136,123 @@ const UserPage = (props, {link}) => {
                                 </div>
                             </div>
                         </div>
+                        <div ref={deskMobileContactBlockRef} className={'deskMobileContactBlock'}>
+                            <h2 style={{margin:'15px 0 15px'}}>Контакты</h2>
+                            <div style={{
+                                padding: '15px 10px',
+                                flexDirection: 'column',
+                                backgroundColor: "#fff",
+                                display: "flex",
+                                alignSelf: "center",
+                                justifyContent: "center",
+                                alignItems: 'flex-start',
+                                borderRadius: 8
+                            }}>
+                                <div>
+                                    <p style={{margin: '5px 0', fontSize: '12px', color: '#666'}}>
+                                        Почта
+                                    </p>
+                                    <p style={{margin: '5px 0', fontWeight: '400'}}>
+                                        <a href={`mailto:${user.email}`}
+                                           style={{textDecoration: 'none', color: 'inherit'}}>
+                                            {user.email}
+                                        </a>
+                                    </p>
+                                </div>
+                                <div style={{
+                                    margin: '15px 0 0 0',
+                                    display: user.Facebook === 'Facebook' && user.LinkedIn === 'LinkedIn' && user.Instagram === 'Instagram' && user.Viber === 'Viber' && user.Telegram === 'Telegram' && user.TikTok === 'TikTok' && user.WhatsApp === 'WhatsApp' && user.YouTube === 'YouTube' ? 'none' : "block"
+                                }}>
+                                    <p style={{margin: '5px 0', fontSize: '12px', color: '#666'}}>
+                                        Социальные сети
+                                    </p>
+                                    <div>
+                                        {user.Facebook !== 'Facebook' && (
+                                            <a href={user.Facebook} target="_blank">
+                                                <img src={Facebook} width="23px" height="23px"
+                                                     style={{marginRight: '10px',}} alt='Facebook'/>
+                                            </a>
+                                        )}
+                                        {user.LinkedIn !== 'LinkedIn' && (
+                                            <a href={user.LinkedIn} target="_blank">
+                                                <img src={LinkedIn} width="23px" height="23px"
+                                                     style={{marginRight: '10px',}} alt='LinkedIn'/>
+                                            </a>
+                                        )}
+                                        {user.Instagram !== 'Instagram' && (
+                                            <a href={user.Instagram} target="_blank">
+                                                <img src={Instagram} width="23px" height="23px"
+                                                     style={{marginRight: '10px',}} alt='Instagram'/>
+                                            </a>
+                                        )}
+                                        {user.Viber !== 'Viber' && (
+                                            <a href={user.Viber} target="_blank">
+                                                <img src={Viber} width="23px" height="23px"
+                                                     style={{marginRight: '10px',}} alt='Viber'/>
+                                            </a>
+                                        )}
+                                        {user.Telegram !== 'Telegram' && (
+                                            <a href={user.Telegram} target="_blank">
+                                                <img src={Telegram} width="23px" height="23px"
+                                                     style={{marginRight: '10px',}} alt='Telegram'/>
+                                            </a>
+                                        )}
+                                        {user.TikTok !== 'TikTok' && (
+                                            <a href={user.TikTok} target="_blank">
+                                                <img src={TikTok} width="23px" height="23px"
+                                                     style={{marginRight: '10px',}} alt='TikTok'/>
+                                            </a>
+                                        )}
+                                        {user.WhatsApp !== 'WhatsApp' && (
+                                            <a href={user.WhatsApp} target="_blank">
+                                                <img src={WhatsApp} width="23px" height="23px"
+                                                     style={{marginRight: '10px',}} alt='WhatsApp'/>
+                                            </a>
+                                        )}
+                                        {user.YouTube !== 'YouTube' && (
+                                            <a href={user.YouTube} target="_blank">
+                                                <img src={YouTube} width="23px" height="23px"
+                                                     style={{marginRight: '10px',}} alt='YouTube'/>
+                                            </a>
+                                        )}
+                                    </div>
+                                </div>
+                                <div style={{
+                                    margin: '15px 0 0 0',
+                                    display: user.phone1 === 'phone1' && user.phone2 === 'phone2' ? 'none' : null
+                                }}>
+                                    <p style={{margin: '5px 0', fontSize: '12px', color: '#666'}}>
+                                        Номер телефона
+                                    </p>
+                                    {user.phone1 !== 'phone1' && (
+                                        <p style={{margin: '5px 0', fontWeight: '400'}}>
+                                            <a href={`tel:${user.phone1}`}
+                                               style={{textDecoration: 'none', color: 'inherit'}}>
+                                                {user.phone1}
+                                            </a>
+                                        </p>
+                                    )}
+                                    {user.phone2 !== 'phone2' && (
+                                        <p style={{margin: '5px 0', fontWeight: '400'}}>
+                                            <a href={`tel:${user.phone2}`}
+                                               style={{textDecoration: 'none', color: 'inherit'}}>
+                                                {user.phone2}
+                                            </a>
+                                        </p>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-
-                <div className={'userContactBtn'}>
-                    <button className={classes.button} onClick={handleOpenModal}>
-                        Посмотреть способы связи
-                    </button>
-                </div>
+                {!isContactBlockVisible && (
+                    <div className={'userContactBtn'}>
+                        <button className={classes.button} onClick={handleScrollToContacts}>
+                            Посмотреть способы связи
+                        </button>
+                    </div>
+                )}
 
                 {modalRate && (
                     <ModalRate/>
@@ -1008,10 +1263,10 @@ const UserPage = (props, {link}) => {
                     <div className={classes.contactOverlay}>
                         <div className={'contactsModalPage'}>
                             <Link className="mainUserBackLink" onClick={handleCloseModal}>
-                                <img src={back} alt="back" />
+                                <img src={back} alt="back"/>
                                 <p>Назад</p>
                             </Link>
-                            <h2 style={{margin:'10px 0 20px'}}>Контакты</h2>
+                            <h2 style={{margin: '10px 0 20px'}}>Контакты</h2>
                             <div style={{
                                 padding: '15px 10px',
                                 flexDirection: 'column',
@@ -1030,56 +1285,56 @@ const UserPage = (props, {link}) => {
                                 </div>
                                 <div style={{
                                     margin: '15px 0 0 0',
-                                    display: user.Facebook === 'link' && user.LinkedIn === 'link' && user.Instagram === 'link' && user.Viber === 'link' && user.Telegram === 'link' && user.TikTok === 'link' && user.WhatsApp === 'link' && user.YouTube === 'link' ? 'none' : null
+                                    display: user.Facebook === 'Facebook' && user.LinkedIn === 'LinkedIn' && user.Instagram === 'Instagram' && user.Viber === 'Viber' && user.Telegram === 'Telegram' && user.TikTok === 'TikTok' && user.WhatsApp === 'WhatsApp' && user.YouTube === 'YouTube' ? 'none' : "block"
                                 }}>
                                     <p style={{margin: '5px 0', fontSize: '12px', color: '#666'}}>
                                         Социальные сети
                                     </p>
                                     <div>
                                         {user.Facebook !== 'Facebook' && (
-                                            <a href={user.Facebook}>
+                                            <a href={user.Facebook} target="_blank">
                                                 <img src={Facebook} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='Facebook'/>
                                             </a>
                                         )}
                                         {user.LinkedIn !== 'LinkedIn' && (
-                                            <a href={user.LinkedIn}>
+                                            <a href={user.LinkedIn} target="_blank">
                                                 <img src={LinkedIn} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='LinkedIn'/>
                                             </a>
                                         )}
                                         {user.Instagram !== 'Instagram' && (
-                                            <a href={user.Instagram}>
+                                            <a href={user.Instagram} target="_blank">
                                                 <img src={Instagram} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='Instagram'/>
                                             </a>
                                         )}
                                         {user.Viber !== 'Viber' && (
-                                            <a href={user.Viber}>
+                                            <a href={user.Viber} target="_blank">
                                                 <img src={Viber} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='Viber'/>
                                             </a>
                                         )}
                                         {user.Telegram !== 'Telegram' && (
-                                            <a href={user.Telegram}>
+                                            <a href={user.Telegram} target="_blank">
                                                 <img src={Telegram} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='Telegram'/>
                                             </a>
                                         )}
                                         {user.TikTok !== 'TikTok' && (
-                                            <a href={user.TikTok}>
+                                            <a href={user.TikTok} target="_blank">
                                                 <img src={TikTok} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='TikTok'/>
                                             </a>
                                         )}
                                         {user.WhatsApp !== 'WhatsApp' && (
-                                            <a href={user.WhatsApp}>
+                                            <a href={user.WhatsApp} target="_blank">
                                                 <img src={WhatsApp} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='WhatsApp'/>
                                             </a>
                                         )}
                                         {user.YouTube !== 'YouTube' && (
-                                            <a href={user.YouTube}>
+                                            <a href={user.YouTube} target="_blank">
                                                 <img src={YouTube} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='YouTube'/>
                                             </a>

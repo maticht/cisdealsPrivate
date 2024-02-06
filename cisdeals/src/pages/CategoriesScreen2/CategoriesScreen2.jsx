@@ -12,7 +12,7 @@ function CategoriesScreen2() {
     const categoryList = category.subcategories.map((category, index) => (
         <Link className={'OneCategoryScreenItem'}
               to={(category.subsubcategories.length === 0 || !category.subsubcategories) ?
-                  `/AllCategories/${Categories2}/${Categories2}/Categories4/${category.title}`
+                  `/${category.title}`
                   : `/AllCategories/${Categories2}/${category.title}`}>
             <div className={'OneCategoryInfo'}>
                 <p className={'OneCategoryInfoTitle'}>{category.title}</p>
@@ -24,15 +24,17 @@ function CategoriesScreen2() {
     return (
         <div className={'AllContainer'}>
             <div className={'AllCategoryScreenContainer'}>
-                <Link className="form-update-link" to="/AllCategories">
-                    <img src={back} alt="back" />
+                <div className="form-update-link" onClick={() => {
+                    window.history.back()
+                }}>
+                    <img src={back} alt="back"/>
                     <p>Все категории</p>
-                </Link>
+                </div>
                 <p className="form-prsnl-heading">{Categories2}</p>
                 <div className={'AllCategoryScreenBlock'}>
-                    <Link className={'OneCategoryScreenItem'} to={`/AllCategories/Categories2/Categories3/Categories4/${Categories2}`}>
+                    <Link className={'OneCategoryScreenItem'} to={`/${Categories2}`}>
                         <div className={'OneCategoryInfo'}>
-                            <p className={'OneCategoryTitle'}>Все в этой категории</p>
+                            <p className={'OneTopCategoryTitle'}>Все в этой категории</p>
                         </div>
                         <img className={'OneCategoryScreenItemImg'} src={arrow} alt={'logo'}/>
                     </Link>

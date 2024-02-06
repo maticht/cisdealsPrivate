@@ -32,7 +32,7 @@ function SortedServicesScreen() {
                     sortedUsers = sortedUsers.filter((user) => user.city === modalResult);
                 }
 
-                if (SortedCategories && SortedCategories !== "Все специалисты") {
+                if (SortedCategories && SortedCategories !== "AllSpecialists") {
                     sortedUsers = sortedUsers.filter(
                         (user) => user.services.includes(SortedCategories)
                     );
@@ -103,7 +103,7 @@ function SortedServicesScreen() {
                                         {users.map((user) => (
                                             <div className={users.length === 1 ? 'onlyOneBestSpecialistsBlock' : 'oneBestSpecialistsBlock'} key={user.id}>
                                                 <Link className="link-wrapper"
-                                                      to={`/AllCategories/Categories2/Categories3/Categories4/Все специалисты/${user._id}`}>
+                                                      to={`/UserPageScreen/${user._id}`}>
                                                     <div className="user-container">
                                                         <div className="user-image-container">
                                                             {(!user.image || user.image.length === 0 ? (

@@ -33,6 +33,10 @@
 .OneCategoryTitle{
     margin: 13px 0;
 }
+.OneTopCategoryTitle{
+    margin: 13px 0;
+    font-weight: 700;
+}
 .OneCategoryInfoTitle{
     margin: 13px 0;
 }

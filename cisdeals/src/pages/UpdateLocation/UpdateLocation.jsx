@@ -3,6 +3,7 @@ import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
 import CitiesJSON from '../../data/cities.json';
 import arrow from '../../img/arrowright.svg';
 import arrowDown from '../../img/arrow_down=24.png';
+import radioChecked from '../../img/radioChecked.svg';
 import axios from "axios";
 import styles from "./styles.module.css";
 import {updateProfile, userProfile} from "../../httpRequests/cisdealsApi";
@@ -42,7 +43,7 @@ const UpdateLocation = () => {
         house: "",
         apartment: "",
         zip: "",
-        workLocation: '',
+        workLocation: "",
         description: "",
         services: "",
         price: "",
@@ -81,7 +82,7 @@ const UpdateLocation = () => {
                 house: data.profile.house,
                 apartment: data.profile.apartment,
                 zip: data.profile.zip,
-                workLocation: '',
+                workLocation: data.profile.workLocation,
                 description: "",
                 services: "",
                 price: "",
@@ -170,7 +171,7 @@ const UpdateLocation = () => {
             <div className={styles.mainContainer}>
                 {location.pathname === `/AddLocation/${UserPage}` && (
                     <div className="ProgressBarBlock">
-                        <div className="ProgressBarLine" ref={progressBarRef} style={{ width: `43%` }}>
+                        <div className="ProgressBarLine" ref={progressBarRef} style={{width: `43%`}}>
                         </div>
                     </div>
                 )}
@@ -178,18 +179,55 @@ const UpdateLocation = () => {
                       to={(location.pathname === `/AddLocation/${UserPage}`)
                           ? `/AddWorkingHours/${UserPage}`
                           : "/EditProfile"}>
-                    <img src={back} alt="back" />
+                    <img src={back} alt="back"/>
                     <p>Назад</p>
                 </Link>
+
                 <form className={'form_container'} onSubmit={handleSubmit} noValidate>
                     <p className="form-prsnl-heading">
                         {(location.pathname === `/AddLocation/${UserPage}`)
-                        ? "Добавление Локации"
-                        : "Изменение Локации"}</p>
+                            ? "Добавление Локации"
+                            : "Изменение Локации"}</p>
+                    <div className={styles.workPlaceContainer}>
+                        <div className={styles.workPlace}>
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="workLocation"
+                                    value="office"
+                                    checked={data.workLocation === "office"}
+                                    onChange={handleChange}
+                                />
+                                <div className={styles.radioImgOverlay}>
+                                    <img src={radioChecked} alt={'+'}/>
+                                </div>
+                                <p>
+                                    У меня есть салон, офис или постоянная локация работы
+                                </p>
+                            </label>
+                        </div>
+                        <div className={styles.workPlace}>
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="workLocation"
+                                    value="remote"
+                                    checked={data.workLocation === "remote"}
+                                    onChange={handleChange}s
+                                />
+                                <div className={styles.radioImgOverlay}>
+                                    <img src={radioChecked} alt={'+'}/>
+                                </div>
+                                <p>
+                                    Я работаю только удалённо или выезжаю на локацию клиента
+                                </p>
+                            </label>
+                        </div>
+                    </div>
                     <div className={styles.cityContainer}>
-                        <div>
+                    <div>
                             <h5 className={styles.inputName}>Город</h5>
-                            <button className={styles.inputBtn} onClick={handleOpenCitiesModal} >
+                            <button className={styles.inputBtn} onClick={handleOpenCitiesModal}>
                                 <div className={styles.cityButtonContent}>
                                     <p>{selectedCities || "Выбрать город"}</p>
                                     <img src={arrowDown} alt={'>'}/>
@@ -199,21 +237,26 @@ const UpdateLocation = () => {
                                 {modalCitiesIsOpen && (
                                     <div className={styles.overlay}>
                                         <div className={styles.modal}>
-                                            <Link className="form-update-link" onClick={() => setModalCitiesIsOpen(false)}>
-                                                <img src={back} alt="back" />
+                                            <Link className="form-update-link"
+                                                  onClick={() => setModalCitiesIsOpen(false)}>
+                                                <img src={back} alt="back"/>
                                                 <p>Назад</p>
                                             </Link>
                                             <p className="form-prsnl-heading">Выберите Город</p>
                                             <div className={styles.chooseCityBlock}>
                                                 {CitiesJSON.cities.map((city) =>
-                                                    <div className={styles.OneCityItem} onClick={() => {handleCitiesClick(city.title); setSelectedCities(city.title)}}>
-                                                        <p key={city.title} className={styles.OneCategoryInfo}>{city.title}</p>
-                                                        <img className={styles.OneCategoryImg} src={arrow} alt={'logo'}/>
+                                                    <div className={styles.OneCityItem} onClick={() => {
+                                                        handleCitiesClick(city.title);
+                                                        setSelectedCities(city.title)
+                                                    }}>
+                                                        <p key={city.title}
+                                                           className={styles.OneCategoryInfo}>{city.title}</p>
+                                                        {/*<img className={styles.OneCategoryImg} src={arrow} alt={'logo'}/>*/}
                                                     </div>
                                                 )}
                                             </div>
                                             <div>
-                                                 <br/>
+                                                <br/>
                                             </div>
                                         </div>
                                     </div>
@@ -221,7 +264,7 @@ const UpdateLocation = () => {
                             </div>
                             <h5 className={styles.inputName}>Район</h5>
                             <button className={styles.inputBtn}
-                                    style={selectedCities.length === 0 ? { opacity: 0.5, pointerEvents: 'none' } : {}}
+                                    style={selectedCities.length === 0 ? {opacity: 0.5, pointerEvents: 'none'} : {}}
                                     onClick={handleOpenServModal}
                             >
                                 <div className={styles.cityButtonContent}>
@@ -232,17 +275,21 @@ const UpdateLocation = () => {
                             {modalServIsOpen && (
                                 <div className={styles.overlay}>
                                     <div className={styles.modal}>
-                                        <Link className="form-update-link" onClick={() => setModalServIsOpen(false)}>
-                                            <img src={back} alt="back" />
+                                        <Link className="form-update-link"
+                                              onClick={() => setModalServIsOpen(false)}>
+                                            <img src={back} alt="back"/>
                                             <p>Назад</p>
                                         </Link>
                                         <p className="form-prsnl-heading">Выберите Район</p>
                                         <div className={styles.chooseCityBlock}>
                                             {selectedCities !== "" &&
                                                 CitiesJSON.cities.find((category) => category.title === selectedCities).areas.map((option) => (
-                                                    <div className={styles.OneCityItem} onClick={() => {handleRegionsClick(option.title); }}>
-                                                        <p key={option.title} className={styles.OneCategoryInfo}>{option.title}</p>
-                                                        <img className={styles.OneCategoryImg} src={arrow} alt={'logo'}/>
+                                                    <div className={styles.OneCityItem} onClick={() => {
+                                                        handleRegionsClick(option.title);
+                                                    }}>
+                                                        <p key={option.title}
+                                                           className={styles.OneCategoryInfo}>{option.title}</p>
+                                                        {/*<img className={styles.OneCategoryImg} src={arrow} alt={'logo'}/>*/}
                                                     </div>
                                                 ))}
                                         </div>
@@ -257,7 +304,7 @@ const UpdateLocation = () => {
                             <input
                                 type="text" placeholder="Mokotowska" name="street"
                                 onChange={handleChange}
-                                value={data.street  === "street" ? "" : data.street}
+                                value={data.street === "street" ? "" : data.street}
                                 required
                                 className={styles.input}
                             />
@@ -267,7 +314,7 @@ const UpdateLocation = () => {
                                     <input
                                         type="text" placeholder="0000" name="house"
                                         onChange={handleChange}
-                                        value={data.house  === "house" ? "" : data.house}
+                                        value={data.house === "house" ? "" : data.house}
                                         required
                                         className={styles.rowInput}
                                     />
@@ -277,7 +324,7 @@ const UpdateLocation = () => {
                                     <input
                                         type="text" placeholder="0000" name="apartment"
                                         onChange={handleChange}
-                                        value={data.apartment  === "apartment" ? "" : data.apartment}
+                                        value={data.apartment === "apartment" ? "" : data.apartment}
                                         required
                                         className={styles.rowInput}
                                     />
@@ -287,7 +334,7 @@ const UpdateLocation = () => {
                             <input
                                 type="text" placeholder="00-000" name="zip"
                                 onChange={handleChange}
-                                value={data.zip  === "zip" ? "" : data.zip}
+                                value={data.zip === "zip" ? "" : data.zip}
                                 required
                                 className={styles.input}
                             />

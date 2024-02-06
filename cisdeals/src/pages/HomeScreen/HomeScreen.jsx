@@ -11,6 +11,8 @@ import './HomeScreen.css';
 
 function HomeScreen() {
     const [users, setUsers] = useState([]);
+    const [ serviceCharactersNumber, setServiceCharactersNumber] = useState(82);
+
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -31,6 +33,7 @@ function HomeScreen() {
         fetchUsers();
     }, []);
 
+
     return (< >
         <div className={'HomeContainer'}>
             <HeaderNavBar/>
@@ -44,7 +47,7 @@ function HomeScreen() {
             <div className={'allBestSpecialists'}>
                 {users.map((user) => (<div className={'oneBestSpecialistsBlock'} key={user.id}>
                     <Link className="link-wrapper"
-                          to={`/AllCategories/Categories2/Categories3/Categories4/Все специалисты/${user._id}`}>
+                          to={`/UserPageScreen/${user._id}`}>
                         <div className="user-container">
                             <div className="user-image-container">
                                 {(!user.image || user.image.length === 0 ? (
@@ -64,16 +67,18 @@ function HomeScreen() {
                                 <div>
                                     <p className="user-name">{user.nameOrCompany}</p>
                                     <p className="user-activity">
-                                        {user.areasActivity === 'areasActivity' || user.areasActivity === '' ?
+                                        {user.services === 'services' || user.services === '' ?
                                             'Услуги не добавлены'
-                                            : user.areasActivity.length > 28 ? `${user.areasActivity.slice(0, 28)}...` : user.areasActivity
+                                            : user.services.length > (window.innerWidth <= 360 ? 40 : window.innerWidth <= 540 ? 82 : window.innerWidth <= 700 ? 40 : 82) ?
+                                                `${user.services.slice(0, (window.innerWidth <= 360 ? 40 : window.innerWidth <= 540 ? 82 : window.innerWidth <= 700 ? 40 : 82))}...`
+                                                : user.services
                                         }
                                     </p>
                                 </div>
                                 <div className="location-container">
                                     <img className="location-image" src={city} alt="city"/>
                                     <p className="location-text">
-                                        {user.city === "city" ?
+                                    {user.city === "city" ?
                                             'Польша'
                                             : user.region === "region" ? `${user.city}` : `${user.city}, ${user?.region}`}
                                     </p>

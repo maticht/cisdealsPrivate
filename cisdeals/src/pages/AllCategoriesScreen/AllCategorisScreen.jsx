@@ -62,9 +62,9 @@ function AllCategoriesScreen() {
                     </Link>
                     <p className="form-prsnl-heading">Категории</p>
                     <div className={'AllCategoryScreenBlock'}>
-                        <Link className={'OneCategoryScreenItem'} to={`/AllCategories/:Categories2/:Categories3/:Categories4/Все специалисты`}>
+                        <Link className={'OneCategoryScreenItem'} to={`/AllSpecialists`}>
                             <div className={'OneCategoryInfo'}>
-                                <p className={'OneCategoryTitle'}>Показать всех специалистов</p>
+                                <p className={'OneTopCategoryTitle'}>Показать всех специалистов</p>
                             </div>
                             <img className={'OneCategoryScreenItemImg'} src={arrow} alt={'logo'}/>
                         </Link>

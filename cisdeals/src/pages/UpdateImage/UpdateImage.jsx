@@ -68,29 +68,51 @@ const UpdateImage = () => {
         fetchUserProfile(UserPage);
     }, []);
 
-    const handleImageChange = (event) => {
+    const handleImageChange = async (event) => {
+        setButtonText("Загрузка");
+        let counter = 0;
+        const intervalId = setInterval(() => {
+            if (counter % 4 === 0) {
+                setButtonText("Загрузка");
+            } else if (counter % 3 === 1) {
+                setButtonText("Загрузка.");
+            } else if (counter % 3 === 2) {
+                setButtonText("Загрузка..");
+            } else {
+                setButtonText("Загрузка...");
+            }
+            counter++;
+        }, 250);
         const selectedFile = event.target.files[0];
         if (selectedFile.size > 5 * 1024 * 1024) {
             setErrorMessage("Размер файла не может превышать 5Mb");
         } else {
             setErrorMessage("");
-            setData({...data, image: event.target.files[0]});
+            const formData = new FormData();
+            formData.append("image", selectedFile);
+            setButtonText("Загрузка");
+
+            try {
+                const res = await uploadPhoto(UserPage, formData);
+                setData({ ...data, image: res.data });
+                console.log(res.data);
+                console.log(data);
+                window.location.reload();
+            } catch (uploadError) {
+                console.error(uploadError);
+                // Handle the error appropriately
+            }
+
             const reader = new FileReader();
             Resizer.imageFileResizer(
-                selectedFile,
-                300,
-                300,
-                "JPEG",
-                100,
-                0,
-                (uri) => {
-                    // setSelectedImage(uri);
-                    setData({...data, image: event.target.files[0]});
+                selectedFile, 300, 300, "JPEG", 100, 0, (uri) => {
+                    // Handle resized image if needed
                 },
                 "base64",
                 200,
                 200
             );
+
             reader.readAsDataURL(selectedFile);
             reader.onload = () => {
                 if (user.image.length === 0) {
@@ -99,8 +121,27 @@ const UpdateImage = () => {
                     setSelectedImage2(reader.result);
                 }
             };
+
+            // Additional logic from handleSubmit
+            try {
+                const updateRes = await updateProfile(UserPage, data);
+                localStorage.setItem("token", JSON.stringify(updateRes));
+                console.log(localStorage.getItem("token"));
+
+                console.log(data);
+            } catch (updateError) {
+                if (
+                    updateError.response &&
+                    updateError.response.status >= 400 &&
+                    updateError.response.status <= 500
+                ) {
+                    setError(updateError.response.data.message);
+                }
+            }
+            setButtonText("Добавить");
         }
     };
+
     const handleUpload = async () => {
         try {
             const formData = new FormData();
@@ -114,32 +155,6 @@ const UpdateImage = () => {
             console.error(err);
         }
     };
-    const handleMoveOn = () => {
-        if (location.pathname === `/AddImage/${UserPage}`) {
-            navigate(`/AddLoginServ/${UserPage}`);
-        } else {
-            navigate("/EditProfile");
-        }
-    }
-    useEffect(() => {
-        let intervalId;
-        let counter = 0;
-        if (buttonText === "Загрузка") {
-            intervalId = setInterval(() => {
-                if (counter % 3 === 0) {
-                    setButtonText("Загрузка.");
-                } else if (counter % 3 === 1) {
-                    setButtonText("Загрузка..");
-                } else {
-                    setButtonText("Загрузка...");
-                }
-                counter++;
-            }, 500);
-        }
-        return () => {
-            clearInterval(intervalId);
-        };
-    }, [buttonText]);
     const handleSubmit = async (e) => {
         setButtonText("Загрузка");
         let counter = 0;
@@ -173,6 +188,34 @@ const UpdateImage = () => {
             }
         }
     };
+
+    const handleMoveOn = () => {
+        if (location.pathname === `/AddImage/${UserPage}`) {
+            navigate(`/AddLoginServ/${UserPage}`);
+        } else {
+            navigate("/EditProfile");
+        }
+    }
+    useEffect(() => {
+        let intervalId;
+        let counter = 0;
+        if (buttonText === "Загрузка") {
+            intervalId = setInterval(() => {
+                if (counter % 3 === 0) {
+                    setButtonText("Загрузка.");
+                } else if (counter % 3 === 1) {
+                    setButtonText("Загрузка..");
+                } else {
+                    setButtonText("Загрузка...");
+                }
+                counter++;
+            }, 500);
+        }
+        return () => {
+            clearInterval(intervalId);
+        };
+    }, [buttonText]);
+
     const moveImage = async (imageUrl) => {
         try {
             await moveToFront(UserPage, imageUrl);
@@ -256,7 +299,7 @@ const UpdateImage = () => {
                                             <input
                                                 id="image-upload"
                                                 type="file"
-                                                onChange={handleImageChange}
+                                                onChange={(event) => handleImageChange(event)}
                                                 className={styles.userImageInput}
                                             />
                                         )}
@@ -316,7 +359,7 @@ const UpdateImage = () => {
                                                 <input
                                                     id="image-upload"
                                                     type="file"
-                                                    onChange={handleImageChange}
+                                                    onChange={(event) => handleImageChange(event)}
                                                     className={styles.userImageInput}
                                                 />
                                             </label>
@@ -327,11 +370,13 @@ const UpdateImage = () => {
                             )}
                         </div>
                         {errorMessage && <div className={styles.error_msg}>{errorMessage}</div>}
-                        <button disabled={data.image.length === 0 || !data.image || data.image.length > 5242880}
-                                type="submit" onClick={handleUpload}
-                                className={styles.create_btn}>
-                            {buttonText}
-                        </button>
+                        {buttonText !== "Добавить" && (
+                            <button disabled={data.image.length === 0 || !data.image || data.image.length > 5242880}
+                                    type="submit" onClick={handleUpload}
+                                    className={styles.create_btn}>
+                                {buttonText}
+                            </button>
+                        )}
                         {location.pathname === `/AddImage/${UserPage}` && (
                             <button type="button" onClick={handleMoveOn}
                                     className={styles.move_create_btn}>
