@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <span class="choose">Выберите свой автомобиль</span>
+
+    <div class="dropdown">
+        <div class="select">
+            <span>Выберите марку</span>
+            <i>&#709;</i>
+        </div>
+        <input type="hidden" name="gender">
+        <ul class="dropdown-menu" id="brandList">
+        </ul>
+    </div>
+    <div class="dropdown">
+        <div class="select">
+            <span>Выберите модель</span>
+            <i>&#709;</i>
+        </div>
+        <input type="hidden" name="gender">
+        <ul class="dropdown-menu dropdown-menu-last" id="dataList">
+        </ul>
+    </div>
+
+    <div id="additionalDetails"></div>
+</div>
+
+<script src="index.js"></script>
+</body>
+</html>

@@ -159,15 +159,18 @@ textarea::placeholder{
     position: relative;
     padding: 15px 10px;
     display: flex;
+    flex-direction: row;
     align-items: center;
 }
 .radioImgOverlay {
     position: absolute;
-    top: 14px;
+    top: 16px;
     left: 15px;
     width: 6px;
 }
 .radioImgOverlay img{
+    margin-left: 4px;
+    margin-bottom: 1px;
     height: 11px;
     width: 9px;
 }
@@ -210,8 +213,8 @@ textarea::placeholder{
     flex-direction: row;
     flex-wrap: nowrap;
 }
-.workPlace label p{
-    margin: 0;
+.workPlace p{
+    margin: 0 0 0 35px;
     font-weight: 500;
 }
 .inputName{

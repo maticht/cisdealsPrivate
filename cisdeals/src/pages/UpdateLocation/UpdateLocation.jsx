@@ -191,42 +191,48 @@ const UpdateLocation = () => {
                     <div className={styles.workPlaceContainer}>
                         <div className={styles.workPlace}>
                             <label>
-                                <input
-                                    type="radio"
-                                    name="workLocation"
-                                    value="office"
-                                    checked={data.workLocation === "office"}
-                                    onChange={handleChange}
-                                />
-                                <div className={styles.radioImgOverlay}>
-                                    <img src={radioChecked} alt={'+'}/>
+                                <div>
+                                    <div className={styles.radioImgOverlay}>
+                                        <input
+                                            type="radio"
+                                            name="workLocation"
+                                            value="office"
+                                            checked={data.workLocation === "office"}
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                    <div className={styles.radioImgOverlay}>
+                                        <img src={radioChecked} alt={'+'}/>
+                                    </div>
                                 </div>
-                                <p>
-                                    У меня есть салон, офис или постоянная локация работы
-                                </p>
                             </label>
+                            <p>
+                                У меня есть салон, офис или постоянная локация работы
+                            </p>
                         </div>
                         <div className={styles.workPlace}>
                             <label>
-                                <input
-                                    type="radio"
-                                    name="workLocation"
-                                    value="remote"
-                                    checked={data.workLocation === "remote"}
-                                    onChange={handleChange}s
-                                />
+                                <div className={styles.radioImgOverlay}>
+                                    <input
+                                        type="radio"
+                                        name="workLocation"
+                                        value="remote"
+                                        checked={data.workLocation === "remote"}
+                                        onChange={handleChange} s
+                                    />
+                                </div>
                                 <div className={styles.radioImgOverlay}>
                                     <img src={radioChecked} alt={'+'}/>
                                 </div>
-                                <p>
-                                    Я работаю только удалённо или выезжаю на локацию клиента
-                                </p>
                             </label>
+                            <p>
+                                Я работаю только удалённо или выезжаю на локацию клиента
+                            </p>
                         </div>
                     </div>
                     <div className={styles.cityContainer}>
-                    <div>
-                            <h5 className={styles.inputName}>Город</h5>
+                        <div>
+                        <h5 className={styles.inputName}>Город</h5>
                             <button className={styles.inputBtn} onClick={handleOpenCitiesModal}>
                                 <div className={styles.cityButtonContent}>
                                     <p>{selectedCities || "Выбрать город"}</p>
