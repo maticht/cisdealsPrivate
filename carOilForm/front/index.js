@@ -152,8 +152,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const calculatedVolume = parseFloat(volume.replace(',', '.')) || 0;
             const calculatedSum = (calculatedVolume * coefficient) + 123;
 
-            row.cells[2].textContent = calculatedVolume.toFixed(2);
-            row.cells[3].textContent = calculatedSum.toFixed(2);
+            row.cells[2].textContent = calculatedVolume.toFixed(1);
+            row.cells[3].textContent = calculatedSum.toFixed(3);
         });
 
         calculateTotal();
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function () {
             totalSum += parseFloat(row.cells[3].textContent);
         });
 
-        document.getElementById('totalSum').textContent = totalSum.toFixed(2);
+        document.getElementById('totalSum').textContent = totalSum.toFixed(3);
     }
 
     function updateEngineList(modelData) {
