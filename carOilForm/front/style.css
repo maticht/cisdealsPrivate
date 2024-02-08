@@ -13,17 +13,78 @@ span.choose {
     display: inherit
 }
 .container {
-    width: 500px;
+    width: 100%;
+    max-width: 1000px;
     margin: 50px auto 0;
     text-align: left;
 }
-
-.dropdown {
-    width: 450px;
-    display: inline-block;
+.dropdownBlock{
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+}
+.priceBlock{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 1000px;
+    z-index: 2;
+}
+.additionalDetails:empty {
+    display: none;
+}
+.additionalDetails{
+    width: 100%;
+    max-width: 245px;
+    padding: 2px 10px;
+    margin-top: 5px;
     background-color: #fff;
-    border-radius: 6px;
-    box-shadow: 0 0 2px rgb(204, 204, 204);
+    border: 1px solid #dcdcdc;
+    font-size: 14px;
+    margin-right: 15px;
+    color: #474747;
+}
+.additionalDetails p{
+    margin: 10px 0;
+}
+.priceTable {
+    width: 100%;
+    margin-top: 5px;
+    background-color: #fff;
+    font-size: 14px;
+    color: #474747;
+    max-width: calc(100%);
+    z-index: 2;
+}
+table tbody td:nth-child(2) {
+    font-size: 13px;
+    max-width: 200px;
+}
+.priceTable table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.priceTable th, .priceTable td {
+    border: 1px solid #dcdcdc;
+    padding: 8px;
+    text-align: left;
+}
+
+.priceTable th {
+    background-color: #f2f2f2;
+}
+.dropdown {
+    width: 100%;
+    max-width: 320px;
+    background-color: #fff;
+    border: 1px solid #dcdcdc;
     transition: all .5s ease;
     position: relative;
     font-size: 14px;
@@ -47,16 +108,11 @@ span.choose {
     float: right;
     line-height: 20px
 }
-.dropdown:hover {
-    box-shadow: 0 0 4px rgb(204, 204, 204)
-}
 .dropdown:active {
     background-color: #f8f8f8
 }
 .dropdown.active:hover,
 .dropdown.active {
-    box-shadow: 0 0 4px rgb(204, 204, 204);
-    border-radius: 6px;
     background-color: #f8f8f8
 }
 .dropdown.active .select > i {
@@ -68,23 +124,17 @@ span.choose {
     background-color: #fff;
     width: 100%;
     left: 0;
-    border-radius: 6px;
     overflow: hidden;
     display: none;
-    max-height: 220px;
+    max-height: 260px;
     overflow-y: auto;
     z-index: 15
-}
-.dropdown-menu-last {
-
-    z-index: 1
 }
 .dropdown-data{
     position: absolute;
     background-color: #fff;
     width: 100%;
     left: 0;
-    border-radius: 6px;
     overflow: hidden;
     display: none;
     max-height: 220px;
@@ -147,10 +197,9 @@ span.choose {
     position: absolute;
     background-color: #fff;
     width: 100%;
-    left: 0;
-    margin-top: 10px;
-    border-radius: 6px;
-    box-shadow: 0 1px 2px rgb(204, 204, 204);
+    left: -1px;
+    margin-top: 16px;
+    border: 1px solid #dcdcdc;
     overflow: hidden;
     overflow-y: auto;
     z-index: 9;
@@ -158,4 +207,59 @@ span.choose {
 
 .dropdown .dropdown-menu.show {
     display: block;
+}
+
+@media screen and (max-width: 1000px ){
+    .dropdownBlock{
+        width: 100%;
+        max-width: 1000px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        z-index: 10;
+    }
+    .dropdown {
+        width: 100%;
+        max-width: 100%;
+        background-color: #fff;
+        border: 1px solid #dcdcdc;
+        transition: all .5s ease;
+        position: relative;
+        font-size: 14px;
+        color: #474747;
+        height: 100%;
+        text-align: left;
+        margin-bottom: 10px;
+    }
+    .priceBlock{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        max-width: 100%;
+        z-index: 2;
+    }
+    .additionalDetails{
+        width: 100%;
+        max-width: calc(100% - 20px);
+        margin-bottom: 10px;
+        padding: 2px 10px;
+        margin-top: 5px;
+        background-color: #fff;
+        border: 1px solid #dcdcdc;
+        font-size: 14px;
+        margin-right: 15px;
+        color: #474747;
+    }
+    .priceTable {
+        width: 100%;
+        margin-top: 5px;
+        background-color: #fff;
+        font-size: 14px;
+        color: #474747;
+        max-width: calc(100%);
+        z-index: 2;
+    }
 }

@@ -8,27 +8,94 @@
 <body>
 <div class="container">
     <span class="choose">Выберите свой автомобиль</span>
-
-    <div class="dropdown">
-        <div class="select">
-            <span>Выберите марку</span>
-            <i>&#709;</i>
+    <div class="dropdownBlock">
+        <div class="dropdown">
+            <div class="select">
+                <span>Выберите марку</span>
+                <i>&#709;</i>
+            </div>
+            <input type="hidden" name="gender">
+            <ul class="dropdown-menu" id="brandList">
+            </ul>
         </div>
-        <input type="hidden" name="gender">
-        <ul class="dropdown-menu" id="brandList">
-        </ul>
-    </div>
-    <div class="dropdown">
-        <div class="select">
-            <span>Выберите модель</span>
-            <i>&#709;</i>
+        <div id="dataListBlock" class="dropdown">
+            <div class="select">
+                <span>Выберите модель</span>
+                <i>&#709;</i>
+            </div>
+            <input type="hidden" name="gender">
+            <ul class="dropdown-menu" id="dataList">
+            </ul>
         </div>
-        <input type="hidden" name="gender">
-        <ul class="dropdown-menu dropdown-menu-last" id="dataList">
-        </ul>
+        <div id="engineListBlock" class="dropdown">
+            <div class="select">
+                <span>Выберите двигатель</span>
+                <i>&#709;</i>
+            </div>
+            <input type="hidden" name="gender">
+            <ul class="dropdown-menu" id="engineList">
+            </ul>
+        </div>
     </div>
-
-    <div id="additionalDetails"></div>
+    <div class="priceBlock">
+        <div id="additionalDetails" class="additionalDetails"></div>
+        <div id="priceTable" class="priceTable">
+            <table>
+                <thead>
+                <tr>
+                    <th>Масло</th>
+                    <th>Спецификации</th>
+                    <th>Объём литры</th>
+                    <th>Сумма</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-coefficient="38.13">
+                    <td>CASTROL EDGE LL</td>
+                    <td>MB 229.31; MB 229.51; PORSCHE C30; VW 504.00; VW 507.00 | ACEA: C3</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr data-coefficient="34.44">
+                    <td>MOTUL 8100 X-CLEAN+</td>
+                    <td>BMW LL-04; MB 229.51; PORSCHE C30; VW 504.00; VW 507.00 | ACEA: C3</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr data-coefficient="31.98">
+                    <td>SYNPOWER XL III C3</td>
+                    <td>BMW LL-04; MB 229.51; PORSCHE C30; VW 504.00; VW 507.00; MB 229.31 | API: SN | ACEA: C3</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr data-coefficient="28.29">
+                    <td>EVO FULLTECH FE</td>
+                    <td>RENAULT RN 0720; MB 226.51 | AСЕА: C3; C4+</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr data-coefficient="24.6">
+                    <td>SHELL HELIX HX8 ECT</td>
+                    <td>MB 229.31; MB 229.51; VW 504.00; VW 507.00 | API: SN | ACEA: C3</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr data-coefficient="18.45">
+                    <td>CHEMPOIL U. SL</td>
+                    <td>VW 505.00; MB 229.3; VW 502.00; BMW LL-98; FORD M2C913 B; MB 229.5; RENAULT RN 0700; RENAULT RN 0710; VW 501.01; VW 503.01 | API: CH-4; SN | ACEA: A3/B4</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr data-coefficient="19.68">
+                    <td>SHELL HELIX HX8</td>
+                    <td>FIAT 9.55535 M2; MB 229.3; RENAULT RN 0700; RENAULT RN 0710; VW 502.00; VW 505.00 | API: SN PLUS; SN | ACEA: A3; B4</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 <script src="index.js"></script>
