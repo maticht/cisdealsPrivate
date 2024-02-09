@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function clearModelDropdown() {
         const modelDropdown = document.getElementById('dataListBlock');
-        modelDropdown.querySelector('span').textContent = 'Выберите модель';
+        modelDropdown.querySelector('span').textContent = 'Wybierz model';
         modelDropdown.querySelector('input').setAttribute('value', '');
         modelDropdown.classList.remove('active');
         modelDropdown.querySelector('.dropdown-menu').classList.remove('show');
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function clearEngineDropdown() {
         const engineDropdown = document.getElementById('engineListBlock');
-        engineDropdown.querySelector('span').textContent = 'Выберите двигатель';
+        engineDropdown.querySelector('span').textContent = 'Wybierz silnik';
         engineDropdown.querySelector('input').setAttribute('value', '');
         engineDropdown.classList.remove('active');
         engineDropdown.querySelector('.dropdown-menu').classList.remove('show');

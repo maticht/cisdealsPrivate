@@ -62,10 +62,6 @@ span.choose {
     max-width: calc(100%);
     z-index: 2;
 }
-table tbody td:nth-child(2) {
-    font-size: 13px;
-    max-width: 200px;
-}
 .priceTable table {
     width: 100%;
     border-collapse: collapse;
