@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
         clearEngineDropdown();
         clearAdditionalDetails();
         clearPriceTable();
-        fetch('result1.json')
+        fetch('result4.json')
             .then(response => response.json())
             .then(data => {
                 const modelList = document.getElementById('dataList');
@@ -55,13 +55,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 data.forEach(carData => {
                     if (carData["Марка"].toLowerCase() === brandId.toLowerCase()) {
-                        const models = carData["Данные"];
+                        const models = carData["Модели"];
                         models.forEach(modelData => {
                             const modelLabel = modelData["Модель"];
-                            const modifications = modelData["Модификации"];
+                            const productionYear = modelData["Rok produkcji"];
 
-                            if (modifications && modifications.length > 0) {
-                                uniqueModels[modelLabel] = modelData;
+                            if (modelData["Модификации"] && modelData["Модификации"].length > 0) {
+                                if (!uniqueModels[modelLabel]) {
+                                    uniqueModels[modelLabel] = {
+                                        "Модель": modelLabel,
+                                        "Модификации": modelData["Модификации"],
+                                        "Rok produkcji": productionYear
+                                    };
+                                } else {
+                                    uniqueModels[modelLabel]["Rok produkcji"] += `, ${productionYear}`;
+                                }
                             }
                         });
                     }
@@ -69,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 Object.values(uniqueModels).forEach(modelData => {
                     const modelLabel = modelData["Модель"];
+                    const productionYear = modelData["Rok produkcji"];
 
                     const li = document.createElement('li');
                     li.id = `${modelLabel}`.toLowerCase();
@@ -77,11 +86,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     const modelP = document.createElement('b');
                     modelP.textContent = modelLabel;
 
+                    const yearP = document.createElement('p');
+                    yearP.textContent = productionYear;
+                    yearP.style.color = 'lightgrey'; // Устанавливаем светло-серый цвет
+
                     li.appendChild(modelP);
+                    li.appendChild(yearP);
 
                     li.addEventListener('click', function () {
                         var parentDropdown = this.closest('.dropdown');
-                        parentDropdown.querySelector('span').textContent = modelLabel;
+                        parentDropdown.querySelector('span').innerHTML = `${modelLabel}<br><span style="color: lightgrey">${productionYear}</span>`;
 
                         clearAdditionalDetails();
 
@@ -97,6 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .catch(error => console.error('Error fetching data:', error));
     }
+
 
     function clearModelDropdown() {
         const modelDropdown = document.getElementById('dataListBlock');
@@ -134,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     detailP.textContent = `${key}: ${value}`;
                     additionalDetailsElement.appendChild(detailP);
 
-                    if (key === "Объем масла") {
+                    if (key === "Objętość oleju") {
                         updateVolumeAndSum(value);
                     }
                 }
@@ -142,6 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
     }
+
 
     function updateVolumeAndSum(volume) {
         const priceTable = document.getElementById('priceTable');
@@ -175,7 +191,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateEngineList(modelData) {
         clearEngineDropdown();
         clearAdditionalDetails();
-        clearPriceTable()
+        clearPriceTable();
+
         const engineList = document.getElementById('engineList');
         engineList.innerHTML = '';
 
@@ -183,13 +200,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
         modifications.forEach(modificationData => {
             const modificationLabel = modificationData["Модификация"];
+            const productionYear = modificationData["Rok produkcji"];
 
             const li = document.createElement('li');
-            li.textContent = modificationLabel;
+            li.id = `${modificationLabel}`.toLowerCase();
+            li.data = modificationData;
+
+            const modificationP = document.createElement('b');
+            modificationP.textContent = modificationLabel;
+
+            const yearP = document.createElement('p');
+            yearP.textContent = productionYear;
+            yearP.style.color = 'lightgrey';
+            li.appendChild(modificationP);
+            li.appendChild(yearP);
 
             li.addEventListener('click', function () {
                 var parentDropdown = this.closest('.dropdown');
-                parentDropdown.querySelector('span').textContent = modificationLabel;
+                parentDropdown.querySelector('span').innerHTML = `${modificationLabel}<br><span style="color: lightgrey">${productionYear}</span>`;
                 parentDropdown.querySelector('input').setAttribute('value', modificationLabel);
 
                 displayAdditionalDetails(modificationData);
@@ -199,12 +227,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+
     function clearAdditionalDetails() {
         const additionalDetailsElement = document.getElementById('additionalDetails');
         additionalDetailsElement.innerHTML = '';
     }
 
-    fetch('result1.json')
+    fetch('result4.json')
         .then(response => response.json())
         .then(data => {
             const uniqueBrands = {};
