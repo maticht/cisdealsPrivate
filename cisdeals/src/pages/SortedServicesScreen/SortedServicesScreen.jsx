@@ -9,6 +9,7 @@ import city from '../../img/Map maker.svg'
 import meditating from '../../img/meditating 1.svg'
 import goldStar from '../../img/goldStar.svg'
 import {getAllUsers} from "../../httpRequests/cisdealsApi";
+import CategoriesJSON from '../../data/categories.json';
 
 function SortedServicesScreen() {
     const {Categories2} = useParams();
@@ -33,10 +34,16 @@ function SortedServicesScreen() {
                 }
 
                 if (SortedCategories && SortedCategories !== "AllSpecialists") {
-                    sortedUsers = sortedUsers.filter(
-                        (user) => user.services.includes(SortedCategories)
-                    );
+                    sortedUsers = sortedUsers.filter((user) => user.services.includes(SortedCategories));
+
+                    const categoryInfo = CategoriesJSON.find((category) => category.categoriestitle === SortedCategories);
+                    if (categoryInfo && categoryInfo.subcategories) {
+                        categoryInfo.subcategories.forEach((subcategory) => {
+                            sortedUsers = sortedUsers.filter((user) => user.services.includes(subcategory.title));
+                        });
+                    }
                 }
+
                 setUsers(sortedUsers);
                 localStorage.getItem("token");
                 setIsLoading(false);

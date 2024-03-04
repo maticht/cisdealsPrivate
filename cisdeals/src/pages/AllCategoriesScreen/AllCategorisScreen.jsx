@@ -28,25 +28,28 @@ function AllCategoriesScreen() {
               style={{borderBottom: CategoriesJSON.categories.length - 1 === index ? '#DDDDDD solid 0px' : '#DDDDDD solid 1px'}}
         >
             <div className={'OneCategoryScreenInfo'}>
-                <img className={'OneCategoryScreenImg'} src={
-                    (category.categoriestitle === "Красота и уход") ?
-                    beauty : (category.categoriestitle === "Спорт") ?
-                    sport : (category.categoriestitle === "Здоровье") ?
-                    health : (category.categoriestitle === "Авто") ?
-                    auto : (category.categoriestitle === "Финансы и законы") ?
-                    finance : (category.categoriestitle === "Животные") ?
-                    animals : (category.categoriestitle === "Образование") ?
-                    study : (category.categoriestitle === "Фото, видео, аудио") ?
-                    photo : (category.categoriestitle === "Продвижение и реклама") ?
-                    ads : (category.categoriestitle === "Дизайн и проектирование") ?
-                    design : (category.categoriestitle === "Разработка") ?
-                    programming : (category.categoriestitle === "Транспорт и логистика") ?
-                    logistics : (category.categoriestitle === "Помощь по дому") ?
-                    house : (category.categoriestitle === "Строительство и ремонт") ?
-                    build : (category.categoriestitle === "Развлечения и мероприятия") ?
-                    party : (category.categoriestitle === "Еда") ?
-                    food : category.imgId
-                } alt="image not found"/>
+                <img className={'OneCategoryScreenImg'}
+                     src={(category.categoriestitle === "Еда") ? food : category.imgId}
+                //      src={
+                //     (category.categoriestitle === "Красота и уход") ?
+                //     beauty : (category.categoriestitle === "Спорт") ?
+                //     sport : (category.categoriestitle === "Здоровье") ?
+                //     health : (category.categoriestitle === "Авто") ?
+                //     auto : (category.categoriestitle === "Финансы и законы") ?
+                //     finance : (category.categoriestitle === "Животные") ?
+                //     animals : (category.categoriestitle === "Образование") ?
+                //     study : (category.categoriestitle === "Фото, видео, аудио") ?
+                //     photo : (category.categoriestitle === "Продвижение и реклама") ?
+                //     ads : (category.categoriestitle === "Дизайн и проектирование") ?
+                //     design : (category.categoriestitle === "Разработка") ?
+                //     programming : (category.categoriestitle === "Транспорт и логистика") ?
+                //     logistics : (category.categoriestitle === "Помощь по дому") ?
+                //     house : (category.categoriestitle === "Строительство и ремонт") ?
+                //     build : (category.categoriestitle === "Развлечения и мероприятия") ?
+                //     party : (category.categoriestitle === "Еда") ?
+                //     food : category.imgId
+                // }
+                     alt="image not found"/>
                 <p className={'OneCategoryInfoTitle'}>{category.categoriestitle}</p>
             </div>
             <img className={'OneCategoryScreenItemImg'} src={arrow} alt={'logo'}/>

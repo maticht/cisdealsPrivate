@@ -22,25 +22,28 @@ import food from "../../img/CategoriesLogo/food.png";
 function Categories() {
     const categoryList = CategoriesJSON.categories.map((category) =>
         <Link  className={'categoryItem'} to={`/AllCategories/${category.categoriestitle}`}>
-            <img className={'categoryImg'} src={
-                (category.categoriestitle === "Красота и уход") ?
-                beauty : (category.categoriestitle === "Спорт") ?
-                sport : (category.categoriestitle === "Здоровье") ?
-                health : (category.categoriestitle === "Авто") ?
-                auto : (category.categoriestitle === "Финансы и законы") ?
-                finance : (category.categoriestitle === "Животные") ?
-                animals : (category.categoriestitle === "Образование") ?
-                study : (category.categoriestitle === "Фото, видео, аудио") ?
-                photo : (category.categoriestitle === "Продвижение и реклама") ?
-                ads : (category.categoriestitle === "Дизайн и проектирование") ?
-                design : (category.categoriestitle === "Разработка") ?
-                programming : (category.categoriestitle === "Транспорт и логистика") ?
-                logistics : (category.categoriestitle === "Помощь по дому") ?
-                house : (category.categoriestitle === "Строительство и ремонт") ?
-                build : (category.categoriestitle === "Развлечения и мероприятия") ?
-                party : (category.categoriestitle === "Еда") ?
-                food : category.imgId
-            } alt="image not found"/>
+            <img className={'categoryImg'}
+                 src={(category.categoriestitle === "Еда") ? food : category.imgId}
+            //      src={
+            //     (category.categoriestitle === "Красота и уход") ?
+            //     beauty : (category.categoriestitle === "Спорт") ?
+            //     sport : (category.categoriestitle === "Здоровье") ?
+            //     health : (category.categoriestitle === "Авто") ?
+            //     auto : (category.categoriestitle === "Финансы и законы") ?
+            //     finance : (category.categoriestitle === "Животные") ?
+            //     animals : (category.categoriestitle === "Образование") ?
+            //     study : (category.categoriestitle === "Фото, видео, аудио") ?
+            //     photo : (category.categoriestitle === "Продвижение и реклама") ?
+            //     ads : (category.categoriestitle === "Дизайн и проектирование") ?
+            //     design : (category.categoriestitle === "Разработка") ?
+            //     programming : (category.categoriestitle === "Транспорт и логистика") ?
+            //     logistics : (category.categoriestitle === "Помощь по дому") ?
+            //     house : (category.categoriestitle === "Строительство и ремонт") ?
+            //     build : (category.categoriestitle === "Развлечения и мероприятия") ?
+            //     party : (category.categoriestitle === "Еда") ?
+            //     food : category.imgId
+            // }
+                 alt="image not found"/>
             <p className={'categoryTitle'} style={{margin:'10px 0 15px 0'}}>{category.categoriestitle}</p>
         </Link>
     );

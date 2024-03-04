@@ -11,7 +11,7 @@ function CategoriesScreen2() {
     console.log(category.subcategories);
     const categoryList = category.subcategories.map((category, index) => (
         <Link className={'OneCategoryScreenItem'}
-              to={(category.subsubcategories.length === 0 || !category.subsubcategories) ?
+              to={(category.subsubcategories?.length === 0 || !category.subsubcategories) ?
                   `/${category.title}`
                   : `/AllCategories/${Categories2}/${category.title}`}>
             <div className={'OneCategoryInfo'}>

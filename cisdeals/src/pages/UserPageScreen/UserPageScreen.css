@@ -170,6 +170,7 @@
     overflow: auto;
 }
 .deskMobileContactBlock{
+    display: none;
     width: 100%;
     height: 100%;
     overflow: auto;
@@ -230,6 +231,12 @@
     }
 }
 @media screen and (max-width: 640px) {
+    .deskMobileContactBlock{
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+    }
     .userContactBtn{
         width: 100vw;
         display: flex;
