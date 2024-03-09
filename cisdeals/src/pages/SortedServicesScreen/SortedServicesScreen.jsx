@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useRef} from "react";
 import HeaderNavBar from '../../components/headerNavBar/headerNavBar';
-import { createUseStyles } from "react-jss";
+import {createUseStyles} from "react-jss";
 import {Link, useParams} from "react-router-dom";
 import Modal from "../../components/madalCities/modalCities";
 import SearchExample from "../../components/search/search";
@@ -28,20 +28,25 @@ function SortedServicesScreen() {
             try {
                 const response = await getAllUsers();
                 let sortedUsers = response;
+                console.log(sortedUsers)
+                console.log(SortedCategories)
 
                 if (modalResult && modalResult !== "Польше") {
                     sortedUsers = sortedUsers.filter((user) => user.city === modalResult);
                 }
 
                 if (SortedCategories && SortedCategories !== "AllSpecialists") {
-                    sortedUsers = sortedUsers.filter((user) => user.services.includes(SortedCategories));
-
-                    const categoryInfo = CategoriesJSON.find((category) => category.categoriestitle === SortedCategories);
-                    if (categoryInfo && categoryInfo.subcategories) {
-                        categoryInfo.subcategories.forEach((subcategory) => {
-                            sortedUsers = sortedUsers.filter((user) => user.services.includes(subcategory.title));
-                        });
-                    }
+                    sortedUsers = sortedUsers.filter((user) => {
+                        return user.services.split(",").some(service => service.trim().toLowerCase() === SortedCategories.trim().toLowerCase())
+                    });
+                    console.log("После сортировки", sortedUsers)
+                    //
+                    // const categoryInfo = CategoriesJSON.find((category) => category.categoriestitle === SortedCategories);
+                    // if (categoryInfo && categoryInfo.subcategories) {
+                    //     categoryInfo.subcategories.forEach((subcategory) => {
+                    //         sortedUsers = sortedUsers.filter((user) => user.services.includes(subcategory.title));
+                    //     });
+                    // }
                 }
 
                 setUsers(sortedUsers);
@@ -76,6 +81,10 @@ function SortedServicesScreen() {
         }
     }, [modalOpen]);
 
+    useEffect(()=>{
+        console.log(users)
+    }, [users])
+
     const handleModalResult = (result) => {
         setModalResult(result);
     };
@@ -96,69 +105,81 @@ function SortedServicesScreen() {
                     </Link>
                 </div>
                 <div>
-                    <Modal isOpen={modalOpen} onClose={handleCloseModal} handleModalResult={handleModalResult} />
+                    <Modal isOpen={modalOpen} onClose={handleCloseModal} handleModalResult={handleModalResult}/>
                 </div>
                 <div className={'allBestSpecialistsTitle'}>
                     <h2>{`${(!SortedCategories) ? 'Все специалисты' : SortedCategories} в ${(!modalResult) ? 'Польше' : modalResult}`}</h2>
                 </div>
                 {isLoading ? null : (
-                        <div className={'selectFilterUsers'}>
-                            {users.length !== 0 ? (
-                                <div>
-                                    <h6>{`Найденно ${users.length} специалистов`}</h6>
-                                    <div className={users.length <= 2 ? 'allMiniBestSortedSpecialists' : 'allBestSortedSpecialists'}>
-                                        {users.map((user) => (
-                                            <div className={users.length === 1 ? 'onlyOneBestSpecialistsBlock' : 'oneBestSpecialistsBlock'} key={user.id}>
-                                                <Link className="link-wrapper"
-                                                      to={`/UserPageScreen/${user._id}`}>
-                                                    <div className="user-container">
-                                                        <div className="user-image-container">
-                                                            {(!user.image || user.image.length === 0 ? (
-                                                                <img className="user-image" src={noneUserLogo} alt="userImage"/>) : (
-                                                                <div className="user-image">
-                                                                    {user.image && <img src={user.image[0]} alt="User Image"/>}
-                                                                </div>))}
-                                                            {user.rating && user.rating.length > 0 && user.rating[0] !== '' && (
-                                                                <div className="rating-container">
-                                                                    <img className="rating-star" src={goldStar} alt="star"/>
-                                                                    <p className="rating-value">
-                                                                        {(user.rating.reduce((acc, rating) => acc + rating.value, 0) / user.rating.length).toFixed(1)}
-                                                                    </p>
-                                                                </div>)}
+                    <div className={'selectFilterUsers'}>
+                        {users.length !== 0 ? (
+                            <div>
+                                <h6>{`Найденно ${users.length} специалистов`}</h6>
+                                <div
+                                    className={users.length <= 2 ? 'allMiniBestSortedSpecialists' : 'allBestSortedSpecialists'}>
+                                    {users.map((user) => (
+                                        <div
+                                            className={users.length === 1 ? 'onlyOneBestSpecialistsBlock' : 'oneBestSpecialistsBlock'}
+                                            key={user.id}>
+                                            <Link className="link-wrapper"
+                                                  to={`/UserPageScreen/${user._id}`}>
+                                                <div className="user-container">
+                                                    <div className="user-image-container">
+                                                        {(!user.image || user.image.length === 0 ? (
+                                                            <img className="user-image" src={noneUserLogo}
+                                                                 alt="userImage"/>) : (
+                                                            <div className="user-image">
+                                                                {user.image &&
+                                                                    <img src={user.image[0]} alt="User Image"/>}
+                                                            </div>))}
+                                                        {user.rating && user.rating.length > 0 && user.rating[0] !== '' && (
+                                                            <div className="rating-container">
+                                                                <img className="rating-star" src={goldStar} alt="star"/>
+                                                                <p className="rating-value">
+                                                                    {(user.rating.reduce((acc, rating) => acc + rating.value, 0) / user.rating.length).toFixed(1)}
+                                                                </p>
+                                                            </div>)}
+                                                    </div>
+                                                    <div className="user-info-container">
+                                                        <div>
+                                                            <p className="user-name">{user.nameOrCompany}</p>
+                                                            <p className="user-activity">
+                                                                {user.areasActivity === 'areasActivity' || user.areasActivity === '' ?
+                                                                    'Услуги не добавлены'
+                                                                    : user.areasActivity.length > 28 ? `${user.areasActivity.slice(0, 28)}...` : user.areasActivity
+                                                                }
+                                                            </p>
                                                         </div>
-                                                        <div className="user-info-container">
-                                                            <div>
-                                                                <p className="user-name">{user.nameOrCompany}</p>
-                                                                <p className="user-activity">
-                                                                    {user.areasActivity === 'areasActivity' || user.areasActivity === '' ?
-                                                                        'Услуги не добавлены'
-                                                                        : user.areasActivity.length > 28 ? `${user.areasActivity.slice(0, 28)}...` : user.areasActivity
-                                                                    }
-                                                                </p>
-                                                            </div>
-                                                            <div className="location-container">
-                                                                <img className="location-image" src={city} alt="city"/>
-                                                                <p className="location-text">
-                                                                    {user.city === "city" ?
-                                                                        'Польша'
-                                                                        : user.region === "region" ? `${user.city}` : `${user.city}, ${user?.region}`}
-                                                                </p>
-                                                            </div>
+                                                        <div className="location-container">
+                                                            <img className="location-image" src={city} alt="city"/>
+                                                            <p className="location-text">
+                                                                {user.city === "city" ?
+                                                                    'Польша'
+                                                                    : user.region === "region" ? `${user.city}` : `${user.city}, ${user?.region}`}
+                                                            </p>
                                                         </div>
                                                     </div>
-                                                </Link>
-                                            </div>
-                                        ))}
-                                    </div>
+                                                </div>
+                                            </Link>
+                                        </div>
+                                    ))}
                                 </div>
-                            ) : (
-                                <div style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column', alignSelf:'center', margin:'100px auto 0'}}>
-                                    <img src={meditating} alt={'Здесь ещё нет специалистов'}/>
-                                    <h3 style={{}}>Здесь ещё нет специалистов</h3>
-                                </div>
-                            )}
-                        </div>
-                    )}
+                            </div>
+                        ) : (
+                            <div style={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                flexDirection: 'column',
+                                alignSelf: 'center',
+                                margin: '100px auto 0'
+                            }}>
+                                <img src={meditating} alt={'Здесь ещё нет специалистов'}/>
+                                <h3 style={{}}>Здесь ещё нет специалистов</h3>
+                            </div>
+                        )}
+                    </div>
+                )}
             </div>
         </>
     );
