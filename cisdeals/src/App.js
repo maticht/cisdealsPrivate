@@ -30,6 +30,7 @@ import UpdateDescription from "./pages/UpdateDescription/UpdateDescription";
 import AddServ from './pages/addServ/addServ'
 import AddServCategories from './pages/addServ/addServCategories/addServCategories'
 import AddingServicesList from './pages/addServ/addingServicesList/addingServicesList'
+import EditingCategories from './pages/EditingCategories/EditingCategories'
 
 function App() {
     return (
@@ -77,6 +78,7 @@ function App() {
                     <Route path="/AddLoginServ/:UserPage" exact element={<AddServ/>} />
                     <Route path="/AddLoginServ/addServCategories/:UserPage" exact element={<AddServCategories/>} />
                     <Route path="/AddLoginServ/addingServicesList/:UserPage" exact element={<AddingServicesList/>} />
+                    <Route path="/EditingCategories" exact element={<EditingCategories/>} />
                     <Route path="/AddLoginServ/:UserPage/UserServScreen/:ServPage" exact element={<UserServScreen/>} />
                 </Routes>
             </BrowserRouter>

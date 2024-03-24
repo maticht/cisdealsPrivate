@@ -7,7 +7,16 @@ import axios from "axios";
 import noneUserLogo from "../../img/noneUserLogoSq.svg";
 import {getAllUsers} from "../../httpRequests/cisdealsApi";
 import back from "../../img/Arrow_left.svg";
-const data = CategoriesJSON.categories
+let data = CategoriesJSON.categories;
+
+const uniqueData = data.filter((category, index, self) =>
+        index === self.findIndex((c) => (
+            c.title === category.title
+        ))
+);
+
+data = uniqueData;
+
 
 const SearchScreen = () => {
     const [searchTerm, setSearchTerm] = useState('');

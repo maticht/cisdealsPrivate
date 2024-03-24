@@ -47,7 +47,7 @@ function HomeScreen() {
             <div className={'allBestSpecialists'}>
                 {users.map((user) => (<div className={'oneBestSpecialistsBlock'} key={user.id}>
                     <Link className="link-wrapper"
-                          to={`/UserPageScreen/${user._id}`}>
+                          to={`/UserPageScreen/${user._id}`} rel="nofollow">
                         <div className="user-container">
                             <div className="user-image-container">
                                 {(!user.image || user.image.length === 0 ? (
