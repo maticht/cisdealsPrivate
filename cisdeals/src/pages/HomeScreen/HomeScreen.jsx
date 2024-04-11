@@ -42,7 +42,7 @@ function HomeScreen() {
             </div>
             <Categories/>
             <div className={'allBestSpecialists'}>
-                <h2>{`Лучшие специалисты`}</h2>
+                <h2>{`Специалисты`}</h2>
             </div>
             <div className={'allBestSpecialists'}>
                 {users.map((user) => (<div className={'oneBestSpecialistsBlock'} key={user.id}>
@@ -70,8 +70,8 @@ function HomeScreen() {
                                         {user.services === 'services' || user.services === '' ?
                                             'Услуги не добавлены'
                                             : user.services.length > (window.innerWidth <= 360 ? 40 : window.innerWidth <= 540 ? 82 : window.innerWidth <= 700 ? 40 : 82) ?
-                                                `${user.services.slice(0, (window.innerWidth <= 360 ? 40 : window.innerWidth <= 540 ? 82 : window.innerWidth <= 700 ? 40 : 82))}...`
-                                                : user.services
+                                                `${user.services.split(",").filter((service, i, arr) => arr.indexOf(service) === i).join(", ").slice(0, (window.innerWidth <= 360 ? 40 : window.innerWidth <= 540 ? 82 : window.innerWidth <= 700 ? 40 : 82))}...`
+                                                : user.services.split(",").filter((service, i, arr) => arr.indexOf(service) === i).join(", ")
                                         }
                                     </p>
                                 </div>

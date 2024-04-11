@@ -1,9 +1,10 @@
 import axios from "axios";
 
 const $host = axios.create({
-    baseURL: 'http://bekend.server533906.nazwa.pl'
+    baseURL: 'https://backend.nashedelo.pl'
 })
-
+// https://backend.nashedelo.pl
+// https://backend.nashedelo.pl
 //'http://localhost:8081'
 //'http://bekend.server533906.nazwa.pl'
 

@@ -60,6 +60,7 @@
 .user-nameOrCompany {
     margin: 0;
     font-weight: 700;
+    color: black;
 }
 .copy-link-container {
     display: flex;
@@ -116,7 +117,6 @@
     text-decoration: none;
     color: #000;
     margin-left: 10px;
-    margin-bottom: 5px;
     margin-top: 0;
 }
 .link-image{

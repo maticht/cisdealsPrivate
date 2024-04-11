@@ -83,6 +83,7 @@
     margin: 20px 0 10px 8px;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 .form-update-link img {
     width: 15px;
@@ -98,7 +99,50 @@
     font-size: 24px;
     font-weight: bold;
 }
+.MessageScreenContainer form{
+    width: calc(100% - 10px);
+    display: flex;
+    margin-left: 10px;
+    flex-direction: column;
+}
+.MessageScreenBlock{
+    width: calc(100% - 20px);
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    padding: 10px;
+}
+.MessageScreenContainerInput{
+    margin-top: 0;
+    background-color: #F1F1F1;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    padding: 10px;
+}
+.MessageScreenContainerTextarea{
+    margin-top: 15px;
+    background-color: #F1F1F1;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    padding: 10px;
+    resize: none;
+}
 
+.MessageScreenContainerBtn{
+    padding: 12px 10px;
+    margin-top: 10px;
+    background-color: black;
+    color: #FFFFFF;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
 .form-update-content {
     justify-content: flex-start;
     background-color: #fff;

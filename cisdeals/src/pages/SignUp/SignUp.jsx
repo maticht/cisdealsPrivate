@@ -97,7 +97,7 @@ const Signup = () => {
         console.log(data)
         try {
             const res = await signUp(data);
-            console.log(res.data);
+            console.log(res);
             localStorage.setItem("token",  JSON.stringify(res.data));
             const user = localStorage.getItem("token");
             let localUserObj = JSON.parse(user);
@@ -112,7 +112,8 @@ const Signup = () => {
                 error.response.status >= 400 &&
                 error.response.status <= 500
             ) {
-                setError(error.response.data.message);
+                console.log(error.message);
+                setError(error.message);
             }
         }
     };
@@ -165,7 +166,7 @@ const Signup = () => {
                         </button>
                     </div>
                 </div>
-                {error && !msg && <div className={styles.error_msg}>{error}</div>}
+                {error && <div className={styles.error_msg}>{error}</div>}
                 {msg && <div className={styles.success_msg}>{msg}</div>}
                 <button type="submit" className={styles.create_btn}>
                     Создать аккаунт

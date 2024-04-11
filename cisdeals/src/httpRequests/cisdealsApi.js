@@ -47,8 +47,8 @@ export const viewServices = async (userid) => {
     })
     return data
 }
-export const deleteService = async (userid) => {
-    const {data} = await $host.delete('/post-delete/' + userid)
+export const deleteService = async (postId) => {
+    const {data} = await $host.delete('/post-delete/' + postId)
     return data
 }
 export const servProfile = async (userid) => {

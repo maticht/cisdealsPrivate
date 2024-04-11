@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from "react";
-import {servProfile, updateServ} from "../../../httpRequests/cisdealsApi";
+import {deleteService, servProfile, updateServ, viewServices} from "../../../httpRequests/cisdealsApi";
 import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
 import styles from "./styles.module.css";
 import back from "../../../img/Arrow_left.svg";
+import styl from "../styles.module.css";
 
 const UserServScreen = () => {
     const location = useLocation();
@@ -10,6 +11,8 @@ const UserServScreen = () => {
     const navigate = useNavigate();
     const [error, setError] = useState("");
     const [serv, setServ] = useState([]);
+    const [deleteModal, setDeleteModal] = useState(false);
+    const [deleteObjId, setDeleteObjId] = useState(null);
     const [data, setData] = useState({
         prise: "",
         fixPrice: "",
@@ -41,6 +44,22 @@ const UserServScreen = () => {
         };
         fetchUserProfile(ServPage);
     }, []);
+    const handleDeleteClick = (objId) => {
+        setDeleteModal(true);
+        console.log(objId);
+        setDeleteObjId(objId);
+    };
+    const servDelete = async (ServId) => {
+        try {
+            await deleteService(ServId);
+            setDeleteModal(false);
+            const updatedServ = await viewServices(UserPage);
+            setServ(updatedServ);
+            window.history.back();
+        } catch (err) {
+            console.log(err)
+        }
+    };
 
     const handleChange = ({ currentTarget: input }) => {
         const { name, value } = input;
@@ -115,7 +134,7 @@ const UserServScreen = () => {
                                 <p>zł</p>
                             </div>
                             <h5 className={styles.formUserServTitle}>Время исполнения услуги</h5>
-                            <div  className={styles.formUserServTime}>
+                            <div className={styles.formUserServTime}>
                                 <div className={styles.TimeBlock}>
                                     <input
                                         type="text" placeholder="00" name="minutes"
@@ -124,7 +143,7 @@ const UserServScreen = () => {
                                         required
                                         className={styles.rowTimeInput}
                                     />
-                                    <p className={styles.TimeBlockText} >Минут</p>
+                                    <p className={styles.TimeBlockText}>Минут</p>
                                 </div>
                                 <div className={styles.TimeBlock}>
                                     <input
@@ -149,7 +168,7 @@ const UserServScreen = () => {
                             </div>
                             <div className={styles.formUserServDescription}>
                                 <h5 className={styles.formUserServTitle}>Описание</h5>
-                                <p style={{  }}>{data.description.length}/30</p>
+                                <p style={{}}>{data.description.length}/30</p>
                             </div>
                             <div>
                                 <textarea
@@ -162,10 +181,31 @@ const UserServScreen = () => {
                                 />
                             </div>
                         </div>
+                        {deleteModal && deleteObjId === serv._id && (
+                            <div className={styl.delete_modal_overlay}>
+                                <div className={styl.delete_modal_block}>
+                                    <p className={styl.delete_modal_text}>Вы уверены, что хотите удалить
+                                        услугу <b>{`"${serv.title}"`}</b>?</p>
+                                    <div className={styl.delete_modal_btn_block}>
+                                        <div className={styl.delete_modal_nodelete_btn}
+                                             onClick={() => setDeleteModal(false)}>
+                                            <p>Не удалять</p>
+                                        </div>
+                                        <div className={styl.delete_modal_delete_btn}
+                                             onClick={() => servDelete(deleteObjId)}>
+                                            <p>Удалить</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                     </div>
                     {error && <div className={styles.error_msg}>{error}</div>}
                     <button type="submit" className={'create_btn'}>
                         Изменить
+                    </button>
+                    <button type="button" onClick={() => handleDeleteClick(serv._id)} className={styles.delete_serv_btn}>
+                        Удалить услугу
                     </button>
                 </form>
             </div>

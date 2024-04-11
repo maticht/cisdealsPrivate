@@ -302,6 +302,9 @@ textarea::placeholder{
     border-radius: 5px;
     text-align: center;
 }
+.endLoginServLink{
+    text-decoration: none;
+}
 .endLoginServ{
     border: none;
     outline: none;

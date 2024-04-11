@@ -224,7 +224,19 @@
     border: none;
     margin-top: 0;
 }
-
+.searchScreenBtn{
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    margin-top: 3px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+.searchScreenBtn:hover{
+    transform: scale(1.06);
+}
+.searchScreenBtn:active{
+    transform: scale(1.12);
+}
 .selectFilterBlock{
     max-width: 1160px;
     width: calc(100% - 20px);

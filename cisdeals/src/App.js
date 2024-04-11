@@ -5,6 +5,7 @@ import HomeScreen from "./pages/HomeScreen/HomeScreen";
 import Signup from "./pages/SignUp/SignUp";
 import Login from "./pages/LogIn/LogIn";
 import SuccessfulLoginScreen from "./pages/SuccessfulLoginScreen/SuccessfulLoginScreen";
+import SuccessfulServScreen from "./pages/SuccessfulServScreen/SuccessfulServScreen";
 
 import AllCategoriesScreen from "./pages/AllCategoriesScreen/AllCategorisScreen";
 import CategoriesScreen2 from "./pages/CategoriesScreen2/CategoriesScreen2";
@@ -39,8 +40,9 @@ function App() {
                 <Routes>
                     <Route path="/signup" exact element={<Signup />} />
                     <Route path="/login" exact element={<Login />} />
-                    {/*<Route path="/SuccessfulLoginScreen/:id/verify/:token" exact element={<SuccessfulLoginScreen />} />*/}
+                    {/*<Route path="/SuccessfulServScreen/:id/verify/:token" exact element={<SuccessfulServScreen />} />*/}
                     <Route path="/SuccessfulLoginScreen/:UserPage" exact element={<SuccessfulLoginScreen />} />
+                    <Route path="/SuccessfulServScreen/:UserPage" exact element={<SuccessfulServScreen />} />
                     <Route path='/' element={<HomeScreen />}/>
 
                     <Route path="/PersonalUserPage/:UserPage" exact element={<PersonalUserPage />} />

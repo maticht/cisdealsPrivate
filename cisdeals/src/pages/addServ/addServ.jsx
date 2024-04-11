@@ -54,6 +54,7 @@ const AddServ = () => {
 
     const handleDeleteClick = (objId) => {
         setDeleteModal(true);
+        console.log(objId);
         setDeleteObjId(objId);
     };
 
@@ -275,7 +276,8 @@ const AddServ = () => {
                     </div>
                 )}
                 {location.pathname === `/AddLoginServ/${UserPage}` ? (
-                    <Link to={`/`}>
+                    <Link to={`/SuccessfulServScreen/${UserPage}`} className={styles.endLoginServLink}>
+
                         <button className={styles.endLoginServ}>
                             <p>{"Завершить настройку"}</p>
                         </button>

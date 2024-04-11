@@ -120,13 +120,19 @@ exports.unlike = async (req, res) => {
 }
 
 exports.postDelete = async (req, res) => {
-    try{
-        // const post = await Post.findById(req.params.postId).select('postedBy');
-        // if(post.postedBy._id.toString() === req.user._id){
-            const deleted = await Post.findByIdAndRemove(req.params.ServId);
-            res.json(`DELETED SACSESS ${deleted}`);
-        // }
-    }catch (err){
-        console.log(err);
+    try {
+        const { ServId } = req.params;
+        console.log("Received postId:", ServId);
+        if (!ServId) {
+            return res.status(400).json("Invalid post ID");
+        }
+        const deleted = await Post.findByIdAndDelete(ServId);
+        if (!deleted) {
+            return res.status(404).json("Post not found");
+        }
+        res.json("Post deleted successfully");
+    } catch (err) {
+        console.error(err);
+        res.status(500).json("Internal Server Error");
     }
-}
+};

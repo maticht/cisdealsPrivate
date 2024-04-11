@@ -9,8 +9,12 @@ import TikTok from "../../img/TikTok.svg";
 import Instagram from "../../img/Instagram.svg";
 import WhatsApp from "../../img/WhatsApp.svg";
 import YouTube from "../../img/YouTube.svg";
+import close from "../../img/x-mark.svg"
 import "./UpdateSocial.css";
 import back from "../../img/Arrow_left.svg";
+import styles from "../addServ/styles.module.css";
+import plus from "../../img/Plus.svg";
+import arrow from "../../img/arrow_up=24.png";
 
 
 const UpdateContactInfo = () => {
@@ -53,7 +57,28 @@ const UpdateContactInfo = () => {
     });
 
     const handleChange = ({ currentTarget: input }) => {
-        setData({ ...data, [input.name]: input.value });
+        const { name, value } = input;
+        const socialNetwork = socialNetworks[name];
+        const realLink = socialNetwork.realLink;
+
+        if (name === "Telegram") {
+            if (value.startsWith("https://t.me/") || value.startsWith("t.me/")) {
+                const trimmedValue = value.replace("https://t.me/", "").replace("t.me/", "");
+                setData({ ...data, [name]: trimmedValue });
+                return;
+            } else if (value.length === 0) {
+                setData({ ...data, [name]: "" });
+                return;
+            }
+        }
+
+        if (value.startsWith(realLink)) {
+            const trimmedValue = value.replace(realLink, "");
+            setData({ ...data, [name]: trimmedValue });
+            return;
+        }
+
+        setData({ ...data, [name]: value });
     };
 
     const fetchUserProfile = async (userId) => {
@@ -95,6 +120,67 @@ const UpdateContactInfo = () => {
             console.log(err);
         }
     };
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    const openModal = () => {
+        setModalIsOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalIsOpen(false);
+    };
+    const [social, setSocial] = useState({
+        Facebook: false,
+        TikTok: false,
+        YouTube: false,
+        Instagram: false,
+        WhatsApp: false,
+        Telegram: false,
+        Viber: false,
+        LinkedIn: false,
+    });
+    const socialNetworks = {
+        Facebook: {
+            icon: Facebook,
+            link: "facebook.com/",
+            realLink: "https://www.facebook.com/",
+        },
+        LinkedIn: {
+            icon: LinkedIn,
+            link: "linkedin.com/in/",
+            realLink: "https://www.linkedin.com/in/",
+        },
+        Telegram: {
+            icon: Telegram,
+            link: "telegram.me/",
+            realLink: "https://telegram.me/",
+        },
+        TikTok: {
+            icon: TikTok,
+            link: "tiktok.com/",
+            realLink: "https://www.tiktok.com/",
+        },
+        YouTube: {
+            icon: YouTube,
+            link: "youtube.com/",
+            realLink: "https://www.youtube.com/",
+        },
+        Instagram: {
+            icon: Instagram,
+            link: "instagram.com/",
+            realLink: "https://www.instagram.com/",
+        },
+        WhatsApp: {
+            icon: WhatsApp,
+            link: "wa.me/",
+            realLink: "https://wa.me/",
+        },
+        Viber: {
+            icon: Viber,
+            link: "viber.com/",
+            realLink: "viber://add?number=",
+        },
+    };
 
     useEffect(() => {
         fetchUserProfile(UserPage);
@@ -106,7 +192,7 @@ const UpdateContactInfo = () => {
         console.log(data)
         try {
             const res = await updateProfile(UserPage, data);
-            localStorage.setItem("token",  JSON.stringify(res));
+            localStorage.setItem("token", JSON.stringify(res));
             console.log(localStorage.getItem("token"))
             if (location.pathname === `/AddSocialInfo/${UserPage}`) {
                 navigate(`/AddWorkingHours/${UserPage}`);
@@ -123,6 +209,23 @@ const UpdateContactInfo = () => {
                 setError(error.response.data.message);
             }
         }
+    };
+    const onSocialClickOff = (name) => {
+        setData((prevState) => ({
+            ...prevState,
+            [name]: name,
+        }));
+        setSocial((prevState) => ({
+            ...prevState,
+            [name]: false,
+        }));
+    };
+    const onSocialClickOn = (name) => {
+        setSocial((prevState) => ({
+            ...prevState,
+            [name]: true,
+        }));
+        closeModal();
     };
 
     useEffect(() => {
@@ -144,13 +247,27 @@ const UpdateContactInfo = () => {
 
         requestAnimationFrame(animateProgressBar);
     }, []);
+    const [socialNetworksWithValues, setSocialNetworksWithValues] = useState([]);
+    const [socialNetworksWithoutValues, setSocialNetworksWithoutValues] = useState([]);
+
+    useEffect(() => {
+        const withValues = Object.keys(socialNetworks).filter(
+            (name) => data[name] !== name && data[name] !== ''
+        );
+        const withoutValues = Object.keys(socialNetworks).filter(
+            (name) => data[name] === name || data[name] === ''
+        );
+
+        setSocialNetworksWithValues(withValues);
+        setSocialNetworksWithoutValues(withoutValues);
+    }, [data]);
 
     return (
         <div className={'social_container'}>
             <div className="main-container">
                 {location.pathname === `/AddSocialInfo/${UserPage}` && (
                     <div className="ProgressBarBlock">
-                        <div className="ProgressBarLine" ref={progressBarRef} style={{ width: `14%` }}>
+                        <div className="ProgressBarLine" ref={progressBarRef} style={{width: `14%`}}>
                         </div>
                     </div>
                 )}
@@ -158,113 +275,111 @@ const UpdateContactInfo = () => {
                       to={(location.pathname === `/AddSocialInfo/${UserPage}`)
                           ? `/AddContactInfo/${UserPage}`
                           : "/EditProfile"}>
-                    <img src={back} alt="back" />
+                    <img src={back} alt="back"/>
                     <p>Назад</p>
                 </Link>
                 <form className="form_container" onSubmit={handleSubmit} noValidate>
-                    <p className="form-heading">{(location.pathname === `/AddSocialInfo/${UserPage}`)
-                        ? "Добавление контактной информации"
-                        : "Изменение контактной информации"}</p>
+                    <p className="form-heading">{"Соцсети и мессенджеры"}</p>
                     <div className="form-content">
                         <div>
-                            <h5 className="form-sosial-label">Социальные сети</h5>
                             <div>
-                                <div className={'input'}>
-                                    <img src={Facebook} alt="Facebook" className={'input-icon'}/>
-                                    <input
-                                        type="text"
-                                        placeholder="Facebook"
-                                        name="Facebook"
-                                        onChange={handleChange}
-                                        value={data.Facebook === "Facebook" ? "" : data.Facebook}
-                                        required
-                                        className={'inputText'}
-                                    />
-                                </div>
-                                <div className={'input'}>
-                                    <img src={LinkedIn} alt="LinkedIn" className={'input-icon'}/>
-                                    <input
-                                        type="text"
-                                        placeholder="LinkedIn"
-                                        name="LinkedIn"
-                                        onChange={handleChange}
-                                        value={data.LinkedIn === "LinkedIn" ? "" : data.LinkedIn}
-                                        required
-                                        className={'inputText'}
-                                    />
-                                </div>
-                                <div className={'input'}>
-                                    <img src={Telegram} alt="Telegram" className={'input-icon'}/>
-                                    <input
-                                        type="text"
-                                        placeholder="Telegram"
-                                        name="Telegram"
-                                        onChange={handleChange}
-                                        value={data.Telegram === "Telegram" ? "" : data.Telegram}
-                                        required
-                                        className={'inputText'}
-                                    />
-                                </div>
-                                <div className={'input'}>
-                                    <img src={Viber} alt="Viber" className={'input-icon'}/>
-                                    <input
-                                        type="text"
-                                        placeholder="Viber"
-                                        name="Viber"
-                                        onChange={handleChange}
-                                        value={data.Viber === "Viber" ? "" : data.Viber}
-                                        required
-                                        className={'inputText'}
-                                    />
-                                </div>
-                                <div className={'input'} >
-                                    <img src={TikTok} alt="TikTok" className={'input-icon'}/>
-                                    <input
-                                        type="text"
-                                        placeholder="TikTok"
-                                        name="TikTok"
-                                        onChange={handleChange}
-                                        value={data.TikTok === "TikTok" ? "" : data.TikTok}
-                                        required
-                                        className={'inputText'}
-                                    />
-                                </div>
-                                <div className={'input'}>
-                                    <img src={Instagram} alt="Instagram" className={'input-icon'}/>
-                                    <input
-                                        type="text"
-                                        placeholder="Instagram"
-                                        name="Instagram"
-                                        onChange={handleChange}
-                                        value={data.Instagram === "Instagram" ? "" : data.Instagram}
-                                        required
-                                        className={'inputText'}
-                                    />
-                                </div>
-                                <div className={'input'}>
-                                    <img src={WhatsApp} alt="WhatsApp" className={'input-icon'}/>
-                                    <input
-                                        type="text"
-                                        placeholder="WhatsApp"
-                                        name="WhatsApp"
-                                        onChange={handleChange}
-                                        value={data.WhatsApp === "WhatsApp" ? "" : data.WhatsApp}
-                                        required
-                                        className={'inputText'}
-                                    />
-                                </div>
-                                <div className={'input'}>
-                                    <img src={YouTube} alt="YouTube" className={'input-icon'}/>
-                                    <input
-                                        type="text"
-                                        placeholder="YouTube"
-                                        name="YouTube"
-                                        onChange={handleChange}
-                                        value={data.YouTube === "YouTube" ? "" : data.YouTube}
-                                        required
-                                        className={'inputText'}
-                                    />
-                                </div>
+                                {socialNetworksWithValues.map((name) => (
+                                    <div key={name} className={'social-input'} data-name={name}>
+                                        <img
+                                            onClick={() => onSocialClickOff(name)}
+                                            src={close}
+                                            alt="x"
+                                            className={'input-close'}
+                                        />
+                                        <img src={socialNetworks[name].icon} alt={name} className={'input-icon'}/>
+                                        <p className={'link-head'}>{socialNetworks[name].link}</p>
+                                        <input
+                                            type="text"
+                                            placeholder={
+                                                socialNetworks[name].link.includes("viber.com/") ||
+                                                socialNetworks[name].link.includes("wa.me/")
+                                                    ? "48XXXXXXXXX"
+                                                    : "username"
+                                            }
+                                            name={name}
+                                            onChange={handleChange}
+                                            value={data[name] === name ? '' : data[name]}
+                                            required
+                                            className={'inputText'}
+                                        />
+                                    </div>
+                                ))}
+                                {socialNetworksWithoutValues.map((name) => (
+                                    social[name] && (
+                                        <div key={name} className={'social-input'} data-name={name}>
+                                            <img
+                                                onClick={() => onSocialClickOff(name)}
+                                                src={close}
+                                                alt="x"
+                                                className={'input-close'}
+                                            />
+                                            <img src={socialNetworks[name].icon} alt={name} className={'input-icon'}/>
+                                            <p className={'link-head'}>{socialNetworks[name].link}</p>
+                                            <input
+                                                type="text"
+                                                placeholder={
+                                                    socialNetworks[name].link.includes("viber.com/") ||
+                                                    socialNetworks[name].link.includes("wa.me/")
+                                                        ? "48XXXXXXXXX"
+                                                        : "username"
+                                                }
+                                                name={name}
+                                                onChange={handleChange}
+                                                value={data[name] === name ? '' : data[name]}
+                                                required
+                                                className={'inputText'}
+                                            />
+                                        </div>
+                                    )
+                                ))}
+                                <button type='button' className={'addSocialBtn'} onClick={openModal}>
+                                    <div className={'addSocialBtnBlock'}>
+                                        <img src={plus} alt={'+'}/>
+                                        <p>{"Добавить ссылку"}</p>
+                                    </div>
+                                </button>
+                                {modalIsOpen && (
+                                    <div className="social_modal">
+                                        <div className="social_container">
+                                            <div className="main-container">
+                                                <Link className="form-update-link" onClick={closeModal}>
+                                                    <img src={back} alt="back"/>
+                                                    <p>Назад</p>
+                                                </Link>
+                                                <form className="form_container" onSubmit={handleSubmit} noValidate>
+                                                    <p className="form-heading">{"Выберете соцсеть"}</p>
+                                                    <div className="form-link-content">
+                                                        <div>
+                                                            <div>
+                                                                {Object.keys(socialNetworks).map((name) => (
+                                                                    !social[name] && data[name] === name && (
+                                                                        <div key={name} onClick={() => onSocialClickOn(name)} className={'social-link-input'}
+                                                                             data-name={name}>
+                                                                            <div className={'link-head-icon'}>
+                                                                                <img src={socialNetworks[name].icon}
+                                                                                     alt={name}
+                                                                                     className={'input-icon'}/>
+                                                                                <p className={'link-head-text'}>{name}</p>
+                                                                            </div>
+                                                                            <img src={arrow}
+                                                                                 alt={name}
+                                                                                 className={'input-link-icon'}/>
+                                                                        </div>
+                                                                    )
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>

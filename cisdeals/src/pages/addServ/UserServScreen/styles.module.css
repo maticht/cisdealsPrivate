@@ -152,7 +152,21 @@ textarea::placeholder {
     border-radius: 5px;
     text-align: center;
 }
-
+.delete_serv_btn{
+    border: 2px solid #f34646;
+    outline: none;
+    align-items: center;
+    align-self: center;
+    padding: 10px 0;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 8px;
+    width: calc(100% - 20px);
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    color: #f34646;
+    margin: -15px 0 10px 0;
+}
 .white_btn,
 .green_btn {
     border: none;

@@ -1,5 +1,5 @@
 import './headerNavBar.css';
-import logo from '../../img/mainPageLogo.svg';
+import logo from '../../img/NasheLogo.svg';
 import {Link} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import noneAccBtn from '../../img/Frame.svg';

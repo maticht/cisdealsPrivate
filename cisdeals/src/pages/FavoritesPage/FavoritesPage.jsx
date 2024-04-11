@@ -46,7 +46,7 @@ const FavoritesPage = () => {
                     <div className={users.length === 1 ? 'onlyOneBestSpecialistsBlock' : 'oneBestSpecialistsBlock'}
                          key={user.id}>
                         <Link className="link-wrapper"
-                              to={`/AllCategories/Categories2/Categories3/Categories4/Все специалисты/${user._id}`}>
+                              to={`/UserPageScreen/${user._id}`}>
                             <div className="user-container">
                                 <div className="user-image-container">
                                     {(!user.image || user.image.length === 0 ? (

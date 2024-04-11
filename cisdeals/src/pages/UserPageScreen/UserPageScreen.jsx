@@ -177,6 +177,11 @@ const UserPage = (props, {link}) => {
             url: `https://telegram.me/share/url?url=${encodeURIComponent(`${sharingText}\n${currentUrl}`)}`
         },
         {
+            name: 'Instagram',
+            logo: Instagram,
+            url: `https://telegram.me/share/url?url=${encodeURIComponent(`${sharingText}\n${currentUrl}`)}`
+        },
+        {
             name: 'VK',
             logo: vklogo,
             url: `https://vk.com/share.php?url=${encodeURIComponent(`${currentUrl}`)}`
@@ -186,11 +191,11 @@ const UserPage = (props, {link}) => {
             logo: fblogo,
             url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${sharingText}\n${currentUrl}`)}`
         },
-        {
-            name: 'OK',
-            logo: oklogo,
-            url: `https://connect.ok.ru/offer?url=${encodeURIComponent(`${sharingText}\n${currentUrl}`)}`
-        },
+        // {
+        //     name: 'OK',
+        //     logo: oklogo,
+        //     url: `https://connect.ok.ru/offer?url=${encodeURIComponent(`${sharingText}\n${currentUrl}`)}`
+        // },
         {
             name: 'WhatsApp',
             logo: wtplogo,
@@ -263,7 +268,15 @@ useEffect(() => {
             console.log(err);
         }
     };
+    const [ThisIsMyAccountOpen, setThisIsMyAccountOpen] = useState(false);
 
+    const openModal = () => {
+        setThisIsMyAccountOpen(true);
+    };
+
+    const closeModal = () => {
+        setThisIsMyAccountOpen(false);
+    };
     const calculateAverageRating = (ratings) => {
         const sum = ratings.reduce((acc, rating) => acc + rating.value, 0);
         const average = sum / ratings.length;
@@ -272,6 +285,7 @@ useEffect(() => {
     };
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         fetchUserProfile(UserPage);
     }, [saved]);
 
@@ -585,113 +599,143 @@ useEffect(() => {
                 </div>
                 <div className="mainUserInfoBlocks">
                     <div className="mainUserPhotoContainer">
-                        <div className="mainUserInfoBlock">
-                            {!user.image || user.image.length === 0 ? null :
-                                <div className={'photosSliderBlock'}>
-                                    <div className="mainUserMainPhotoBlock">
-                                        {user.image && (
-                                            <img
-                                                style={{
-                                                    width: '100%',
-                                                    height: '100%',
-                                                    filter: 'blur(7px)',
-                                                    position: 'absolute',
-                                                }}
-                                                src={user.image[currentImageIndex]}
-                                                alt='User Image'
-                                            />
-                                        )}
-                                        {user.image && (
-                                            <div style={{
-                                                width: '100%',
-                                                height: '100%',
-                                                position: 'absolute',
-                                                display: 'flex',
-                                                justifyContent: 'center',
-                                                alignItems: 'center',
-                                                margin: '0 auto'
-                                            }}>
+                        <div>
+                            <div className="mainUserInfoBlock">
+                                {!user.image || user.image.length === 0 ? null :
+                                    <div className={'photosSliderBlock'}>
+                                        <div className="mainUserMainPhotoBlock">
+                                            {user.image && (
                                                 <img
-                                                    style={{maxWidth: '100%', maxHeight: '100%', objectFit: 'contain'}}
+                                                    style={{
+                                                        width: '100%',
+                                                        height: '100%',
+                                                        filter: 'blur(7px)',
+                                                        position: 'absolute',
+                                                        zIndex:'10'
+                                                    }}
                                                     src={user.image[currentImageIndex]}
                                                     alt='User Image'
                                                 />
-                                            </div>
-                                        )}
+                                            )}
+                                            {user.image && (
+                                                <div style={{
+                                                    width: '100%',
+                                                    height: '100%',
+                                                    position: 'absolute',
+                                                    display: 'flex',
+                                                    justifyContent: 'center',
+                                                    alignItems: 'center',
+                                                    margin: '0 auto',
+                                                    zIndex:'10'
+                                                }}>
+                                                    <img
+                                                        style={{maxWidth: '100%', maxHeight: '100%', objectFit: 'contain'}}
+                                                        src={user.image[currentImageIndex]}
+                                                        alt='User Image'
+                                                    />
+                                                </div>
+                                            )}
 
+                                        </div>
+                                        {user.image.length > 1 &&
+                                            <div
+                                                style={{
+                                                    width: '100%',
+                                                    display: 'flex',
+                                                    justifyContent: 'space-between',
+                                                    alignItems: 'center',
+                                                    marginTop: '10px'
+                                                }}
+                                            >
+                                                <div style={{
+                                                    marginLeft: '0px',
+                                                    width: '30px',
+                                                    height: '30px',
+                                                    display: 'flex',
+                                                    justifyContent: 'center',
+                                                    cursor:'pointer',
+                                                    alignItems: 'center'
+                                                }} onClick={handlePrevImage}>
+                                                    <img src={arrowDown} style={{rotate: '90deg'}} alt={'<'}/>
+                                                </div>
+                                                <div className={'smallUserPhotosBlock'} style={{
+                                                    display: 'flex',
+                                                    justifyContent: 'center',
+                                                    alignItems: 'center'
+                                                }}>
+                                                    {user.image.map((image, index) => {
+                                                        return (
+                                                            <div style={{
+                                                                width: '40px',
+                                                                height: '40px',
+                                                                border: currentImageIndex === index ? '2px solid #000' : 'none',
+                                                                margin: '0 4px',
+                                                                padding: '0.5px',
+                                                                borderRadius: '6px',
+                                                                cursor:'pointer',
+                                                                display: "flex",
+                                                                justifyContent: 'center',
+                                                                alignItems: 'center'
+                                                            }}>
+                                                                <img
+                                                                    key={index}
+                                                                    style={{
+                                                                        width: '40px',
+                                                                        height: '40px',
+                                                                        objectFit: 'cover',
+                                                                        borderRadius: '6px',
+                                                                        filter: 'blur(0.3px)'
+                                                                    }}
+                                                                    src={image}
+                                                                    alt='Preview'
+                                                                    onClick={() => setCurrentImageIndex(index)}
+                                                                />
+                                                            </div>
+                                                        );
+                                                    })}
+                                                </div>
+                                                <div style={{
+                                                    marginRight: '0px',
+                                                    width: '30px',
+                                                    height: '30px',
+                                                    display: 'flex',
+                                                    cursor:'pointer',
+                                                    justifyContent: 'center',
+                                                    alignItems: 'center'
+                                                }} onClick={handleNextImage}>
+                                                    <img src={arrowDown} style={{rotate: '-90deg'}} alt={'>'}/>
+                                                </div>
+                                            </div>
+                                        }
                                     </div>
-                                    {user.image.length > 1 &&
-                                        <div
-                                            style={{
-                                                width: '100%',
-                                                display: 'flex',
-                                                justifyContent: 'space-between',
-                                                alignItems: 'center',
-                                                marginTop: '10px'
-                                            }}
-                                        >
-                                            <div style={{
-                                                marginLeft: '0px',
-                                                width: '30px',
-                                                height: '30px',
-                                                display: 'flex',
-                                                justifyContent: 'center',
-                                                cursor:'pointer',
-                                                alignItems: 'center'
-                                            }} onClick={handlePrevImage}>
-                                                <img src={arrowDown} style={{rotate: '90deg'}} alt={'<'}/>
-                                            </div>
-                                            <div className={'smallUserPhotosBlock'} style={{
-                                                display: 'flex',
-                                                justifyContent: 'center',
-                                                alignItems: 'center'
-                                            }}>
-                                                {user.image.map((image, index) => {
-                                                    return (
-                                                        <div style={{
-                                                            width: '40px',
-                                                            height: '40px',
-                                                            border: currentImageIndex === index ? '2px solid #000' : 'none',
-                                                            margin: '0 4px',
-                                                            padding: '0.5px',
-                                                            borderRadius: '6px',
-                                                            cursor:'pointer',
-                                                            display: "flex",
-                                                            justifyContent: 'center',
-                                                            alignItems: 'center'
-                                                        }}>
-                                                            <img
-                                                                key={index}
-                                                                style={{
-                                                                    width: '40px',
-                                                                    height: '40px',
-                                                                    objectFit: 'cover',
-                                                                    borderRadius: '6px',
-                                                                    filter: 'blur(0.3px)'
-                                                                }}
-                                                                src={image}
-                                                                alt='Preview'
-                                                                onClick={() => setCurrentImageIndex(index)}
-                                                            />
-                                                        </div>
-                                                    );
-                                                })}
-                                            </div>
-                                            <div style={{
-                                                marginRight: '0px',
-                                                width: '30px',
-                                                height: '30px',
-                                                display: 'flex',
-                                                cursor:'pointer',
-                                                justifyContent: 'center',
-                                                alignItems: 'center'
-                                            }} onClick={handleNextImage}>
-                                                <img src={arrowDown} style={{rotate: '-90deg'}} alt={'>'}/>
+                                }
+                            </div>
+                            {UserPage && UserPage !== UserId && (
+                                <div className={'ThisIsMyAccount'} onClick={openModal}>
+                                    <button>Это мой аккаунт</button>
+                                </div>
+                            )}
+                            {ThisIsMyAccountOpen && (
+                                <div className="social_modal">
+                                    <div className="social_container">
+                                        <div className="main-container" style={{marginTop:'15px'}}>
+                                            <Link className="form-update-link" onClick={closeModal}>
+                                                <img src={back} alt="back"/>
+                                                <p>Назад</p>
+                                            </Link>
+                                            <div className="form_user_container">
+                                                <h3>{"Подтвердите свой аккаунт"}</h3>
+                                                <p>Напишите нам в Instagram и предоставьте как можно больше доказательств,
+                                                    что это ваш аккаунт</p>
+                                                <a className={'userInstagramBtn'}
+                                                   href={`https://www.instagram.com/nashedelo.pl?igsh=MW9sdTdqanFxbWZuOA==`} target="_blank">
+                                                    <p>Перейти в Instagram</p>
+                                                </a>
                                             </div>
                                         </div>
-                                    }
+                                    </div>
                                 </div>
-                            }
+                            )}
                         </div>
                         <div className={'deskContactBlock'}>
                             <h2 style={{margin:'15px 0'}}>Контакты</h2>
@@ -726,49 +770,49 @@ useEffect(() => {
                                     </p>
                                     <div>
                                         {user.Facebook !== 'Facebook' && (
-                                            <a href={user.Facebook} target="_blank">
+                                            <a href={"https://www.facebook.com/" + user.Facebook} target="_blank">
                                                 <img src={Facebook} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='Facebook'/>
                                             </a>
                                         )}
                                         {user.LinkedIn !== 'LinkedIn' && (
-                                            <a href={user.LinkedIn} target="_blank">
+                                            <a href={"https://www.linkedin.com/in/" + user.LinkedIn} target="_blank">
                                                 <img src={LinkedIn} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='LinkedIn'/>
                                             </a>
                                         )}
                                         {user.Instagram !== 'Instagram' && (
-                                            <a href={user.Instagram} target="_blank">
+                                            <a href={"https://www.instagram.com/" + user.Instagram} target="_blank">
                                                 <img src={Instagram} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='Instagram'/>
                                             </a>
                                         )}
                                         {user.Viber !== 'Viber' && (
-                                            <a href={user.Viber} target="_blank">
+                                            <a href={"viber://add?number=" + user.Viber} target="_blank">
                                                 <img src={Viber} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='Viber'/>
                                             </a>
                                         )}
                                         {user.Telegram !== 'Telegram' && (
-                                            <a href={user.Telegram} target="_blank">
+                                            <a href={"https://telegram.me/" + user.Telegram} target="_blank">
                                                 <img src={Telegram} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='Telegram'/>
                                             </a>
                                         )}
                                         {user.TikTok !== 'TikTok' && (
-                                            <a href={user.TikTok} target="_blank">
+                                            <a href={"https://www.tiktok.com/" + user.TikTok} target="_blank">
                                                 <img src={TikTok} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='TikTok'/>
                                             </a>
                                         )}
                                         {user.WhatsApp !== 'WhatsApp' && (
-                                            <a href={user.WhatsApp} target="_blank">
+                                            <a href={"https://wa.me/" + user.WhatsApp} target="_blank">
                                                 <img src={WhatsApp} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='WhatsApp'/>
                                             </a>
                                         )}
                                         {user.YouTube !== 'YouTube' && (
-                                            <a href={user.YouTube} target="_blank">
+                                            <a href={"https://www.youtube.com/" + user.YouTube} target="_blank">
                                                 <img src={YouTube} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='YouTube'/>
                                             </a>
@@ -819,11 +863,11 @@ useEffect(() => {
                                         <>
                                             {showDescription
                                                 ? user.description
-                                                : `${user.description?.slice(0, 40)}${
-                                                    user.description?.length > 40 ? "... " : " "
+                                                : `${user.description?.slice(0, 200)}${
+                                                    user.description?.length > 200 ? "... " : " "
                                                 }`}
 
-                                            {user.description?.length > 40 && (
+                                            {user.description?.length > 200 && (
                                                 <div>
                                                     <button
                                                         style={{
@@ -889,12 +933,6 @@ useEffect(() => {
                                     <p style={{margin: '5px 0', fontSize: '12px', color: '#666'}}>
                                         Адрес
                                     </p>
-                                    <p style={{margin: '5px 0', fontSize: '14px', color: '#000000', fontWeight:'600'}}>
-                                        {user?.workLocation === 'remote' ?
-                                            'Я работаю только удалённо или выезжаю на локацию клиента'
-                                            : 'У меня есть салон, офис или постоянная локация работы'
-                                        }
-                                    </p>
                                     <p style={{margin: '5px 0', fontWeight: '400'}}>
                                         {user?.street === 'street' ? null : `${user.street} `}
                                         {user?.house === 'house' ? null : `${user.house}`}
@@ -903,6 +941,14 @@ useEffect(() => {
                                         {user?.region === 'region' ? null : `${user.region}, `}
                                         {user?.zip === 'zip' ? null : `${user.zip}`}
                                     </p>
+                                    {user?.workLocation !== 'workLocation' && (
+                                        <p style={{margin: '5px 0', fontSize: '14px', color: '#696969'}}>
+                                            {user?.workLocation === 'remote' ?
+                                                'Возможно предоставление услуг удалённо'
+                                                : 'Без возможности удаленного предоставления услуг'
+                                            }
+                                        </p>
+                                    )}
                                 </div>
                                 <div style={{
                                     margin: '15px 0 0 0',
@@ -921,49 +967,55 @@ useEffect(() => {
                                                 Время работы
                                             </p>
                                             <p style={{margin: '5px 0', fontWeight: '400'}}>
-                                                ПН: {user.workingHoursMon?.startHours1 === '' ? ' - ' : `${user.workingHoursMon?.startHours1}:${user.workingHoursMon?.startMinutes1}-${user.workingHoursMon?.endHours1}:${user.workingHoursMon?.endMinutes1}`}
+                                                ПН: {user.workingHoursMon?.startHours1 === 'startHours1' ? ' - ' : `${user.workingHoursMon?.startHours1}
+                                                :${user.workingHoursMon?.startMinutes1}
+                                                -${user.workingHoursMon?.endHours1}
+                                                :${user.workingHoursMon?.endMinutes1}`}
                                             </p>
                                             <p style={{
                                                 margin: '5px 0',
                                                 fontWeight: '400',
                                                 display: showWorkTime ? 'flex' : 'none'
                                             }}>
-                                                ВТ: {user.workingHoursTue?.startHours2 === '' ? ' - ' : `${user.workingHoursTue?.startHours2}:${user.workingHoursTue?.startMinutes2}-${user.workingHoursTue?.endHours2}:${user.workingHoursTue?.endMinutes2}`}
+                                                ВТ: {user.workingHoursTue?.startHours2 === 'startHours2' ? ' - ' : `${user.workingHoursTue?.startHours2}
+                                                :${user.workingHoursTue?.startMinutes2}
+                                                -${user.workingHoursTue?.endHours2}
+                                                :${user.workingHoursTue?.endMinutes2}`}
                                             </p>
                                             <p style={{
                                                 margin: '5px 0',
                                                 fontWeight: '400',
                                                 display: showWorkTime ? 'flex' : 'none'
                                             }}>
-                                                СР: {user.workingHoursWed?.startHours3 === '' ? ' - ' : `${user.workingHoursWed?.startHours3}:${user.workingHoursWed?.startMinutes3}-${user.workingHoursWed?.endHours3}:${user.workingHoursWed?.endMinutes3}`}
+                                                СР: {user.workingHoursWed?.startHours3 === 'startHours3' ? ' - ' : `${user.workingHoursWed?.startHours3}:${user.workingHoursWed?.startMinutes3}-${user.workingHoursWed?.endHours3}:${user.workingHoursWed?.endMinutes3}`}
                                             </p>
                                             <p style={{
                                                 margin: '5px 0',
                                                 fontWeight: '400',
                                                 display: showWorkTime ? 'flex' : 'none'
                                             }}>
-                                                ЧТ: {user.workingHoursThu?.startHours4 === '' ? ' - ' : `${user.workingHoursThu?.startHours4}:${user.workingHoursThu?.startMinutes4}-${user.workingHoursThu?.endHours4}:${user.workingHoursThu?.endMinutes4}`}
+                                                ЧТ: {user.workingHoursThu?.startHours4 === 'startHours4' ? ' - ' : `${user.workingHoursThu?.startHours4}:${user.workingHoursThu?.startMinutes4}-${user.workingHoursThu?.endHours4}:${user.workingHoursThu?.endMinutes4}`}
                                             </p>
                                             <p style={{
                                                 margin: '5px 0',
                                                 fontWeight: '400',
                                                 display: showWorkTime ? 'flex' : 'none'
                                             }}>
-                                                ПТ: {user.workingHoursFri?.startHours5 === '' ? ' - ' : `${user.workingHoursFri?.startHours5}:${user.workingHoursFri?.startMinutes5}-${user.workingHoursFri?.endHours5}:${user.workingHoursFri?.endMinutes5}`}
+                                                ПТ: {user.workingHoursFri?.startHours5 === 'startHours5' ? ' - ' : `${user.workingHoursFri?.startHours5}:${user.workingHoursFri?.startMinutes5}-${user.workingHoursFri?.endHours5}:${user.workingHoursFri?.endMinutes5}`}
                                             </p>
                                             <p style={{
                                                 margin: '5px 0',
                                                 fontWeight: '400',
                                                 display: showWorkTime ? 'flex' : 'none'
                                             }}>
-                                                СБ: {user.workingHoursSat?.startHours6 === '' ? ' - ' : `${user.workingHoursSat?.startHours6}:${user.workingHoursSat?.startMinutes6}-${user.workingHoursSat?.endHours6}:${user.workingHoursSat?.endMinutes6}`}
+                                                СБ: {user.workingHoursSat?.startHours6 === 'startHours6' ? ' - ' : `${user.workingHoursSat?.startHours6}:${user.workingHoursSat?.startMinutes6}-${user.workingHoursSat?.endHours6}:${user.workingHoursSat?.endMinutes6}`}
                                             </p>
                                             <p style={{
                                                 margin: '5px 0',
                                                 fontWeight: '400',
                                                 display: showWorkTime ? 'flex' : 'none'
                                             }}>
-                                                ВС: {user.workingHoursSun?.startHours7 === '' ? ' - ' : `${user.workingHoursSun?.startHours7}:${user.workingHoursSun?.startMinutes7}-${user.workingHoursSun?.endHours7}:${user.workingHoursSun?.endMinutes7}`}
+                                                ВС: {user.workingHoursSun?.startHours7 === 'startHours7' ? ' - ' : `${user.workingHoursSun?.startHours7}:${user.workingHoursSun?.startMinutes7}-${user.workingHoursSun?.endHours7}:${user.workingHoursSun?.endMinutes7}`}
                                             </p>
                                             <div>
                                                 <button
@@ -1036,8 +1088,8 @@ useEffect(() => {
                                                 return acc;
                                             }, {})
                                         ).map(([parent, data]) => (
-                                            <div key={parent} style={{width: '100%'}}>
-                                                <h3 style={{margin: '10px 0 5px 10px'}}>{parent}</h3>
+                                            <div key={parent} style={{width: '100%',marginBottom:'0px'}}>
+                                                <h3 style={{margin: '20px 0 0px 10px'}}>{parent}</h3>
                                                 {data.map((obj, arr, index) => (
 
                                                     <div key={obj.title}
@@ -1168,49 +1220,49 @@ useEffect(() => {
                                     </p>
                                     <div>
                                         {user.Facebook !== 'Facebook' && (
-                                            <a href={user.Facebook} target="_blank">
+                                            <a href={"https://www.facebook.com/" + user.Facebook} target="_blank">
                                                 <img src={Facebook} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='Facebook'/>
                                             </a>
                                         )}
                                         {user.LinkedIn !== 'LinkedIn' && (
-                                            <a href={user.LinkedIn} target="_blank">
+                                            <a href={"https://www.linkedin.com/in/" + user.LinkedIn} target="_blank">
                                                 <img src={LinkedIn} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='LinkedIn'/>
                                             </a>
                                         )}
                                         {user.Instagram !== 'Instagram' && (
-                                            <a href={user.Instagram} target="_blank">
+                                            <a href={"https://www.instagram.com/" + user.Instagram} target="_blank">
                                                 <img src={Instagram} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='Instagram'/>
                                             </a>
                                         )}
                                         {user.Viber !== 'Viber' && (
-                                            <a href={user.Viber} target="_blank">
+                                            <a href={"viber://add?number=" + user.Viber} target="_blank">
                                                 <img src={Viber} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='Viber'/>
                                             </a>
                                         )}
                                         {user.Telegram !== 'Telegram' && (
-                                            <a href={user.Telegram} target="_blank">
+                                            <a href={"https://telegram.me/" + user.Telegram} target="_blank">
                                                 <img src={Telegram} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='Telegram'/>
                                             </a>
                                         )}
                                         {user.TikTok !== 'TikTok' && (
-                                            <a href={user.TikTok} target="_blank">
+                                            <a href={"https://www.tiktok.com/" + user.TikTok} target="_blank">
                                                 <img src={TikTok} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='TikTok'/>
                                             </a>
                                         )}
                                         {user.WhatsApp !== 'WhatsApp' && (
-                                            <a href={user.WhatsApp} target="_blank">
+                                            <a href={"https://wa.me/" + user.WhatsApp} target="_blank">
                                                 <img src={WhatsApp} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='WhatsApp'/>
                                             </a>
                                         )}
                                         {user.YouTube !== 'YouTube' && (
-                                            <a href={user.YouTube} target="_blank">
+                                            <a href={"https://www.youtube.com/" + user.YouTube} target="_blank">
                                                 <img src={YouTube} width="23px" height="23px"
                                                      style={{marginRight: '10px',}} alt='YouTube'/>
                                             </a>

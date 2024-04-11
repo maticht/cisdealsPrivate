@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import searchBtn from "../../img/search.svg";
 import './searchScreen.css';
 import CategoriesJSON from '../../data/searchcategories.json';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 import noneUserLogo from "../../img/noneUserLogoSq.svg";
 import {getAllUsers} from "../../httpRequests/cisdealsApi";
@@ -23,6 +23,7 @@ const SearchScreen = () => {
     const [results, setResults] = useState(data);
     const [modalOpen, setModalOpen] = useState(false);
     const [res, setRes] = useState();
+    const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('category');
     const [users, setUsers] = useState([]);
 
@@ -74,6 +75,16 @@ const SearchScreen = () => {
         setSearchTerm(e.target.value);
         setResults(search(data, e.target.value));
     };
+    const handleSearch = () => {
+        const results = search(data, searchTerm);
+        setResults(results);
+        navigate(`/${searchTerm}`);
+    };
+    const handleKeyDown = (e) => {
+        if (e.keyCode === 13) {
+            handleSearch();
+        }
+    };
     const handleSearchTermUserChange = e => {
         const searchTerm = e.target.value;
         const filteredUsers = users.filter(user => {
@@ -114,6 +125,11 @@ const SearchScreen = () => {
         setActiveTab(tab);
         setSearchTerm('');
     };
+    const inputRef = useRef(null);
+
+    useEffect(() => {
+        inputRef.current.focus();
+    }, []);
 
 
     return (
@@ -130,8 +146,8 @@ const SearchScreen = () => {
                         <div className={'searchBlock pageSearchBlock'}>
                             <input type="text" value={searchTerm}
                                    onChange={activeTab === 'category' ? handleSearchTermChange : handleSearchTermUserChange}
-                                   className={'searchFilterFld'} placeholder={'Введите запрос'}/>
-                            <button className={'searchBtn'}>
+                                   className={'searchFilterFld'} placeholder={'Введите запрос'} ref={inputRef}/>
+                            <button className={'searchScreenBtn'} onClick={handleSearch} onKeyDown={handleKeyDown}>
                                 <img src={searchBtn} className="App-logo" alt="logo"/>
                             </button>
                         </div>
@@ -156,7 +172,7 @@ const SearchScreen = () => {
                                         >
                                             <Link
                                                 className="OneCategoryItem"
-                                                to={`/AllCategories/:Categories2/:Categories3/:Categories4/${item.title}`}
+                                                to={`/${item.title}`}
                                                 onClick={() => setModalOpen(false)}
                                             >
                                                 <h5>{item.title}</h5>
@@ -175,7 +191,7 @@ const SearchScreen = () => {
                                         <div key={user._id} className="userSearchItem">
                                             <Link
                                                 className="OneCategoryItem"
-                                                to={`/AllCategories/:Categories2/:Categories3/:Categories4/Все специалисты/${user._id}`}
+                                                to={`/UserPageScreen/${user._id}`}
                                                 onClick={() => setModalOpen(false)}
                                             >
                                                 <div className={"userContentContainer"}>

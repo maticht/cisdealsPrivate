@@ -34,12 +34,24 @@ function SortedServicesScreen() {
                 if (modalResult && modalResult !== "Польше") {
                     sortedUsers = sortedUsers.filter((user) => user.city === modalResult);
                 }
+                const countMatches = (service, SortedCategories) => {
+                    // Remove spaces from both service and SortedCategories
+                    const lowerService = service.replace(/\s/g, '').toLowerCase();
+                    const lowerCategory = SortedCategories.replace(/\s/g, '').toLowerCase();
 
-                if (SortedCategories && SortedCategories !== "AllSpecialists") {
-                    sortedUsers = sortedUsers.filter((user) => {
-                        return user.services.split(",").some(service => service.trim().toLowerCase() === SortedCategories.trim().toLowerCase())
-                    });
-                    console.log("После сортировки", sortedUsers)
+                    return lowerService.split("").filter((char, i) => char === lowerCategory.charAt(i)).length;
+                };
+
+                sortedUsers = sortedUsers.filter((user) => {
+                    const serviceMatches = user.services.split(",").map((service) => countMatches(service, SortedCategories));
+                    return serviceMatches.some((matches) => matches >= 4);
+
+
+                    // sortedUsers.sort((userA, userB) => {
+                    //     const serviceMatchesA = userA.services.split(",").map((service) => countMatches(service, SortedCategories));
+                    //     const serviceMatchesB = userB.services.split(",").map((service) => countMatches(service, SortedCategories));
+                    //     return serviceMatchesB.reduce((acc, cur) => acc + cur) - serviceMatchesA.reduce((acc, cur) => acc + cur);
+                    // });
                     //
                     // const categoryInfo = CategoriesJSON.find((category) => category.categoriestitle === SortedCategories);
                     // if (categoryInfo && categoryInfo.subcategories) {
@@ -47,8 +59,7 @@ function SortedServicesScreen() {
                     //         sortedUsers = sortedUsers.filter((user) => user.services.includes(subcategory.title));
                     //     });
                     // }
-                }
-
+                });
                 setUsers(sortedUsers);
                 localStorage.getItem("token");
                 setIsLoading(false);
@@ -144,9 +155,11 @@ function SortedServicesScreen() {
                                                         <div>
                                                             <p className="user-name">{user.nameOrCompany}</p>
                                                             <p className="user-activity">
-                                                                {user.areasActivity === 'areasActivity' || user.areasActivity === '' ?
+                                                                {user.services === 'services' || user.services === '' ?
                                                                     'Услуги не добавлены'
-                                                                    : user.areasActivity.length > 28 ? `${user.areasActivity.slice(0, 28)}...` : user.areasActivity
+                                                                    : user.services.length > (window.innerWidth <= 360 ? 40 : window.innerWidth <= 540 ? 82 : window.innerWidth <= 700 ? 40 : 82) ?
+                                                                        `${user.services.split(",").filter((service, i, arr) => arr.indexOf(service) === i).join(", ").slice(0, (window.innerWidth <= 360 ? 40 : window.innerWidth <= 540 ? 82 : window.innerWidth <= 700 ? 40 : 82))}...`
+                                                                        : user.services.split(",").filter((service, i, arr) => arr.indexOf(service) === i).join(", ")
                                                                 }
                                                             </p>
                                                         </div>
