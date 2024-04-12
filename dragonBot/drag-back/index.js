@@ -4,7 +4,7 @@ const cors = require('cors');
 
 const token = '6895696224:AAFr_BxgvsWjv4ur_5_rgzv4P1vCrLnhQRQ';
 const webAppUrl = 'https://drag-front.vercel.app/';
-
+// 'https://drag-front.vercel.app/'
 const bot = new TelegramBot(token, {polling: true});
 const app = express();
 
@@ -34,7 +34,7 @@ app.post('/web-data', async (req, res) => {
             id: queryId,
             title: 'Хорошая игра',
             input_message_content: {
-                message_text: `Ваш счет ${count}`
+                message_text: `Ваш счет 7 ${count}`
             }
         })
         return res.status(200).json({});
