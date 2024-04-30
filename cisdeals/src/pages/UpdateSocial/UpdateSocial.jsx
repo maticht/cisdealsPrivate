@@ -87,6 +87,7 @@ const UpdateContactInfo = () => {
             console.log(data.profile);
             setData({
                 firstName: "",
+                email:"",
                 lastName: "",
                 password: "",
                 nameOrCompany: "",

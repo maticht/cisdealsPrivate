@@ -14,6 +14,7 @@ const SuccessfulServScreen = () => {
     const [data, setData] = useState({
         firstName: "",
         lastName: "",
+        email:"",
         password: "",
         nameOrCompany: "",
         areasActivity: "",

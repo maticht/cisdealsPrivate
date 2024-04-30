@@ -74,7 +74,7 @@ const UpdateContactInfo = () => {
                 savedUsers: [],
                 likes: "",
                 rating: "",
-                email: data.profile.email ,
+                email: "",
                 phone1: data.profile.phone1 ,
                 phone2: data.profile.phone2,
             });
@@ -97,10 +97,10 @@ const UpdateContactInfo = () => {
         console.log(profileData.email);
         try {
             let requestData = { ...data };
-            if (profileData.email === data.email) {
-                const { email, ...rest } = requestData;
-                requestData = { ...rest };
-            }
+            // if (profileData.email === data.email) {
+            //     const { email, ...rest } = requestData;
+            //     requestData = { ...rest };
+            // }
             const res = await updateProfile(UserPage, requestData);
             localStorage.setItem("token", JSON.stringify(res));
             console.log(localStorage.getItem("token"));
@@ -163,16 +163,21 @@ const UpdateContactInfo = () => {
                     </p>
                     <div className="form-contact-content">
                         <div>
-                            <h5 className="form-label">Email</h5>
-                            <input
-                                type="email"
-                                placeholder="Email"
-                                name="email"
-                                onChange={handleChange}
-                                value={data.email}
-                                required
-                                className={'contact_input'}
-                            />
+                            {/*{location.pathname !== `/AddContactInfo/${UserPage}` && (*/}
+                            {/*    <div>*/}
+                            {/*        <h5 className="form-label">Email</h5>*/}
+                            {/*        <input*/}
+                            {/*            type="email"*/}
+                            {/*            placeholder="Email"*/}
+                            {/*            name="email"*/}
+                            {/*            onChange={handleChange}*/}
+                            {/*            value={data.email}*/}
+                            {/*            required*/}
+                            {/*            className={'contact_input'}*/}
+                            {/*        />*/}
+                            {/*    </div>*/}
+                            {/*)}*/}
+
                             <h5 className="form-label">Номер телефона</h5>
                             <input
                                 type="text"

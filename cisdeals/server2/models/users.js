@@ -53,11 +53,8 @@ router.post("/", async (req, res) => {
     try {
         const { error } = validate(req.body);
         console.log(error);
-        if (error) return res.status(400).send({ message: error.details[0].message });
             let user = await User.findOne({ email: req.body.email });
-            if (user) return res
-                .status(409)
-                .send({ message: "Пользователь с указанным адресом электронной почты уже существует!" });
+            if (user) return res.status(409).send({ message: "Пользователь с указанным адресом электронной почты уже существует!" });
             const salt = await bcrypt.genSalt(Number(process.env.SALT));
             const hashPassword = await bcrypt.hash(req.body.password, salt);
         user = await new User({ ...req.body, password: hashPassword }).save();

@@ -23,6 +23,7 @@ const UpdateWorkingHours = () => {
         firstName: "",
         lastName: "",
         password: "",
+        email: "",
         nameOrCompany: "",
         areasActivity: "",
         phone1: "",
@@ -183,6 +184,7 @@ const UpdateWorkingHours = () => {
             console.log(data.profile);
             setData({
                 firstName: "",
+                email:"",
                 lastName: "",
                 password: "",
                 nameOrCompany: "",

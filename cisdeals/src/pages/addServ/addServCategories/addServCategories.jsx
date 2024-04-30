@@ -38,6 +38,7 @@ const AddServCategories = () => {
     const [userData, setUserData] = useState({
         firstName: "",
         lastName: "",
+        email:"",
         password: "",
         nameOrCompany: "",
         areasActivity: "",
@@ -69,6 +70,7 @@ const AddServCategories = () => {
     const [userDataForAreasActivity, setUserDataForAreasActivity] = useState({
         firstName: "",
         lastName: "",
+        email:"",
         password: "",
         nameOrCompany: "",
         areasActivity: "",

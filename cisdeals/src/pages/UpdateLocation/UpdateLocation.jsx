@@ -69,6 +69,7 @@ const UpdateLocation = () => {
                 areasActivity: "",
                 image: [],
                 Facebook: "",
+                email:"",
                 TikTok: "",
                 YouTube: "",
                 Instagram: "",

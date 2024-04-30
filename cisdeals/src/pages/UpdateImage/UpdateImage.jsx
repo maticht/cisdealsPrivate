@@ -13,6 +13,7 @@ const UpdateImage = () => {
         firstName: "",
         lastName: "",
         password: "",
+        email:"",
         nameOrCompany: "",
         areasActivity: "",
         phone1: "",

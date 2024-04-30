@@ -166,7 +166,7 @@ const Signup = () => {
                         </button>
                     </div>
                 </div>
-                {error && <div className={styles.error_msg}>{error}</div>}
+                {error && <div className={styles.error_msg}>{error === 'Request failed with status code 409' ? "Пользователь с указанным адресом электронной почты уже существует!" : error}</div>}
                 {msg && <div className={styles.success_msg}>{msg}</div>}
                 <button type="submit" className={styles.create_btn}>
                     Создать аккаунт

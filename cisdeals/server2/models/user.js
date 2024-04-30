@@ -67,7 +67,7 @@ const validate = (data) => {
         firstName: Joi.string().required().empty('').label("firstName").options({ allowUnknown: true }),
         lastName: Joi.string().required().empty('').label("lastName").options({ allowUnknown: true }),
         email: Joi.string().email().required().label("Email").options({ allowUnknown: true }),
-        password: passwordComplexity().required().label("Password").options({ allowUnknown: true }),
+        password: Joi.string().required().label("Password").options({ allowUnknown: true }),
         nameOrCompany:  Joi.string().required().label("Name Or Company").options({ allowUnknown: true }),
         areasActivity:  Joi.string().empty('').required().label("Areas Activity").options({ allowUnknown: true }),
         city: Joi.string().required().empty('').label("City").options({ allowUnknown: true }),

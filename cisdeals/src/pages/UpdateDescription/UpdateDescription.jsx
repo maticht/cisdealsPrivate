@@ -80,6 +80,7 @@ const UpdateDescription = () => {
                 services: "",
                 price: "",
                 savedUsers: [],
+                email:"",
                 likes: "",
                 rating: "",
                 phone1: "",

@@ -23,6 +23,7 @@ const AddServ = () => {
     const [userData, setUserData] = useState({
         firstName: "",
         lastName: "",
+        email:"",
         password: "",
         nameOrCompany: "",
         areasActivity: "",
