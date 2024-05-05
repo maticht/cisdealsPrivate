@@ -4,26 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6eea2a8-a71a-4a55-a54d-7aad55c35258" name="Changes" comment="store hummer">
-      <change afterPath="$PROJECT_DIR$/src/components/space/space.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/space/space.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navBar/navBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navBar/navBar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navBar/navBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navBar/navBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/httpRequests/dragonEggApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/httpRequests/dragonEggApi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/httpRequests/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/httpRequests/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/background/walletbg.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/background/walletbg.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/homeScreen/homeScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/homeScreen/homeScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/homeScreen/mainScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/homeScreen/mainScreen.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/profileScreen/profileScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profileScreen/profileScreen.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/profileScreen/profileScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profileScreen/profileScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/shareScreen/shareScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/shareScreen/shareScreen.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/shareScreen/shareScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/shareScreen/shareScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/storeScreen/storeScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/storeScreen/storeScreen.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/storeScreen/storeScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/storeScreen/storeScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/walletScreen/walletScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/walletScreen/walletScreen.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/walletScreen/walletScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/walletScreen/walletScreen.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="c6eea2a8-a71a-4a55-a54d-7aad55c35258" name="Changes" comment="store hummer" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,7 +40,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/web/dragonBot/drag-front/src/components",
+    "last_opened_file_path": "D:/web/dragonBot/drag-back",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -104,7 +85,8 @@
       <workItem from="1714723392239" duration="174000" />
       <workItem from="1714723574686" duration="5595000" />
       <workItem from="1714758248715" duration="2895000" />
-      <workItem from="1714807000541" duration="23883000" />
+      <workItem from="1714807000541" duration="26230000" />
+      <workItem from="1714899979703" duration="3651000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -298,7 +280,71 @@
       <option name="project" value="LOCAL" />
       <updated>1714515067491</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="store hummer">
+      <option name="closed" value="true" />
+      <created>1714855372090</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1714855372090</updated>
+    </task>
+    <task id="LOCAL-00026" summary="store hummer">
+      <option name="closed" value="true" />
+      <created>1714855398123</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1714855398123</updated>
+    </task>
+    <task id="LOCAL-00027" summary="store hummer">
+      <option name="closed" value="true" />
+      <created>1714855468486</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1714855468486</updated>
+    </task>
+    <task id="LOCAL-00028" summary="store hummer">
+      <option name="closed" value="true" />
+      <created>1714855644805</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1714855644805</updated>
+    </task>
+    <task id="LOCAL-00029" summary="store hummer">
+      <option name="closed" value="true" />
+      <created>1714855874444</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1714855874444</updated>
+    </task>
+    <task id="LOCAL-00030" summary="store hummer">
+      <option name="closed" value="true" />
+      <created>1714856319111</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1714856319111</updated>
+    </task>
+    <task id="LOCAL-00031" summary="store hummer">
+      <option name="closed" value="true" />
+      <created>1714911632869</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1714911632869</updated>
+    </task>
+    <task id="LOCAL-00032" summary="store hummer">
+      <option name="closed" value="true" />
+      <created>1714914463141</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1714914463141</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
