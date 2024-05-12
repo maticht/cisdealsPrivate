@@ -4,7 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6eea2a8-a71a-4a55-a54d-7aad55c35258" name="Changes" comment="store hummer" />
+    <list default="true" id="c6eea2a8-a71a-4a55-a54d-7aad55c35258" name="Changes" comment="front and icons">
+      <change afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/modals/ComingSoonModal/ComingSoonModal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/modals/ComingSoonModal/ComingSoonModal.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/modals/newEggModal/newEggModal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/modals/newEggModal/newEggModal.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/topUsersScreen/topUsersScreen.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/topUsersScreen/topUsersScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navBar/navBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navBar/navBar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navBar/navBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navBar/navBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/space/space.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/space/space.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/httpRequests/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/httpRequests/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/homeScreen/homeScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/homeScreen/homeScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/homeScreen/mainScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/homeScreen/mainScreen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/profileScreen/profileScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profileScreen/profileScreen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/profileScreen/profileScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profileScreen/profileScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/shareScreen/shareScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/shareScreen/shareScreen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/storeScreen/storeScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/storeScreen/storeScreen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/storeScreen/storeScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/storeScreen/storeScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/walletScreen/walletScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/walletScreen/walletScreen.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,10 +75,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\web\dragonBot\drag-front\src\pages" />
+      <recent name="D:\web\dragonBot\drag-front\src\components\modals" />
       <recent name="D:\web\dragonBot\drag-front\src\components" />
       <recent name="D:\web\dragonBot\drag-front\drag-front\src\pages\profileScreen" />
       <recent name="D:\web\dragonBot\drag-front\drag-front\src\pages\storeScreen" />
-      <recent name="D:\web\dragonBot\drag-front\drag-front\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\web\dragonBot\drag-front\drag-front\src\img" />
@@ -86,7 +108,19 @@
       <workItem from="1714723574686" duration="5595000" />
       <workItem from="1714758248715" duration="2895000" />
       <workItem from="1714807000541" duration="26230000" />
-      <workItem from="1714899979703" duration="3651000" />
+      <workItem from="1714899979703" duration="4384000" />
+      <workItem from="1714918155039" duration="15488000" />
+      <workItem from="1714948908067" duration="10977000" />
+      <workItem from="1714995235555" duration="1291000" />
+      <workItem from="1715066385033" duration="5582000" />
+      <workItem from="1715111652767" duration="10313000" />
+      <workItem from="1715337263654" duration="1798000" />
+      <workItem from="1715345180730" duration="5273000" />
+      <workItem from="1715371371826" duration="4151000" />
+      <workItem from="1715418405850" duration="9117000" />
+      <workItem from="1715447973497" duration="1204000" />
+      <workItem from="1715521589800" duration="2263000" />
+      <workItem from="1715547915089" duration="2655000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -344,7 +378,47 @@
       <option name="project" value="LOCAL" />
       <updated>1714914463141</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="store hummer">
+      <option name="closed" value="true" />
+      <created>1714916587058</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1714916587058</updated>
+    </task>
+    <task id="LOCAL-00034" summary="store hummer">
+      <option name="closed" value="true" />
+      <created>1714921249564</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1714921249564</updated>
+    </task>
+    <task id="LOCAL-00035" summary="referral ,">
+      <option name="closed" value="true" />
+      <created>1714966022895</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1714966022895</updated>
+    </task>
+    <task id="LOCAL-00036" summary="front and icons">
+      <option name="closed" value="true" />
+      <created>1715071907944</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1715071907944</updated>
+    </task>
+    <task id="LOCAL-00037" summary="front and icons">
+      <option name="closed" value="true" />
+      <created>1715071920768</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1715071920768</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -365,6 +439,8 @@
     <MESSAGE value="test" />
     <MESSAGE value="w" />
     <MESSAGE value="store hummer" />
-    <option name="LAST_COMMIT_MESSAGE" value="store hummer" />
+    <MESSAGE value="referral ," />
+    <MESSAGE value="front and icons" />
+    <option name="LAST_COMMIT_MESSAGE" value="front and icons" />
   </component>
 </project>
