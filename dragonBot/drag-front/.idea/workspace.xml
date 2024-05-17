@@ -4,28 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6eea2a8-a71a-4a55-a54d-7aad55c35258" name="Changes" comment="front and icons">
-      <change afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modals/ComingSoonModal/ComingSoonModal.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modals/ComingSoonModal/ComingSoonModal.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modals/newEggModal/newEggModal.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modals/newEggModal/newEggModal.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/topUsersScreen/topUsersScreen.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/topUsersScreen/topUsersScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navBar/navBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navBar/navBar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navBar/navBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navBar/navBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/space/space.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/space/space.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/httpRequests/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/httpRequests/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/homeScreen/homeScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/homeScreen/homeScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/homeScreen/mainScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/homeScreen/mainScreen.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/profileScreen/profileScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profileScreen/profileScreen.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/profileScreen/profileScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profileScreen/profileScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/shareScreen/shareScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/shareScreen/shareScreen.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/storeScreen/storeScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/storeScreen/storeScreen.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/storeScreen/storeScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/storeScreen/storeScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/walletScreen/walletScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/walletScreen/walletScreen.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="c6eea2a8-a71a-4a55-a54d-7aad55c35258" name="Changes" comment="front and icons" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,22 +36,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/web/dragonBot/drag-back",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2023.3.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/web/dragonBot/drag-front&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2023.3.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\web\dragonBot\drag-front\src\pages" />
@@ -120,7 +99,11 @@
       <workItem from="1715418405850" duration="9117000" />
       <workItem from="1715447973497" duration="1204000" />
       <workItem from="1715521589800" duration="2263000" />
-      <workItem from="1715547915089" duration="2655000" />
+      <workItem from="1715547915089" duration="3263000" />
+      <workItem from="1715574757682" duration="170000" />
+      <workItem from="1715860948376" duration="1663000" />
+      <workItem from="1715889793463" duration="783000" />
+      <workItem from="1715894819343" duration="589000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -418,7 +401,39 @@
       <option name="project" value="LOCAL" />
       <updated>1715071920768</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="front and icons">
+      <option name="closed" value="true" />
+      <created>1715552473813</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1715552473813</updated>
+    </task>
+    <task id="LOCAL-00039" summary="front and icons">
+      <option name="closed" value="true" />
+      <created>1715574836492</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1715574836492</updated>
+    </task>
+    <task id="LOCAL-00040" summary="front and icons">
+      <option name="closed" value="true" />
+      <created>1715889848257</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1715889848257</updated>
+    </task>
+    <task id="LOCAL-00041" summary="front and icons">
+      <option name="closed" value="true" />
+      <created>1715889897721</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1715889897721</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
