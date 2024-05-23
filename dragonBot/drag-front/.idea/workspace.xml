@@ -5,19 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6eea2a8-a71a-4a55-a54d-7aad55c35258" name="Changes" comment="front and icons">
-      <change afterPath="$PROJECT_DIR$/src/components/modals/newEggRarity/newEggRarity.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modals/newEggRarity/newEggRarity.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/alchemistScreen/alchemistScreen.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/alchemistScreen/alchemistScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modals/DailyRewardModal/DailyRewardModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/DailyRewardModal/DailyRewardModal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/httpRequests/dragonEggApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/httpRequests/dragonEggApi.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/httpRequests/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/httpRequests/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/background/alchemistRoom.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/background/alchemistRoom.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/homeScreen/mainScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/homeScreen/mainScreen.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/shareScreen/shareScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/shareScreen/shareScreen.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/shareScreen/shareScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/shareScreen/shareScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/alchemistScreen/alchemistScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/alchemistScreen/alchemistScreen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/homeScreen/homeScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/homeScreen/homeScreen.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/storeScreen/storeScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/storeScreen/storeScreen.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/storeScreen/storeScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/storeScreen/storeScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storeTemplateData/storeTemplateData.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/storeTemplateData/storeTemplateData.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,22 +45,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/web/dragonBot/drag-front/src/components/modals/newEggRarity",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2023.3.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/web/dragonBot/drag-front/src/components/modals/newEggRarity&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2023.3.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\web\dragonBot\drag-front\src\components\modals\newEggRarity" />
@@ -126,6 +121,7 @@
       <workItem from="1716143024473" duration="5639000" />
       <workItem from="1716328821369" duration="959000" />
       <workItem from="1716392587536" duration="19121000" />
+      <workItem from="1716482234891" duration="9015000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
