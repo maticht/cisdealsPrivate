@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6eea2a8-a71a-4a55-a54d-7aad55c35258" name="Changes" comment="front and icons">
-      <change beforePath="$PROJECT_DIR$/src/components/modals/DailyRewardModal/DailyRewardModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/DailyRewardModal/DailyRewardModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/httpRequests/dragonEggApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/httpRequests/dragonEggApi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/httpRequests/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/httpRequests/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/alchemistScreen/alchemistScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/alchemistScreen/alchemistScreen.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/homeScreen/homeScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/homeScreen/homeScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/storeScreen/storeScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/storeScreen/storeScreen.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/storeScreen/storeScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/storeScreen/storeScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/storeTemplateData/storeTemplateData.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/storeTemplateData/storeTemplateData.json" afterDir="false" />
-    </list>
+    <list default="true" id="c6eea2a8-a71a-4a55-a54d-7aad55c35258" name="Changes" comment="axe &amp; daily rewards" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,22 +36,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/web/dragonBot/drag-front/src/components/modals/newEggRarity&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2023.3.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Node.js.DailyRewardModal.jsx.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/web/dragonBot/drag-front",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2023.3.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\web\dragonBot\drag-front\src\components\modals\newEggRarity" />
@@ -72,6 +64,13 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\web\dragonBot\drag-front\drag-front\src\img" />
     </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.17011.90" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -121,7 +120,9 @@
       <workItem from="1716143024473" duration="5639000" />
       <workItem from="1716328821369" duration="959000" />
       <workItem from="1716392587536" duration="19121000" />
-      <workItem from="1716482234891" duration="9015000" />
+      <workItem from="1716482234891" duration="10069000" />
+      <workItem from="1716581640780" duration="597000" />
+      <workItem from="1716596715830" duration="31408000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -483,7 +484,31 @@
       <option name="project" value="LOCAL" />
       <updated>1716407126582</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="axe, daily reward and store + alchemist">
+      <option name="closed" value="true" />
+      <created>1716501324592</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1716501324592</updated>
+    </task>
+    <task id="LOCAL-00047" summary="axe &amp; alchemist imgs">
+      <option name="closed" value="true" />
+      <created>1716501395158</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1716501395158</updated>
+    </task>
+    <task id="LOCAL-00048" summary="axe &amp; daily rewards">
+      <option name="closed" value="true" />
+      <created>1716661793128</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1716661793128</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -506,6 +531,9 @@
     <MESSAGE value="store hummer" />
     <MESSAGE value="referral ," />
     <MESSAGE value="front and icons" />
-    <option name="LAST_COMMIT_MESSAGE" value="front and icons" />
+    <MESSAGE value="axe, daily reward and store + alchemist" />
+    <MESSAGE value="axe &amp; alchemist imgs" />
+    <MESSAGE value="axe &amp; daily rewards" />
+    <option name="LAST_COMMIT_MESSAGE" value="axe &amp; daily rewards" />
   </component>
 </project>
