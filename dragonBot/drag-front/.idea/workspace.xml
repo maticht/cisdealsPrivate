@@ -4,23 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6eea2a8-a71a-4a55-a54d-7aad55c35258" name="Changes" comment="alch modal and profile fix">
-      <change afterPath="$PROJECT_DIR$/src/pages/faultAppearanceScene/faultAppearanceScene.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/faultAppearanceScene/faultAppearanceScene.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/animations/animationStyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/animations/animationStyles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/httpRequests/dragonEggApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/httpRequests/dragonEggApi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/httpRequests/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/httpRequests/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/narrativeScenes/faultAppearance/scene1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/narrativeScenes/faultAppearance/scene1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/narrativeScenes/faultAppearance/scene2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/narrativeScenes/faultAppearance/scene2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/narrativeScenes/faultAppearance/scene3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/narrativeScenes/faultAppearance/scene3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/narrativeScenes/faultAppearance/scene4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/narrativeScenes/faultAppearance/scene4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/LoadingScreen/LoadingScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LoadingScreen/LoadingScreen.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/LoadingScreen/LoadingScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LoadingScreen/LoadingScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/homeScreen/homeScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/homeScreen/homeScreen.jsx" afterDir="false" />
+    <list default="true" id="c6eea2a8-a71a-4a55-a54d-7aad55c35258" name="Changes" comment="horizontal and loading">
       <change beforePath="$PROJECT_DIR$/src/pages/homeScreen/mainScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/homeScreen/mainScreen.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/shareScreen/shareScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/shareScreen/shareScreen.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/shareScreen/shareScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/shareScreen/shareScreen.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,23 +38,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Node.js.DailyRewardModal.jsx.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/web/dragonBot/drag-back",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2023.3.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Node.js.DailyRewardModal.jsx.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/web/dragonBot/drag-front&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2023.3.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\web\dragonBot\drag-front\src\components\modals" />
@@ -142,39 +127,9 @@
       <workItem from="1716596715830" duration="44387000" />
       <workItem from="1716680959246" duration="3431000" />
       <workItem from="1716708411501" duration="13665000" />
-      <workItem from="1716727194832" duration="9651000" />
-    </task>
-    <task id="LOCAL-00009" summary="w">
-      <option name="closed" value="true" />
-      <created>1713108459398</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1713108459398</updated>
-    </task>
-    <task id="LOCAL-00010" summary="w">
-      <option name="closed" value="true" />
-      <created>1713108614648</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1713108614648</updated>
-    </task>
-    <task id="LOCAL-00011" summary="w">
-      <option name="closed" value="true" />
-      <created>1713108688253</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1713108688253</updated>
-    </task>
-    <task id="LOCAL-00012" summary="w">
-      <option name="closed" value="true" />
-      <created>1713108825747</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1713108825747</updated>
+      <workItem from="1716727194832" duration="12916000" />
+      <workItem from="1716758028944" duration="1909000" />
+      <workItem from="1716897794839" duration="18221000" />
     </task>
     <task id="LOCAL-00013" summary="w">
       <option name="closed" value="true" />
@@ -536,7 +491,39 @@
       <option name="project" value="LOCAL" />
       <updated>1716744342260</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="loading and scene">
+      <option name="closed" value="true" />
+      <created>1716750331509</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1716750331509</updated>
+    </task>
+    <task id="LOCAL-00059" summary="loading and scene">
+      <option name="closed" value="true" />
+      <created>1716753389737</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1716753389737</updated>
+    </task>
+    <task id="LOCAL-00060" summary="loading and scene">
+      <option name="closed" value="true" />
+      <created>1716899515883</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1716899515884</updated>
+    </task>
+    <task id="LOCAL-00061" summary="horizontal and loading">
+      <option name="closed" value="true" />
+      <created>1716923193822</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1716923193822</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -565,6 +552,8 @@
     <MESSAGE value="top users reward front" />
     <MESSAGE value="navbar fix" />
     <MESSAGE value="alch modal and profile fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="alch modal and profile fix" />
+    <MESSAGE value="loading and scene" />
+    <MESSAGE value="horizontal and loading" />
+    <option name="LAST_COMMIT_MESSAGE" value="horizontal and loading" />
   </component>
 </project>
