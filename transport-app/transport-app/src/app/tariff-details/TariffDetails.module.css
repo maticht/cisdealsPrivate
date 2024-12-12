@@ -1,0 +1,36 @@
+.tariffDetailsContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    color: #1c1c1c;
+}
+.tariffDetailsContent{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+.title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.description, .price {
+    margin-bottom: 10px;
+}
+
+.carsSlider {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+}
+
+.car {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}

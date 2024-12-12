@@ -1,0 +1,46 @@
+{
+  "tariffs": [
+    {
+      "name": "Стандарт",
+      "description": "Базовый тариф для повседневных поездок по городу. Подходит для тех, кто ищет экономичный вариант с хорошим качеством обслуживания.",
+      "cars": ["Hyundai Solaris", "Kia Rio", "Renault Logan"],
+      "price_per_km": "0.60 BYN"
+    },
+    {
+      "name": "Комфорт",
+      "description": "Повышенный комфорт и улучшенное обслуживание. Подходит для тех, кто хочет больше пространства и удобства во время поездки.",
+      "cars": ["Toyota Camry", "Skoda Octavia", "Volkswagen Passat"],
+      "price_per_km": "0.80 BYN"
+    },
+    {
+      "name": "Комфорт+",
+      "description": "Повышенный комфорт с дополнительными удобствами. Подходит для тех, кто ценит комфорт и качество в каждой поездке.",
+      "cars": ["Volkswagen Passat", "Toyota Camry", "Skoda Superb"],
+      "price_per_km": "1.00 BYN"
+    },
+    {
+      "name": "Бизнес",
+      "description": "Высокий уровень комфорта и обслуживания для деловых поездок. Престижные автомобили с полным набором удобств.",
+      "cars": ["BMW 5 Series", "Mercedes-Benz E-Class", "Audi A6"],
+      "price_per_km": "1.50 BYN"
+    },
+    {
+      "name": "VIP",
+      "description": "Эксклюзивные автомобили премиум-класса для максимального комфорта и статуса. Подходит для особых случаев и важных гостей.",
+      "cars": ["Mercedes-Benz S-Class", "BMW 7 Series", "Audi A8"],
+      "price_per_km": "2.50 BYN"
+    },
+    {
+      "name": "Минивен",
+      "description": "Идеальный выбор для семейных поездок и групповых поездок с друзьями. Вместительные автомобили с комфортом для пассажиров и багажа.",
+      "cars": ["Toyota Sienna", "Honda Odyssey", "Chrysler Pacifica"],
+      "price_per_km": "1.60 BYN"
+    },
+    {
+      "name": "Микроавтобус",
+      "description": "Для больших групп людей и крупногабаритного багажа. Удобные микроавтобусы с возможностью перевозки до 16 пассажиров.",
+      "cars": ["Mercedes Sprinter", "Ford Transit", "Volkswagen Crafter"],
+      "price_per_km": "1.80 BYN"
+    }
+  ]
+}

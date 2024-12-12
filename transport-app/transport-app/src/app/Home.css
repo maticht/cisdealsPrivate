@@ -1,0 +1,141 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  background-color: #FDFDFD;
+}
+.hero {
+  text-align: center;
+  margin: 40px 0;
+  color: black;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.hero button {
+  padding: 15px 35px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #00a550;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.hero button:hover {
+  background-color: #008f4b;
+}
+
+.services, .additionalServices {
+  margin: 40px 0;
+  color: black;
+}
+.services h2{
+  margin-bottom: 20px;
+}
+.additionalServices h2{
+  margin-bottom: 20px;
+}
+.servicesGrid, .servicesGrid {
+  display: flex;
+  gap: 20px;
+}
+
+.serviceCard {
+  background: #ffffff;
+  box-shadow: 0 0 17px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1;
+}
+
+.serviceCard h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.serviceCardHead{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.additionalServiceCard{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  box-shadow: 0 0 17px rgba(0, 0, 0, 0.1);
+  padding: 15px 20px;
+  border-radius: 10px;
+  flex: 1;
+  text-align: center;
+  font-weight: 500;
+  flex-direction: column;
+}
+.additionalServiceCard img{
+  margin-bottom: 12px;
+}
+.contact {
+  width: 100%;
+  margin: 40px 0;
+  text-align: center;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.contact p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.contactText{
+  width: calc(50% - 10px);
+  text-align: left;
+}
+.contactText h2{
+  margin-bottom: 20px;
+}
+.contactForm {
+  width: calc(50% - 10px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.contactForm input, .contactForm textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #FDFDFD;
+  border-radius: 12px;
+  font-size: 16px;
+  resize: none;
+  color: #1c1c1c;
+}
+
+.contactForm button {
+  padding: 12px 20px;
+  width: 100%;
+  font-size: 18px;
+  color: #fff;
+  background-color: #00a550;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+

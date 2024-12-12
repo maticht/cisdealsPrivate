@@ -1,0 +1,22 @@
+@font-face {
+  font-family: 'PixelifySans';
+  src: url('../src/fonts/PixelifySans.ttf') format('truetype');
+}
+body {
+  margin: 0;
+  font-family: "PixelifySans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 550px;
+  height: 100%;
+}
+
+code {
+  font-family: "PixelifySans", sans-serif;
+}
+.App {
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  height: 100%;
+}

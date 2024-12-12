@@ -1,0 +1,31 @@
+.privacy-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.privacy-content {
+    flex: 1;
+    padding: 20px;
+    width: 100%;
+    margin: 0 auto;
+    color: #1c1c1c;
+}
+
+.privacy-content h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.privacy-content h2 {
+    font-size: 1.5em;
+    margin-top: 20px;
+}
+
+.privacy-content p {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}

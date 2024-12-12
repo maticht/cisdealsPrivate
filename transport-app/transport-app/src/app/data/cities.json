@@ -1,0 +1,31 @@
+{
+  "cities": [
+    {
+      "name": "Минск",
+      "coordinates": { "lat": 53.9006, "lng": 27.5590 },
+      "destinations": [
+        { "name": "Брест", "coordinates": { "lat": 52.0975, "lng": 23.7341 } },
+        { "name": "Гомель", "coordinates": { "lat": 52.4453, "lng": 30.9842 } },
+        { "name": "Могилев", "coordinates": { "lat": 53.9168, "lng": 30.3449 } }
+      ]
+    },
+    {
+      "name": "Брест",
+      "coordinates": { "lat": 52.0975, "lng": 23.7341 },
+      "destinations": [
+        { "name": "Минск", "coordinates": { "lat": 53.9006, "lng": 27.5590 } },
+        { "name": "Гродно", "coordinates": { "lat": 53.6694, "lng": 23.8131 } },
+        { "name": "Гомель", "coordinates": { "lat": 52.4453, "lng": 30.9842 } }
+      ]
+    },
+    {
+      "name": "Гомель",
+      "coordinates": { "lat": 52.4453, "lng": 30.9842 },
+      "destinations": [
+        { "name": "Минск", "coordinates": { "lat": 53.9006, "lng": 27.5590 } },
+        { "name": "Брест", "coordinates": { "lat": 52.0975, "lng": 23.7341 } },
+        { "name": "Могилев", "coordinates": { "lat": 53.9168, "lng": 30.3449 } }
+      ]
+    }
+  ]
+}

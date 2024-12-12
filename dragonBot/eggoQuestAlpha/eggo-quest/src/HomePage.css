@@ -1,0 +1,86 @@
+.background {
+    background-image: url('https://res.cloudinary.com/dfl7i5tm2/image/upload/v1720709062/alphaBg_1_jlci7h.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+    font-family: "PixelifySans", sans-serif;
+}
+.background-block{
+    width: calc(100% - 50);
+    margin: 0 25px;
+}
+.background-block h2{
+    font-size: 40px;
+    font-weight: bolder;
+    margin: 25px 0 25px;
+}
+.background-block p{
+    line-height: 14px;
+    font-size: 15px;
+}
+.logo-title{
+    margin: 25px 0;
+    color: #5DEB5A;
+    font-weight: 500;
+    font-size: 18px;
+}
+.link-button-block{
+    margin-top: 55px;
+}
+.link-button {
+    margin-top: 25px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid #5DEB5A;
+    color: #5DEB5A;
+    padding: 1em 2em;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.logo {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    width: 100px;
+}
+.logo-text{
+    text-align: right;
+    margin: 0;
+    font-size: 16px;
+    position: absolute;
+    bottom: 28px;
+    right: 25px;
+}
+@media screen and (max-width: 340px){
+    .background-block h2{
+        font-size: 32px;
+    }
+    .background-block p{
+        font-size: 13px;
+    }
+}
+@media screen and (max-width: 295px){
+    .logo-text{
+        text-align: left;
+        margin: 0;
+        font-size: 16px;
+        position: absolute;
+        bottom: 25px;
+        left: 25px;
+    }
+    .logo {
+        position: absolute;
+
+        bottom: 55px;
+        left: 25px;
+        width: 100px;
+    }
+}

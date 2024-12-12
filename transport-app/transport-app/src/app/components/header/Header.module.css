@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 24px;
+  color: #000;
+}
+
+.nav a {
+  margin-left: 20px;
+  color: black;
+  text-decoration: none;
+}
+.nav a.active {
+  color: #00a550;
+}
