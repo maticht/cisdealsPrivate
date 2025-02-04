@@ -4,67 +4,76 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6eea2a8-a71a-4a55-a54d-7aad55c35258" name="Changes" comment="horizontal and loading">
-      <change beforePath="$PROJECT_DIR$/src/pages/homeScreen/mainScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/homeScreen/mainScreen.css" afterDir="false" />
+    <list default="true" id="119c8145-bbc4-41e9-8954-70c0aebd7f07" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/drag-front/src/components/modals/WeeklyRewardModal/DailyRefRewardModal.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/drag-front/src/pages/topDailyRefUsersScreen/topDailyRefUsersScreen.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/drag-front/src/pages/topDailyRefUsersScreen/topDailyRefUsersScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/components/AchievementsTracker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/AchievementsTracker.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/components/dailyTasks/dailyTasks.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/dailyTasks/dailyTasks.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/DailyRewardModal/DailyRewardModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/DailyRewardModal/DailyRewardModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/GoldenPiggyBankModal/GoldenPiggyBankModal.css" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/GoldenPiggyBankModal/GoldenPiggyBankModal.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/GoldenPiggyBankModal/GoldenPiggyBankModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/GoldenPiggyBankModal/GoldenPiggyBankModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/WeeklyRewardModal/DailyMatchMiniGameRewardModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/WeeklyRewardModal/DailyMatchMiniGameRewardModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/WeeklyRewardModal/DailyMiniGameRewardModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/WeeklyRewardModal/DailyMiniGameRewardModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/WeeklyRewardModal/WeeklyReferralRewardModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/WeeklyRewardModal/WeeklyReferralRewardModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/WeeklyRewardModal/WeeklyScoreRewardModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/WeeklyRewardModal/WeeklyScoreRewardModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/fortuneWheel/fortuneWheel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/fortuneWheel/fortuneWheel.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/newRefLinkRewardsModal/newRefLinkRewardsModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/newRefLinkRewardsModal/newRefLinkRewardsModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/newReferralsRewardsModal/newReferralsRewardsModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/newReferralsRewardsModal/newReferralsRewardsModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/httpRequests/dragonEggApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/httpRequests/dragonEggApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/LoadingScreen/LoadingScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/LoadingScreen/LoadingScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/fortuneWheelScreen/fortuneWheelScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/fortuneWheelScreen/fortuneWheelScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/homeScreen/homeScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/homeScreen/homeScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/matchThreeEggs/GameOver.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/matchThreeEggs/GameOver.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/miniGameScreen/GameOver.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/miniGameScreen/GameOver.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/shareScreen/shareScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/shareScreen/shareScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/tasksScreen/tasksScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/tasksScreen/tasksScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/topGamesScreen/topGamesScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/topGamesScreen/topGamesScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/topMatchMiniGameScreen/topMatchMiniGameScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/topMatchMiniGameScreen/topMatchMiniGameScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/topRefUsersScreen/topRefUsersScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/topRefUsersScreen/topRefUsersScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/topUsersScreen/topUsersScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/topUsersScreen/topUsersScreen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/topUsersScreen/topUsersScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/topUsersScreen/topUsersScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/store/zustand.store/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/store/zustand.store/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/styles/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/styles/config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/gettingEggScene/gettingEggScene.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/gettingEggScene/gettingEggScene.jsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JavaScript File" />
-        <option value="JSX File" />
-        <option value="CSS File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/hooks/useTelegram.js" root0="FORCE_HIGHLIGHTING" />
-  </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/drag-front" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
-  <component name="ProjectId" id="2f1JrhkxByegwObaNtznzNmVWBL" />
+  <component name="ProjectId" id="2sXzAGveBmeFoKCB9BbyN26XS5c" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Node.js.DailyRewardModal.jsx.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/web/dragonBot/drag-front&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2023.3.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/web/dragonBot/drag-front/drag-front/src/components/modals/WeeklyRewardModal",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "D:\\web\\dragonBot\\drag-front\\drag-front\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\web\dragonBot\drag-front\src\components\modals" />
-      <recent name="D:\web\dragonBot\drag-front\src\components\header" />
-      <recent name="D:\web\dragonBot\drag-front\src\components\modals\newEggRarity" />
-      <recent name="D:\web\dragonBot\drag-front\src\pages" />
-      <recent name="D:\web\dragonBot\drag-front\src" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\web\dragonBot\drag-front\drag-front\src\img" />
+      <recent name="D:\web\dragonBot\drag-front\drag-front\src\components\modals\WeeklyRewardModal" />
+      <recent name="D:\web\dragonBot\drag-front\drag-front\src\pages" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -77,483 +86,18 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c6eea2a8-a71a-4a55-a54d-7aad55c35258" name="Changes" comment="" />
-      <created>1712962851066</created>
+      <changelist id="119c8145-bbc4-41e9-8954-70c0aebd7f07" name="Changes" comment="" />
+      <created>1738616561757</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1712962851066</updated>
-      <workItem from="1712962852591" duration="962000" />
-      <workItem from="1712992417825" duration="8000" />
-      <workItem from="1712992449701" duration="2312000" />
-      <workItem from="1713080449796" duration="609000" />
-      <workItem from="1713087246883" duration="19107000" />
-      <workItem from="1713249162946" duration="4918000" />
-      <workItem from="1713422988065" duration="2188000" />
-      <workItem from="1714326955514" duration="7646000" />
-      <workItem from="1714416520731" duration="6196000" />
-      <workItem from="1714509624894" duration="3731000" />
-      <workItem from="1714595167365" duration="1100000" />
-      <workItem from="1714723392239" duration="174000" />
-      <workItem from="1714723574686" duration="5595000" />
-      <workItem from="1714758248715" duration="2895000" />
-      <workItem from="1714807000541" duration="26230000" />
-      <workItem from="1714899979703" duration="4384000" />
-      <workItem from="1714918155039" duration="15488000" />
-      <workItem from="1714948908067" duration="10977000" />
-      <workItem from="1714995235555" duration="1291000" />
-      <workItem from="1715066385033" duration="5582000" />
-      <workItem from="1715111652767" duration="10313000" />
-      <workItem from="1715337263654" duration="1798000" />
-      <workItem from="1715345180730" duration="5273000" />
-      <workItem from="1715371371826" duration="4151000" />
-      <workItem from="1715418405850" duration="9117000" />
-      <workItem from="1715447973497" duration="1204000" />
-      <workItem from="1715521589800" duration="2263000" />
-      <workItem from="1715547915089" duration="3263000" />
-      <workItem from="1715574757682" duration="170000" />
-      <workItem from="1715860948376" duration="1663000" />
-      <workItem from="1715889793463" duration="783000" />
-      <workItem from="1715894819343" duration="589000" />
-      <workItem from="1715938260675" duration="11991000" />
-      <workItem from="1715959613888" duration="12056000" />
-      <workItem from="1716024069358" duration="5172000" />
-      <workItem from="1716120912470" duration="643000" />
-      <workItem from="1716142902990" duration="44000" />
-      <workItem from="1716143024473" duration="5639000" />
-      <workItem from="1716328821369" duration="959000" />
-      <workItem from="1716392587536" duration="19121000" />
-      <workItem from="1716482234891" duration="10069000" />
-      <workItem from="1716581640780" duration="597000" />
-      <workItem from="1716596715830" duration="44387000" />
-      <workItem from="1716680959246" duration="3431000" />
-      <workItem from="1716708411501" duration="13665000" />
-      <workItem from="1716727194832" duration="12916000" />
-      <workItem from="1716758028944" duration="1909000" />
-      <workItem from="1716897794839" duration="18221000" />
+      <updated>1738616561757</updated>
+      <workItem from="1738616562873" duration="3375000" />
+      <workItem from="1738625360387" duration="2062000" />
+      <workItem from="1738685663670" duration="7782000" />
     </task>
-    <task id="LOCAL-00013" summary="w">
-      <option name="closed" value="true" />
-      <created>1713108991987</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1713108991987</updated>
-    </task>
-    <task id="LOCAL-00014" summary="w">
-      <option name="closed" value="true" />
-      <created>1713109472788</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1713109472788</updated>
-    </task>
-    <task id="LOCAL-00015" summary="w">
-      <option name="closed" value="true" />
-      <created>1713109607048</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1713109607048</updated>
-    </task>
-    <task id="LOCAL-00016" summary="w">
-      <option name="closed" value="true" />
-      <created>1713250377915</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1713250377915</updated>
-    </task>
-    <task id="LOCAL-00017" summary="w">
-      <option name="closed" value="true" />
-      <created>1713250707651</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1713250707651</updated>
-    </task>
-    <task id="LOCAL-00018" summary="w">
-      <option name="closed" value="true" />
-      <created>1713250851638</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1713250851638</updated>
-    </task>
-    <task id="LOCAL-00019" summary="w">
-      <option name="closed" value="true" />
-      <created>1713251593609</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1713251593609</updated>
-    </task>
-    <task id="LOCAL-00020" summary="w">
-      <option name="closed" value="true" />
-      <created>1713252124754</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1713252124754</updated>
-    </task>
-    <task id="LOCAL-00021" summary="w">
-      <option name="closed" value="true" />
-      <created>1713253726989</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1713253726989</updated>
-    </task>
-    <task id="LOCAL-00022" summary="w">
-      <option name="closed" value="true" />
-      <created>1714366922499</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1714366922499</updated>
-    </task>
-    <task id="LOCAL-00023" summary="store hummer">
-      <option name="closed" value="true" />
-      <created>1714514824345</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1714514824345</updated>
-    </task>
-    <task id="LOCAL-00024" summary="store hummer">
-      <option name="closed" value="true" />
-      <created>1714515067491</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1714515067491</updated>
-    </task>
-    <task id="LOCAL-00025" summary="store hummer">
-      <option name="closed" value="true" />
-      <created>1714855372090</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1714855372090</updated>
-    </task>
-    <task id="LOCAL-00026" summary="store hummer">
-      <option name="closed" value="true" />
-      <created>1714855398123</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1714855398123</updated>
-    </task>
-    <task id="LOCAL-00027" summary="store hummer">
-      <option name="closed" value="true" />
-      <created>1714855468486</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1714855468486</updated>
-    </task>
-    <task id="LOCAL-00028" summary="store hummer">
-      <option name="closed" value="true" />
-      <created>1714855644805</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1714855644805</updated>
-    </task>
-    <task id="LOCAL-00029" summary="store hummer">
-      <option name="closed" value="true" />
-      <created>1714855874444</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1714855874444</updated>
-    </task>
-    <task id="LOCAL-00030" summary="store hummer">
-      <option name="closed" value="true" />
-      <created>1714856319111</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1714856319111</updated>
-    </task>
-    <task id="LOCAL-00031" summary="store hummer">
-      <option name="closed" value="true" />
-      <created>1714911632869</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1714911632869</updated>
-    </task>
-    <task id="LOCAL-00032" summary="store hummer">
-      <option name="closed" value="true" />
-      <created>1714914463141</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1714914463141</updated>
-    </task>
-    <task id="LOCAL-00033" summary="store hummer">
-      <option name="closed" value="true" />
-      <created>1714916587058</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1714916587058</updated>
-    </task>
-    <task id="LOCAL-00034" summary="store hummer">
-      <option name="closed" value="true" />
-      <created>1714921249564</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1714921249564</updated>
-    </task>
-    <task id="LOCAL-00035" summary="referral ,">
-      <option name="closed" value="true" />
-      <created>1714966022895</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1714966022895</updated>
-    </task>
-    <task id="LOCAL-00036" summary="front and icons">
-      <option name="closed" value="true" />
-      <created>1715071907944</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1715071907944</updated>
-    </task>
-    <task id="LOCAL-00037" summary="front and icons">
-      <option name="closed" value="true" />
-      <created>1715071920768</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1715071920768</updated>
-    </task>
-    <task id="LOCAL-00038" summary="front and icons">
-      <option name="closed" value="true" />
-      <created>1715552473813</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1715552473813</updated>
-    </task>
-    <task id="LOCAL-00039" summary="front and icons">
-      <option name="closed" value="true" />
-      <created>1715574836492</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1715574836492</updated>
-    </task>
-    <task id="LOCAL-00040" summary="front and icons">
-      <option name="closed" value="true" />
-      <created>1715889848257</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1715889848257</updated>
-    </task>
-    <task id="LOCAL-00041" summary="front and icons">
-      <option name="closed" value="true" />
-      <created>1715889897721</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1715889897721</updated>
-    </task>
-    <task id="LOCAL-00042" summary="front and icons">
-      <option name="closed" value="true" />
-      <created>1715987042886</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1715987042886</updated>
-    </task>
-    <task id="LOCAL-00043" summary="front and icons">
-      <option name="closed" value="true" />
-      <created>1715987052654</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1715987052654</updated>
-    </task>
-    <task id="LOCAL-00044" summary="front and icons">
-      <option name="closed" value="true" />
-      <created>1716407065598</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1716407065598</updated>
-    </task>
-    <task id="LOCAL-00045" summary="front and icons">
-      <option name="closed" value="true" />
-      <created>1716407126582</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1716407126582</updated>
-    </task>
-    <task id="LOCAL-00046" summary="axe, daily reward and store + alchemist">
-      <option name="closed" value="true" />
-      <created>1716501324592</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1716501324592</updated>
-    </task>
-    <task id="LOCAL-00047" summary="axe &amp; alchemist imgs">
-      <option name="closed" value="true" />
-      <created>1716501395158</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1716501395158</updated>
-    </task>
-    <task id="LOCAL-00048" summary="axe &amp; daily rewards">
-      <option name="closed" value="true" />
-      <created>1716661793128</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1716661793128</updated>
-    </task>
-    <task id="LOCAL-00049" summary="top users reward front">
-      <option name="closed" value="true" />
-      <created>1716673274653</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1716673274653</updated>
-    </task>
-    <task id="LOCAL-00050" summary="navbar fix">
-      <option name="closed" value="true" />
-      <created>1716708527347</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1716708527347</updated>
-    </task>
-    <task id="LOCAL-00051" summary="navbar fix">
-      <option name="closed" value="true" />
-      <created>1716708608163</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1716708608163</updated>
-    </task>
-    <task id="LOCAL-00052" summary="alch modal and profile fix">
-      <option name="closed" value="true" />
-      <created>1716715221963</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1716715221963</updated>
-    </task>
-    <task id="LOCAL-00053" summary="alch modal and profile fix">
-      <option name="closed" value="true" />
-      <created>1716715759854</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1716715759854</updated>
-    </task>
-    <task id="LOCAL-00054" summary="alch modal and profile fix">
-      <option name="closed" value="true" />
-      <created>1716716752844</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1716716752844</updated>
-    </task>
-    <task id="LOCAL-00055" summary="alch modal and profile fix">
-      <option name="closed" value="true" />
-      <created>1716717428693</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1716717428693</updated>
-    </task>
-    <task id="LOCAL-00056" summary="alch modal and profile fix">
-      <option name="closed" value="true" />
-      <created>1716744236993</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1716744236993</updated>
-    </task>
-    <task id="LOCAL-00057" summary="alch modal and profile fix">
-      <option name="closed" value="true" />
-      <created>1716744342259</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1716744342260</updated>
-    </task>
-    <task id="LOCAL-00058" summary="loading and scene">
-      <option name="closed" value="true" />
-      <created>1716750331509</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1716750331509</updated>
-    </task>
-    <task id="LOCAL-00059" summary="loading and scene">
-      <option name="closed" value="true" />
-      <created>1716753389737</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1716753389737</updated>
-    </task>
-    <task id="LOCAL-00060" summary="loading and scene">
-      <option name="closed" value="true" />
-      <created>1716899515883</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1716899515884</updated>
-    </task>
-    <task id="LOCAL-00061" summary="horizontal and loading">
-      <option name="closed" value="true" />
-      <created>1716923193822</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1716923193822</updated>
-    </task>
-    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="test" />
-    <MESSAGE value="w" />
-    <MESSAGE value="store hummer" />
-    <MESSAGE value="referral ," />
-    <MESSAGE value="front and icons" />
-    <MESSAGE value="axe, daily reward and store + alchemist" />
-    <MESSAGE value="axe &amp; alchemist imgs" />
-    <MESSAGE value="axe &amp; daily rewards" />
-    <MESSAGE value="top users reward front" />
-    <MESSAGE value="navbar fix" />
-    <MESSAGE value="alch modal and profile fix" />
-    <MESSAGE value="loading and scene" />
-    <MESSAGE value="horizontal and loading" />
-    <option name="LAST_COMMIT_MESSAGE" value="horizontal and loading" />
   </component>
 </project>
