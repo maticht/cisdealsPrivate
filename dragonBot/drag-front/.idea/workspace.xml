@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="119c8145-bbc4-41e9-8954-70c0aebd7f07" name="Changes" comment="upd - daily top referrers + adding piggy bank score + withdrawal modal">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/GoldenPiggyBankModal/GoldenPiggyBankModal.css" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/GoldenPiggyBankModal/GoldenPiggyBankModal.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/GoldenPiggyBankModal/GoldenPiggyBankModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/GoldenPiggyBankModal/GoldenPiggyBankModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/shareScreen/shareScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/shareScreen/shareScreen.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +77,7 @@
       <workItem from="1738748713753" duration="3849000" />
       <workItem from="1738756078061" duration="180000" />
       <workItem from="1738756360517" duration="4000" />
-      <workItem from="1738756385126" duration="377000" />
+      <workItem from="1738756385126" duration="806000" />
     </task>
     <task id="LOCAL-00001" summary="upd - daily top referrers + adding piggy bank score + withdrawal modal">
       <option name="closed" value="true" />
@@ -143,7 +143,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738751465204</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="upd - daily top referrers + adding piggy bank score + withdrawal modal">
+      <option name="closed" value="true" />
+      <created>1738756856301</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1738756856301</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
