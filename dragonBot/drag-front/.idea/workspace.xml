@@ -4,46 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="119c8145-bbc4-41e9-8954-70c0aebd7f07" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/drag-front/src/components/modals/WeeklyRewardModal/DailyRefRewardModal.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drag-front/src/pages/topDailyRefUsersScreen/topDailyRefUsersScreen.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drag-front/src/pages/topDailyRefUsersScreen/topDailyRefUsersScreen.jsx" afterDir="false" />
+    <list default="true" id="119c8145-bbc4-41e9-8954-70c0aebd7f07" name="Changes" comment="upd - daily top referrers + adding piggy bank score + withdrawal modal">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/components/AchievementsTracker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/AchievementsTracker.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/components/dailyTasks/dailyTasks.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/dailyTasks/dailyTasks.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/DailyRewardModal/DailyRewardModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/DailyRewardModal/DailyRewardModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/GoldenPiggyBankModal/GoldenPiggyBankModal.css" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/GoldenPiggyBankModal/GoldenPiggyBankModal.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/GoldenPiggyBankModal/GoldenPiggyBankModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/GoldenPiggyBankModal/GoldenPiggyBankModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/WeeklyRewardModal/DailyMatchMiniGameRewardModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/WeeklyRewardModal/DailyMatchMiniGameRewardModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/WeeklyRewardModal/DailyMiniGameRewardModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/WeeklyRewardModal/DailyMiniGameRewardModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/WeeklyRewardModal/WeeklyReferralRewardModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/WeeklyRewardModal/WeeklyReferralRewardModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/WeeklyRewardModal/WeeklyScoreRewardModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/WeeklyRewardModal/WeeklyScoreRewardModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/fortuneWheel/fortuneWheel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/fortuneWheel/fortuneWheel.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/newRefLinkRewardsModal/newRefLinkRewardsModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/newRefLinkRewardsModal/newRefLinkRewardsModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/newReferralsRewardsModal/newReferralsRewardsModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/newReferralsRewardsModal/newReferralsRewardsModal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/drag-front/src/httpRequests/dragonEggApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/httpRequests/dragonEggApi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/LoadingScreen/LoadingScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/LoadingScreen/LoadingScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/fortuneWheelScreen/fortuneWheelScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/fortuneWheelScreen/fortuneWheelScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/homeScreen/homeScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/homeScreen/homeScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/matchThreeEggs/GameOver.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/matchThreeEggs/GameOver.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/miniGameScreen/GameOver.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/miniGameScreen/GameOver.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/shareScreen/shareScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/shareScreen/shareScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/tasksScreen/tasksScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/tasksScreen/tasksScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/topGamesScreen/topGamesScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/topGamesScreen/topGamesScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/topMatchMiniGameScreen/topMatchMiniGameScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/topMatchMiniGameScreen/topMatchMiniGameScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/topRefUsersScreen/topRefUsersScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/topRefUsersScreen/topRefUsersScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/topUsersScreen/topUsersScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/topUsersScreen/topUsersScreen.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/topUsersScreen/topUsersScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/topUsersScreen/topUsersScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/topDailyRefUsersScreen/topDailyRefUsersScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/topDailyRefUsersScreen/topDailyRefUsersScreen.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/drag-front/src/store/zustand.store/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/store/zustand.store/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/styles/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/styles/config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/gettingEggScene/gettingEggScene.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/gettingEggScene/gettingEggScene.jsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JSX File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/drag-front" />
@@ -60,7 +38,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/web/dragonBot/drag-front/drag-front/src/components/modals/WeeklyRewardModal",
+    "last_opened_file_path": "D:/web/dragonBot/drag-front",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -93,11 +72,86 @@
       <updated>1738616561757</updated>
       <workItem from="1738616562873" duration="3375000" />
       <workItem from="1738625360387" duration="2062000" />
-      <workItem from="1738685663670" duration="7782000" />
+      <workItem from="1738685663670" duration="8377000" />
+      <workItem from="1738703426131" duration="10587000" />
+      <workItem from="1738748617823" duration="42000" />
+      <workItem from="1738748713753" duration="2510000" />
     </task>
+    <task id="LOCAL-00001" summary="upd - daily top referrers + adding piggy bank score + withdrawal modal">
+      <option name="closed" value="true" />
+      <created>1738694106338</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1738694106338</updated>
+    </task>
+    <task id="LOCAL-00002" summary="upd - daily top referrers + adding piggy bank score + withdrawal modal">
+      <option name="closed" value="true" />
+      <created>1738705528397</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1738705528398</updated>
+    </task>
+    <task id="LOCAL-00003" summary="upd - daily top referrers + adding piggy bank score + withdrawal modal">
+      <option name="closed" value="true" />
+      <created>1738705704321</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1738705704321</updated>
+    </task>
+    <task id="LOCAL-00004" summary="upd - daily top referrers + adding piggy bank score + withdrawal modal">
+      <option name="closed" value="true" />
+      <created>1738705760656</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1738705760656</updated>
+    </task>
+    <task id="LOCAL-00005" summary="upd - daily top referrers + adding piggy bank score + withdrawal modal">
+      <option name="closed" value="true" />
+      <created>1738720931258</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1738720931258</updated>
+    </task>
+    <task id="LOCAL-00006" summary="upd - daily top referrers + adding piggy bank score + withdrawal modal">
+      <option name="closed" value="true" />
+      <created>1738721162267</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1738721162267</updated>
+    </task>
+    <task id="LOCAL-00007" summary="upd - daily top referrers + adding piggy bank score + withdrawal modal">
+      <option name="closed" value="true" />
+      <created>1738721714274</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1738721714274</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="upd - daily top referrers + adding piggy bank score + withdrawal modal" />
+    <option name="LAST_COMMIT_MESSAGE" value="upd - daily top referrers + adding piggy bank score + withdrawal modal" />
   </component>
 </project>
