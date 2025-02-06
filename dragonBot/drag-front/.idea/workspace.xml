@@ -6,12 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="119c8145-bbc4-41e9-8954-70c0aebd7f07" name="Changes" comment="upd - daily top referrers final preparation and hide of piggy bank">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/components/AchievementsTracker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/AchievementsTracker.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/TopUsersModal/AuroraGameTourModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/TopUsersModal/AuroraGameTourModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/newFeaturesModals/stakingAnnouncementModals.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/newFeaturesModals/stakingAnnouncementModals.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/LoadingScreen/LoadingScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/LoadingScreen/LoadingScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/styles/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/styles/config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/store/languages/En.js" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/store/languages/En.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/store/languages/Es.js" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/store/languages/Es.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/store/languages/Id.js" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/store/languages/Id.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/store/languages/Pt.js" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/store/languages/Pt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/store/languages/Ru.js" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/store/languages/Ru.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/store/languages/Ua.js" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/store/languages/Ua.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +48,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.general",
     "ts.external.directory.path": "D:\\web\\dragonBot\\drag-front\\drag-front\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -85,7 +86,8 @@
       <workItem from="1738801025644" duration="162000" />
       <workItem from="1738801247476" duration="70000" />
       <workItem from="1738801400033" duration="8000" />
-      <workItem from="1738801439232" duration="2473000" />
+      <workItem from="1738801439232" duration="3399000" />
+      <workItem from="1738805645493" duration="241000" />
     </task>
     <task id="LOCAL-00001" summary="upd - daily top referrers + adding piggy bank score + withdrawal modal">
       <option name="closed" value="true" />
@@ -175,7 +177,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738803077912</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="upd - daily top referrers final preparation and hide of piggy bank">
+      <option name="closed" value="true" />
+      <created>1738804255866</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1738804255866</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
