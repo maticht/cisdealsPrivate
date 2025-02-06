@@ -6,11 +6,24 @@
   <component name="ChangeListManager">
     <list default="true" id="119c8145-bbc4-41e9-8954-70c0aebd7f07" name="Changes" comment="upd - piggy bank confirmation and congratulations + translations">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/components/drawer/Drawer.css" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/drawer/Drawer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/GoldenPiggyBankModal/GoldenPiggyBankModal.css" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/GoldenPiggyBankModal/GoldenPiggyBankModal.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/GoldenPiggyBankModal/GoldenPiggyBankModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/GoldenPiggyBankModal/GoldenPiggyBankModal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/OpenedPiggyBankModal/OpenedPiggyBankModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/OpenedPiggyBankModal/OpenedPiggyBankModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/StakingScreen/StakeScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/StakingScreen/StakeScreen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/achievementScreen/achievementScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/achievementScreen/achievementScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/homeScreen/homeScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/homeScreen/homeScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/publicProfileScreen/publicProfileScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/publicProfileScreen/publicProfileScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/topDailyRefUsersScreen/topDailyRefUsersScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/topDailyRefUsersScreen/topDailyRefUsersScreen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/topDailyRefUsersScreen/topDailyRefUsersScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/topDailyRefUsersScreen/topDailyRefUsersScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/topGamesScreen/topGamesScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/topGamesScreen/topGamesScreen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/topMatchMiniGameScreen/topMatchMiniGameScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/topMatchMiniGameScreen/topMatchMiniGameScreen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/topRefUsersScreen/topRefUsersScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/topRefUsersScreen/topRefUsersScreen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/topUsersScreen/topUsersScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/topUsersScreen/topUsersScreen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/store/achievementsTemplateData/achievementsTemplateDataEn.json" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/store/achievementsTemplateData/achievementsTemplateDataEn.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/store/achievementsTemplateData/achievementsTemplateDataEs.json" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/store/achievementsTemplateData/achievementsTemplateDataEs.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/store/achievementsTemplateData/achievementsTemplateDataId.json" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/store/achievementsTemplateData/achievementsTemplateDataId.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/store/achievementsTemplateData/achievementsTemplateDataPt.json" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/store/achievementsTemplateData/achievementsTemplateDataPt.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/store/achievementsTemplateData/achievementsTemplateDataRu.json" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/store/achievementsTemplateData/achievementsTemplateDataRu.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/store/achievementsTemplateData/achievementsTemplateDataUa.json" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/store/achievementsTemplateData/achievementsTemplateDataUa.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/store/achievementsTemplateData/achievementsTemplateDataVi.json" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/store/achievementsTemplateData/achievementsTemplateDataVi.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/storeTemplateData/achievementsTemplateData.json" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/storeTemplateData/achievementsTemplateData.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/drag-front/src/styles/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/styles/config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,7 +102,7 @@
       <workItem from="1738801400033" duration="8000" />
       <workItem from="1738801439232" duration="3399000" />
       <workItem from="1738805645493" duration="2232000" />
-      <workItem from="1738845550000" duration="14754000" />
+      <workItem from="1738845550000" duration="20614000" />
     </task>
     <task id="LOCAL-00001" summary="upd - daily top referrers + adding piggy bank score + withdrawal modal">
       <option name="closed" value="true" />
@@ -211,7 +224,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738861908103</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="upd - piggy bank confirmation and congratulations + translations">
+      <option name="closed" value="true" />
+      <created>1738871998232</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1738871998232</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
