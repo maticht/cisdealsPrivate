@@ -6,15 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="119c8145-bbc4-41e9-8954-70c0aebd7f07" name="Changes" comment="upd - piggy bank confirmation and congratulations + translations">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/components/drawer/Drawer.css" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/drawer/Drawer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/GoldenPiggyBankModal/GoldenPiggyBankModal.css" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/GoldenPiggyBankModal/GoldenPiggyBankModal.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/GoldenPiggyBankModal/GoldenPiggyBankModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/GoldenPiggyBankModal/GoldenPiggyBankModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/OpenedPiggyBankModal/OpenedPiggyBankModal.css" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/OpenedPiggyBankModal/OpenedPiggyBankModal.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/store/languages/En.js" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/store/languages/En.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/store/languages/Es.js" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/store/languages/Es.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/store/languages/Id.js" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/store/languages/Id.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/store/languages/Pt.js" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/store/languages/Pt.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/store/languages/Ru.js" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/store/languages/Ru.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/store/languages/Ua.js" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/store/languages/Ua.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/store/languages/Vi.js" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/store/languages/Vi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/OpenedPiggyBankModal/OpenedPiggyBankModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/OpenedPiggyBankModal/OpenedPiggyBankModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/StakingScreen/StakeScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/StakingScreen/StakeScreen.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/drag-front/src/styles/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/styles/config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,7 +89,7 @@
       <workItem from="1738801400033" duration="8000" />
       <workItem from="1738801439232" duration="3399000" />
       <workItem from="1738805645493" duration="2232000" />
-      <workItem from="1738845550000" duration="10732000" />
+      <workItem from="1738845550000" duration="14754000" />
     </task>
     <task id="LOCAL-00001" summary="upd - daily top referrers + adding piggy bank score + withdrawal modal">
       <option name="closed" value="true" />
@@ -207,7 +203,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738857370846</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="upd - piggy bank confirmation and congratulations + translations">
+      <option name="closed" value="true" />
+      <created>1738861908103</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1738861908103</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
