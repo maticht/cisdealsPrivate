@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="119c8145-bbc4-41e9-8954-70c0aebd7f07" name="Changes" comment="upd - piggy bank btn post text">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/TopUsersModal/TopUsersModal.css" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/TopUsersModal/TopUsersModal.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/topDailyRefUsersScreen/topDailyRefUsersScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/topDailyRefUsersScreen/topDailyRefUsersScreen.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/drag-front/src/styles/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/styles/config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +89,7 @@
       <workItem from="1738919314171" duration="20000" />
       <workItem from="1738919361109" duration="1209000" />
       <workItem from="1738925728348" duration="2068000" />
-      <workItem from="1739012649278" duration="3476000" />
+      <workItem from="1739012649278" duration="4172000" />
     </task>
     <task id="LOCAL-00001" summary="upd - daily top referrers + adding piggy bank score + withdrawal modal">
       <option name="closed" value="true" />
@@ -308,7 +307,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739016919524</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="upd - piggy bank btn post text">
+      <option name="closed" value="true" />
+      <created>1739020259797</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1739020259797</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
