@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="119c8145-bbc4-41e9-8954-70c0aebd7f07" name="Changes" comment="upd - fix golden price + snake extra life">
+      <change afterPath="$PROJECT_DIR$/drag-front/src/components/modals/AiMerchantModal/AiMerchantModal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/drag-front/src/components/modals/AiMerchantModal/AiMerchantModal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/components/AchievementsTracker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/AchievementsTracker.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/LoadingScreen/LoadingScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/LoadingScreen/LoadingScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/components/modals/newFeaturesModals/goldEggOfferModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/components/modals/newFeaturesModals/goldEggOfferModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/bagmanScreen/bagmanScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/bagmanScreen/bagmanScreen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/bagmanScreen/bagmanScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/bagmanScreen/bagmanScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/miniGameScreen/miniGameScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/miniGameScreen/miniGameScreen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag-front/src/pages/miniGameScreen/miniGameScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/pages/miniGameScreen/miniGameScreen.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/drag-front/src/styles/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/drag-front/src/styles/config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JSX File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -35,21 +40,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/web/dragonBot/drag-front&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\web\\dragonBot\\drag-front\\drag-front\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "new-dev",
+    "last_opened_file_path": "D:/web/dragonBot/drag-front",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.general",
+    "ts.external.directory.path": "D:\\web\\dragonBot\\drag-front\\drag-front\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\web\dragonBot\drag-front\drag-front\src\components\modals" />
@@ -60,7 +66,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.17011.90" />
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-WS-243.23654.157" />
       </set>
     </attachedChunks>
   </component>
@@ -101,7 +107,11 @@
       <workItem from="1739188076801" duration="4845000" />
       <workItem from="1739207045331" duration="17000" />
       <workItem from="1739207097885" duration="1112000" />
-      <workItem from="1739227366038" duration="2000000" />
+      <workItem from="1739227366038" duration="3281000" />
+      <workItem from="1739629840734" duration="361000" />
+      <workItem from="1739707504026" duration="313000" />
+      <workItem from="1739707963063" duration="2439000" />
+      <workItem from="1739830733228" duration="7621000" />
     </task>
     <task id="LOCAL-00001" summary="upd - daily top referrers + adding piggy bank score + withdrawal modal">
       <option name="closed" value="true" />
@@ -423,7 +433,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739228677551</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="upd - fix golden price + snake extra life">
+      <option name="closed" value="true" />
+      <created>1739230666876</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1739230666876</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
